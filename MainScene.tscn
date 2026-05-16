@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://c2u22btd03407"]
+
+[ext_resource type="Script" uid="uid://mofmms1d68ku" path="res://player_cat.gd" id="1_3mqji"]
+[ext_resource type="Script" uid="uid://ligvtd7i5o31" path="res://camera_3d.gd" id="2_x4av3"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1305s"]
+size = Vector2(20, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3mqji"]
+albedo_color = Color(0.11971641, 0.18587182, 0.2467348, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1305s"]
+size = Vector3(10, 0.1, 10)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1305s"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_1305s"]
+
+[sub_resource type="Environment" id="Environment_x4av3"]
+ambient_light_energy = 1.11
+fog_light_color = Color(0.27450982, 0.29803923, 0.32941177, 1)
+fog_density = 0.02
+volumetric_fog_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_x4av3"]
+size = Vector3(3, 4, 3)
+
+[node name="Node3D" type="Node3D" unique_id=928753715]
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=993986553]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=1870375943]
+mesh = SubResource("PlaneMesh_1305s")
+surface_material_override/0 = SubResource("StandardMaterial3D_3mqji")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=219577791]
+shape = SubResource("BoxShape3D_1305s")
+
+[node name="PlayerCat" type="CharacterBody3D" parent="." unique_id=795165568]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64734125, 0)
+script = ExtResource("1_3mqji")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerCat" unique_id=1671021864]
+shape = SubResource("SphereShape3D_1305s")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerCat" unique_id=951761677]
+mesh = SubResource("SphereMesh_1305s")
+
+[node name="CameraRig" type="Node3D" parent="." unique_id=1378474959]
+
+[node name="Camera3D" type="Camera3D" parent="CameraRig" unique_id=609572443 node_paths=PackedStringArray("target")]
+transform = Transform3D(0.8642748, -0.4120498, 0.2885204, 0, 0.57357645, 0.81915206, -0.5030199, -0.70797247, 0.4957277, 0, 12, 10)
+script = ExtResource("2_x4av3")
+target = NodePath("../../PlayerCat")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=825650642]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0)
+light_energy = 0.3
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=809749385]
+environment = SubResource("Environment_x4av3")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=170015721]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.60252595, 2.4133415, -2.1414337)
+light_color = Color(1.8600308, 1.8600308, 1.416788, 1)
+light_energy = 3.0
+omni_range = 6.0
+
+[node name="Bones" type="Node3D" parent="." unique_id=2138485291]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7399788, 0, -10.261954)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bones" unique_id=1278659389]
+transform = Transform3D(0.932513, 0, -0.36113638, 0, 1, 0, 0.36113638, 0, 0.932513, -6.7101564, 1.9627895, 17.209543)
+mesh = SubResource("BoxMesh_x4av3")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Bones" unique_id=1574861759]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.177455, 16.610516)
+mesh = SubResource("BoxMesh_x4av3")
