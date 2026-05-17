@@ -1,0 +1,113 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://footprints_path.gd" id="1_footprints"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_footprint"]
+size = Vector2(0.22, 0.38)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_footprint"]
+transparency = 1
+albedo_color = Color(0.35, 1, 0.82, 0.72)
+emission_enabled = true
+emission = Color(0.35, 1, 0.82, 1)
+emission_energy_multiplier = 1.6
+
+[node name="FootprintsPath" type="Node3D" groups=["cat_vision_revealed"]]
+visible = false
+script = ExtResource("1_footprints")
+
+[node name="FootprintL_00" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.976, 0, 0.218, 0, 1, 0, -0.218, 0, 0.976, -3.18, 0.035, 3.1)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_footprint")
+surface_material_override/0 = SubResource("StandardMaterial3D_footprint")
+
+[node name="FootprintR_00" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.993, 0, 0.12, 0, 1, 0, -0.12, 0, 0.993, -2.82, 0.035, 2.9)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_footprint")
+surface_material_override/0 = SubResource("StandardMaterial3D_footprint")
+
+[node name="FootprintL_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.857, 0, 0.515, 0, 1, 0, -0.515, 0, 0.857, -1.38, 0.035, 1.8)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_footprint")
+surface_material_override/0 = SubResource("StandardMaterial3D_footprint")
+
+[node name="FootprintR_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.909, 0, 0.416, 0, 1, 0, -0.416, 0, 0.909, -1.02, 0.035, 1.55)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_footprint")
+surface_material_override/0 = SubResource("StandardMaterial3D_footprint")
+
+[node name="FootprintL_02" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.825, 0, 0.565, 0, 1, 0, -0.565, 0, 0.825, 0.6, 0.035, 0.32)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_footprint")
+surface_material_override/0 = SubResource("StandardMaterial3D_footprint")
+
+[node name="FootprintR_02" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.875, 0, 0.485, 0, 1, 0, -0.485, 0, 0.875, 1.0, 0.035, 0.08)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_footprint")
+surface_material_override/0 = SubResource("StandardMaterial3D_footprint")
+
+[node name="FootprintL_03" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.755, 0, 0.656, 0, 1, 0, -0.656, 0, 0.755, 2.42, 0.035, -1.06)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_footprint")
+surface_material_override/0 = SubResource("StandardMaterial3D_footprint")
+
+[node name="FootprintR_03" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.819, 0, 0.574, 0, 1, 0, -0.574, 0, 0.819, 2.78, 0.035, -1.34)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_footprint")
+surface_material_override/0 = SubResource("StandardMaterial3D_footprint")
+
+[node name="FootprintL_04" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.805, 0, 0.593, 0, 1, 0, -0.593, 0, 0.805, 4.22, 0.035, -2.36)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_footprint")
+surface_material_override/0 = SubResource("StandardMaterial3D_footprint")
+
+[node name="FootprintR_04" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.853, 0, 0.522, 0, 1, 0, -0.522, 0, 0.853, 4.58, 0.035, -2.64)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_footprint")
+surface_material_override/0 = SubResource("StandardMaterial3D_footprint")
+
+[node name="FootprintL_05" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.748, 0, 0.664, 0, 1, 0, -0.664, 0, 0.748, 6.02, 0.035, -3.96)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_footprint")
+surface_material_override/0 = SubResource("StandardMaterial3D_footprint")
+
+[node name="FootprintR_05" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.816, 0, 0.578, 0, 1, 0, -0.578, 0, 0.816, 6.38, 0.035, -4.24)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_footprint")
+surface_material_override/0 = SubResource("StandardMaterial3D_footprint")
+
+[node name="FootprintL_06" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.89, 0, 0.456, 0, 1, 0, -0.456, 0, 0.89, 8.2, 0.035, -5.58)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_footprint")
+surface_material_override/0 = SubResource("StandardMaterial3D_footprint")
+
+[node name="FootprintR_06" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.925, 0, 0.38, 0, 1, 0, -0.38, 0, 0.925, 8.58, 0.035, -5.82)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_footprint")
+surface_material_override/0 = SubResource("StandardMaterial3D_footprint")
+
+[node name="FootprintL_07" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.965, 0, 0.262, 0, 1, 0, -0.262, 0, 0.965, 10.6, 0.035, -6.58)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_footprint")
+surface_material_override/0 = SubResource("StandardMaterial3D_footprint")
+
+[node name="FootprintR_07" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.984, 0, 0.178, 0, 1, 0, -0.178, 0, 0.984, 11.0, 0.035, -6.82)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_footprint")
+surface_material_override/0 = SubResource("StandardMaterial3D_footprint")
