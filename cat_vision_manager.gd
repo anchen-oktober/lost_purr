@@ -4,22 +4,22 @@ extends Node
 @export var transition_speed: float = 6.0
 @export var revealed_group: String = "cat_vision_revealed"
 
-@export var normal_background_color: Color = Color(0.055, 0.06, 0.068, 1.0)
-@export var vision_background_color: Color = Color(0.015, 0.04, 0.045, 1.0)
-@export var normal_ambient_color: Color = Color(0.24, 0.26, 0.28, 1.0)
-@export var vision_ambient_color: Color = Color(0.08, 0.24, 0.22, 1.0)
-@export var normal_ambient_energy: float = 0.82
-@export var vision_ambient_energy: float = 0.28
-@export var normal_fog_density: float = 0.016
-@export var vision_fog_density: float = 0.045
-@export var normal_volumetric_fog_density: float = 0.02
-@export var vision_volumetric_fog_density: float = 0.065
+@export var normal_background_color: Color = Color(0.1, 0.11, 0.12, 1.0)
+@export var vision_background_color: Color = Color(0.055, 0.095, 0.1, 1.0)
+@export var normal_ambient_color: Color = Color(0.44, 0.46, 0.48, 1.0)
+@export var vision_ambient_color: Color = Color(0.2, 0.36, 0.33, 1.0)
+@export var normal_ambient_energy: float = 1.12
+@export var vision_ambient_energy: float = 0.65
+@export var normal_fog_density: float = 0.006
+@export var vision_fog_density: float = 0.018
+@export var normal_volumetric_fog_density: float = 0.006
+@export var vision_volumetric_fog_density: float = 0.02
 @export var normal_saturation: float = 1.0
-@export var vision_saturation: float = 0.55
+@export var vision_saturation: float = 0.75
 @export var normal_brightness: float = 1.0
-@export var vision_brightness: float = 0.75
+@export var vision_brightness: float = 0.9
 @export var normal_glow_intensity: float = 0.0
-@export var vision_glow_intensity: float = 0.28
+@export var vision_glow_intensity: float = 0.18
 
 var vision_amount: float = 0.0
 var cat_vision_active: bool = false
@@ -39,7 +39,7 @@ func _process(delta: float) -> void:
 	vision_amount = lerpf(vision_amount, target_amount, weight)
 
 	_apply_environment(vision_amount)
-	_set_revealed_objects_visible(vision_amount > 0.08)
+	_update_revealed_objects(vision_amount)
 
 func _apply_environment(amount: float) -> void:
 	if world_environment == null or world_environment.environment == null:
@@ -50,7 +50,7 @@ func _apply_environment(amount: float) -> void:
 	environment.ambient_light_color = normal_ambient_color.lerp(vision_ambient_color, amount)
 	environment.ambient_light_energy = lerpf(normal_ambient_energy, vision_ambient_energy, amount)
 	environment.fog_enabled = true
-	environment.fog_light_color = Color(0.28, 0.29, 0.3, 1.0).lerp(Color(0.08, 0.32, 0.3, 1.0), amount)
+	environment.fog_light_color = Color(0.42, 0.43, 0.43, 1.0).lerp(Color(0.16, 0.36, 0.34, 1.0), amount)
 	environment.fog_density = lerpf(normal_fog_density, vision_fog_density, amount)
 	environment.volumetric_fog_enabled = true
 	environment.volumetric_fog_density = lerpf(normal_volumetric_fog_density, vision_volumetric_fog_density, amount)
@@ -63,7 +63,12 @@ func _apply_environment(amount: float) -> void:
 	environment.glow_intensity = lerpf(normal_glow_intensity, vision_glow_intensity, amount)
 
 func _set_revealed_objects_visible(is_visible: bool) -> void:
+	_update_revealed_objects(1.0 if is_visible else 0.0)
+
+func _update_revealed_objects(amount: float) -> void:
 	for node in get_tree().get_nodes_in_group(revealed_group):
-		if node is Node3D:
+		if node.has_method("set_cat_vision_amount"):
+			node.call("set_cat_vision_amount", amount)
+		elif node is Node3D:
 			var node_3d: Node3D = node as Node3D
-			node_3d.visible = is_visible
+			node_3d.visible = amount > 0.08

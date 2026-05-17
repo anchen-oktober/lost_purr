@@ -100,14 +100,14 @@ func build_village() -> void:
 		_add_tree(trees, tree_positions[i], 0.8 + float(i % 3) * 0.18)
 
 func _create_materials() -> void:
-	ground_material = _material(Color(0.115, 0.13, 0.13, 1.0))
-	road_material = _material(Color(0.31, 0.30, 0.26, 1.0))
-	house_material = _material(Color(0.34, 0.35, 0.32, 1.0))
-	roof_material = _material(Color(0.22, 0.23, 0.22, 1.0))
+	ground_material = _material(Color(0.18, 0.2, 0.19, 1.0))
+	road_material = _material(Color(0.42, 0.4, 0.34, 1.0))
+	house_material = _material(Color(0.47, 0.48, 0.43, 1.0))
+	roof_material = _material(Color(0.32, 0.33, 0.31, 1.0))
 	window_material = _emissive_material(Color(1.0, 0.86, 0.42, 1.0), 1.9)
-	pole_material = _material(Color(0.16, 0.14, 0.12, 1.0))
-	tree_material = _material(Color(0.19, 0.25, 0.19, 1.0))
-	trunk_material = _material(Color(0.19, 0.14, 0.1, 1.0))
+	pole_material = _material(Color(0.24, 0.21, 0.18, 1.0))
+	tree_material = _material(Color(0.28, 0.35, 0.27, 1.0))
+	trunk_material = _material(Color(0.27, 0.2, 0.14, 1.0))
 
 func _material(color: Color) -> StandardMaterial3D:
 	var material := StandardMaterial3D.new()

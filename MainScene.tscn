@@ -3,17 +3,18 @@
 [ext_resource type="Script" uid="uid://mofmms1d68ku" path="res://player_cat.gd" id="1_3mqji"]
 [ext_resource type="Script" uid="uid://ligvtd7i5o31" path="res://camera_3d.gd" id="2_x4av3"]
 [ext_resource type="Script" uid="uid://4ow038eg65xo" path="res://village_builder.gd" id="3_village"]
-[ext_resource type="Texture2D" path="res://Art/CatBilboard.png" id="4_cat"]
-[ext_resource type="Shader" path="res://cat_outline.gdshader" id="5_outline"]
-[ext_resource type="Script" path="res://cat_outline_visibility.gd" id="6_outline_visibility"]
-[ext_resource type="Script" path="res://cat_vision_manager.gd" id="7_cat_vision"]
+[ext_resource type="Texture2D" uid="uid://boakjd6thqbpl" path="res://Art/CatBilboard.png" id="4_cat"]
+[ext_resource type="Shader" uid="uid://imflfkmet43p" path="res://cat_outline.gdshader" id="5_outline"]
+[ext_resource type="Script" uid="uid://cibuicvn804w1" path="res://cat_outline_visibility.gd" id="6_outline_visibility"]
+[ext_resource type="Script" uid="uid://d0bllj7m7hfhw" path="res://cat_vision_manager.gd" id="7_cat_vision"]
 [ext_resource type="PackedScene" path="res://FootprintsPath.tscn" id="8_footprints"]
+[ext_resource type="Script" path="res://cat_vision_fade_reveal.gd" id="9_fade_reveal"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_1305s"]
 size = Vector2(72, 72)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3mqji"]
-albedo_color = Color(0.115, 0.13, 0.13, 1)
+albedo_color = Color(0.18, 0.2, 0.19, 1)
 roughness = 0.9
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1305s"]
@@ -23,12 +24,26 @@ size = Vector3(72, 0.1, 72)
 radius = 0.45
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cat_outline"]
+render_priority = 0
 shader = ExtResource("5_outline")
 shader_parameter/cat_texture = ExtResource("4_cat")
 shader_parameter/outline_color = Color(1, 0.72, 0.22, 0.82)
 shader_parameter/outline_pixels = 5.0
 shader_parameter/glow_pixels = 13.0
 shader_parameter/alpha_threshold = 0.08
+
+[sub_resource type="Environment" id="Environment_x4av3"]
+background_mode = 1
+background_color = Color(0.1, 0.11, 0.12, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.44, 0.46, 0.48, 1)
+ambient_light_energy = 1.12
+fog_enabled = true
+fog_light_color = Color(0.42, 0.43, 0.43, 1)
+fog_light_energy = 1.15
+fog_sun_scatter = 0.04
+fog_density = 0.006
+volumetric_fog_density = 0.006
 
 [sub_resource type="SphereMesh" id="SphereMesh_hidden_memory"]
 radius = 0.45
@@ -40,19 +55,6 @@ albedo_color = Color(0.28, 1, 0.8, 0.62)
 emission_enabled = true
 emission = Color(0.28, 1, 0.8, 1)
 emission_energy_multiplier = 1.8
-
-[sub_resource type="Environment" id="Environment_x4av3"]
-background_mode = 1
-background_color = Color(0.055, 0.06, 0.068, 1)
-ambient_light_source = 2
-ambient_light_color = Color(0.24, 0.26, 0.28, 1)
-ambient_light_energy = 0.82
-fog_enabled = true
-fog_light_color = Color(0.28, 0.29, 0.3, 1)
-fog_light_energy = 1.35
-fog_sun_scatter = 0.08
-fog_density = 0.016
-volumetric_fog_density = 0.02
 
 [node name="Node3D" type="Node3D" unique_id=928753715]
 
@@ -72,13 +74,13 @@ script = ExtResource("1_3mqji")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerCat" unique_id=1671021864]
 shape = SubResource("SphereShape3D_1305s")
 
-[node name="CatBehindWallsGlow" type="Sprite3D" parent="PlayerCat"]
+[node name="CatBehindWallsGlow" type="Sprite3D" parent="PlayerCat" unique_id=884091671]
 transform = Transform3D(1.22, 0, 0, 0, 1.22, 0, 0, 0, 1.22, 0, 0.74, 0)
+material_override = SubResource("ShaderMaterial_cat_outline")
 pixel_size = 0.003
 billboard = 1
 no_depth_test = true
 texture = ExtResource("4_cat")
-material_override = SubResource("ShaderMaterial_cat_outline")
 script = ExtResource("6_outline_visibility")
 
 [node name="CatBillboard" type="Sprite3D" parent="PlayerCat" unique_id=951761677]
@@ -87,7 +89,7 @@ pixel_size = 0.003
 billboard = 1
 texture = ExtResource("4_cat")
 
-[node name="CatTrackingLight" type="OmniLight3D" parent="PlayerCat"]
+[node name="CatTrackingLight" type="OmniLight3D" parent="PlayerCat" unique_id=862726659]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 light_color = Color(1, 0.78, 0.42, 1)
 light_energy = 0.45
@@ -103,8 +105,8 @@ target = NodePath("../../PlayerCat")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=825650642]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0)
-light_color = Color(0.74, 0.78, 0.86, 1)
-light_energy = 0.42
+light_color = Color(0.86, 0.88, 0.92, 1)
+light_energy = 0.75
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=809749385]
@@ -113,21 +115,21 @@ environment = SubResource("Environment_x4av3")
 [node name="Village" type="Node3D" parent="." unique_id=2138485291]
 script = ExtResource("3_village")
 
-[node name="CatVisionManager" type="Node" parent="."]
+[node name="CatVisionManager" type="Node" parent="." unique_id=33666976]
 script = ExtResource("7_cat_vision")
 
-[node name="FootprintsPath" parent="." instance=ExtResource("8_footprints")]
-visible = false
+[node name="FootprintsPath" parent="." unique_id=430629602 instance=ExtResource("8_footprints")]
 
-[node name="HiddenMemory" type="Node3D" parent="." groups=["cat_vision_revealed"]]
+[node name="HiddenMemory" type="Node3D" parent="." unique_id=1499366914 groups=["cat_vision_revealed"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.45, -7)
 visible = false
+script = ExtResource("9_fade_reveal")
 
-[node name="GlowOrb" type="MeshInstance3D" parent="HiddenMemory"]
+[node name="GlowOrb" type="MeshInstance3D" parent="HiddenMemory" unique_id=630687367]
 mesh = SubResource("SphereMesh_hidden_memory")
 surface_material_override/0 = SubResource("StandardMaterial3D_hidden_memory")
 
-[node name="ColdHintLight" type="OmniLight3D" parent="HiddenMemory"]
+[node name="ColdHintLight" type="OmniLight3D" parent="HiddenMemory" unique_id=618148597]
 light_color = Color(0.35, 1, 0.82, 1)
 light_energy = 0.8
 omni_range = 3.0
