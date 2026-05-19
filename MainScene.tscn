@@ -9,6 +9,9 @@
 [ext_resource type="Script" uid="uid://d0bllj7m7hfhw" path="res://cat_vision_manager.gd" id="7_cat_vision"]
 [ext_resource type="PackedScene" path="res://FootprintsPath.tscn" id="8_footprints"]
 [ext_resource type="Script" path="res://cat_vision_fade_reveal.gd" id="9_fade_reveal"]
+[ext_resource type="PackedScene" path="res://InteractableObject.tscn" id="10_interactable"]
+[ext_resource type="PackedScene" path="res://JournalUI.tscn" id="11_journal_ui"]
+[ext_resource type="PackedScene" path="res://NPC.tscn" id="12_npc"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_1305s"]
 size = Vector2(72, 72)
@@ -115,6 +118,236 @@ environment = SubResource("Environment_x4av3")
 [node name="Village" type="Node3D" parent="." unique_id=2138485291]
 script = ExtResource("3_village")
 
+[node name="Interactables" type="Node3D" parent="."]
+
+[node name="OldTobaccoSmell" parent="Interactables" instance=ExtResource("10_interactable")]
+transform = Transform3D(0.7, 0, 0, 0, 0.35, 0, 0, 0, 1.2, -8, 0.05, 6)
+id = "old_tobacco_smell"
+title = "Старый запах табака"
+short_description = "Сухой вечерний запах у пустого крыльца."
+full_description = "Старый запах табака. Хозяин часто сидел здесь по вечерам. Запах почти исчез, но кот всё ещё узнаёт это место."
+category = 0
+highlight_color = Color(1, 0.7, 0.35, 1)
+
+[node name="ScratchedFenceTrace" parent="Interactables" instance=ExtResource("10_interactable")]
+transform = Transform3D(1.6, 0, 0, 0, 0.22, 0, 0, 0, 0.35, 5, 0.04, -5)
+id = "scratched_fence_trace"
+title = "Следы на досках"
+short_description = "Тонкие царапины уходят вдоль забора."
+full_description = "На старых досках остались свежие царапины. Они слишком низко для человека и слишком ровные для случайности."
+category = 1
+highlight_color = Color(0.55, 1, 0.78, 1)
+
+[node name="LostKeyObject" parent="Interactables" instance=ExtResource("10_interactable")]
+transform = Transform3D(0.42, 0, 0, 0, 0.18, 0, 0, 0, 0.75, 11, 0.04, 7)
+id = "lost_key_object"
+title = "Ржавый ключ"
+short_description = "Маленький ключ пахнет дождём и железом."
+full_description = "Ржавый ключ лежит в пыли, будто его бросили впопыхах. Он ничего не открывает здесь, но память о двери становится отчётливее."
+category = 2
+highlight_color = Color(1, 0.86, 0.45, 1)
+
+[node name="ChalkSymbol" parent="Interactables" instance=ExtResource("10_interactable")]
+transform = Transform3D(1.1, 0, 0, 0, 0.08, 0, 0, 0, 1.1, -2, 0.03, -12)
+id = "chalk_symbol"
+title = "Меловой знак"
+short_description = "Символ на земле кажется знакомым только в темноте."
+full_description = "Меловой знак почти стёрся. Его линии напоминают карту района, но один переулок нарисован там, где его никогда не было."
+category = 3
+highlight_color = Color(0.62, 0.86, 1, 1)
+
+[node name="QuietBenchPlace" parent="Interactables" instance=ExtResource("10_interactable")]
+transform = Transform3D(1.8, 0, 0, 0, 0.35, 0, 0, 0, 0.55, -15, 0.05, 14)
+id = "quiet_bench_place"
+title = "Пустая лавочка"
+short_description = "Здесь кто-то долго ждал."
+full_description = "Лавочка стоит чуть в стороне от фонаря. Дерево хранит тепло чужих рук, хотя ночь уже давно остыла."
+category = 4
+highlight_color = Color(1, 0.74, 0.48, 1)
+
+[node name="ColdWindowAnomaly" parent="Interactables" instance=ExtResource("10_interactable")]
+transform = Transform3D(0.8, 0, 0, 0, 1.4, 0, 0, 0, 0.18, 16, 0.08, -13)
+id = "cold_window_anomaly"
+title = "Холодное окно"
+short_description = "Окно отражает улицу, которой здесь нет."
+full_description = "Стекло холоднее воздуха. В отражении виден другой двор: тёмный, пустой и слишком тихий."
+category = 5
+highlight_color = Color(0.55, 0.9, 1, 1)
+
+[node name="RaincoatSmell" parent="Interactables" instance=ExtResource("10_interactable")]
+transform = Transform3D(0.9, 0, 0, 0, 0.24, 0, 0, 0, 1.4, -20, 0.04, 2)
+id = "raincoat_smell"
+category = 0
+highlight_color = Color(0.78, 0.9, 1, 1)
+
+[node name="SpilledMilkSmell" parent="Interactables" instance=ExtResource("10_interactable")]
+transform = Transform3D(0.55, 0, 0, 0, 0.16, 0, 0, 0, 0.55, 0, 0.035, 10)
+id = "spilled_milk_smell"
+category = 0
+highlight_color = Color(1, 0.88, 0.62, 1)
+
+[node name="TinyPawTrace" parent="Interactables" instance=ExtResource("10_interactable")]
+transform = Transform3D(1.35, 0, 0, 0, 0.08, 0, 0, 0, 0.22, 8, 0.03, 13)
+id = "tiny_paw_trace"
+category = 1
+highlight_color = Color(0.58, 1, 0.82, 1)
+
+[node name="AshFootprintTrace" parent="Interactables" instance=ExtResource("10_interactable")]
+transform = Transform3D(0.85, 0, 0, 0, 0.07, 0, 0, 0, 0.45, -12, 0.03, -9)
+id = "ash_footprint_trace"
+category = 1
+highlight_color = Color(0.68, 0.82, 1, 1)
+
+[node name="CrackedCupObject" parent="Interactables" instance=ExtResource("10_interactable")]
+transform = Transform3D(0.35, 0, 0, 0, 0.28, 0, 0, 0, 0.35, 15, 0.05, 10)
+id = "cracked_cup_object"
+category = 2
+highlight_color = Color(1, 0.76, 0.52, 1)
+
+[node name="BentLanternObject" parent="Interactables" instance=ExtResource("10_interactable")]
+transform = Transform3D(0.32, 0, 0, 0, 1.35, 0, 0, 0, 0.32, -5, 0.08, 16)
+id = "bent_lantern_object"
+category = 2
+highlight_color = Color(1, 0.82, 0.38, 1)
+
+[node name="RedThreadObject" parent="Interactables" instance=ExtResource("10_interactable")]
+transform = Transform3D(1.4, 0, 0, 0, 0.06, 0, 0, 0, 0.12, 21, 0.025, -3)
+id = "red_thread_object"
+category = 2
+highlight_color = Color(1, 0.32, 0.28, 1)
+
+[node name="DoorScratchSymbol" parent="Interactables" instance=ExtResource("10_interactable")]
+transform = Transform3D(0.75, 0, 0, 0, 1, 0, 0, 0, 0.12, -18, 0.12, -15)
+id = "door_scratch_symbol"
+category = 3
+highlight_color = Color(0.75, 0.9, 1, 1)
+
+[node name="CrookedMoonSymbol" parent="Interactables" instance=ExtResource("10_interactable")]
+transform = Transform3D(0.95, 0, 0, 0, 0.07, 0, 0, 0, 0.95, 4, 0.03, 20)
+id = "crooked_moon_symbol"
+category = 3
+highlight_color = Color(0.64, 0.78, 1, 1)
+
+[node name="WarmWindowPlace" parent="Interactables" instance=ExtResource("10_interactable")]
+transform = Transform3D(1.25, 0, 0, 0, 1.2, 0, 0, 0, 0.14, -23, 0.12, 12)
+id = "warm_window_place"
+category = 4
+highlight_color = Color(1, 0.72, 0.42, 1)
+
+[node name="NarrowAlleyPlace" parent="Interactables" instance=ExtResource("10_interactable")]
+transform = Transform3D(0.7, 0, 0, 0, 0.45, 0, 0, 0, 1.9, 20, 0.05, -18)
+id = "narrow_alley_place"
+category = 4
+highlight_color = Color(0.86, 0.74, 1, 1)
+
+[node name="WhisperingStoneAnomaly" parent="Interactables" instance=ExtResource("10_interactable")]
+transform = Transform3D(0.75, 0, 0, 0, 0.55, 0, 0, 0, 0.75, -1, 0.06, -22)
+id = "whispering_stone_anomaly"
+category = 5
+highlight_color = Color(0.45, 1, 0.9, 1)
+
+[node name="HiddenBellAnomaly" parent="Interactables" groups=["cat_vision_revealed"] instance=ExtResource("10_interactable")]
+transform = Transform3D(0.52, 0, 0, 0, 0.82, 0, 0, 0, 0.52, 13, 0.07, -18)
+id = "hidden_bell_anomaly"
+category = 5
+highlight_color = Color(0.35, 1, 0.92, 1)
+
+[node name="BlueThreadTrace" parent="Interactables" groups=["cat_vision_revealed"] instance=ExtResource("10_interactable")]
+transform = Transform3D(1.8, 0, 0, 0, 0.05, 0, 0, 0, 0.12, -7, 0.025, -18)
+id = "blue_thread_trace"
+category = 1
+highlight_color = Color(0.42, 0.86, 1, 1)
+
+[node name="MirrorShardObject" parent="Interactables" groups=["cat_vision_revealed"] instance=ExtResource("10_interactable")]
+transform = Transform3D(0.46, 0, 0, 0, 0.08, 0, 0, 0, 0.78, 22, 0.03, 8)
+id = "mirror_shard_object"
+category = 2
+highlight_color = Color(0.75, 0.95, 1, 1)
+
+[node name="ColdFishboneSymbol" parent="Interactables" groups=["cat_vision_revealed"] instance=ExtResource("10_interactable")]
+transform = Transform3D(1.05, 0, 0, 0, 0.06, 0, 0, 0, 0.42, -21, 0.025, -4)
+id = "cold_fishbone_symbol"
+category = 3
+highlight_color = Color(0.62, 1, 0.82, 1)
+
+[node name="EmptyBowlSmell" parent="Interactables" groups=["cat_vision_revealed"] instance=ExtResource("10_interactable")]
+transform = Transform3D(0.58, 0, 0, 0, 0.18, 0, 0, 0, 0.58, 3, 0.035, -24)
+id = "empty_bowl_smell"
+category = 0
+highlight_color = Color(0.95, 1, 0.72, 1)
+
+[node name="NPCs" type="Node3D" parent="."]
+
+[node name="StrayCat" parent="NPCs" instance=ExtResource("12_npc")]
+transform = Transform3D(0.7, 0, 0, 0, 0.55, 0, 0, 0, 0.7, -6, 0.05, 9)
+id = "stray_cat"
+character_name = "\u0411\u0440\u043E\u0434\u044F\u0447\u0438\u0439 \u043A\u043E\u0442"
+character_type = 1
+attitude = 1
+short_phrase = "\u041C\u0440\u0440?"
+dialogue = "\u0421\u0442\u0430\u0440\u044B\u0439 \u0443\u043B\u0438\u0447\u043D\u044B\u0439 \u043A\u043E\u0442 \u0437\u043D\u0430\u0435\u0442 \u0433\u043E\u0440\u043E\u0434 \u043B\u0443\u0447\u0448\u0435 \u043B\u044E\u0434\u0435\u0439. \u041A\u0430\u0436\u0435\u0442\u0441\u044F, \u043E\u043D \u0447\u0442\u043E-\u0442\u043E \u0432\u0438\u0434\u0435\u043B \u0443 \u043C\u0435\u0442\u0440\u043E."
+description = "\u0421\u0442\u0430\u0440\u044B\u0439 \u0443\u043B\u0438\u0447\u043D\u044B\u0439 \u043A\u043E\u0442. \u041D\u0435 \u0441\u043F\u0435\u0448\u0438\u0442 \u0434\u043E\u0432\u0435\u0440\u044F\u0442\u044C, \u043D\u043E \u0441\u043B\u044B\u0448\u0438\u0442 \u043F\u043E\u0447\u0442\u0438 \u0432\u0441\u0435."
+highlight_color = Color(0.9, 0.82, 0.55, 1)
+
+[node name="OldWoman" parent="NPCs" instance=ExtResource("12_npc")]
+transform = Transform3D(0.85, 0, 0, 0, 1.15, 0, 0, 0, 0.85, 9, 0.08, 4)
+id = "old_woman"
+character_name = "\u0422\u0438\u0445\u0430\u044F \u0436\u0435\u043D\u0449\u0438\u043D\u0430"
+character_type = 0
+attitude = 1
+short_phrase = "\u0411\u0443\u0434\u044C \u043E\u0441\u0442\u043E\u0440\u043E\u0436\u0435\u043D."
+dialogue = "\u041E\u043D\u0430 \u0441\u043C\u043E\u0442\u0440\u0438\u0442 \u043C\u0438\u043C\u043E \u043A\u043E\u0442\u0430, \u0431\u0443\u0434\u0442\u043E \u0432\u0438\u0434\u0438\u0442 \u043D\u0435 \u0443\u043B\u0438\u0446\u0443, \u0430 \u0442\u043E, \u0447\u0442\u043E \u0437\u0430 \u043D\u0435\u0439. \u041E\u043D\u0430 \u0441\u043B\u044B\u0448\u0430\u043B\u0430 \u0441\u0442\u0440\u0430\u043D\u043D\u044B\u0439 \u0441\u0432\u0435\u0442 \u0443 \u043C\u0435\u0442\u0440\u043E."
+description = "\u0427\u0435\u043B\u043E\u0432\u0435\u043A \u0441 \u043E\u0447\u0435\u043D\u044C \u0443\u0441\u0442\u0430\u043B\u044B\u043C\u0438 \u0440\u0443\u043A\u0430\u043C\u0438. \u041D\u0435 \u0432\u0440\u0430\u0433, \u043D\u043E \u0434\u0435\u0440\u0436\u0438\u0442 \u0434\u0438\u0441\u0442\u0430\u043D\u0446\u0438\u044E."
+highlight_color = Color(1, 0.8, 0.55, 1)
+
+[node name="YardDog" parent="NPCs" instance=ExtResource("12_npc")]
+transform = Transform3D(1.1, 0, 0, 0, 0.72, 0, 0, 0, 0.85, 16, 0.06, 15)
+id = "yard_dog"
+character_name = "\u0414\u0432\u043E\u0440\u043E\u0432\u044B\u0439 \u043F\u0435\u0441"
+character_type = 2
+attitude = 2
+short_phrase = "\u0413\u0430\u0432!"
+dialogue = "\u041F\u0435\u0441 \u043D\u0435 \u0434\u0430\u0435\u0442 \u043F\u043E\u0434\u043E\u0439\u0442\u0438 \u043A \u0432\u043E\u0440\u043E\u0442\u0430\u043C. \u0415\u0433\u043E \u0441\u0442\u0440\u0430\u0445 \u0433\u0440\u043E\u043C\u0447\u0435 \u0437\u043B\u043E\u0441\u0442\u0438."
+description = "\u041D\u0430\u0441\u0442\u043E\u0440\u043E\u0436\u0435\u043D\u043D\u044B\u0439 \u043F\u0435\u0441 \u0443 \u0447\u0443\u0436\u043E\u0433\u043E \u0434\u0432\u043E\u0440\u0430."
+can_be_purred = false
+highlight_color = Color(1, 0.45, 0.36, 1)
+
+[node name="RoofBird" parent="NPCs" instance=ExtResource("12_npc")]
+transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, -14, 0.08, -7)
+id = "roof_bird"
+character_name = "\u041F\u0442\u0438\u0446\u0430 \u043D\u0430 \u043A\u0440\u044B\u0448\u0435"
+character_type = 3
+attitude = 1
+short_phrase = "\u041A\u0430\u0440-\u0440-\u0440."
+dialogue = "\u041F\u0442\u0438\u0446\u0430 \u0432\u0438\u0434\u0435\u043B\u0430 \u0434\u0432\u0438\u0436\u0435\u043D\u0438\u0435 \u0442\u0430\u043C, \u0433\u0434\u0435 \u0443\u043B\u0438\u0446\u0430 \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C \u043F\u0443\u0441\u0442\u043E\u0439."
+description = "\u0425\u0443\u0434\u0430\u044F \u043F\u0442\u0438\u0446\u0430, \u043A\u043E\u0442\u043E\u0440\u0430\u044F \u0441\u043B\u0438\u0448\u043A\u043E\u043C \u043C\u043D\u043E\u0433\u043E \u0432\u0438\u0434\u0438\u0442 \u0441\u0432\u0435\u0440\u0445\u0443."
+can_be_purred = false
+highlight_color = Color(0.7, 0.85, 1, 1)
+
+[node name="PipeRat" parent="NPCs" instance=ExtResource("12_npc")]
+transform = Transform3D(0.45, 0, 0, 0, 0.32, 0, 0, 0, 0.7, 2, 0.04, -10)
+id = "pipe_rat"
+character_name = "\u041A\u0440\u044B\u0441\u0430 \u0443 \u0442\u0440\u0443\u0431"
+character_type = 4
+attitude = 1
+short_phrase = "\u041C\u043D\u0435 \u043D\u0435\u043A\u043E\u0433\u0434\u0430."
+dialogue = "\u041A\u0440\u044B\u0441\u0430 \u043F\u0440\u044F\u0447\u0435\u0442 \u0433\u043B\u0430\u0437\u0430. \u041E\u043D\u0430 \u0437\u043D\u0430\u0435\u0442 \u043F\u043E\u0434\u0437\u0435\u043C\u043D\u044B\u0435 \u0445\u043E\u0434\u044B, \u043D\u043E \u043D\u0435 \u0432\u0435\u0440\u0438\u0442 \u043A\u043E\u0442\u0430\u043C."
+description = "\u041C\u0430\u043B\u0435\u043D\u044C\u043A\u0438\u0439 \u0436\u0438\u0442\u0435\u043B\u044C \u0442\u0435\u043C\u043D\u044B\u0445 \u043C\u0435\u0441\u0442. \u041D\u0435 \u0434\u0440\u0443\u0433, \u043D\u043E \u0438 \u043D\u0435 \u0432\u0440\u0430\u0433."
+can_be_purred = false
+highlight_color = Color(0.62, 1, 0.74, 1)
+
+[node name="WrongShadow" parent="NPCs" instance=ExtResource("12_npc")]
+transform = Transform3D(0.7, 0, 0, 0, 1.6, 0, 0, 0, 0.35, -18, 0.08, 18)
+id = "wrong_shadow"
+character_name = "\u041D\u0435\u0432\u0435\u0440\u043D\u0430\u044F \u0442\u0435\u043D\u044C"
+character_type = 5
+attitude = 2
+short_phrase = "\u041D\u0435 \u043F\u043E\u0434\u0445\u043E\u0434\u0438."
+dialogue = "\u0422\u0435\u043D\u044C \u0441\u0442\u043E\u0438\u0442 \u043D\u0435 \u0442\u0430\u043C, \u0433\u0434\u0435 \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u0441\u0432\u0435\u0442. \u041E\u043D\u0430 \u043D\u0435 \u043E\u0442\u0432\u0435\u0447\u0430\u0435\u0442, \u0430 \u043F\u043E\u0432\u0442\u043E\u0440\u044F\u0435\u0442."
+description = "\u0418\u0441\u043A\u0430\u0436\u0435\u043D\u0438\u0435 \u0441 \u0444\u043E\u0440\u043C\u043E\u0439 \u0436\u0438\u0442\u0435\u043B\u044F. \u041A\u043E\u0442 \u043F\u043E\u043D\u0438\u043C\u0430\u0435\u0442: \u044D\u0442\u043E\u043C\u0443 \u043D\u0435\u043B\u044C\u0437\u044F \u0434\u043E\u0432\u0435\u0440\u044F\u0442\u044C."
+can_be_purred = false
+highlight_color = Color(0.65, 0.45, 1, 1)
+
 [node name="CatVisionManager" type="Node" parent="." unique_id=33666976]
 script = ExtResource("7_cat_vision")
 
@@ -133,3 +366,5 @@ surface_material_override/0 = SubResource("StandardMaterial3D_hidden_memory")
 light_color = Color(0.35, 1, 0.82, 1)
 light_energy = 0.8
 omni_range = 3.0
+
+[node name="JournalUI" parent="." instance=ExtResource("11_journal_ui")]
