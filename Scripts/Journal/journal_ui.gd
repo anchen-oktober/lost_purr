@@ -16,10 +16,14 @@ var current_category: int = JournalManager.MemoryType.SMELL
 var showing_characters: bool = false
 var purr_label: Label
 var quit_button: Button
+var world_text_label: Label
+var world_text_target: Node3D
+var world_text_tween: Tween
 var purr_target: Node3D
 var popup_world_position: Vector3
 var popup_has_world_position: bool = false
 var prompt_target: Node3D
+var prompt_text: String = ""
 
 const POPUP_SIZE: Vector2 = Vector2(560.0, 220.0)
 const JOURNAL_SIZE: Vector2 = Vector2(1060.0, 620.0)
@@ -39,7 +43,14 @@ func _process(_delta: float) -> void:
 	_update_purr_label_position()
 	_update_popup_position()
 	_update_prompt_position()
+	_update_world_text_position()
 	_update_journal_position()
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo:
+		if event.physical_keycode == KEY_E and popup_panel != null and popup_panel.visible:
+			close_memory_popup()
+			get_viewport().set_input_as_handled()
 
 func _update_purr_label_position() -> void:
 	if purr_label == null or not purr_label.visible:
@@ -55,6 +66,11 @@ func _update_purr_label_position() -> void:
 	purr_label.position = camera.unproject_position(purr_target.global_position + Vector3(0.0, 1.45, 0.0)) - Vector2(42.0, 18.0)
 
 func show_prompt(text: String) -> void:
+	prompt_text = text
+	if _should_hide_prompt():
+		prompt_label.visible = false
+		return
+
 	prompt_label.text = text
 	prompt_label.visible = true
 
@@ -66,12 +82,14 @@ func show_prompt_for_node(text: String, target: Node3D) -> void:
 func hide_prompt() -> void:
 	prompt_label.visible = false
 	prompt_target = null
+	prompt_text = ""
 
 func show_memory_popup(entry: Dictionary) -> void:
 	popup_title.text = str(entry.get("title", "\u0417\u0430\u043F\u0438\u0441\u044C"))
 	popup_text.text = str(entry.get("full_description", ""))
 	_set_popup_world_position(entry)
 	popup_panel.visible = true
+	prompt_label.visible = false
 	_update_popup_position()
 	_refresh_ui_blocker()
 	refresh_entries()
@@ -81,6 +99,7 @@ func show_character_popup(character_data: Dictionary) -> void:
 	popup_text.text = str(character_data.get("short_phrase", "")) + "\n\n" + str(character_data.get("dialogue", ""))
 	_set_popup_world_position(character_data)
 	popup_panel.visible = true
+	prompt_label.visible = false
 	_update_popup_position()
 	_refresh_ui_blocker()
 	refresh_entries()
@@ -92,6 +111,25 @@ func show_purr_feedback(text: String) -> void:
 	purr_label.modulate = Color(0.9, 0.96, 1.0, 1.0)
 	tween.tween_property(purr_label, "modulate:a", 0.0, 1.2)
 	tween.tween_callback(func() -> void: purr_label.visible = false)
+
+func show_world_text_for_node(text: String, target: Node3D) -> void:
+	if world_text_tween != null:
+		world_text_tween.kill()
+
+	world_text_target = target
+	world_text_label.text = text
+	world_text_label.visible = true
+	prompt_label.visible = false
+	world_text_label.modulate = Color(0.95, 0.9, 0.76, 1.0)
+	_update_world_text_position()
+	world_text_tween = create_tween()
+	world_text_tween.tween_interval(1.6)
+	world_text_tween.tween_property(world_text_label, "modulate:a", 0.0, 0.5)
+	world_text_tween.tween_callback(func() -> void:
+		world_text_label.visible = false
+		world_text_target = null
+		_restore_prompt_if_possible()
+	)
 
 func open_journal() -> void:
 	journal_panel.visible = true
@@ -111,6 +149,7 @@ func is_journal_open() -> bool:
 func close_memory_popup() -> void:
 	popup_panel.visible = false
 	popup_has_world_position = false
+	_restore_prompt_if_possible()
 	_refresh_ui_blocker()
 
 func is_memory_popup_open() -> bool:
@@ -165,6 +204,14 @@ func _build_ui() -> void:
 	purr_label.z_index = 20
 	purr_label.add_theme_font_size_override("font_size", 30)
 	add_child(purr_label)
+
+	world_text_label = Label.new()
+	world_text_label.name = "WorldTextLabel"
+	world_text_label.visible = false
+	world_text_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	world_text_label.z_index = 25
+	world_text_label.add_theme_font_size_override("font_size", 23)
+	add_child(world_text_label)
 
 	quit_button = Button.new()
 	quit_button.name = "QuitButton"
@@ -382,8 +429,41 @@ func _update_prompt_position() -> void:
 	desired_position.y = clampf(desired_position.y, margin, maxf(margin, viewport_size.y - prompt_size.y - margin))
 	prompt_label.position = desired_position
 
+func _update_world_text_position() -> void:
+	if world_text_label == null or not world_text_label.visible or world_text_target == null:
+		return
+
+	var camera: Camera3D = get_viewport().get_camera_3d()
+	if camera == null:
+		return
+
+	var viewport_size: Vector2 = get_viewport().get_visible_rect().size
+	var text_size: Vector2 = world_text_label.size
+	if text_size.x <= 1.0 or text_size.y <= 1.0:
+		text_size = world_text_label.get_minimum_size()
+
+	var screen_position: Vector2 = camera.unproject_position(world_text_target.global_position + Vector3(0.0, 1.65, 0.0))
+	var desired_position: Vector2 = screen_position - Vector2(text_size.x * 0.5, text_size.y + 10.0)
+	var margin: float = 18.0
+	desired_position.x = clampf(desired_position.x, margin, maxf(margin, viewport_size.x - text_size.x - margin))
+	desired_position.y = clampf(desired_position.y, margin, maxf(margin, viewport_size.y - text_size.y - margin))
+	world_text_label.position = desired_position
+
 func _quit_game() -> void:
 	get_tree().quit()
+
+func _should_hide_prompt() -> bool:
+	var popup_is_open: bool = popup_panel != null and popup_panel.visible
+	var world_text_is_open: bool = world_text_label != null and world_text_label.visible
+	return popup_is_open or world_text_is_open
+
+func _restore_prompt_if_possible() -> void:
+	if prompt_label == null or prompt_target == null or prompt_text.is_empty() or _should_hide_prompt():
+		return
+
+	prompt_label.text = prompt_text
+	prompt_label.visible = true
+	_update_prompt_position()
 
 func _update_journal_position() -> void:
 	if journal_panel == null or not journal_panel.visible:

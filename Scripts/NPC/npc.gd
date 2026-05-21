@@ -11,18 +11,31 @@ extends CharacterBody3D
 @export var voice_sound: AudioStream
 @export var can_be_purred: bool = true
 @export var highlight_color: Color = Color(0.85, 0.95, 1.0, 1.0)
+@export var patrol_enabled: bool = true
+@export var patrol_radius: float = 4.0
+@export var patrol_speed: float = 1.15
+@export var patrol_wait_min: float = 1.2
+@export var patrol_wait_max: float = 3.4
+@export var random_phrases: Array[String] = []
 
 var is_known: bool = false
 var player_is_near: bool = false
 var base_light_energy: float = 0.0
 var pulse_time: float = 0.0
+var spawn_position: Vector3
+var patrol_target: Vector3
+var patrol_wait_time: float = 0.0
+var random: RandomNumberGenerator = RandomNumberGenerator.new()
 
-@onready var visual: MeshInstance3D = $Visual
+@onready var billboard: Sprite3D = $Billboard
 @onready var interaction_area: Area3D = $InteractionArea
 @onready var glow_light: OmniLight3D = $GlowLight
 @onready var voice_player: AudioStreamPlayer3D = $VoicePlayer
 
 func _ready() -> void:
+	random.randomize()
+	spawn_position = global_position
+	patrol_target = global_position
 	attitude = _validate_attitude(attitude)
 	var saved_data: Dictionary = CharacterJournalManager.get_character(id)
 	if not saved_data.is_empty():
@@ -30,10 +43,12 @@ func _ready() -> void:
 		is_known = bool(saved_data.get("is_known", false))
 	interaction_area.body_entered.connect(player_entered)
 	interaction_area.body_exited.connect(player_exited)
-	_prepare_visual_material()
+	if icon != null:
+		billboard.texture = icon
 	base_light_energy = glow_light.light_energy
 	glow_light.light_color = highlight_color
 	highlight_off()
+	_choose_new_patrol_target()
 
 func _process(delta: float) -> void:
 	if not player_is_near:
@@ -42,7 +57,31 @@ func _process(delta: float) -> void:
 	pulse_time += delta
 	var pulse: float = 0.45 + sin(pulse_time * 2.0) * 0.2
 	glow_light.light_energy = base_light_energy + pulse
-	_update_material(0.25 + pulse * 0.14)
+
+func _physics_process(delta: float) -> void:
+	if player_is_near or not patrol_enabled:
+		velocity = Vector3.ZERO
+		move_and_slide()
+		return
+
+	if patrol_wait_time > 0.0:
+		patrol_wait_time -= delta
+		velocity = Vector3.ZERO
+		move_and_slide()
+		return
+
+	var direction: Vector3 = patrol_target - global_position
+	direction.y = 0.0
+	if direction.length() <= 0.18:
+		velocity = Vector3.ZERO
+		patrol_wait_time = random.randf_range(patrol_wait_min, patrol_wait_max)
+		_choose_new_patrol_target()
+		move_and_slide()
+	else:
+		direction = direction.normalized()
+		velocity.x = direction.x * patrol_speed
+		velocity.z = direction.z * patrol_speed
+		move_and_slide()
 
 func player_entered(body: Node3D) -> void:
 	if not body is CharacterBody3D:
@@ -64,9 +103,12 @@ func interact() -> void:
 	is_known = true
 	CharacterJournalManager.register_character(get_character_data())
 	show_phrase()
-	start_dialogue()
 
 func show_phrase() -> void:
+	var phrase: String = _get_random_phrase()
+	if CharacterJournalManager.journal_ui != null and CharacterJournalManager.journal_ui.has_method("show_world_text_for_node"):
+		CharacterJournalManager.journal_ui.show_world_text_for_node(phrase, self)
+
 	if voice_sound != null:
 		voice_player.stream = voice_sound
 		voice_player.play()
@@ -91,7 +133,7 @@ func receive_purr() -> void:
 	short_phrase = "\u0422\u044B \u0442\u043E\u0436\u0435 \u0435\u0433\u043E \u0438\u0449\u0435\u0448\u044C?"
 	dialogue = "\u041C\u0443\u0440\u0447\u0430\u043D\u0438\u0435 \u0434\u0435\u043B\u0430\u0435\u0442 \u0442\u0438\u0448\u0438\u043D\u0443 \u043C\u044F\u0433\u0447\u0435. \u041A\u0430\u0436\u0435\u0442\u0441\u044F, \u044D\u0442\u043E\u0442 \u0436\u0438\u0442\u0435\u043B\u044C \u0442\u0435\u043F\u0435\u0440\u044C \u0434\u043E\u0432\u0435\u0440\u044F\u0435\u0442 \u043A\u043E\u0442\u0443."
 	CharacterJournalManager.register_character(get_character_data())
-	start_dialogue()
+	show_phrase()
 
 func get_character_data() -> Dictionary:
 	return {
@@ -121,7 +163,41 @@ func highlight_on() -> void:
 
 func highlight_off() -> void:
 	glow_light.light_energy = base_light_energy
-	_update_material(0.18)
+
+func _choose_new_patrol_target() -> void:
+	var angle: float = random.randf_range(0.0, TAU)
+	var distance: float = random.randf_range(1.0, patrol_radius)
+	patrol_target = spawn_position + Vector3(cos(angle) * distance, 0.0, sin(angle) * distance)
+
+func _get_random_phrase() -> String:
+	var phrases: Array[String] = random_phrases
+	if phrases.is_empty():
+		phrases = _get_default_phrases()
+	if phrases.is_empty():
+		return short_phrase
+
+	var index: int = random.randi_range(0, phrases.size() - 1)
+	return phrases[index]
+
+func _get_default_phrases() -> Array[String]:
+	match attitude:
+		CharacterJournalManager.CharacterAttitude.FRIENDLY:
+			return [
+				"\u0422\u044B \u0442\u043E\u0436\u0435 \u0435\u0433\u043E \u0438\u0449\u0435\u0448\u044C?",
+				"\u042F \u0432\u0438\u0434\u0435\u043B \u0441\u0442\u0440\u0430\u043D\u043D\u044B\u0439 \u0441\u0432\u0435\u0442 \u0443 \u043C\u0435\u0442\u0440\u043E.",
+				"\u0411\u0443\u0434\u044C \u043E\u0441\u0442\u043E\u0440\u043E\u0436\u0435\u043D.",
+			]
+		CharacterJournalManager.CharacterAttitude.HOSTILE:
+			return [
+				"\u041D\u0435 \u043F\u043E\u0434\u0445\u043E\u0434\u0438.",
+				"\u0413\u0430\u0432!",
+				"\u041A\u0430\u0440-\u0440-\u0440!",
+			]
+	return [
+		short_phrase,
+		"\u041E\u0442\u0441\u0442\u0430\u043D\u044C.",
+		"\u041C\u043D\u0435 \u043D\u0435\u043A\u043E\u0433\u0434\u0430.",
+	]
 
 func _validate_attitude(value: int) -> int:
 	match character_type:
@@ -134,23 +210,3 @@ func _validate_attitude(value: int) -> int:
 		CharacterJournalManager.CharacterType.DEMON:
 			return CharacterJournalManager.CharacterAttitude.HOSTILE
 	return value
-
-func _prepare_visual_material() -> void:
-	var source_material: Material = visual.get_surface_override_material(0)
-	if source_material == null:
-		return
-
-	var material: StandardMaterial3D = source_material.duplicate() as StandardMaterial3D
-	if material == null:
-		return
-
-	visual.set_surface_override_material(0, material)
-	_update_material(0.18)
-
-func _update_material(emission_energy: float) -> void:
-	var material: StandardMaterial3D = visual.get_surface_override_material(0) as StandardMaterial3D
-	if material == null:
-		return
-
-	material.emission = highlight_color
-	material.emission_energy_multiplier = emission_energy

@@ -1,20 +1,10 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=4 format=3]
 
-[ext_resource type="Script" path="res://npc.gd" id="1_npc"]
+[ext_resource type="Script" path="res://Scripts/NPC/npc.gd" id="1_npc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_body"]
 radius = 0.28
 height = 1.2
-
-[sub_resource type="BoxMesh" id="BoxMesh_visual"]
-size = Vector3(0.75, 1.2, 0.55)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_visual"]
-albedo_color = Color(0.34, 0.35, 0.33, 1)
-emission_enabled = true
-emission = Color(0.85, 0.95, 1, 1)
-emission_energy_multiplier = 0.18
-roughness = 0.88
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_interaction"]
 radius = 2.0
@@ -28,10 +18,10 @@ script = ExtResource("1_npc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 shape = SubResource("CapsuleShape3D_body")
 
-[node name="Visual" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.62, 0)
-mesh = SubResource("BoxMesh_visual")
-surface_material_override/0 = SubResource("StandardMaterial3D_visual")
+[node name="Billboard" type="Sprite3D" parent="."]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0.78, 0)
+pixel_size = 0.004
+billboard = 1
 
 [node name="InteractionArea" type="Area3D" parent="."]
 collision_layer = 0

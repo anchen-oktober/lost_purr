@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://journal_ui.gd" id="1_journal_ui"]
+[ext_resource type="Script" path="res://Scripts/Journal/journal_ui.gd" id="1_journal_ui"]
 
 [node name="JournalUI" type="CanvasLayer"]
 layer = 10

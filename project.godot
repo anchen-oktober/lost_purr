@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-JournalManager="*res://journal_manager.gd"
-CharacterJournalManager="*res://character_journal_manager.gd"
+JournalManager="*res://Scripts/Journal/journal_manager.gd"
+CharacterJournalManager="*res://Scripts/Journal/character_journal_manager.gd"
 
 [display]
 

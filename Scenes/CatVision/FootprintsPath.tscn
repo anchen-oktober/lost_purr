@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://footprints_path.gd" id="1_footprints"]
+[ext_resource type="Script" path="res://Scripts/CatVision/footprints_path.gd" id="1_footprints"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_footprint"]
 size = Vector2(0.22, 0.38)
