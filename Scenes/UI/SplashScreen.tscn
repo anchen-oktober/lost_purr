@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Texture2D" uid="uid://0dj3ruxmucd7" path="res://Art/logo.svg" id="1_logo"]
+[ext_resource type="Script" path="res://Scripts/UI/splash_screen.gd" id="2_script"]
+
+[node name="SplashScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_script")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.015, 0.014, 0.012, 1)
+
+[node name="Content" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Stack" type="VBoxContainer" parent="Content"]
+layout_mode = 2
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="Logo" type="TextureRect" parent="Content/Stack"]
+custom_minimum_size = Vector2(420, 280)
+layout_mode = 2
+texture = ExtResource("1_logo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Hint" type="Label" parent="Content/Stack"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.48, 0.42, 0.32, 1)
+theme_override_font_sizes/font_size = 17
+text = "loading..."
+horizontal_alignment = 1
