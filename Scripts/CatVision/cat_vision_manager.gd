@@ -1,6 +1,7 @@
 extends Node
 
 @export var world_environment: WorldEnvironment
+@export var cat_vision_music: AudioStreamPlayer
 @export var transition_speed: float = 6.0
 @export var revealed_group: String = "cat_vision_revealed"
 
@@ -20,6 +21,8 @@ extends Node
 @export var vision_brightness: float = 0.9
 @export var normal_glow_intensity: float = 0.0
 @export var vision_glow_intensity: float = 0.18
+@export var cat_vision_music_min_volume_db: float = -80.0
+@export var cat_vision_music_max_volume_db: float = -12.0
 
 var vision_amount: float = 0.0
 var cat_vision_active: bool = false
@@ -27,6 +30,12 @@ var cat_vision_active: bool = false
 func _ready() -> void:
 	if world_environment == null:
 		world_environment = get_tree().current_scene.find_child("WorldEnvironment", true, false) as WorldEnvironment
+	if cat_vision_music == null:
+		cat_vision_music = get_tree().current_scene.find_child("CatVisionMusic", true, false) as AudioStreamPlayer
+	if cat_vision_music != null:
+		cat_vision_music.volume_db = cat_vision_music_min_volume_db
+		if not cat_vision_music.playing:
+			cat_vision_music.play()
 
 	_set_revealed_objects_visible(false)
 	_apply_environment(0.0)
@@ -39,6 +48,7 @@ func _process(delta: float) -> void:
 	vision_amount = lerpf(vision_amount, target_amount, weight)
 
 	_apply_environment(vision_amount)
+	_update_cat_vision_music(vision_amount)
 	_update_revealed_objects(vision_amount)
 
 func _apply_environment(amount: float) -> void:
@@ -72,3 +82,9 @@ func _update_revealed_objects(amount: float) -> void:
 		elif node is Node3D:
 			var node_3d: Node3D = node as Node3D
 			node_3d.visible = amount > 0.08
+
+func _update_cat_vision_music(amount: float) -> void:
+	if cat_vision_music == null:
+		return
+
+	cat_vision_music.volume_db = lerpf(cat_vision_music_min_volume_db, cat_vision_music_max_volume_db, amount)

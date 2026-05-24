@@ -3,9 +3,9 @@ extends Node3D
 @export var max_alpha: float = 0.72
 @export var max_emission: float = 1.6
 @export var id: String = "memory_footprints_path"
-@export var title: String = "\u0426\u0435\u043F\u043E\u0447\u043A\u0430 \u0441\u043B\u0435\u0434\u043E\u0432"
-@export_multiline var short_description: String = "\u0421\u043B\u0435\u0434\u044B \u0432\u0435\u0434\u0443\u0442 \u043A \u0442\u0438\u0445\u043E\u0439 \u0447\u0430\u0441\u0442\u0438 \u0443\u043B\u0438\u0446\u044B."
-@export_multiline var full_description: String = "\u0426\u0435\u043F\u043E\u0447\u043A\u0430 \u0441\u043B\u0435\u0434\u043E\u0432 \u043F\u0440\u043E\u0441\u0442\u0443\u043F\u0430\u0435\u0442 \u0442\u043E\u043B\u044C\u043A\u043E \u0432 \u043A\u043E\u0448\u0430\u0447\u044C\u0435\u043C \u0437\u0440\u0435\u043D\u0438\u0438. \u041E\u043D\u0438 \u0438\u0434\u0443\u0442 \u043F\u043E \u0434\u043E\u0440\u043E\u0433\u0435 \u0443\u0432\u0435\u0440\u0435\u043D\u043D\u043E, \u0431\u0443\u0434\u0442\u043E \u0438\u0445 \u043E\u0441\u0442\u0430\u0432\u0438\u043B \u0442\u043E\u0442, \u043A\u0442\u043E \u0437\u043D\u0430\u043B, \u043A\u0443\u0434\u0430 \u0438\u0434\u0442\u0438."
+@export var title: String = "Trail of Pawprints"
+@export_multiline var short_description: String = "The prints lead toward a quiet part of the street."
+@export_multiline var full_description: String = "The trail appears only through Cat Vision. The prints move along the road with strange certainty, as if left by someone who knew exactly where to go."
 
 var footprint_material: StandardMaterial3D
 var player_is_near: bool = false

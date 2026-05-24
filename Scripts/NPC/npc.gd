@@ -1,12 +1,12 @@
 extends CharacterBody3D
 
 @export var id: String = "npc"
-@export var character_name: String = "\u041D\u0435\u0437\u043D\u0430\u043A\u043E\u043C\u0435\u0446"
-@export_enum("\u0427\u0435\u043B\u043E\u0432\u0435\u043A", "\u041A\u043E\u0442", "\u0421\u043E\u0431\u0430\u043A\u0430", "\u041F\u0442\u0438\u0446\u0430", "\u041A\u0440\u044B\u0441\u0430", "\u0422\u0435\u043D\u044C") var character_type: int = CharacterJournalManager.CharacterType.HUMAN
+@export var character_name: String = "Stranger"
+@export_enum("Human", "Cat", "Dog", "Bird", "Rat", "Shadow") var character_type: int = CharacterJournalManager.CharacterType.HUMAN
 @export_enum("Friendly", "Neutral", "Hostile") var attitude: int = CharacterJournalManager.CharacterAttitude.NEUTRAL
-@export var short_phrase: String = "\u041C\u0440\u0440?"
-@export_multiline var dialogue: String = "\u041E\u043D \u0441\u043C\u043E\u0442\u0440\u0438\u0442 \u043D\u0430 \u043A\u043E\u0442\u0430 \u0438 \u043C\u043E\u043B\u0447\u0438\u0442."
-@export_multiline var description: String = "\u0422\u0438\u0445\u0438\u0439 \u0436\u0438\u0442\u0435\u043B\u044C \u044D\u0442\u043E\u0439 \u0443\u043B\u0438\u0446\u044B."
+@export var short_phrase: String = "Mrr?"
+@export_multiline var dialogue: String = "They look at the cat and say nothing."
+@export_multiline var description: String = "A quiet resident of this street."
 @export var icon: Texture2D
 @export var voice_sound: AudioStream
 @export var can_be_purred: bool = true
@@ -130,8 +130,8 @@ func receive_purr() -> void:
 		return
 
 	change_attitude(CharacterJournalManager.CharacterAttitude.FRIENDLY)
-	short_phrase = "\u0422\u044B \u0442\u043E\u0436\u0435 \u0435\u0433\u043E \u0438\u0449\u0435\u0448\u044C?"
-	dialogue = "\u041C\u0443\u0440\u0447\u0430\u043D\u0438\u0435 \u0434\u0435\u043B\u0430\u0435\u0442 \u0442\u0438\u0448\u0438\u043D\u0443 \u043C\u044F\u0433\u0447\u0435. \u041A\u0430\u0436\u0435\u0442\u0441\u044F, \u044D\u0442\u043E\u0442 \u0436\u0438\u0442\u0435\u043B\u044C \u0442\u0435\u043F\u0435\u0440\u044C \u0434\u043E\u0432\u0435\u0440\u044F\u0435\u0442 \u043A\u043E\u0442\u0443."
+	short_phrase = "Are you looking for him too?"
+	dialogue = "The purr softens the silence. It feels like this resident trusts the cat a little more now."
 	CharacterJournalManager.register_character(get_character_data())
 	show_phrase()
 
@@ -180,23 +180,108 @@ func _get_random_phrase() -> String:
 	return phrases[index]
 
 func _get_default_phrases() -> Array[String]:
+	match character_type:
+		CharacterJournalManager.CharacterType.CAT:
+			return _get_cat_phrases()
+		CharacterJournalManager.CharacterType.HUMAN:
+			return _get_human_phrases()
+		CharacterJournalManager.CharacterType.DOG:
+			return _get_dog_phrases()
+		CharacterJournalManager.CharacterType.BIRD:
+			return _get_bird_phrases()
+		CharacterJournalManager.CharacterType.RAT:
+			return _get_rat_phrases()
+		CharacterJournalManager.CharacterType.DEMON:
+			return _get_shadow_phrases()
+	return [short_phrase]
+
+func _get_cat_phrases() -> Array[String]:
 	match attitude:
 		CharacterJournalManager.CharacterAttitude.FRIENDLY:
 			return [
-				"\u0422\u044B \u0442\u043E\u0436\u0435 \u0435\u0433\u043E \u0438\u0449\u0435\u0448\u044C?",
-				"\u042F \u0432\u0438\u0434\u0435\u043B \u0441\u0442\u0440\u0430\u043D\u043D\u044B\u0439 \u0441\u0432\u0435\u0442 \u0443 \u043C\u0435\u0442\u0440\u043E.",
-				"\u0411\u0443\u0434\u044C \u043E\u0441\u0442\u043E\u0440\u043E\u0436\u0435\u043D.",
-			]
-		CharacterJournalManager.CharacterAttitude.HOSTILE:
-			return [
-				"\u041D\u0435 \u043F\u043E\u0434\u0445\u043E\u0434\u0438.",
-				"\u0413\u0430\u0432!",
-				"\u041A\u0430\u0440-\u0440-\u0440!",
+				"Are you looking for him too?",
+				"I know the roofs. I know the doors.",
+				"Stay close to the warm lights.",
 			]
 	return [
 		short_phrase,
-		"\u041E\u0442\u0441\u0442\u0430\u043D\u044C.",
-		"\u041C\u043D\u0435 \u043D\u0435\u043A\u043E\u0433\u0434\u0430.",
+		"Mrr?",
+		"The street smells wrong tonight.",
+	]
+
+func _get_human_phrases() -> Array[String]:
+	match attitude:
+		CharacterJournalManager.CharacterAttitude.FRIENDLY:
+			return [
+				"Are you looking for him too?",
+				"I saw a strange light near the metro.",
+				"Be careful.",
+			]
+		CharacterJournalManager.CharacterAttitude.HOSTILE:
+			return [
+				"Do not come closer.",
+				"Go away.",
+				"This street is not safe.",
+			]
+	return [
+		short_phrase,
+		"Leave me alone.",
+		"I do not have time.",
+	]
+
+func _get_dog_phrases() -> Array[String]:
+	match attitude:
+		CharacterJournalManager.CharacterAttitude.FRIENDLY:
+			return [
+				"Woof.",
+				"I remember that scent.",
+				"Stay behind me.",
+			]
+		CharacterJournalManager.CharacterAttitude.HOSTILE:
+			return [
+				"Woof!",
+				"Do not come closer!",
+				"Mine. This gate is mine.",
+			]
+	return [
+		"Woof?",
+		"Something passed here.",
+		"I smell rain and fear.",
+	]
+
+func _get_bird_phrases() -> Array[String]:
+	match attitude:
+		CharacterJournalManager.CharacterAttitude.HOSTILE:
+			return [
+				"Caw-caw-caw!",
+				"Too close!",
+				"Eyes below, eyes below!",
+			]
+	return [
+		"Caw.",
+		"I saw movement where there should be none.",
+		"The rooftops know.",
+	]
+
+func _get_rat_phrases() -> Array[String]:
+	match attitude:
+		CharacterJournalManager.CharacterAttitude.HOSTILE:
+			return [
+				"Back off.",
+				"No cats in the pipes.",
+				"I said go away.",
+			]
+	return [
+		short_phrase,
+		"I know the way under the street.",
+		"Do not ask me. Not here.",
+	]
+
+func _get_shadow_phrases() -> Array[String]:
+	return [
+		"Do not come closer.",
+		"You heard that in another place.",
+		"The light is mistaken.",
 	]
 
 func _validate_attitude(value: int) -> int:

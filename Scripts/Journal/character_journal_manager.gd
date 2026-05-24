@@ -20,12 +20,12 @@ enum CharacterType {
 }
 
 const TYPE_NAMES: Dictionary = {
-	CharacterType.HUMAN: "\u0427\u0435\u043B\u043E\u0432\u0435\u043A",
-	CharacterType.CAT: "\u041A\u043E\u0442",
-	CharacterType.DOG: "\u0421\u043E\u0431\u0430\u043A\u0430",
-	CharacterType.BIRD: "\u041F\u0442\u0438\u0446\u0430",
-	CharacterType.RAT: "\u041A\u0440\u044B\u0441\u0430",
-	CharacterType.DEMON: "\u0422\u0435\u043D\u044C",
+	CharacterType.HUMAN: "Human",
+	CharacterType.CAT: "Cat",
+	CharacterType.DOG: "Dog",
+	CharacterType.BIRD: "Bird",
+	CharacterType.RAT: "Rat",
+	CharacterType.DEMON: "Shadow",
 }
 
 const ATTITUDE_NAMES: Dictionary = {
@@ -60,9 +60,9 @@ func set_nearby_npc(npc: Node) -> void:
 	register_character(npc.get_character_data())
 	if journal_ui != null:
 		if npc is Node3D and journal_ui.has_method("show_prompt_for_node"):
-			journal_ui.show_prompt_for_node("[E] \u0412\u0437\u0430\u0438\u043C\u043E\u0434\u0435\u0439\u0441\u0442\u0432\u043E\u0432\u0430\u0442\u044C", npc)
+			journal_ui.show_prompt_for_node("[E] Interact", npc)
 		else:
-			journal_ui.show_prompt("[E] \u0412\u0437\u0430\u0438\u043C\u043E\u0434\u0435\u0439\u0441\u0442\u0432\u043E\u0432\u0430\u0442\u044C")
+			journal_ui.show_prompt("[E] Interact")
 
 func clear_nearby_npc(npc: Node) -> void:
 	if nearby_npc != npc:
@@ -107,7 +107,7 @@ func get_character(character_id: String) -> Dictionary:
 	return {}
 
 func get_type_name(character_type: int) -> String:
-	return str(TYPE_NAMES.get(character_type, "\u041D\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043D\u043E"))
+	return str(TYPE_NAMES.get(character_type, "Unknown"))
 
 func get_attitude_name(attitude: int) -> String:
 	return str(ATTITUDE_NAMES.get(attitude, "Neutral"))
@@ -133,7 +133,7 @@ func load_progress() -> void:
 
 func _try_purr() -> void:
 	if journal_ui != null:
-		journal_ui.show_purr_feedback("\u041C\u0440\u0440\u0440...")
+		journal_ui.show_purr_feedback("Prrrr...")
 
 	var player: Node = get_tree().current_scene.find_child("PlayerCat", true, false)
 	if player != null and player.has_method("play_purr_effect"):

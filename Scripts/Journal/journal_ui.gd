@@ -27,6 +27,13 @@ var prompt_text: String = ""
 
 const POPUP_SIZE: Vector2 = Vector2(560.0, 220.0)
 const JOURNAL_SIZE: Vector2 = Vector2(1060.0, 620.0)
+const PANEL_PADDING: float = 18.0
+const BUTTON_PADDING_X: float = 12.0
+const BUTTON_PADDING_Y: float = 8.0
+const LIST_PADDING: float = 12.0
+const TEXT_COLOR: Color = Color(0.96, 0.86, 0.66, 1.0)
+const MUTED_TEXT_COLOR: Color = Color(0.68, 0.48, 0.30, 1.0)
+const SELECTED_TEXT_COLOR: Color = Color(1.0, 0.92, 0.70, 1.0)
 
 func _ready() -> void:
 	JournalManager.set_journal_ui(self)
@@ -85,7 +92,7 @@ func hide_prompt() -> void:
 	prompt_text = ""
 
 func show_memory_popup(entry: Dictionary) -> void:
-	popup_title.text = str(entry.get("title", "\u0417\u0430\u043F\u0438\u0441\u044C"))
+	popup_title.text = str(entry.get("title", "Entry"))
 	popup_text.text = str(entry.get("full_description", ""))
 	_set_popup_world_position(entry)
 	popup_panel.visible = true
@@ -95,7 +102,7 @@ func show_memory_popup(entry: Dictionary) -> void:
 	refresh_entries()
 
 func show_character_popup(character_data: Dictionary) -> void:
-	popup_title.text = str(character_data.get("character_name", "\u041F\u0435\u0440\u0441\u043E\u043D\u0430\u0436"))
+	popup_title.text = str(character_data.get("character_name", "Character"))
 	popup_text.text = str(character_data.get("short_phrase", "")) + "\n\n" + str(character_data.get("dialogue", ""))
 	_set_popup_world_position(character_data)
 	popup_panel.visible = true
@@ -166,13 +173,13 @@ func refresh_entries() -> void:
 
 	var entries: Array[Dictionary] = JournalManager.get_entries_for_category(current_category)
 	for entry in entries:
-		entries_list.add_item(str(entry.get("title", "\u0417\u0430\u043F\u0438\u0441\u044C")))
+		entries_list.add_item(str(entry.get("title", "Entry")))
 
 	if entries.is_empty():
-		detail_title.text = "\u041F\u043E\u043A\u0430 \u043F\u0443\u0441\u0442\u043E"
+		detail_title.text = "Nothing Yet"
 		detail_category.text = JournalManager.get_category_name(current_category)
 		icon_preview.texture = null
-		detail_text.text = "\u0417\u0430\u043F\u0438\u0441\u0435\u0439 \u043F\u043E\u043A\u0430 \u043D\u0435\u0442."
+		detail_text.text = "No entries yet."
 	else:
 		entries_list.select(0)
 		_show_entry(entries[0])
@@ -188,21 +195,23 @@ func _build_ui() -> void:
 
 	prompt_label = Label.new()
 	prompt_label.name = "PromptLabel"
-	prompt_label.text = "[E] \u041E\u0441\u043C\u043E\u0442\u0440\u0435\u0442\u044C"
+	prompt_label.text = "[E] Inspect"
 	prompt_label.position = Vector2(32, 620)
 	prompt_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	prompt_label.z_index = 20
 	prompt_label.add_theme_font_size_override("font_size", 22)
+	prompt_label.add_theme_color_override("font_color", TEXT_COLOR)
 	add_child(prompt_label)
 
 	purr_label = Label.new()
 	purr_label.name = "PurrLabel"
-	purr_label.text = "\u041C\u0440\u0440\u0440..."
+	purr_label.text = "Prrrr..."
 	purr_label.position = Vector2(548, 360)
 	purr_label.visible = false
 	purr_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	purr_label.z_index = 20
 	purr_label.add_theme_font_size_override("font_size", 30)
+	purr_label.add_theme_color_override("font_color", TEXT_COLOR)
 	add_child(purr_label)
 
 	world_text_label = Label.new()
@@ -211,11 +220,12 @@ func _build_ui() -> void:
 	world_text_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	world_text_label.z_index = 25
 	world_text_label.add_theme_font_size_override("font_size", 23)
+	world_text_label.add_theme_color_override("font_color", TEXT_COLOR)
 	add_child(world_text_label)
 
 	quit_button = Button.new()
 	quit_button.name = "QuitButton"
-	quit_button.text = "\u0412\u044B\u0439\u0442\u0438"
+	quit_button.text = "Quit"
 	quit_button.position = Vector2(24, 24)
 	quit_button.custom_minimum_size = Vector2(110, 42)
 	quit_button.z_index = 30
@@ -225,26 +235,32 @@ func _build_ui() -> void:
 	popup_panel = _make_panel("MemoryPopup", Vector2(390, 430), POPUP_SIZE)
 	var popup_box: VBoxContainer = VBoxContainer.new()
 	popup_box.add_theme_constant_override("separation", 12)
+	popup_box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	popup_box.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	popup_panel.add_child(popup_box)
 
 	popup_title = Label.new()
 	popup_title.add_theme_font_size_override("font_size", 24)
+	popup_title.add_theme_color_override("font_color", TEXT_COLOR)
 	popup_box.add_child(popup_title)
 
 	popup_text = Label.new()
 	popup_text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	popup_text.custom_minimum_size = Vector2(0, 92)
 	popup_text.add_theme_font_size_override("font_size", 17)
+	popup_text.add_theme_color_override("font_color", TEXT_COLOR)
 	popup_box.add_child(popup_text)
 
 	var popup_hint: Label = Label.new()
-	popup_hint.text = "J - \u043E\u0442\u043A\u0440\u044B\u0442\u044C \u0436\u0443\u0440\u043D\u0430\u043B"
-	popup_hint.modulate = Color(0.45, 0.34, 0.24, 1.0)
+	popup_hint.text = "J - open journal"
+	popup_hint.add_theme_color_override("font_color", MUTED_TEXT_COLOR)
 	popup_box.add_child(popup_hint)
 
 	journal_panel = _make_panel("JournalPanel", Vector2.ZERO, JOURNAL_SIZE)
 	var journal_root: HBoxContainer = HBoxContainer.new()
 	journal_root.add_theme_constant_override("separation", 18)
+	journal_root.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	journal_root.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	journal_panel.add_child(journal_root)
 
 	tabs_box = VBoxContainer.new()
@@ -255,6 +271,16 @@ func _build_ui() -> void:
 
 	entries_list = ItemList.new()
 	entries_list.custom_minimum_size = Vector2(260, 0)
+	entries_list.add_theme_constant_override("line_separation", 8)
+	entries_list.add_theme_font_size_override("font_size", 18)
+	entries_list.add_theme_color_override("font_color", TEXT_COLOR)
+	entries_list.add_theme_color_override("font_hovered_color", SELECTED_TEXT_COLOR)
+	entries_list.add_theme_color_override("font_selected_color", SELECTED_TEXT_COLOR)
+	entries_list.add_theme_color_override("font_hovered_selected_color", SELECTED_TEXT_COLOR)
+	entries_list.add_theme_stylebox_override("panel", _make_list_style())
+	entries_list.add_theme_stylebox_override("selected", _make_list_selected_style())
+	entries_list.add_theme_stylebox_override("selected_focus", _make_list_selected_style())
+	entries_list.add_theme_stylebox_override("focus", StyleBoxEmpty.new())
 	entries_list.item_selected.connect(_on_entry_selected)
 	journal_root.add_child(entries_list)
 
@@ -264,11 +290,12 @@ func _build_ui() -> void:
 	journal_root.add_child(detail_box)
 
 	detail_category = Label.new()
-	detail_category.modulate = Color(0.48, 0.34, 0.24, 1.0)
+	detail_category.add_theme_color_override("font_color", MUTED_TEXT_COLOR)
 	detail_box.add_child(detail_category)
 
 	detail_title = Label.new()
 	detail_title.add_theme_font_size_override("font_size", 28)
+	detail_title.add_theme_color_override("font_color", TEXT_COLOR)
 	detail_box.add_child(detail_title)
 
 	icon_preview = TextureRect.new()
@@ -281,11 +308,12 @@ func _build_ui() -> void:
 	detail_text.fit_content = true
 	detail_text.bbcode_enabled = false
 	detail_text.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	detail_text.add_theme_color_override("default_color", TEXT_COLOR)
 	detail_box.add_child(detail_text)
 
 	var close_hint: Label = Label.new()
-	close_hint.text = "J - \u0437\u0430\u043A\u0440\u044B\u0442\u044C"
-	close_hint.modulate = Color(0.48, 0.34, 0.24, 1.0)
+	close_hint.text = "J - close"
+	close_hint.add_theme_color_override("font_color", MUTED_TEXT_COLOR)
 	detail_box.add_child(close_hint)
 
 func _build_tabs() -> void:
@@ -294,12 +322,14 @@ func _build_tabs() -> void:
 		var button: Button = Button.new()
 		button.text = JournalManager.get_category_name(category)
 		button.alignment = HORIZONTAL_ALIGNMENT_LEFT
+		_apply_journal_button_style(button)
 		button.pressed.connect(_select_category.bind(category))
 		tabs_box.add_child(button)
 
 	var characters_button: Button = Button.new()
-	characters_button.text = "\u041F\u0435\u0440\u0441\u043E\u043D\u0430\u0436\u0438"
+	characters_button.text = "Characters"
 	characters_button.alignment = HORIZONTAL_ALIGNMENT_LEFT
+	_apply_journal_button_style(characters_button)
 	characters_button.pressed.connect(_select_characters)
 	tabs_box.add_child(characters_button)
 
@@ -324,7 +354,7 @@ func _on_entry_selected(index: int) -> void:
 		_show_entry(entries[index])
 
 func _show_entry(entry: Dictionary) -> void:
-	detail_title.text = str(entry.get("title", "\u0417\u0430\u043F\u0438\u0441\u044C"))
+	detail_title.text = str(entry.get("title", "Entry"))
 	detail_category.text = JournalManager.get_category_name(int(entry.get("category", current_category)))
 	detail_text.text = str(entry.get("full_description", ""))
 
@@ -337,13 +367,13 @@ func _show_entry(entry: Dictionary) -> void:
 func _refresh_character_entries() -> void:
 	var characters: Array[Dictionary] = CharacterJournalManager.get_known_characters()
 	for character_data in characters:
-		entries_list.add_item(str(character_data.get("character_name", "\u041F\u0435\u0440\u0441\u043E\u043D\u0430\u0436")))
+		entries_list.add_item(str(character_data.get("character_name", "Character")))
 
 	if characters.is_empty():
-		detail_title.text = "\u041F\u043E\u043A\u0430 \u043F\u0443\u0441\u0442\u043E"
-		detail_category.text = "\u041F\u0435\u0440\u0441\u043E\u043D\u0430\u0436\u0438"
+		detail_title.text = "Nothing Yet"
+		detail_category.text = "Characters"
 		icon_preview.texture = null
-		detail_text.text = "\u041A\u043E\u0442 \u043F\u043E\u043A\u0430 \u043D\u0438\u043A\u043E\u0433\u043E \u043D\u0435 \u0437\u0430\u043F\u043E\u043C\u043D\u0438\u043B."
+		detail_text.text = "The cat has not remembered anyone yet."
 	else:
 		entries_list.select(0)
 		_show_character(characters[0])
@@ -351,8 +381,8 @@ func _refresh_character_entries() -> void:
 func _show_character(character_data: Dictionary) -> void:
 	var character_type: int = int(character_data.get("character_type", CharacterJournalManager.CharacterType.HUMAN))
 	var attitude: int = int(character_data.get("attitude", CharacterJournalManager.CharacterAttitude.NEUTRAL))
-	detail_title.text = str(character_data.get("character_name", "\u041F\u0435\u0440\u0441\u043E\u043D\u0430\u0436"))
-	detail_category.text = "\u0422\u0438\u043F: " + CharacterJournalManager.get_type_name(character_type) + "   \u041E\u0442\u043D\u043E\u0448\u0435\u043D\u0438\u0435: " + CharacterJournalManager.get_attitude_name(attitude)
+	detail_title.text = str(character_data.get("character_name", "Character"))
+	detail_category.text = "Type: " + CharacterJournalManager.get_type_name(character_type) + "   Attitude: " + CharacterJournalManager.get_attitude_name(attitude)
 	detail_text.text = str(character_data.get("description", "")) + "\n\n" + str(character_data.get("dialogue", ""))
 
 	var portrait_path: String = str(character_data.get("portrait", ""))
@@ -370,8 +400,54 @@ func _make_panel(name: String, panel_position: Vector2, panel_size: Vector2) -> 
 	panel.mouse_filter = Control.MOUSE_FILTER_STOP
 	panel.z_index = 10
 	panel.modulate = Color(0.98, 0.87, 0.68, 0.94)
+	panel.add_theme_stylebox_override("panel", _make_panel_style())
 	add_child(panel)
 	return panel
+
+func _make_panel_style() -> StyleBoxFlat:
+	var style: StyleBoxFlat = StyleBoxFlat.new()
+	style.bg_color = Color(0.08, 0.07, 0.05, 0.78)
+	style.content_margin_left = PANEL_PADDING
+	style.content_margin_right = PANEL_PADDING
+	style.content_margin_top = PANEL_PADDING
+	style.content_margin_bottom = PANEL_PADDING
+	return style
+
+func _make_list_style() -> StyleBoxFlat:
+	var style: StyleBoxFlat = StyleBoxFlat.new()
+	style.bg_color = Color(0.05, 0.045, 0.035, 0.38)
+	style.content_margin_left = LIST_PADDING
+	style.content_margin_right = LIST_PADDING
+	style.content_margin_top = LIST_PADDING
+	style.content_margin_bottom = LIST_PADDING
+	return style
+
+func _make_list_selected_style() -> StyleBoxFlat:
+	var style: StyleBoxFlat = StyleBoxFlat.new()
+	style.bg_color = Color(0.42, 0.34, 0.22, 0.70)
+	style.content_margin_left = 6.0
+	style.content_margin_right = 6.0
+	style.content_margin_top = 4.0
+	style.content_margin_bottom = 4.0
+	return style
+
+func _make_button_style(color: Color) -> StyleBoxFlat:
+	var style: StyleBoxFlat = StyleBoxFlat.new()
+	style.bg_color = color
+	style.content_margin_left = BUTTON_PADDING_X
+	style.content_margin_right = BUTTON_PADDING_X
+	style.content_margin_top = BUTTON_PADDING_Y
+	style.content_margin_bottom = BUTTON_PADDING_Y
+	return style
+
+func _apply_journal_button_style(button: Button) -> void:
+	button.add_theme_color_override("font_color", TEXT_COLOR)
+	button.add_theme_color_override("font_hover_color", SELECTED_TEXT_COLOR)
+	button.add_theme_color_override("font_pressed_color", SELECTED_TEXT_COLOR)
+	button.add_theme_stylebox_override("normal", _make_button_style(Color(0.05, 0.045, 0.035, 0.46)))
+	button.add_theme_stylebox_override("hover", _make_button_style(Color(0.20, 0.16, 0.10, 0.65)))
+	button.add_theme_stylebox_override("pressed", _make_button_style(Color(0.40, 0.32, 0.20, 0.72)))
+	button.add_theme_stylebox_override("focus", StyleBoxEmpty.new())
 
 func _set_popup_world_position(data: Dictionary) -> void:
 	popup_has_world_position = false

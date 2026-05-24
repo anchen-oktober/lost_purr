@@ -14,162 +14,161 @@ enum MemoryType {
 }
 
 const CATEGORY_NAMES: Dictionary = {
-	MemoryType.SMELL: "\u0417\u0430\u043F\u0430\u0445\u0438",
-	MemoryType.TRACE: "\u0421\u043B\u0435\u0434\u044B",
-	MemoryType.OBJECT: "\u041F\u0440\u0435\u0434\u043C\u0435\u0442\u044B",
-	MemoryType.SYMBOL: "\u0421\u0438\u043C\u0432\u043E\u043B\u044B",
-	MemoryType.PLACE: "\u041C\u0435\u0441\u0442\u0430",
-	MemoryType.ANOMALY: "\u0410\u043D\u043E\u043C\u0430\u043B\u0438\u0438",
+	MemoryType.SMELL: "Smells",
+	MemoryType.TRACE: "Traces",
+	MemoryType.OBJECT: "Objects",
+	MemoryType.SYMBOL: "Symbols",
+	MemoryType.PLACE: "Places",
+	MemoryType.ANOMALY: "Anomalies",
 }
 
 const MEMORY_DEFINITIONS: Dictionary = {
 	"old_tobacco_smell": {
-		"title": "\u0421\u0442\u0430\u0440\u044B\u0439 \u0437\u0430\u043F\u0430\u0445 \u0442\u0430\u0431\u0430\u043A\u0430",
-		"short_description": "\u0421\u0443\u0445\u043E\u0439 \u0432\u0435\u0447\u0435\u0440\u043D\u0438\u0439 \u0437\u0430\u043F\u0430\u0445 \u0443 \u043F\u0443\u0441\u0442\u043E\u0433\u043E \u043A\u0440\u044B\u043B\u044C\u0446\u0430.",
-		"full_description": "\u0421\u0442\u0430\u0440\u044B\u0439 \u0437\u0430\u043F\u0430\u0445 \u0442\u0430\u0431\u0430\u043A\u0430. \u0425\u043E\u0437\u044F\u0438\u043D \u0447\u0430\u0441\u0442\u043E \u0441\u0438\u0434\u0435\u043B \u0437\u0434\u0435\u0441\u044C \u043F\u043E \u0432\u0435\u0447\u0435\u0440\u0430\u043C. \u0417\u0430\u043F\u0430\u0445 \u043F\u043E\u0447\u0442\u0438 \u0438\u0441\u0447\u0435\u0437.",
+		"title": "Old Tobacco Scent",
+		"short_description": "A dry evening smell by an empty porch.",
+		"full_description": "Old tobacco lingers near the porch. The human often sat here in the evenings. The scent has almost faded, but the cat still knows this place.",
 		"category": MemoryType.SMELL,
 	},
 	"scratched_fence_trace": {
-		"title": "\u0421\u043B\u0435\u0434\u044B \u043D\u0430 \u0434\u043E\u0441\u043A\u0430\u0445",
-		"short_description": "\u0422\u043E\u043D\u043A\u0438\u0435 \u0446\u0430\u0440\u0430\u043F\u0438\u043D\u044B \u0443\u0445\u043E\u0434\u044F\u0442 \u0432\u0434\u043E\u043B\u044C \u0437\u0430\u0431\u043E\u0440\u0430.",
-		"full_description": "\u041D\u0430 \u0441\u0442\u0430\u0440\u044B\u0445 \u0434\u043E\u0441\u043A\u0430\u0445 \u043E\u0441\u0442\u0430\u043B\u0438\u0441\u044C \u0441\u0432\u0435\u0436\u0438\u0435 \u0446\u0430\u0440\u0430\u043F\u0438\u043D\u044B. \u041E\u043D\u0438 \u0441\u043B\u0438\u0448\u043A\u043E\u043C \u043D\u0438\u0437\u043A\u043E \u0434\u043B\u044F \u0447\u0435\u043B\u043E\u0432\u0435\u043A\u0430.",
+		"title": "Scratches on the Boards",
+		"short_description": "Thin scratches run along the fence.",
+		"full_description": "Fresh scratches remain on the old boards. They are too low for a human and too even to be accidental.",
 		"category": MemoryType.TRACE,
 	},
 	"lost_key_object": {
-		"title": "\u0420\u0436\u0430\u0432\u044B\u0439 \u043A\u043B\u044E\u0447",
-		"short_description": "\u041C\u0430\u043B\u0435\u043D\u044C\u043A\u0438\u0439 \u043A\u043B\u044E\u0447 \u043F\u0430\u0445\u043D\u0435\u0442 \u0434\u043E\u0436\u0434\u0435\u043C \u0438 \u0436\u0435\u043B\u0435\u0437\u043E\u043C.",
-		"full_description": "\u0420\u0436\u0430\u0432\u044B\u0439 \u043A\u043B\u044E\u0447 \u043B\u0435\u0436\u0438\u0442 \u0432 \u043F\u044B\u043B\u0438, \u0431\u0443\u0434\u0442\u043E \u0435\u0433\u043E \u0431\u0440\u043E\u0441\u0438\u043B\u0438 \u0432\u043F\u043E\u043F\u044B\u0445\u0430\u0445.",
+		"title": "Rusty Key",
+		"short_description": "A small key smells of rain and iron.",
+		"full_description": "The rusty key lies in the dust, as if someone dropped it in a hurry. It opens nothing here, but the memory of a door becomes clearer.",
 		"category": MemoryType.OBJECT,
 	},
 	"chalk_symbol": {
-		"title": "\u041C\u0435\u043B\u043E\u0432\u043E\u0439 \u0437\u043D\u0430\u043A",
-		"short_description": "\u0421\u0438\u043C\u0432\u043E\u043B \u043D\u0430 \u0437\u0435\u043C\u043B\u0435 \u043A\u0430\u0436\u0435\u0442\u0441\u044F \u0437\u043D\u0430\u043A\u043E\u043C\u044B\u043C \u0442\u043E\u043B\u044C\u043A\u043E \u0432 \u0442\u0435\u043C\u043D\u043E\u0442\u0435.",
-		"full_description": "\u041C\u0435\u043B\u043E\u0432\u043E\u0439 \u0437\u043D\u0430\u043A \u043F\u043E\u0447\u0442\u0438 \u0441\u0442\u0435\u0440\u0441\u044F. \u0415\u0433\u043E \u043B\u0438\u043D\u0438\u0438 \u043D\u0430\u043F\u043E\u043C\u0438\u043D\u0430\u044E\u0442 \u043A\u0430\u0440\u0442\u0443 \u0440\u0430\u0439\u043E\u043D\u0430.",
+		"title": "Chalk Mark",
+		"short_description": "A mark on the ground feels familiar only in the dark.",
+		"full_description": "The chalk mark has nearly worn away. Its lines resemble a map of the district, but one alley is drawn where no alley ever was.",
 		"category": MemoryType.SYMBOL,
 	},
 	"quiet_bench_place": {
-		"title": "\u041F\u0443\u0441\u0442\u0430\u044F \u043B\u0430\u0432\u043E\u0447\u043A\u0430",
-		"short_description": "\u0417\u0434\u0435\u0441\u044C \u043A\u0442\u043E-\u0442\u043E \u0434\u043E\u043B\u0433\u043E \u0436\u0434\u0430\u043B.",
-		"full_description": "\u041B\u0430\u0432\u043E\u0447\u043A\u0430 \u0441\u0442\u043E\u0438\u0442 \u0447\u0443\u0442\u044C \u0432 \u0441\u0442\u043E\u0440\u043E\u043D\u0435 \u043E\u0442 \u0444\u043E\u043D\u0430\u0440\u044F. \u0414\u0435\u0440\u0435\u0432\u043E \u0445\u0440\u0430\u043D\u0438\u0442 \u0442\u0435\u043F\u043B\u043E.",
+		"title": "Empty Bench",
+		"short_description": "Someone waited here for a long time.",
+		"full_description": "The bench stands a little apart from the streetlamp. The wood still holds the warmth of unfamiliar hands, though the night has long gone cold.",
 		"category": MemoryType.PLACE,
 	},
 	"cold_window_anomaly": {
-		"title": "\u0425\u043E\u043B\u043E\u0434\u043D\u043E\u0435 \u043E\u043A\u043D\u043E",
-		"short_description": "\u041E\u043A\u043D\u043E \u043E\u0442\u0440\u0430\u0436\u0430\u0435\u0442 \u0443\u043B\u0438\u0446\u0443, \u043A\u043E\u0442\u043E\u0440\u043E\u0439 \u0437\u0434\u0435\u0441\u044C \u043D\u0435\u0442.",
-		"full_description": "\u0421\u0442\u0435\u043A\u043B\u043E \u0445\u043E\u043B\u043E\u0434\u043D\u0435\u0435 \u0432\u043E\u0437\u0434\u0443\u0445\u0430. \u0412 \u043E\u0442\u0440\u0430\u0436\u0435\u043D\u0438\u0438 \u0432\u0438\u0434\u0435\u043D \u0434\u0440\u0443\u0433\u043E\u0439 \u0434\u0432\u043E\u0440.",
+		"title": "Cold Window",
+		"short_description": "The window reflects a street that is not here.",
+		"full_description": "The glass is colder than the air. In the reflection, another courtyard appears: dark, empty, and far too quiet.",
 		"category": MemoryType.ANOMALY,
 	},
 	"raincoat_smell": {
-		"title": "Запах мокрого плаща",
-		"short_description": "На камне остался тяжелый запах дождя.",
-		"full_description": "Запах мокрого плаща держится у края дорожки. Кто-то стоял здесь долго, не решаясь войти под свет фонаря.",
+		"title": "Wet Coat Scent",
+		"short_description": "A heavy rain smell remains on the stone.",
+		"full_description": "The smell of a wet coat clings to the edge of the path. Someone stood here for a long time, afraid to step into the lamplight.",
 		"category": MemoryType.SMELL,
 	},
 	"spilled_milk_smell": {
-		"title": "Кислый запах молока",
-		"short_description": "У крыльца пахнет пролитым молоком.",
-		"full_description": "Кислый запах молока прячется у ступенек. Миска давно пустая, но кот помнит, что раньше ее ставили каждый вечер.",
+		"title": "Sour Milk Scent",
+		"short_description": "The porch smells of spilled milk.",
+		"full_description": "A sour milk scent hides near the steps. The bowl has been empty for a long time, but the cat remembers when it was filled every evening.",
 		"category": MemoryType.SMELL,
 	},
 	"tiny_paw_trace": {
-		"title": "Маленькие следы",
-		"short_description": "Цепочка мелких отпечатков уходит между домами.",
-		"full_description": "Маленькие следы пересекают дорогу и внезапно обрываются. Будто тот, кто их оставил, остановился и посмотрел наверх.",
+		"title": "Tiny Pawprints",
+		"short_description": "A chain of small prints slips between the houses.",
+		"full_description": "Tiny prints cross the road and stop suddenly, as if whoever left them paused and looked up.",
 		"category": MemoryType.TRACE,
 	},
 	"ash_footprint_trace": {
-		"title": "Пепельный отпечаток",
-		"short_description": "На земле лежит след, похожий на тень лапы.",
-		"full_description": "Пепельный отпечаток не стирается ветром. Он холоднее земли вокруг и почти заметен только боковым зрением.",
+		"title": "Ashen Pawprint",
+		"short_description": "A print on the ground looks like the shadow of a paw.",
+		"full_description": "The ashen pawprint does not fade in the wind. It is colder than the ground around it and almost visible only from the corner of the eye.",
 		"category": MemoryType.TRACE,
 	},
 	"cracked_cup_object": {
-		"title": "Треснувшая чашка",
-		"short_description": "Маленькая чашка стоит у стены.",
-		"full_description": "Треснувшая чашка аккуратно поставлена у стены. Внутри нет воды, но на дне темнеет тонкое кольцо, как след от старого чая.",
+		"title": "Cracked Cup",
+		"short_description": "A small cup sits by the wall.",
+		"full_description": "The cracked cup has been placed carefully by the wall. There is no water inside, but a thin dark ring stains the bottom like old tea.",
 		"category": MemoryType.OBJECT,
 	},
 	"bent_lantern_object": {
-		"title": "Погнутый фонарь",
-		"short_description": "Фонарь светит ниже, чем должен.",
-		"full_description": "Погнутый фонарь наклонился к дороге. Его свет теплый, но в нем есть усталая дрожь, будто он давно пытается что-то показать.",
+		"title": "Bent Lantern",
+		"short_description": "The lantern shines lower than it should.",
+		"full_description": "The bent lantern leans toward the road. Its light is warm, but tired, as if it has been trying to point at something for a long time.",
 		"category": MemoryType.OBJECT,
 	},
 	"red_thread_object": {
-		"title": "Красная нить",
-		"short_description": "Тонкая нить зацепилась за доску.",
-		"full_description": "Красная нить зацепилась за старую доску. Она слишком чистая для этой улицы и тянется в сторону пустого двора.",
+		"title": "Red Thread",
+		"short_description": "A thin thread is caught on a board.",
+		"full_description": "The red thread is caught on an old board. It is too clean for this street and trails toward an empty yard.",
 		"category": MemoryType.OBJECT,
 	},
 	"door_scratch_symbol": {
-		"title": "Знак на двери",
-		"short_description": "На двери выцарапан неровный знак.",
-		"full_description": "Знак на двери похож на букву, которую забыли дописать. Дерево вокруг царапин потемнело, как после дождя.",
+		"title": "Mark on the Door",
+		"short_description": "An uneven sign is scratched into the door.",
+		"full_description": "The mark on the door looks like a letter someone forgot to finish. The wood around the scratches has darkened as if after rain.",
 		"category": MemoryType.SYMBOL,
 	},
 	"crooked_moon_symbol": {
-		"title": "Кривая луна",
-		"short_description": "На камне нарисована тонкая дуга.",
-		"full_description": "Кривая луна нарисована почти незаметно. Если смотреть долго, кажется, что дуга чуть меняет форму.",
+		"title": "Crooked Moon",
+		"short_description": "A thin arc is drawn on the stone.",
+		"full_description": "The crooked moon is barely visible. If the cat looks too long, the arc seems to change shape.",
 		"category": MemoryType.SYMBOL,
 	},
 	"warm_window_place": {
-		"title": "Теплое окно",
-		"short_description": "Единственное окно, которое еще хранит свет.",
-		"full_description": "Теплое окно смотрит на пустую улицу. За ним ничего не движется, но кот чувствует знакомое спокойствие.",
+		"title": "Warm Window",
+		"short_description": "The only window still holding light.",
+		"full_description": "The warm window watches the empty street. Nothing moves behind it, but the cat feels a familiar calm.",
 		"category": MemoryType.PLACE,
 	},
 	"narrow_alley_place": {
-		"title": "Узкий проход",
-		"short_description": "Место, где город становится слишком тихим.",
-		"full_description": "Узкий проход между домами глушит шаги. Здесь даже фонарь светит осторожнее, чем на дороге.",
+		"title": "Narrow Passage",
+		"short_description": "A place where the city grows too quiet.",
+		"full_description": "The narrow passage between houses swallows footsteps. Even the streetlamp shines more carefully here than on the road.",
 		"category": MemoryType.PLACE,
 	},
 	"whispering_stone_anomaly": {
-		"title": "Шепчущий камень",
-		"short_description": "Камень тихо вибрирует у земли.",
-		"full_description": "Шепчущий камень кажется обычным, пока кот не подходит ближе. Внутри него будто звучит очень далекая лестница.",
+		"title": "Whispering Stone",
+		"short_description": "The stone vibrates softly near the ground.",
+		"full_description": "The whispering stone seems ordinary until the cat comes close. Something inside it sounds like a very distant staircase.",
 		"category": MemoryType.ANOMALY,
 	},
 	"hidden_bell_anomaly": {
-		"title": "Колокольчик без звука",
-		"short_description": "Он появляется только в кошачьем зрении.",
-		"full_description": "Маленький колокольчик висит в воздухе без веревки. Он не звенит, но от него расходятся холодные круги тишины.",
+		"title": "Silent Bell",
+		"short_description": "It appears only through Cat Vision.",
+		"full_description": "A small bell hangs in the air with no string. It does not ring, but cold circles of silence spread from it.",
 		"category": MemoryType.ANOMALY,
 	},
 	"blue_thread_trace": {
-		"title": "Синяя нить",
-		"short_description": "След, который виден только особым взглядом.",
-		"full_description": "Синяя нить тянется поверх земли, не касаясь пыли. Она дрожит, когда кот смотрит слишком долго.",
+		"title": "Blue Thread",
+		"short_description": "A trace visible only through a special gaze.",
+		"full_description": "The blue thread stretches above the ground without touching the dust. It trembles when the cat looks at it for too long.",
 		"category": MemoryType.TRACE,
 	},
 	"mirror_shard_object": {
-		"title": "Осколок зеркала",
-		"short_description": "В обычном свете его будто не существует.",
-		"full_description": "Осколок зеркала отражает не дома, а пустую улицу после дождя. В отражении на миг видна чья-то рука.",
+		"title": "Mirror Shard",
+		"short_description": "In ordinary light, it almost does not exist.",
+		"full_description": "The mirror shard reflects not the houses, but an empty street after rain. For one moment, a hand appears in the reflection.",
 		"category": MemoryType.OBJECT,
 	},
 	"cold_fishbone_symbol": {
-		"title": "Рыбья кость",
-		"short_description": "Тонкий знак проступает на дороге.",
-		"full_description": "Рыбья кость нарисована линиями холодного света. Это не еда и не след, скорее предупреждение, оставленное для кота.",
+		"title": "Fishbone Sign",
+		"short_description": "A thin mark emerges on the road.",
+		"full_description": "The fishbone is drawn in lines of cold light. It is not food and not a trail, more like a warning left for the cat.",
 		"category": MemoryType.SYMBOL,
 	},
 	"empty_bowl_smell": {
-		"title": "Запах пустой миски",
-		"short_description": "Почти невидимый запах старой заботы.",
-		"full_description": "Запах пустой миски появляется только в кошачьем зрении. Он теплый и грустный, как место, где кого-то долго ждали.",
+		"title": "Empty Bowl Scent",
+		"short_description": "An almost invisible smell of old care.",
+		"full_description": "The smell of an empty bowl appears only through Cat Vision. It is warm and sad, like a place where someone waited for a long time.",
 		"category": MemoryType.SMELL,
 	},
 	"memory_footprints_path": {
-		"title": "\u0426\u0435\u043F\u043E\u0447\u043A\u0430 \u0441\u043B\u0435\u0434\u043E\u0432",
-		"short_description": "\u0421\u043B\u0435\u0434\u044B \u0432\u0435\u0434\u0443\u0442 \u043A \u0442\u0438\u0445\u043E\u0439 \u0447\u0430\u0441\u0442\u0438 \u0443\u043B\u0438\u0446\u044B.",
-		"full_description": "\u0426\u0435\u043F\u043E\u0447\u043A\u0430 \u0441\u043B\u0435\u0434\u043E\u0432 \u043F\u0440\u043E\u0441\u0442\u0443\u043F\u0430\u0435\u0442 \u0442\u043E\u043B\u044C\u043A\u043E \u0432 \u043A\u043E\u0448\u0430\u0447\u044C\u0435\u043C \u0437\u0440\u0435\u043D\u0438\u0438. \u041E\u043D\u0438 \u0438\u0434\u0443\u0442 \u043F\u043E \u0434\u043E\u0440\u043E\u0433\u0435 \u0443\u0432\u0435\u0440\u0435\u043D\u043D\u043E, \u0431\u0443\u0434\u0442\u043E \u0438\u0445 \u043E\u0441\u0442\u0430\u0432\u0438\u043B \u0442\u043E\u0442, \u043A\u0442\u043E \u0437\u043D\u0430\u043B, \u043A\u0443\u0434\u0430 \u0438\u0434\u0442\u0438.",
+		"title": "Trail of Pawprints",
+		"short_description": "The prints lead toward a quiet part of the street.",
+		"full_description": "The trail appears only through Cat Vision. The prints move along the road with strange certainty, as if left by someone who knew exactly where to go.",
 		"category": MemoryType.TRACE,
 		"requires_cat_vision": true,
 	},
 }
-
 var collected_entries: Dictionary = {}
 var nearby_object: Node = null
 var journal_ui: Node = null
@@ -206,9 +205,9 @@ func set_nearby_object(object: Node) -> void:
 	nearby_object = object
 	if journal_ui != null and object != null:
 		if object is Node3D and journal_ui.has_method("show_prompt_for_node"):
-			journal_ui.show_prompt_for_node("[E] \u041E\u0441\u043C\u043E\u0442\u0440\u0435\u0442\u044C", object)
+			journal_ui.show_prompt_for_node("[E] Inspect", object)
 		else:
-			journal_ui.show_prompt("[E] \u041E\u0441\u043C\u043E\u0442\u0440\u0435\u0442\u044C")
+			journal_ui.show_prompt("[E] Inspect")
 
 func clear_nearby_object(object: Node) -> void:
 	if nearby_object != object:
@@ -240,7 +239,7 @@ func get_entries_for_category(category: int) -> Array[Dictionary]:
 	var result: Array[Dictionary] = []
 	for entry in collected_entries.values():
 		if entry is Dictionary:
-			var entry_dictionary: Dictionary = entry as Dictionary
+			var entry_dictionary: Dictionary = _normalize_entry(entry as Dictionary)
 			if int(entry_dictionary.get("category", -1)) == category:
 				result.append(entry_dictionary)
 	return result
@@ -271,7 +270,7 @@ func load_progress() -> void:
 		collected_entries = parsed as Dictionary
 
 func get_category_name(category: int) -> String:
-	return str(CATEGORY_NAMES.get(category, "\u0417\u0430\u043F\u0438\u0441\u044C"))
+	return str(CATEGORY_NAMES.get(category, "Entry"))
 
 func _normalize_entry(entry: Dictionary) -> Dictionary:
 	var normalized_entry: Dictionary = entry.duplicate(true)

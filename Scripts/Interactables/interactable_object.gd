@@ -1,10 +1,10 @@
 extends Area3D
 
 @export var id: String = "memory_object"
-@export var title: String = "\u041D\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043D\u043E\u0435 \u0432\u043E\u0441\u043F\u043E\u043C\u0438\u043D\u0430\u043D\u0438\u0435"
-@export_multiline var short_description: String = "\u0422\u0438\u0445\u0430\u044F \u0441\u0442\u0440\u0430\u043D\u043D\u043E\u0441\u0442\u044C \u043D\u0430 \u043A\u0440\u0430\u044E \u0432\u043D\u0438\u043C\u0430\u043D\u0438\u044F."
-@export_multiline var full_description: String = "\u041A\u043E\u0442 \u043E\u0441\u0442\u0430\u043D\u0430\u0432\u043B\u0438\u0432\u0430\u0435\u0442\u0441\u044F \u0438 \u043F\u0440\u0438\u0441\u043B\u0443\u0448\u0438\u0432\u0430\u0435\u0442\u0441\u044F. \u0417\u0434\u0435\u0441\u044C \u043E\u0441\u0442\u0430\u043B\u043E\u0441\u044C \u0447\u0442\u043E-\u0442\u043E \u0432\u0430\u0436\u043D\u043E\u0435."
-@export_enum("\u0417\u0430\u043F\u0430\u0445", "\u0421\u043B\u0435\u0434", "\u041F\u0440\u0435\u0434\u043C\u0435\u0442", "\u0421\u0438\u043C\u0432\u043E\u043B", "\u041C\u0435\u0441\u0442\u043E", "\u0410\u043D\u043E\u043C\u0430\u043B\u0438\u044F") var category: int = 2
+@export var title: String = "Unknown Memory"
+@export_multiline var short_description: String = "A quiet oddity at the edge of attention."
+@export_multiline var full_description: String = "The cat stops and listens. Something important was left here."
+@export_enum("Smell", "Trace", "Object", "Symbol", "Place", "Anomaly") var category: int = 2
 @export var icon: Texture2D
 @export var highlight_color: Color = Color(1.0, 0.78, 0.42, 1.0)
 @export var sound_effect: AudioStream
