@@ -13,11 +13,10 @@ config_version=5
 config/name="LostPurr"
 run/main_scene="res://Scenes/UI/SplashScreen.tscn"
 config/features=PackedStringArray("4.6", "Mobile")
-config/icon="res://Art/icon.svg"
 boot_splash/bg_color=Color(0.015, 0.014, 0.012, 1)
 boot_splash/show_image=false
-boot_splash/fullsize=false
-boot_splash/use_filter=true
+boot_splash/stretch_mode=0
+config/icon="res://Art/icon.svg"
 
 [autoload]
 
