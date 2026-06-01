@@ -1,23 +1,10 @@
-@tool
 extends Node3D
 
 var road_material: StandardMaterial3D
-var _rebuild_in_editor: bool = false
-
-@export var rebuild_in_editor: bool:
-	set(value):
-		_rebuild_in_editor = false
-		if Engine.is_editor_hint() and is_inside_tree():
-			build()
-	get:
-		return _rebuild_in_editor
-
-func _ready() -> void:
-	build()
 
 func build() -> void:
 	_clear_children()
-	road_material = _material(Color(0.42, 0.4, 0.34, 1.0))
+	road_material = _material(Color(0.64, 0.54, 0.42, 1.0))
 
 	_add_road("Road_01_MainStreet", Vector3(0, 0, 0), 58.0, 3.0, deg_to_rad(0))
 	_add_road("Road_02_WestLane", Vector3(-17, 0, -1), 35.0, 2.6, deg_to_rad(90))

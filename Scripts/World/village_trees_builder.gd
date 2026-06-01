@@ -1,25 +1,17 @@
-@tool
 extends Node3D
 
-var tree_material: StandardMaterial3D
+var tree_materials: Array[StandardMaterial3D] = []
 var trunk_material: StandardMaterial3D
-var _rebuild_in_editor: bool = false
-
-@export var rebuild_in_editor: bool:
-	set(value):
-		_rebuild_in_editor = false
-		if Engine.is_editor_hint() and is_inside_tree():
-			build()
-	get:
-		return _rebuild_in_editor
-
-func _ready() -> void:
-	build()
 
 func build() -> void:
 	_clear_children()
-	tree_material = _material(Color(0.28, 0.35, 0.27, 1.0))
-	trunk_material = _material(Color(0.27, 0.2, 0.14, 1.0))
+	tree_materials = [
+		_material(Color(0.55, 0.43, 0.16, 1.0)),
+		_material(Color(0.66, 0.34, 0.13, 1.0)),
+		_material(Color(0.36, 0.44, 0.22, 1.0)),
+		_material(Color(0.74, 0.52, 0.18, 1.0)),
+	]
+	trunk_material = _material(Color(0.39, 0.24, 0.14, 1.0))
 
 	var tree_positions: Array[Vector3] = [
 		Vector3(-29, 0, -27), Vector3(-18, 0, -16), Vector3(-2, 0, -28),
@@ -30,9 +22,9 @@ func build() -> void:
 	]
 
 	for index in range(tree_positions.size()):
-		_add_tree("PineTree_%02d" % [index + 1], tree_positions[index], 0.8 + float(index % 3) * 0.18)
+		_add_tree("PineTree_%02d" % [index + 1], tree_positions[index], 0.8 + float(index % 3) * 0.18, tree_materials[index % tree_materials.size()])
 
-func _add_tree(tree_name: String, position: Vector3, scale_amount: float) -> void:
+func _add_tree(tree_name: String, position: Vector3, scale_amount: float, tree_material: Material) -> void:
 	var tree: Node3D = Node3D.new()
 	tree.name = tree_name
 	tree.position = position

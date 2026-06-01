@@ -1,23 +1,14 @@
-@tool
 extends Node3D
 
-var bush_material: StandardMaterial3D
-var _rebuild_in_editor: bool = false
-
-@export var rebuild_in_editor: bool:
-	set(value):
-		_rebuild_in_editor = false
-		if Engine.is_editor_hint() and is_inside_tree():
-			build()
-	get:
-		return _rebuild_in_editor
-
-func _ready() -> void:
-	build()
+var bush_materials: Array[StandardMaterial3D] = []
 
 func build() -> void:
 	_clear_children()
-	bush_material = _material(Color(0.24, 0.33, 0.25, 1.0))
+	bush_materials = [
+		_material(Color(0.37, 0.44, 0.24, 1.0)),
+		_material(Color(0.56, 0.34, 0.16, 1.0)),
+		_material(Color(0.63, 0.46, 0.18, 1.0)),
+	]
 
 	var bush_data: Array = [
 		[Vector3(-27, 0, -14), Vector3(1.0, 0.55, 0.8)],
@@ -36,9 +27,9 @@ func build() -> void:
 
 	for index in range(bush_data.size()):
 		var item: Array = bush_data[index]
-		_add_bush("Bush_%02d" % [index + 1], item[0], item[1])
+		_add_bush("Bush_%02d" % [index + 1], item[0], item[1], bush_materials[index % bush_materials.size()])
 
-func _add_bush(bush_name: String, position: Vector3, size: Vector3) -> void:
+func _add_bush(bush_name: String, position: Vector3, size: Vector3, bush_material: Material) -> void:
 	var bush: MeshInstance3D = MeshInstance3D.new()
 	bush.name = bush_name
 	bush.position = position + Vector3(0, size.y * 0.5, 0)

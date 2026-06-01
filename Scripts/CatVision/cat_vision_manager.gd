@@ -5,15 +5,15 @@ extends Node
 @export var transition_speed: float = 6.0
 @export var revealed_group: String = "cat_vision_revealed"
 
-@export var normal_background_color: Color = Color(0.1, 0.11, 0.12, 1.0)
+@export var normal_background_color: Color = Color(0.36, 0.26, 0.18, 1.0)
 @export var vision_background_color: Color = Color(0.055, 0.095, 0.1, 1.0)
-@export var normal_ambient_color: Color = Color(0.44, 0.46, 0.48, 1.0)
+@export var normal_ambient_color: Color = Color(0.98, 0.76, 0.48, 1.0)
 @export var vision_ambient_color: Color = Color(0.2, 0.36, 0.33, 1.0)
-@export var normal_ambient_energy: float = 1.12
+@export var normal_ambient_energy: float = 1.35
 @export var vision_ambient_energy: float = 0.65
-@export var normal_fog_density: float = 0.006
+@export var normal_fog_density: float = 0.0
 @export var vision_fog_density: float = 0.018
-@export var normal_volumetric_fog_density: float = 0.006
+@export var normal_volumetric_fog_density: float = 0.0
 @export var vision_volumetric_fog_density: float = 0.02
 @export var normal_saturation: float = 1.0
 @export var vision_saturation: float = 0.75
@@ -59,10 +59,10 @@ func _apply_environment(amount: float) -> void:
 	environment.background_color = normal_background_color.lerp(vision_background_color, amount)
 	environment.ambient_light_color = normal_ambient_color.lerp(vision_ambient_color, amount)
 	environment.ambient_light_energy = lerpf(normal_ambient_energy, vision_ambient_energy, amount)
-	environment.fog_enabled = true
+	environment.fog_enabled = amount > 0.01
 	environment.fog_light_color = Color(0.42, 0.43, 0.43, 1.0).lerp(Color(0.16, 0.36, 0.34, 1.0), amount)
 	environment.fog_density = lerpf(normal_fog_density, vision_fog_density, amount)
-	environment.volumetric_fog_enabled = true
+	environment.volumetric_fog_enabled = amount > 0.01
 	environment.volumetric_fog_density = lerpf(normal_volumetric_fog_density, vision_volumetric_fog_density, amount)
 
 	environment.adjustment_enabled = true

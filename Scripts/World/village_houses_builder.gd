@@ -1,27 +1,14 @@
-@tool
 extends Node3D
 
 var house_material: StandardMaterial3D
 var roof_material: StandardMaterial3D
 var window_material: StandardMaterial3D
-var _rebuild_in_editor: bool = false
-
-@export var rebuild_in_editor: bool:
-	set(value):
-		_rebuild_in_editor = false
-		if Engine.is_editor_hint() and is_inside_tree():
-			build()
-	get:
-		return _rebuild_in_editor
-
-func _ready() -> void:
-	build()
 
 func build() -> void:
 	_clear_children()
-	house_material = _material(Color(0.47, 0.48, 0.43, 1.0))
-	roof_material = _material(Color(0.32, 0.33, 0.31, 1.0))
-	window_material = _emissive_material(Color(1.0, 0.86, 0.42, 1.0), 1.9)
+	house_material = _material(Color(0.66, 0.57, 0.45, 1.0))
+	roof_material = _material(Color(0.46, 0.22, 0.15, 1.0))
+	window_material = _emissive_material(Color(1.0, 0.78, 0.36, 1.0), 2.25)
 
 	var house_data: Array = [
 		[Vector3(-24, 0, -20), Vector3(5.0, 2.5, 4.0), -18.0],

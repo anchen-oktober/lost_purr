@@ -1,25 +1,12 @@
-@tool
 extends Node3D
 
 var pole_material: StandardMaterial3D
 var light_material: StandardMaterial3D
-var _rebuild_in_editor: bool = false
-
-@export var rebuild_in_editor: bool:
-	set(value):
-		_rebuild_in_editor = false
-		if Engine.is_editor_hint() and is_inside_tree():
-			build()
-	get:
-		return _rebuild_in_editor
-
-func _ready() -> void:
-	build()
 
 func build() -> void:
 	_clear_children()
-	pole_material = _material(Color(0.24, 0.21, 0.18, 1.0))
-	light_material = _emissive_material(Color(1.0, 0.86, 0.42, 1.0), 1.9)
+	pole_material = _material(Color(0.34, 0.24, 0.16, 1.0))
+	light_material = _emissive_material(Color(1.0, 0.76, 0.34, 1.0), 2.3)
 
 	var lamp_positions: Array[Vector3] = [
 		Vector3(-26, 0, -12), Vector3(-17, 0, -1), Vector3(-8, 0, -14),
@@ -55,9 +42,9 @@ func _add_lamp(lamp_name: String, position: Vector3) -> void:
 	var light: OmniLight3D = OmniLight3D.new()
 	light.name = "WarmGlow"
 	light.position = Vector3(0, 2.1, 0)
-	light.light_color = Color(1.0, 0.82, 0.46, 1.0)
-	light.light_energy = 2.2
-	light.omni_range = 8.5
+	light.light_color = Color(1.0, 0.72, 0.36, 1.0)
+	light.light_energy = 2.6
+	light.omni_range = 9.25
 	light.shadow_enabled = true
 	_add_scene_child(lamp, light)
 
