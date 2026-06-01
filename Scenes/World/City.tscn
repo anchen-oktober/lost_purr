@@ -1,0 +1,357 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Scenes/Player/PlayerCat.tscn" id="1_player"]
+[ext_resource type="Script" uid="uid://ligvtd7i5o31" path="res://Scripts/Camera/camera_3d.gd" id="2_camera"]
+[ext_resource type="Script" uid="uid://d0bllj7m7hfhw" path="res://Scripts/CatVision/cat_vision_manager.gd" id="3_cat_vision"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/JournalUI.tscn" id="4_journal"]
+[ext_resource type="AudioStream" uid="uid://blgh1cskovv0x" path="res://Art/Audio/Music/Contemplation.mp3" id="5_music"]
+[ext_resource type="AudioStream" uid="uid://t12hewewpnfp" path="res://Art/Audio/Music/LostInABadPlace.ogg" id="6_cat_music"]
+[ext_resource type="PackedScene" path="res://Scenes/Portals/ScenePortal.tscn" id="7_portal"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ground"]
+size = Vector2(92, 92)
+
+[sub_resource type="StandardMaterial3D" id="Mat_ground"]
+albedo_color = Color(0.11, 0.12, 0.12, 1)
+roughness = 0.72
+
+[sub_resource type="BoxShape3D" id="Shape_ground"]
+size = Vector3(92, 0.1, 92)
+
+[sub_resource type="Environment" id="Env_city"]
+background_mode = 1
+background_color = Color(0.035, 0.04, 0.045, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.22, 0.24, 0.25, 1)
+ambient_light_energy = 0.72
+fog_enabled = true
+fog_light_color = Color(0.18, 0.2, 0.2, 1)
+fog_light_energy = 0.55
+fog_density = 0.004
+volumetric_fog_density = 0.003
+
+[sub_resource type="BoxMesh" id="Mesh_box"]
+size = Vector3(1, 1, 1)
+
+[sub_resource type="CylinderMesh" id="Mesh_cylinder"]
+top_radius = 0.5
+bottom_radius = 0.5
+height = 1.0
+radial_segments = 10
+
+[sub_resource type="StandardMaterial3D" id="Mat_road"]
+albedo_color = Color(0.08, 0.085, 0.085, 1)
+roughness = 0.52
+
+[sub_resource type="StandardMaterial3D" id="Mat_sidewalk"]
+albedo_color = Color(0.2, 0.2, 0.18, 1)
+roughness = 0.78
+
+[sub_resource type="StandardMaterial3D" id="Mat_building"]
+albedo_color = Color(0.18, 0.18, 0.17, 1)
+roughness = 0.86
+
+[sub_resource type="StandardMaterial3D" id="Mat_building_dark"]
+albedo_color = Color(0.105, 0.11, 0.115, 1)
+roughness = 0.88
+
+[sub_resource type="StandardMaterial3D" id="Mat_window"]
+albedo_color = Color(0.95, 0.74, 0.38, 1)
+emission_enabled = true
+emission = Color(0.95, 0.62, 0.28, 1)
+emission_energy_multiplier = 0.85
+
+[sub_resource type="StandardMaterial3D" id="Mat_lamp"]
+albedo_color = Color(0.12, 0.12, 0.11, 1)
+roughness = 0.72
+
+[sub_resource type="StandardMaterial3D" id="Mat_metal"]
+albedo_color = Color(0.18, 0.19, 0.18, 1)
+roughness = 0.68
+
+[sub_resource type="StandardMaterial3D" id="Mat_wood"]
+albedo_color = Color(0.28, 0.18, 0.11, 1)
+roughness = 0.84
+
+[sub_resource type="StandardMaterial3D" id="Mat_light"]
+albedo_color = Color(1, 0.74, 0.42, 1)
+emission_enabled = true
+emission = Color(1, 0.62, 0.32, 1)
+emission_energy_multiplier = 2.4
+
+[sub_resource type="StandardMaterial3D" id="Mat_car"]
+albedo_color = Color(0.19, 0.21, 0.22, 1)
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="Mat_container"]
+albedo_color = Color(0.14, 0.2, 0.18, 1)
+roughness = 0.8
+
+[sub_resource type="StandardMaterial3D" id="Mat_construction"]
+albedo_color = Color(0.74, 0.42, 0.12, 1)
+roughness = 0.78
+
+[sub_resource type="StandardMaterial3D" id="Mat_rain"]
+transparency = 1
+albedo_color = Color(0.55, 0.65, 0.72, 0.38)
+emission_enabled = true
+emission = Color(0.35, 0.45, 0.55, 1)
+emission_energy_multiplier = 0.2
+
+[node name="City" type="Node3D"]
+
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("PlaneMesh_ground")
+surface_material_override/0 = SubResource("Mat_ground")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("Shape_ground")
+
+[node name="PlayerCat" parent="." instance=ExtResource("1_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 0.5, 0)
+
+[node name="CameraRig" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="CameraRig" node_paths=PackedStringArray("target")]
+transform = Transform3D(0.8642748, -0.4120498, 0.2885204, 0, 0.57357645, 0.81915206, -0.5030199, -0.70797247, 0.4957277, 0, 22, 18)
+fov = 58.0
+script = ExtResource("2_camera")
+target = NodePath("../../PlayerCat")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.8660254, -0.3213938, 0.3830222, 0, 0.76604444, 0.64278764, -0.5, -0.5566704, 0.66341394, 0, 0, 0)
+light_color = Color(0.42, 0.46, 0.48, 1)
+light_energy = 0.28
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Env_city")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_music")
+volume_db = -19.0
+autoplay = true
+
+[node name="CatVisionMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_cat_music")
+volume_db = -80.0
+autoplay = true
+
+[node name="CityLayout" type="Node3D" parent="."]
+
+[node name="Road_Main" type="MeshInstance3D" parent="CityLayout"]
+transform = Transform3D(9, 0, 0, 0, 0.05, 0, 0, 0, 88, 0, 0.03, 0)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_road")
+
+[node name="Road_Cross" type="MeshInstance3D" parent="CityLayout"]
+transform = Transform3D(76, 0, 0, 0, 0.05, 0, 0, 0, 8, 0, 0.04, -16)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_road")
+
+[node name="Sidewalk_West" type="MeshInstance3D" parent="CityLayout"]
+transform = Transform3D(3, 0, 0, 0, 0.06, 0, 0, 0, 88, -8, 0.06, 0)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_sidewalk")
+
+[node name="Sidewalk_East" type="MeshInstance3D" parent="CityLayout"]
+transform = Transform3D(3, 0, 0, 0, 0.06, 0, 0, 0, 88, 8, 0.06, 0)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_sidewalk")
+
+[node name="Buildings" type="Node3D" parent="CityLayout"]
+
+[node name="ApartmentBlock_01" type="MeshInstance3D" parent="CityLayout/Buildings"]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 10, -25, 4, -26)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_building")
+
+[node name="ApartmentBlock_02" type="MeshInstance3D" parent="CityLayout/Buildings"]
+transform = Transform3D(10, 0, 0, 0, 12, 0, 0, 0, 8, 22, 6, -28)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_building_dark")
+
+[node name="Residential_01" type="MeshInstance3D" parent="CityLayout/Buildings"]
+transform = Transform3D(9, 0, 0, 0, 5.5, 0, 0, 0, 7, -26, 2.75, 22)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_building")
+
+[node name="Residential_02" type="MeshInstance3D" parent="CityLayout/Buildings"]
+transform = Transform3D(7, 0, 0, 0, 6.5, 0, 0, 0, 9, 24, 3.25, 18)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_building_dark")
+
+[node name="Alley_Wall_01" type="MeshInstance3D" parent="CityLayout/Buildings"]
+transform = Transform3D(2.5, 0, 0, 0, 3.0, 0, 0, 0, 18, -14, 1.5, 22)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_building_dark")
+
+[node name="Alley_Wall_02" type="MeshInstance3D" parent="CityLayout/Buildings"]
+transform = Transform3D(2.5, 0, 0, 0, 3.0, 0, 0, 0, 18, 14, 1.5, 20)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_building_dark")
+
+[node name="Window_01" type="MeshInstance3D" parent="CityLayout/Buildings"]
+transform = Transform3D(0.08, 0, 0, 0, 0.8, 0, 0, 0, 1.4, -20.95, 4.3, -28)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_window")
+
+[node name="Window_02" type="MeshInstance3D" parent="CityLayout/Buildings"]
+transform = Transform3D(0.08, 0, 0, 0, 0.8, 0, 0, 0, 1.4, 16.95, 7.2, -28)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_window")
+
+[node name="Window_03" type="MeshInstance3D" parent="CityLayout/Buildings"]
+transform = Transform3D(0.08, 0, 0, 0, 0.7, 0, 0, 0, 1.2, -21.45, 2.8, 22)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_window")
+
+[node name="Parking" type="Node3D" parent="CityLayout"]
+
+[node name="ParkingLot" type="MeshInstance3D" parent="CityLayout/Parking"]
+transform = Transform3D(18, 0, 0, 0, 0.04, 0, 0, 0, 12, 25, 0.07, -7)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_sidewalk")
+
+[node name="Car_01" type="MeshInstance3D" parent="CityLayout/Parking"]
+transform = Transform3D(2.8, 0, 0, 0, 0.8, 0, 0, 0, 1.5, 22, 0.45, -7)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_car")
+
+[node name="Car_02" type="MeshInstance3D" parent="CityLayout/Parking"]
+transform = Transform3D(2.8, 0, 0, 0, 0.8, 0, 0, 0, 1.5, 28, 0.45, -3)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_car")
+
+[node name="BusStop" type="Node3D" parent="CityLayout"]
+
+[node name="BusStopShelter" type="MeshInstance3D" parent="CityLayout/BusStop"]
+transform = Transform3D(5, 0, 0, 0, 2.3, 0, 0, 0, 0.32, -12, 1.15, -18)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_metal")
+
+[node name="BusStopBench" type="MeshInstance3D" parent="CityLayout/BusStop"]
+transform = Transform3D(3.3, 0, 0, 0, 0.32, 0, 0, 0, 0.75, -12, 0.38, -17.2)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_wood")
+
+[node name="StreetObjects" type="Node3D" parent="CityLayout"]
+
+[node name="Dumpster_01" type="MeshInstance3D" parent="CityLayout/StreetObjects"]
+transform = Transform3D(2.4, 0, 0, 0, 1.15, 0, 0, 0, 1.4, -15, 0.58, 18)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_container")
+
+[node name="Dumpster_02" type="MeshInstance3D" parent="CityLayout/StreetObjects"]
+transform = Transform3D(2.2, 0, 0, 0, 1.05, 0, 0, 0, 1.4, 16, 0.53, 15)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_container")
+
+[node name="ConstructionFence_01" type="MeshInstance3D" parent="CityLayout/StreetObjects"]
+transform = Transform3D(10, 0, 0, 0, 1.0, 0, 0, 0, 0.24, -28, 0.5, 4)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_construction")
+
+[node name="ConstructionFence_02" type="MeshInstance3D" parent="CityLayout/StreetObjects"]
+transform = Transform3D(0.24, 0, 0, 0, 1.0, 0, 0, 0, 7, -33, 0.5, 7.5)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_construction")
+
+[node name="StreetLamps" type="Node3D" parent="CityLayout"]
+
+[node name="Lamp_01_Pole" type="MeshInstance3D" parent="CityLayout/StreetLamps"]
+transform = Transform3D(0.16, 0, 0, 0, 3.2, 0, 0, 0, 0.16, -7, 1.6, -23)
+mesh = SubResource("Mesh_cylinder")
+surface_material_override/0 = SubResource("Mat_lamp")
+
+[node name="Lamp_01_Head" type="MeshInstance3D" parent="CityLayout/StreetLamps"]
+transform = Transform3D(0.65, 0, 0, 0, 0.32, 0, 0, 0, 0.65, -7, 3.3, -23)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_light")
+
+[node name="Lamp_01_Glow" type="OmniLight3D" parent="CityLayout/StreetLamps"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 3.3, -23)
+light_color = Color(1, 0.67, 0.42, 1)
+light_energy = 2.4
+omni_range = 10
+shadow_enabled = true
+
+[node name="Lamp_02_Pole" type="MeshInstance3D" parent="CityLayout/StreetLamps"]
+transform = Transform3D(0.16, 0, 0, 0, 3.2, 0, 0, 0, 0.16, 8, 1.6, 14)
+mesh = SubResource("Mesh_cylinder")
+surface_material_override/0 = SubResource("Mat_lamp")
+
+[node name="Lamp_02_Head" type="MeshInstance3D" parent="CityLayout/StreetLamps"]
+transform = Transform3D(0.65, 0, 0, 0, 0.32, 0, 0, 0, 0.65, 8, 3.3, 14)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_light")
+
+[node name="Lamp_02_Glow" type="OmniLight3D" parent="CityLayout/StreetLamps"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3.3, 14)
+light_color = Color(1, 0.67, 0.42, 1)
+light_energy = 2.1
+omni_range = 9
+shadow_enabled = true
+
+[node name="MetroEntrance" type="Node3D" parent="CityLayout"]
+
+[node name="EntranceStairs" type="MeshInstance3D" parent="CityLayout/MetroEntrance"]
+transform = Transform3D(8, 0, 0, 0, 0.3, 0, 0, 0, 6, 36, 0.15, 24)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_sidewalk")
+
+[node name="EntranceFrame" type="MeshInstance3D" parent="CityLayout/MetroEntrance"]
+transform = Transform3D(8, 0, 0, 0, 3.5, 0, 0, 0, 0.45, 36, 1.75, 20)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_building_dark")
+
+[node name="MetroSign" type="MeshInstance3D" parent="CityLayout/MetroEntrance"]
+transform = Transform3D(4, 0, 0, 0, 0.75, 0, 0, 0, 0.16, 36, 3.75, 19.7)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_light")
+
+[node name="Rain" type="Node3D" parent="."]
+
+[node name="RainStreak_01" type="MeshInstance3D" parent="Rain"]
+transform = Transform3D(0.04, 0, 0.02, 0, 3.2, 0, -0.02, 0, 0.04, -20, 5, -18)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_rain")
+
+[node name="RainStreak_02" type="MeshInstance3D" parent="Rain"]
+transform = Transform3D(0.04, 0, 0.02, 0, 3.2, 0, -0.02, 0, 0.04, 4, 5, -5)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_rain")
+
+[node name="RainStreak_03" type="MeshInstance3D" parent="Rain"]
+transform = Transform3D(0.04, 0, 0.02, 0, 3.2, 0, -0.02, 0, 0.04, 24, 5, 16)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_rain")
+
+[node name="SpawnPoints" type="Node3D" parent="."]
+
+[node name="SpawnFromVillage" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 0.5, 4)
+
+[node name="SpawnFromPark" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 0.5, 0)
+
+[node name="SpawnFromCity" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0.5, 22)
+
+[node name="SpawnFromMetro" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 0.5, 25)
+
+[node name="Portals" type="Node3D" parent="."]
+
+[node name="PortalToMetro" parent="Portals" instance=ExtResource("7_portal")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 0, 24)
+target_scene_path = "res://Scenes/World/Metro.tscn"
+target_spawn_name = "SpawnFromCity"
+prompt_text = "[E] Enter metro"
+
+[node name="CatVisionManager" type="Node" parent="."]
+script = ExtResource("3_cat_vision")
+
+[node name="JournalUI" parent="." instance=ExtResource("4_journal")]

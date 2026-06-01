@@ -1,0 +1,323 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Scenes/Player/PlayerCat.tscn" id="1_player"]
+[ext_resource type="Script" uid="uid://ligvtd7i5o31" path="res://Scripts/Camera/camera_3d.gd" id="2_camera"]
+[ext_resource type="Script" uid="uid://d0bllj7m7hfhw" path="res://Scripts/CatVision/cat_vision_manager.gd" id="3_cat_vision"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/JournalUI.tscn" id="4_journal"]
+[ext_resource type="AudioStream" uid="uid://blgh1cskovv0x" path="res://Art/Audio/Music/Contemplation.mp3" id="5_music"]
+[ext_resource type="AudioStream" uid="uid://t12hewewpnfp" path="res://Art/Audio/Music/LostInABadPlace.ogg" id="6_cat_music"]
+[ext_resource type="PackedScene" path="res://Scenes/Portals/ScenePortal.tscn" id="7_portal"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ground"]
+size = Vector2(84, 84)
+
+[sub_resource type="StandardMaterial3D" id="Mat_ground"]
+albedo_color = Color(0.29, 0.36, 0.22, 1)
+roughness = 0.92
+
+[sub_resource type="BoxShape3D" id="Shape_ground"]
+size = Vector3(84, 0.1, 84)
+
+[sub_resource type="Environment" id="Env_park"]
+background_mode = 1
+background_color = Color(0.42, 0.24, 0.16, 1)
+ambient_light_source = 2
+ambient_light_color = Color(1, 0.66, 0.4, 1)
+ambient_light_energy = 1.08
+fog_light_color = Color(0.78, 0.46, 0.28, 1)
+fog_density = 0.0
+volumetric_fog_density = 0.0
+
+[sub_resource type="BoxMesh" id="Mesh_box"]
+size = Vector3(1, 1, 1)
+
+[sub_resource type="CylinderMesh" id="Mesh_cylinder"]
+top_radius = 0.5
+bottom_radius = 0.5
+height = 1.0
+radial_segments = 12
+
+[sub_resource type="CylinderMesh" id="Mesh_cone"]
+top_radius = 0.08
+bottom_radius = 0.6
+height = 1.4
+radial_segments = 7
+
+[sub_resource type="StandardMaterial3D" id="Mat_path"]
+albedo_color = Color(0.62, 0.49, 0.34, 1)
+roughness = 0.9
+
+[sub_resource type="StandardMaterial3D" id="Mat_wood"]
+albedo_color = Color(0.42, 0.25, 0.13, 1)
+roughness = 0.86
+
+[sub_resource type="StandardMaterial3D" id="Mat_leaf_gold"]
+albedo_color = Color(0.66, 0.42, 0.14, 1)
+roughness = 0.92
+
+[sub_resource type="StandardMaterial3D" id="Mat_leaf_green"]
+albedo_color = Color(0.26, 0.38, 0.2, 1)
+roughness = 0.92
+
+[sub_resource type="StandardMaterial3D" id="Mat_lamp"]
+albedo_color = Color(0.24, 0.18, 0.13, 1)
+roughness = 0.8
+
+[sub_resource type="StandardMaterial3D" id="Mat_light"]
+albedo_color = Color(1, 0.72, 0.32, 1)
+emission_enabled = true
+emission = Color(1, 0.62, 0.24, 1)
+emission_energy_multiplier = 2.1
+
+[sub_resource type="StandardMaterial3D" id="Mat_playground"]
+albedo_color = Color(0.58, 0.24, 0.18, 1)
+roughness = 0.82
+
+[sub_resource type="StandardMaterial3D" id="Mat_metal"]
+albedo_color = Color(0.24, 0.25, 0.22, 1)
+roughness = 0.74
+
+[node name="Park" type="Node3D"]
+
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("PlaneMesh_ground")
+surface_material_override/0 = SubResource("Mat_ground")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("Shape_ground")
+
+[node name="PlayerCat" parent="." instance=ExtResource("1_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0.5, 0)
+
+[node name="CameraRig" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="CameraRig" node_paths=PackedStringArray("target")]
+transform = Transform3D(0.8642748, -0.4120498, 0.2885204, 0, 0.57357645, 0.81915206, -0.5030199, -0.70797247, 0.4957277, 0, 22, 18)
+fov = 58.0
+script = ExtResource("2_camera")
+target = NodePath("../../PlayerCat")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.8660254, -0.3213938, 0.3830222, 0, 0.76604444, 0.64278764, -0.5, -0.5566704, 0.66341394, 0, 0, 0)
+light_color = Color(1, 0.58, 0.3, 1)
+light_energy = 0.95
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Env_park")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_music")
+volume_db = -17.0
+autoplay = true
+
+[node name="CatVisionMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_cat_music")
+volume_db = -80.0
+autoplay = true
+
+[node name="ParkLayout" type="Node3D" parent="."]
+
+[node name="Paths" type="Node3D" parent="ParkLayout"]
+
+[node name="MainPath" type="MeshInstance3D" parent="ParkLayout/Paths"]
+transform = Transform3D(4.0, 0, 0, 0, 0.04, 0, 0, 0, 70, 0, 0.02, 0)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_path")
+
+[node name="CrossPath" type="MeshInstance3D" parent="ParkLayout/Paths"]
+transform = Transform3D(56, 0, 0, 0, 0.04, 0, 0, 0, 3.2, 0, 0.025, -8)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_path")
+
+[node name="PlaygroundPath" type="MeshInstance3D" parent="ParkLayout/Paths"]
+transform = Transform3D(26, 0, 0, 0, 0.04, 0, 0, 0, 2.4, -12, 0.03, 17)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_path")
+
+[node name="Trees" type="Node3D" parent="ParkLayout"]
+
+[node name="Tree_01_Trunk" type="MeshInstance3D" parent="ParkLayout/Trees"]
+transform = Transform3D(0.34, 0, 0, 0, 1.9, 0, 0, 0, 0.34, -28, 0.95, -20)
+mesh = SubResource("Mesh_cylinder")
+surface_material_override/0 = SubResource("Mat_wood")
+
+[node name="Tree_01_Crown" type="MeshInstance3D" parent="ParkLayout/Trees"]
+transform = Transform3D(2.2, 0, 0, 0, 1.9, 0, 0, 0, 2.2, -28, 2.55, -20)
+mesh = SubResource("Mesh_cone")
+surface_material_override/0 = SubResource("Mat_leaf_gold")
+
+[node name="Tree_02_Trunk" type="MeshInstance3D" parent="ParkLayout/Trees"]
+transform = Transform3D(0.32, 0, 0, 0, 1.7, 0, 0, 0, 0.32, -16, 0.85, -26)
+mesh = SubResource("Mesh_cylinder")
+surface_material_override/0 = SubResource("Mat_wood")
+
+[node name="Tree_02_Crown" type="MeshInstance3D" parent="ParkLayout/Trees"]
+transform = Transform3D(2.0, 0, 0, 0, 1.75, 0, 0, 0, 2.0, -16, 2.35, -26)
+mesh = SubResource("Mesh_cone")
+surface_material_override/0 = SubResource("Mat_leaf_green")
+
+[node name="Tree_03_Trunk" type="MeshInstance3D" parent="ParkLayout/Trees"]
+transform = Transform3D(0.36, 0, 0, 0, 2.1, 0, 0, 0, 0.36, 18, 1.05, -24)
+mesh = SubResource("Mesh_cylinder")
+surface_material_override/0 = SubResource("Mat_wood")
+
+[node name="Tree_03_Crown" type="MeshInstance3D" parent="ParkLayout/Trees"]
+transform = Transform3D(2.4, 0, 0, 0, 2.05, 0, 0, 0, 2.4, 18, 2.8, -24)
+mesh = SubResource("Mesh_cone")
+surface_material_override/0 = SubResource("Mat_leaf_gold")
+
+[node name="Tree_04_Trunk" type="MeshInstance3D" parent="ParkLayout/Trees"]
+transform = Transform3D(0.3, 0, 0, 0, 1.55, 0, 0, 0, 0.3, 28, 0.78, 18)
+mesh = SubResource("Mesh_cylinder")
+surface_material_override/0 = SubResource("Mat_wood")
+
+[node name="Tree_04_Crown" type="MeshInstance3D" parent="ParkLayout/Trees"]
+transform = Transform3D(1.8, 0, 0, 0, 1.6, 0, 0, 0, 1.8, 28, 2.16, 18)
+mesh = SubResource("Mesh_cone")
+surface_material_override/0 = SubResource("Mat_leaf_green")
+
+[node name="Bushes" type="Node3D" parent="ParkLayout"]
+
+[node name="Bush_01" type="MeshInstance3D" parent="ParkLayout/Bushes"]
+transform = Transform3D(1.8, 0, 0, 0, 0.55, 0, 0, 0, 1.2, -22, 0.28, 10)
+mesh = SubResource("Mesh_cylinder")
+surface_material_override/0 = SubResource("Mat_leaf_green")
+
+[node name="Bush_02" type="MeshInstance3D" parent="ParkLayout/Bushes"]
+transform = Transform3D(1.4, 0, 0, 0, 0.5, 0, 0, 0, 1.5, 8, 0.25, -16)
+mesh = SubResource("Mesh_cylinder")
+surface_material_override/0 = SubResource("Mat_leaf_gold")
+
+[node name="Bush_03" type="MeshInstance3D" parent="ParkLayout/Bushes"]
+transform = Transform3D(1.6, 0, 0, 0, 0.55, 0, 0, 0, 1.1, 22, 0.28, 6)
+mesh = SubResource("Mesh_cylinder")
+surface_material_override/0 = SubResource("Mat_leaf_green")
+
+[node name="Benches" type="Node3D" parent="ParkLayout"]
+
+[node name="Bench_01" type="MeshInstance3D" parent="ParkLayout/Benches"]
+transform = Transform3D(3.4, 0, 0, 0, 0.28, 0, 0, 0, 0.85, -18, 0.36, -5)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_wood")
+
+[node name="Bench_02" type="MeshInstance3D" parent="ParkLayout/Benches"]
+transform = Transform3D(3.2, 0, 0, 0, 0.28, 0, 0, 0, 0.85, 14, 0.36, 8)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_wood")
+
+[node name="Lamps" type="Node3D" parent="ParkLayout"]
+
+[node name="Lamp_01_Pole" type="MeshInstance3D" parent="ParkLayout/Lamps"]
+transform = Transform3D(0.14, 0, 0, 0, 2.5, 0, 0, 0, 0.14, -26, 1.25, -4)
+mesh = SubResource("Mesh_cylinder")
+surface_material_override/0 = SubResource("Mat_lamp")
+
+[node name="Lamp_01_Head" type="MeshInstance3D" parent="ParkLayout/Lamps"]
+transform = Transform3D(0.55, 0, 0, 0, 0.32, 0, 0, 0, 0.55, -26, 2.65, -4)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_light")
+
+[node name="Lamp_01_Glow" type="OmniLight3D" parent="ParkLayout/Lamps"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 2.65, -4)
+light_color = Color(1, 0.65, 0.34, 1)
+light_energy = 2.2
+omni_range = 9.0
+shadow_enabled = true
+
+[node name="Lamp_02_Pole" type="MeshInstance3D" parent="ParkLayout/Lamps"]
+transform = Transform3D(0.14, 0, 0, 0, 2.5, 0, 0, 0, 0.14, 3, 1.25, -9)
+mesh = SubResource("Mesh_cylinder")
+surface_material_override/0 = SubResource("Mat_lamp")
+
+[node name="Lamp_02_Head" type="MeshInstance3D" parent="ParkLayout/Lamps"]
+transform = Transform3D(0.55, 0, 0, 0, 0.32, 0, 0, 0, 0.55, 3, 2.65, -9)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_light")
+
+[node name="Lamp_02_Glow" type="OmniLight3D" parent="ParkLayout/Lamps"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2.65, -9)
+light_color = Color(1, 0.65, 0.34, 1)
+light_energy = 2.1
+omni_range = 8.5
+shadow_enabled = true
+
+[node name="Fence_North" type="MeshInstance3D" parent="ParkLayout"]
+transform = Transform3D(70, 0, 0, 0, 1.1, 0, 0, 0, 0.25, 0, 0.55, -34)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_wood")
+
+[node name="Fence_West" type="MeshInstance3D" parent="ParkLayout"]
+transform = Transform3D(0.25, 0, 0, 0, 1.1, 0, 0, 0, 58, -36, 0.55, 0)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_wood")
+
+[node name="Playground" type="Node3D" parent="ParkLayout"]
+
+[node name="Sandbox" type="MeshInstance3D" parent="ParkLayout/Playground"]
+transform = Transform3D(7, 0, 0, 0, 0.16, 0, 0, 0, 5, -13, 0.08, 21)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_path")
+
+[node name="Slide" type="MeshInstance3D" parent="ParkLayout/Playground"]
+transform = Transform3D(1.1, 0, 0.55, 0, 0.35, 0, -0.55, 0, 2.2, -17, 0.55, 20)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_playground")
+
+[node name="SwingFrame" type="MeshInstance3D" parent="ParkLayout/Playground"]
+transform = Transform3D(3.8, 0, 0, 0, 2.4, 0, 0, 0, 0.15, -8, 1.2, 21)
+mesh = SubResource("Mesh_box")
+surface_material_override/0 = SubResource("Mat_metal")
+
+[node name="Gazebo" type="Node3D" parent="ParkLayout"]
+
+[node name="GazeboBase" type="MeshInstance3D" parent="ParkLayout/Gazebo"]
+transform = Transform3D(5, 0, 0, 0, 0.25, 0, 0, 0, 5, 20, 0.13, -15)
+mesh = SubResource("Mesh_cylinder")
+surface_material_override/0 = SubResource("Mat_wood")
+
+[node name="GazeboRoof" type="MeshInstance3D" parent="ParkLayout/Gazebo"]
+transform = Transform3D(5.8, 0, 0, 0, 0.9, 0, 0, 0, 5.8, 20, 2.6, -15)
+mesh = SubResource("Mesh_cone")
+surface_material_override/0 = SubResource("Mat_wood")
+
+[node name="TrashBins" type="Node3D" parent="ParkLayout"]
+
+[node name="TrashBin_01" type="MeshInstance3D" parent="ParkLayout/TrashBins"]
+transform = Transform3D(0.75, 0, 0, 0, 0.9, 0, 0, 0, 0.75, -12, 0.45, -4)
+mesh = SubResource("Mesh_cylinder")
+surface_material_override/0 = SubResource("Mat_metal")
+
+[node name="TrashBin_02" type="MeshInstance3D" parent="ParkLayout/TrashBins"]
+transform = Transform3D(0.75, 0, 0, 0, 0.9, 0, 0, 0, 0.75, 17, 0.45, 4)
+mesh = SubResource("Mesh_cylinder")
+surface_material_override/0 = SubResource("Mat_metal")
+
+[node name="SpawnPoints" type="Node3D" parent="."]
+
+[node name="SpawnFromVillage" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0.5, 0)
+
+[node name="SpawnFromPark" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0.5, 0)
+
+[node name="SpawnFromCity" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0.5, -4)
+
+[node name="SpawnFromMetro" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0.5, 4)
+
+[node name="Portals" type="Node3D" parent="."]
+
+[node name="PortalToCity" parent="Portals" instance=ExtResource("7_portal")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 0, 0)
+target_scene_path = "res://Scenes/World/City.tscn"
+target_spawn_name = "SpawnFromPark"
+prompt_text = "[E] Leave the park"
+
+[node name="CatVisionManager" type="Node" parent="."]
+script = ExtResource("3_cat_vision")
+
+[node name="JournalUI" parent="." instance=ExtResource("4_journal")]

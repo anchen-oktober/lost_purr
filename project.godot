@@ -20,6 +20,7 @@ config/icon="res://Art/icon.svg"
 
 [autoload]
 
+GameManager="*res://Scripts/Core/game_manager.gd"
 JournalManager="*res://Scripts/Journal/journal_manager.gd"
 CharacterJournalManager="*res://Scripts/Journal/character_journal_manager.gd"
 

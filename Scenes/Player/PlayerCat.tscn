@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" uid="uid://mofmms1d68ku" path="res://Scripts/Player/player_cat.gd" id="1_player"]
+[ext_resource type="Texture2D" uid="uid://boakjd6thqbpl" path="res://Art/CatBilboard.png" id="2_cat"]
+[ext_resource type="Shader" uid="uid://imflfkmet43p" path="res://Shaders/cat_outline.gdshader" id="3_outline"]
+[ext_resource type="Script" uid="uid://cibuicvn804w1" path="res://Scripts/Cat/cat_outline_visibility.gd" id="4_outline_visibility"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_player"]
+radius = 0.45
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_outline"]
+render_priority = 0
+shader = ExtResource("3_outline")
+shader_parameter/cat_texture = ExtResource("2_cat")
+shader_parameter/outline_color = Color(1, 0.72, 0.22, 0.82)
+shader_parameter/outline_pixels = 5.0
+shader_parameter/glow_pixels = 13.0
+shader_parameter/alpha_threshold = 0.08
+
+[node name="PlayerCat" type="CharacterBody3D"]
+script = ExtResource("1_player")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_player")
+
+[node name="CatBehindWallsGlow" type="Sprite3D" parent="."]
+transform = Transform3D(1.22, 0, 0, 0, 1.22, 0, 0, 0, 1.22, 0, 0.74, 0)
+material_override = SubResource("ShaderMaterial_outline")
+pixel_size = 0.003
+billboard = 1
+no_depth_test = true
+texture = ExtResource("2_cat")
+script = ExtResource("4_outline_visibility")
+
+[node name="CatBillboard" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.74, 0)
+pixel_size = 0.003
+billboard = 1
+texture = ExtResource("2_cat")
+
+[node name="CatTrackingLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+light_color = Color(1, 0.78, 0.42, 1)
+light_energy = 0.45
+omni_range = 2.4

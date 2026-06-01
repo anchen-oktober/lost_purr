@@ -1,6 +1,6 @@
 extends Control
 
-@export var game_scene_path: String = "res://MainScene.tscn"
+@export var game_scene_path: String = "res://Scenes/World/Village.tscn"
 
 @onready var new_game_button: Button = $Root/Menu/NewGameButton
 @onready var load_button: Button = $Root/Menu/LoadButton
@@ -19,7 +19,7 @@ func _ready() -> void:
 	settings_button.disabled = true
 
 func _start_new_game() -> void:
-	get_tree().change_scene_to_file(game_scene_path)
+	await GameManager.change_scene(game_scene_path, "SpawnFromVillage")
 
 func _exit_game() -> void:
 	get_tree().quit()
