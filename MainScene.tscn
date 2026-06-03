@@ -54,6 +54,56 @@ fog_sun_scatter = 0.01
 fog_density = 0.0
 volumetric_fog_density = 0.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3slyh"]
+albedo_color = Color(0.32941177, 0.9647059, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_xtmsi"]
+radius = 0.1
+height = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_anuui"]
+albedo_color = Color(0.7593292, 1.540184e-06, 0.4585306, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_8qg48"]
+radius = 0.1
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xtmsi"]
+albedo_color = Color(0.8, 0.6933333, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1ms6g"]
+size = Vector3(4.775, 4.5, 4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8qg48"]
+albedo_color = Color(1, 0.7866667, 0.19999999, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_h86nx"]
+size = Vector3(3, 2.4, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7jkkr"]
+size = Vector3(4.505, 3.5, 3.09)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ms6g"]
+albedo_color = Color(0.8496173, 0.4137315, 5.7756904e-07, 0.39607844)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h86nx"]
+albedo_color = Color(0.7058824, 0.56078434, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5i0cj"]
+size = Vector3(6.775, 4.25, 4.735)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nlw8m"]
+size = Vector3(0.15, 0.5, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kvyqs"]
+size = Vector3(0.15, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i1thg"]
+size = Vector3(0.15, 0.7, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3slyh"]
+size = Vector3(1.5, 1.5, 1.5)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7jkkr"]
 albedo_color = Color(0.64, 0.54, 0.42, 1)
 roughness = 0.9
@@ -746,6 +796,7 @@ shape = SubResource("BoxShape3D_1305s")
 
 [node name="PlayerCat" type="CharacterBody3D" parent="." unique_id=795165568]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.5, 3)
+visible = false
 script = ExtResource("1_3mqji")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerCat" unique_id=1671021864]
@@ -799,9 +850,76 @@ stream = ExtResource("20_cat_vision_music")
 volume_db = -80.0
 autoplay = true
 
+[node name="Blockout" type="Node3D" parent="." unique_id=949445694]
+
+[node name="pers" type="Node3D" parent="Blockout" unique_id=1924815139]
+
+[node name="cat" type="MeshInstance3D" parent="Blockout/pers" unique_id=185502477]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.261044, 0.1426363, 26.88258)
+material_override = SubResource("StandardMaterial3D_3slyh")
+mesh = SubResource("CapsuleMesh_xtmsi")
+
+[node name="human" type="MeshInstance3D" parent="Blockout/pers" unique_id=1190689642]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.189442, 0.55865526, 26.623592)
+material_override = SubResource("StandardMaterial3D_anuui")
+mesh = SubResource("CapsuleMesh_8qg48")
+
+[node name="houses_01" type="Node3D" parent="Blockout" unique_id=1251636146]
+
+[node name="01" type="MeshInstance3D" parent="Blockout/houses_01" unique_id=40437276]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.214384, 2.305502, 31.890472)
+material_override = SubResource("StandardMaterial3D_xtmsi")
+mesh = SubResource("BoxMesh_1ms6g")
+
+[node name="houses_02" type="Node3D" parent="Blockout" unique_id=1540567250]
+
+[node name="01" type="MeshInstance3D" parent="Blockout/houses_02" unique_id=1676023262]
+transform = Transform3D(2.0295463, 0, 0, 0, 1, 0, 0, 0, 1.8800855, -23.544134, 1.2982664, 32.153156)
+material_override = SubResource("StandardMaterial3D_8qg48")
+mesh = SubResource("BoxMesh_h86nx")
+
+[node name="houses_03" type="Node3D" parent="Blockout" unique_id=1750523845]
+
+[node name="01" type="MeshInstance3D" parent="Blockout/houses_03" unique_id=1687109576]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.461699, 1.8377762, 32.530346)
+mesh = SubResource("BoxMesh_7jkkr")
+surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
+
+[node name="houses_04" type="Node3D" parent="Blockout" unique_id=1960062669]
+
+[node name="01" type="MeshInstance3D" parent="Blockout/houses_04" unique_id=1369048692]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.679296, 2.2430563, 32.006172)
+material_override = SubResource("StandardMaterial3D_h86nx")
+mesh = SubResource("BoxMesh_5i0cj")
+
+[node name="fence_01" type="Node3D" parent="Blockout" unique_id=327404663]
+
+[node name="01" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=135782610]
+transform = Transform3D(0.0088312235, 0, -0.999961, 0, 1, 0, 0.999961, 0, 0.0088312235, -25.878992, 0.27687645, 26.311007)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="fence_02" type="Node3D" parent="Blockout" unique_id=1697671563]
+
+[node name="01" type="MeshInstance3D" parent="Blockout/fence_02" unique_id=436405457]
+transform = Transform3D(0.035632055, 0, 0.999365, 0, 1, 0, -0.999365, 0, 0.035632055, -21.803577, 0.5301075, 26.095526)
+mesh = SubResource("BoxMesh_kvyqs")
+
+[node name="fence_03" type="Node3D" parent="Blockout" unique_id=2063598646]
+
+[node name="01" type="MeshInstance3D" parent="Blockout/fence_03" unique_id=276058907]
+transform = Transform3D(-0.03997481, 0, -0.9992007, 0, 1, 0, 0.9992007, 0, -0.03997481, -20.241642, 0.37384892, 26.096355)
+mesh = SubResource("BoxMesh_i1thg")
+
+[node name="garage_01" type="Node3D" parent="Blockout" unique_id=615810443]
+
+[node name="01" type="MeshInstance3D" parent="Blockout/garage_01" unique_id=851231399]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.2829437, 0.49166203, 30.56288)
+mesh = SubResource("BoxMesh_3slyh")
+
 [node name="Village" type="Node3D" parent="." unique_id=2138485291]
 
 [node name="Roads" type="Node3D" parent="Village" unique_id=13723791]
+visible = false
 
 [node name="Road_01_MainStreet" type="MeshInstance3D" parent="Village/Roads" unique_id=731580571]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.015, 0)
@@ -844,6 +962,7 @@ material_override = SubResource("StandardMaterial3D_7jkkr")
 mesh = SubResource("BoxMesh_5o6vq")
 
 [node name="Houses" type="Node3D" parent="Village" unique_id=1174888390]
+visible = false
 
 [node name="House_01" type="StaticBody3D" parent="Village/Houses" unique_id=1536848912]
 transform = Transform3D(0.95105654, 0, -0.309017, 0, 1, 0, 0.309017, 0, 0.95105654, -24, 0, -20)
@@ -1322,6 +1441,7 @@ material_override = SubResource("StandardMaterial3D_i1thg")
 mesh = SubResource("BoxMesh_sn4nu")
 
 [node name="StreetLamps" type="Node3D" parent="Village" unique_id=949193091]
+visible = false
 
 [node name="StreetLamp_01" type="Node3D" parent="Village/StreetLamps" unique_id=123332482]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0, -12)
@@ -1624,6 +1744,7 @@ shadow_enabled = true
 omni_range = 9.25
 
 [node name="Trees" type="Node3D" parent="Village" unique_id=1359268473]
+visible = false
 
 [node name="PineTree_01" type="Node3D" parent="Village/Trees" unique_id=993235436]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -29, 0, -27)
@@ -1808,6 +1929,7 @@ material_override = SubResource("StandardMaterial3D_qmox6")
 mesh = SubResource("CylinderMesh_qs22b")
 
 [node name="Bushes" type="Node3D" parent="Village" unique_id=1602058766]
+visible = false
 
 [node name="Bush_01" type="MeshInstance3D" parent="Village/Bushes" unique_id=9418497]
 transform = Transform3D(1, 0, 0, 0, 0.55, 0, 0, 0, 0.8, -27, 0.275, -14)
@@ -1870,6 +1992,7 @@ material_override = SubResource("StandardMaterial3D_nid1k")
 mesh = SubResource("SphereMesh_um3ik")
 
 [node name="Interactables" type="Node3D" parent="." unique_id=1948611157]
+visible = false
 
 [node name="OldTobaccoSmell" parent="Interactables" unique_id=1856492240 instance=ExtResource("10_interactable")]
 transform = Transform3D(0.7, 0, 0, 0, 0.35, 0, 0, 0, 1.2, -8, 0.05, 6)
@@ -2023,6 +2146,7 @@ category = 0
 highlight_color = Color(0.95, 1, 0.72, 1)
 
 [node name="NPCs" type="Node3D" parent="." unique_id=354551645]
+visible = false
 
 [node name="StrayCat" parent="NPCs" unique_id=267664119 instance=ExtResource("12_npc")]
 transform = Transform3D(0.7, 0, 0, 0, 0.55, 0, 0, 0, 0.7, -9.82207, 0.05, 9)
