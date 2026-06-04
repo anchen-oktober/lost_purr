@@ -104,6 +104,18 @@ size = Vector3(0.15, 0.7, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_3slyh"]
 size = Vector3(1.5, 1.5, 1.5)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_amtbh"]
+albedo_color = Color(0.24985075, 0.24985075, 0.24985075, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_g1j4k"]
+size = Vector3(3, 0.055, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_obg7t"]
+albedo_color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gdhla"]
+size = Vector3(25.52, 0.05, 1.73)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7jkkr"]
 albedo_color = Color(0.64, 0.54, 0.42, 1)
 roughness = 0.9
@@ -855,66 +867,711 @@ autoplay = true
 [node name="pers" type="Node3D" parent="Blockout" unique_id=1924815139]
 
 [node name="cat" type="MeshInstance3D" parent="Blockout/pers" unique_id=185502477]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.261044, 0.1426363, 26.88258)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.640562, 0.1426363, 27.401566)
 material_override = SubResource("StandardMaterial3D_3slyh")
 mesh = SubResource("CapsuleMesh_xtmsi")
 
 [node name="human" type="MeshInstance3D" parent="Blockout/pers" unique_id=1190689642]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.189442, 0.55865526, 26.623592)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3383045, 0.5020075, 26.623592)
 material_override = SubResource("StandardMaterial3D_anuui")
 mesh = SubResource("CapsuleMesh_8qg48")
 
 [node name="houses_01" type="Node3D" parent="Blockout" unique_id=1251636146]
 
 [node name="01" type="MeshInstance3D" parent="Blockout/houses_01" unique_id=40437276]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.214384, 2.305502, 31.890472)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.3388, 2.610918, 26.351671)
+material_override = SubResource("StandardMaterial3D_xtmsi")
+mesh = SubResource("BoxMesh_1ms6g")
+
+[node name="02" type="MeshInstance3D" parent="Blockout/houses_01" unique_id=730551935]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.229218, 2.610918, -14.829161)
+material_override = SubResource("StandardMaterial3D_xtmsi")
+mesh = SubResource("BoxMesh_1ms6g")
+
+[node name="04" type="MeshInstance3D" parent="Blockout/houses_01" unique_id=802308276]
+transform = Transform3D(0.78302085, 0, -0.62199545, 0, 1, 0, 0.62199545, 0, 0.78302085, -2.4569712, 2.610918, 5.0708485)
+material_override = SubResource("StandardMaterial3D_xtmsi")
+mesh = SubResource("BoxMesh_1ms6g")
+
+[node name="05" type="MeshInstance3D" parent="Blockout/houses_01" unique_id=733340590]
+transform = Transform3D(0.9998676, 0, 0.016265705, 0, 1, 0, -0.016265705, 0, 0.9998676, 5.5472307, 2.610918, 8.163242)
+material_override = SubResource("StandardMaterial3D_xtmsi")
+mesh = SubResource("BoxMesh_1ms6g")
+
+[node name="03" type="MeshInstance3D" parent="Blockout/houses_01" unique_id=1741206463]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.885163, 2.610918, -14.180039)
+material_override = SubResource("StandardMaterial3D_xtmsi")
+mesh = SubResource("BoxMesh_1ms6g")
+
+[node name="06" type="MeshInstance3D" parent="Blockout/houses_01" unique_id=1208896216]
+transform = Transform3D(-0.024973104, 0, -0.99968815, 0, 1, 0, 0.99968815, 0, -0.024973104, 17.600826, 2.610918, 1.84344)
+material_override = SubResource("StandardMaterial3D_xtmsi")
+mesh = SubResource("BoxMesh_1ms6g")
+
+[node name="07" type="MeshInstance3D" parent="Blockout/houses_01" unique_id=248830655]
+transform = Transform3D(-0.024973104, 0, -0.99968815, 0, 1, 0, 0.99968815, 0, -0.024973104, 17.600826, 2.610918, -4.6621866)
 material_override = SubResource("StandardMaterial3D_xtmsi")
 mesh = SubResource("BoxMesh_1ms6g")
 
 [node name="houses_02" type="Node3D" parent="Blockout" unique_id=1540567250]
 
 [node name="01" type="MeshInstance3D" parent="Blockout/houses_02" unique_id=1676023262]
-transform = Transform3D(2.0295463, 0, 0, 0, 1, 0, 0, 0, 1.8800855, -23.544134, 1.2982664, 32.153156)
+transform = Transform3D(0.13291553, 0, 1.8760493, 0, 1, 0, -2.0251894, 0, 0.12312732, -36.586716, 1.2982664, 24.593773)
+material_override = SubResource("StandardMaterial3D_8qg48")
+mesh = SubResource("BoxMesh_h86nx")
+
+[node name="02" type="MeshInstance3D" parent="Blockout/houses_02" unique_id=661705279]
+transform = Transform3D(0.13291553, 0, 1.8760493, 0, 1, 0, -2.0251894, 0, 0.12312732, -18.752155, 1.2982664, 3.2570763)
 material_override = SubResource("StandardMaterial3D_8qg48")
 mesh = SubResource("BoxMesh_h86nx")
 
 [node name="houses_03" type="Node3D" parent="Blockout" unique_id=1750523845]
 
 [node name="01" type="MeshInstance3D" parent="Blockout/houses_03" unique_id=1687109576]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.461699, 1.8377762, 32.530346)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5685215, 1.8377762, 31.927376)
+mesh = SubResource("BoxMesh_7jkkr")
+surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
+
+[node name="02" type="MeshInstance3D" parent="Blockout/houses_03" unique_id=533995036]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.519756, 1.8377762, 31.816933)
+mesh = SubResource("BoxMesh_7jkkr")
+surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
+
+[node name="03" type="MeshInstance3D" parent="Blockout/houses_03" unique_id=1458489124]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.230011, 1.8377762, 31.434032)
+mesh = SubResource("BoxMesh_7jkkr")
+surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
+
+[node name="04" type="MeshInstance3D" parent="Blockout/houses_03" unique_id=1249212587]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.082006, 1.8377762, 22.17378)
+mesh = SubResource("BoxMesh_7jkkr")
+surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
+
+[node name="06" type="MeshInstance3D" parent="Blockout/houses_03" unique_id=1657743745]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.003565, 1.8377762, 22.17378)
+mesh = SubResource("BoxMesh_7jkkr")
+surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
+
+[node name="07" type="MeshInstance3D" parent="Blockout/houses_03" unique_id=591553377]
+transform = Transform3D(0.6366033, 0, 0.7711915, 0, 1, 0, -0.7711915, 0, 0.6366033, -34.37217, 1.8377762, 12.929657)
+mesh = SubResource("BoxMesh_7jkkr")
+surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
+
+[node name="08" type="MeshInstance3D" parent="Blockout/houses_03" unique_id=31983949]
+transform = Transform3D(0.9941416, 0, 0.1080862, 0, 1, 0, -0.1080862, 0, 0.9941416, -28.695, 1.8377762, 10.432035)
+mesh = SubResource("BoxMesh_7jkkr")
+surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
+
+[node name="09" type="MeshInstance3D" parent="Blockout/houses_03" unique_id=2008873995]
+transform = Transform3D(0.99999917, 0, 0.0012916327, 0, 1, 0, -0.0012916327, 0, 0.99999917, -22.082783, 1.8377762, 10.436283)
+mesh = SubResource("BoxMesh_7jkkr")
+surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
+
+[node name="10" type="MeshInstance3D" parent="Blockout/houses_03" unique_id=1660000394]
+transform = Transform3D(0.99999917, 0, 0.0012916327, 0, 1, 0, -0.0012916327, 0, 0.99999917, -22.082783, 1.8377762, -32.316353)
+mesh = SubResource("BoxMesh_7jkkr")
+surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
+
+[node name="11" type="MeshInstance3D" parent="Blockout/houses_03" unique_id=350437722]
+transform = Transform3D(0.99999917, 0, 0.0012916327, 0, 1, 0, -0.0012916327, 0, 0.99999917, -15.5154085, 1.8377762, -33.309395)
+mesh = SubResource("BoxMesh_7jkkr")
+surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
+
+[node name="14" type="MeshInstance3D" parent="Blockout/houses_03" unique_id=877417100]
+transform = Transform3D(0.99999917, 0, 0.0012916327, 0, 1, 0, -0.0012916327, 0, 0.99999917, -14.417765, 1.8377762, -23.116854)
+mesh = SubResource("BoxMesh_7jkkr")
+surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
+
+[node name="12" type="MeshInstance3D" parent="Blockout/houses_03" unique_id=2088707747]
+transform = Transform3D(0.99999917, 0, 0.0012916327, 0, 1, 0, -0.0012916327, 0, 0.99999917, -9.240482, 1.8377762, -32.316353)
+mesh = SubResource("BoxMesh_7jkkr")
+surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
+
+[node name="15" type="MeshInstance3D" parent="Blockout/houses_03" unique_id=1597164897]
+transform = Transform3D(0.99999917, 0, 0.0012916327, 0, 1, 0, -0.0012916327, 0, 0.99999917, 3.8443184, 1.8377762, -22.322475)
+mesh = SubResource("BoxMesh_7jkkr")
+surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
+
+[node name="16" type="MeshInstance3D" parent="Blockout/houses_03" unique_id=454376296]
+transform = Transform3D(0.922282, 0, -0.38651773, 0, 1, 0, 0.38651773, 0, 0.922282, 10.4722595, 1.8377762, -21.285866)
+mesh = SubResource("BoxMesh_7jkkr")
+surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
+
+[node name="17" type="MeshInstance3D" parent="Blockout/houses_03" unique_id=876329415]
+transform = Transform3D(0.8796652, 0, -0.47559345, 0, 1, 0, 0.47559345, 0, 0.8796652, 16.730139, 1.8377762, -18.34967)
+mesh = SubResource("BoxMesh_7jkkr")
+surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
+
+[node name="19" type="MeshInstance3D" parent="Blockout/houses_03" unique_id=2075962944]
+transform = Transform3D(0.6281396, 0, -0.7781006, 0, 1, 0, 0.7781006, 0, 0.6281396, 15.10368, 1.8377762, 16.351326)
+mesh = SubResource("BoxMesh_7jkkr")
+surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
+
+[node name="21" type="MeshInstance3D" parent="Blockout/houses_03" unique_id=387992708]
+transform = Transform3D(-0.0016929507, 0, -0.9999987, 0, 1, 0, 0.9999987, 0, -0.0016929507, -9.256058, 1.8377762, -8.121958)
+mesh = SubResource("BoxMesh_7jkkr")
+surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
+
+[node name="18" type="MeshInstance3D" parent="Blockout/houses_03" unique_id=473903476]
+transform = Transform3D(0.8796652, 0, -0.47559345, 0, 1, 0, 0.47559345, 0, 0.8796652, 22.269495, 1.8377762, -14.646688)
+mesh = SubResource("BoxMesh_7jkkr")
+surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
+
+[node name="20" type="MeshInstance3D" parent="Blockout/houses_03" unique_id=1818571944]
+transform = Transform3D(0.6571895, 0.050031826, -0.75206316, 0.067488305, 0.9898806, 0.12482747, 0.750698, -0.13279071, 0.6471623, 11.846727, 4.6926613, 12.1002655)
+mesh = SubResource("BoxMesh_7jkkr")
+surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
+
+[node name="13" type="MeshInstance3D" parent="Blockout/houses_03" unique_id=933109004]
+transform = Transform3D(-0.007504914, 0, 0.9999718, 0, 1, 0, -0.9999718, 0, -0.007504914, -29.38652, 1.8377762, -8.198364)
+mesh = SubResource("BoxMesh_7jkkr")
+surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
+
+[node name="05" type="MeshInstance3D" parent="Blockout/houses_03" unique_id=1595524223]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.060228, 1.8377762, 22.083319)
 mesh = SubResource("BoxMesh_7jkkr")
 surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
 
 [node name="houses_04" type="Node3D" parent="Blockout" unique_id=1960062669]
 
 [node name="01" type="MeshInstance3D" parent="Blockout/houses_04" unique_id=1369048692]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.679296, 2.2430563, 32.006172)
+transform = Transform3D(-0.009645297, 0.0019700392, 0.99995166, 0.00120872, 0.9999974, -0.0019584727, -0.99995285, 0.0011897755, -0.009647654, -8.503516, 2.2430563, 11.228191)
+material_override = SubResource("StandardMaterial3D_h86nx")
+mesh = SubResource("BoxMesh_5i0cj")
+
+[node name="04" type="MeshInstance3D" parent="Blockout/houses_04" unique_id=271678421]
+transform = Transform3D(-0.009645297, 0.0019700392, 0.99995166, 0.00120872, 0.9999974, -0.0019584727, -0.99995285, 0.0011897755, -0.009647654, -8.323612, 2.2430563, 0.59512615)
+material_override = SubResource("StandardMaterial3D_h86nx")
+mesh = SubResource("BoxMesh_5i0cj")
+
+[node name="02" type="MeshInstance3D" parent="Blockout/houses_04" unique_id=1397181425]
+transform = Transform3D(-0.009645297, 0.0019700392, 0.99995166, 0.00120872, 0.9999974, -0.0019584727, -0.99995285, 0.0011897755, -0.009647654, -31.051779, 2.2430563, -22.134678)
+material_override = SubResource("StandardMaterial3D_h86nx")
+mesh = SubResource("BoxMesh_5i0cj")
+
+[node name="03" type="MeshInstance3D" parent="Blockout/houses_04" unique_id=1166534388]
+transform = Transform3D(-0.009645297, 0.0019700392, 0.99995166, 0.00120872, 0.9999974, -0.0019584727, -0.99995285, 0.0011897755, -0.009647654, -31.051779, 2.2430563, -22.134678)
+material_override = SubResource("StandardMaterial3D_h86nx")
+mesh = SubResource("BoxMesh_5i0cj")
+
+[node name="05" type="MeshInstance3D" parent="Blockout/houses_04" unique_id=742584176]
+transform = Transform3D(-0.009645297, 0.0019700392, 0.99995166, 0.00120872, 0.9999974, -0.0019584727, -0.99995285, 0.0011897755, -0.009647654, -7.117628, 2.2430563, -21.21588)
+material_override = SubResource("StandardMaterial3D_h86nx")
+mesh = SubResource("BoxMesh_5i0cj")
+
+[node name="07" type="MeshInstance3D" parent="Blockout/houses_04" unique_id=1386701147]
+transform = Transform3D(-0.9717574, 0.0016367437, 0.23597655, 0.0012087199, 0.9999973, -0.0019584724, -0.23597914, -0.0016179275, -0.9717569, 22.742956, 2.2430563, 24.459448)
+material_override = SubResource("StandardMaterial3D_h86nx")
+mesh = SubResource("BoxMesh_5i0cj")
+
+[node name="06" type="MeshInstance3D" parent="Blockout/houses_04" unique_id=862181497]
+transform = Transform3D(-0.009645297, 0.0019700392, 0.99995166, 0.00120872, 0.9999974, -0.0019584727, -0.99995285, 0.0011897755, -0.009647654, 7.072212, 2.2430563, -8.80073)
 material_override = SubResource("StandardMaterial3D_h86nx")
 mesh = SubResource("BoxMesh_5i0cj")
 
 [node name="fence_01" type="Node3D" parent="Blockout" unique_id=327404663]
 
 [node name="01" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=135782610]
-transform = Transform3D(0.0088312235, 0, -0.999961, 0, 1, 0, 0.999961, 0, 0.0088312235, -25.878992, 0.27687645, 26.311007)
+transform = Transform3D(0.0088312235, 0, -0.999961, 0, 1, 0, 0.999961, 0, 0.0088312235, 12.563734, 0.27687645, 26.311007)
 mesh = SubResource("BoxMesh_nlw8m")
 
 [node name="fence_02" type="Node3D" parent="Blockout" unique_id=1697671563]
 
 [node name="01" type="MeshInstance3D" parent="Blockout/fence_02" unique_id=436405457]
-transform = Transform3D(0.035632055, 0, 0.999365, 0, 1, 0, -0.999365, 0, 0.035632055, -21.803577, 0.5301075, 26.095526)
+transform = Transform3D(0.035632055, 0, 0.999365, 0, 1, 0, -0.999365, 0, 0.035632055, 16.639149, 0.5301075, 26.095526)
 mesh = SubResource("BoxMesh_kvyqs")
 
 [node name="fence_03" type="Node3D" parent="Blockout" unique_id=2063598646]
 
 [node name="01" type="MeshInstance3D" parent="Blockout/fence_03" unique_id=276058907]
-transform = Transform3D(-0.03997481, 0, -0.9992007, 0, 1, 0, 0.9992007, 0, -0.03997481, -20.241642, 0.37384892, 26.096355)
+transform = Transform3D(-0.03997481, 0, -0.9992007, 0, 1, 0, 0.9992007, 0, -0.03997481, 18.201084, 0.37384892, 26.096355)
 mesh = SubResource("BoxMesh_i1thg")
+
+[node name="fence_04" type="Node3D" parent="Blockout" unique_id=812761667]
+
+[node name="01" type="MeshInstance3D" parent="Blockout/fence_04" unique_id=82734298]
 
 [node name="garage_01" type="Node3D" parent="Blockout" unique_id=615810443]
 
 [node name="01" type="MeshInstance3D" parent="Blockout/garage_01" unique_id=851231399]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.2829437, 0.49166203, 30.56288)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.127546, 0.49166203, 22.785345)
 mesh = SubResource("BoxMesh_3slyh")
+
+[node name="05" type="MeshInstance3D" parent="Blockout/garage_01" unique_id=1078057225]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.943346, 0.49166203, 30.726645)
+mesh = SubResource("BoxMesh_3slyh")
+
+[node name="02" type="MeshInstance3D" parent="Blockout/garage_01" unique_id=1497934380]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.97465, 0.49166203, 22.785345)
+mesh = SubResource("BoxMesh_3slyh")
+
+[node name="03" type="MeshInstance3D" parent="Blockout/garage_01" unique_id=613062123]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.937202, 0.49166203, 23.278534)
+mesh = SubResource("BoxMesh_3slyh")
+
+[node name="04" type="MeshInstance3D" parent="Blockout/garage_01" unique_id=873765419]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.495491, 0.49166203, 30.579424)
+mesh = SubResource("BoxMesh_3slyh")
+
+[node name="06" type="MeshInstance3D" parent="Blockout/garage_01" unique_id=471650248]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.910133, 0.49166203, 30.579424)
+mesh = SubResource("BoxMesh_3slyh")
+
+[node name="road_01" type="Node3D" parent="." unique_id=291860273]
+
+[node name="01" type="MeshInstance3D" parent="road_01" unique_id=670735248]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.043463, 0.083297014, 26.266768)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="02" type="MeshInstance3D" parent="road_01" unique_id=1280757395]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.962978, 0.083297014, 26.266768)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="03" type="MeshInstance3D" parent="road_01" unique_id=863864737]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.989754, 0.083297014, 26.266768)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="04" type="MeshInstance3D" parent="road_01" unique_id=2138538669]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.700409, 0.083297014, 26.266768)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="05" type="MeshInstance3D" parent="road_01" unique_id=1461960229]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.381626, 0.083297014, 26.266768)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="06" type="MeshInstance3D" parent="road_01" unique_id=871035996]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.256393, 0.083297014, 26.266768)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="07" type="MeshInstance3D" parent="road_01" unique_id=894147389]
+transform = Transform3D(0.6042792, 0, -0.79677254, 0, 1, 0, 0.79677254, 0, 0.6042792, -31.15983, 0.083297014, 25.458794)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="08" type="MeshInstance3D" parent="road_01" unique_id=566258419]
+transform = Transform3D(0.11611595, 0, -0.99323577, 0, 1, 0, 0.99323577, 0, 0.11611595, -32.032875, 0.083297014, 23.115517)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="09" type="MeshInstance3D" parent="road_01" unique_id=1648130559]
+transform = Transform3D(-0.10572612, 0, -0.99439526, 0, 1, 0, 0.99439526, 0, -0.10572612, -31.999712, 0.083297014, 20.652313)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="11" type="MeshInstance3D" parent="road_01" unique_id=728443297]
+transform = Transform3D(0.28337935, 0, -0.959008, 0, 1, 0, 0.959008, 0, 0.28337935, -32.458733, 0.083297014, 18.004232)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="10" type="MeshInstance3D" parent="road_01" unique_id=702708052]
+transform = Transform3D(-0.5610003, 0, -0.82781565, 0, 1, 0, 0.82781565, 0, -0.5610003, -32.10049, 0.083297014, 16.52418)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="12" type="MeshInstance3D" parent="road_01" unique_id=1196236089]
+transform = Transform3D(-0.7084631, 0, -0.70574784, 0, 1, 0, 0.70574784, 0, -0.7084631, -30.800533, 0.083297014, 15.083376)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="13" type="MeshInstance3D" parent="road_01" unique_id=2011568639]
+transform = Transform3D(-0.9998093, 0, 0.019529112, 0, 1, 0, -0.019529112, 0, -0.9998093, -28.789465, 0.083297014, 14.421009)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="14" type="MeshInstance3D" parent="road_01" unique_id=564619784]
+transform = Transform3D(-0.9998093, 0, 0.019529112, 0, 1, 0, -0.019529112, 0, -0.9998093, -26.242886, 0.083297014, 14.421009)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="15" type="MeshInstance3D" parent="road_01" unique_id=263440383]
+transform = Transform3D(-0.9998093, 0, 0.019529112, 0, 1, 0, -0.019529112, 0, -0.9998093, -23.658993, 0.083297014, 14.421009)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="16" type="MeshInstance3D" parent="road_01" unique_id=300050515]
+transform = Transform3D(-0.9998093, 0, 0.019529112, 0, 1, 0, -0.019529112, 0, -0.9998093, -21.32805, 0.083297014, 14.421009)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="17" type="MeshInstance3D" parent="road_01" unique_id=450849231]
+transform = Transform3D(-0.9998093, 0, 0.019529112, 0, 1, 0, -0.019529112, 0, -0.9998093, -19.358627, 0.083297014, 14.421009)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="18" type="MeshInstance3D" parent="road_01" unique_id=585804665]
+transform = Transform3D(-0.9998093, 0, 0.019529112, 0, 1, 0, -0.019529112, 0, -0.9998093, -16.66831, 0.083297014, 14.421009)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="19" type="MeshInstance3D" parent="road_01" unique_id=1149555097]
+transform = Transform3D(-0.6616261, 0, -0.74983394, 0, 1, 0, 0.74983394, 0, -0.6616261, -15.073497, 0.083297014, 13.724869)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="20" type="MeshInstance3D" parent="road_01" unique_id=1123919480]
+transform = Transform3D(0.07287255, 0, -0.9973413, 0, 1, 0, 0.9973413, 0, 0.07287255, -14.380912, 0.083297014, 11.711071)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="21" type="MeshInstance3D" parent="road_01" unique_id=241802500]
+transform = Transform3D(-0.027502857, 0.13245896, -0.9908069, -0.009700891, 0.9910999, 0.13276741, 0.99957466, 0.013263191, -0.025973104, -14.370489, 0.083297014, 9.149971)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="22" type="MeshInstance3D" parent="road_01" unique_id=468365325]
+transform = Transform3D(-0.027502857, 0.13245896, -0.9908069, -0.009700891, 0.9910999, 0.13276741, 0.99957466, 0.013263191, -0.025973104, -14.370489, 0.083297014, 6.2782993)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="23" type="MeshInstance3D" parent="road_01" unique_id=1841806753]
+transform = Transform3D(-0.027502857, 0.13245896, -0.9908069, -0.009700891, 0.9910999, 0.13276741, 0.99957466, 0.013263191, -0.025973104, -14.370489, 0.083297014, 3.3929873)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="24" type="MeshInstance3D" parent="road_01" unique_id=1450592827]
+transform = Transform3D(-0.027502857, 0.13245896, -0.9908069, -0.009700891, 0.9910999, 0.13276741, 0.99957466, 0.013263191, -0.025973104, -14.370489, 0.083297014, 0.5059128)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="25" type="MeshInstance3D" parent="road_01" unique_id=1242162665]
+transform = Transform3D(-0.027502857, 0.13245896, -0.9908069, -0.009700891, 0.9910999, 0.13276741, 0.99957466, 0.013263191, -0.025973104, -14.370489, 0.083297014, -2.1398716)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="26" type="MeshInstance3D" parent="road_01" unique_id=1122955595]
+transform = Transform3D(0.65374553, 0.106754266, -0.7491464, -0.009700892, 0.9910999, 0.13276742, 0.75665224, -0.079528704, 0.6489626, -15.073115, 0.083297014, -4.2381554)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="27" type="MeshInstance3D" parent="road_01" unique_id=1948248423]
+transform = Transform3D(0.99988973, 0.008122236, 0.012426764, -0.009700897, 0.9910999, 0.13276742, -0.0112378, -0.13287331, 0.9910693, -16.809727, 0.083297014, -5.310519)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="28" type="MeshInstance3D" parent="road_01" unique_id=1059621911]
+transform = Transform3D(0.99988973, 0.008122236, 0.012426764, -0.009700897, 0.9910999, 0.13276742, -0.0112378, -0.13287331, 0.9910693, -19.48059, 0.083297014, -5.310519)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="29" type="MeshInstance3D" parent="road_01" unique_id=807571496]
+transform = Transform3D(0.99988973, 0.008122236, 0.012426764, -0.009700897, 0.9910999, 0.13276742, -0.0112378, -0.13287331, 0.9910693, -21.989841, 0.083297014, -5.310519)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="30" type="MeshInstance3D" parent="road_01" unique_id=2123792721]
+transform = Transform3D(0.8531278, 0.07746275, -0.515919, -0.009700898, 0.9910999, 0.13276741, 0.52161163, -0.108262666, 0.8462862, -23.884937, 0.083297014, -5.9007144)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="31" type="MeshInstance3D" parent="road_01" unique_id=1411771943]
+transform = Transform3D(0.40215147, 0.12542972, -0.9069408, -0.009700892, 0.9910999, 0.13276741, 0.9155217, -0.044594456, 0.3997889, -25.50148, 0.083297014, -7.793494)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="32" type="MeshInstance3D" parent="road_01" unique_id=1349705279]
+transform = Transform3D(-0.13975534, 0.13012666, -0.98159844, -0.009700896, 0.9911, 0.13276742, 0.9901386, 0.02807733, -0.13724926, -25.754457, 0.083297014, -10.076307)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="33" type="MeshInstance3D" parent="road_01" unique_id=169600645]
+transform = Transform3D(-0.13975534, 0.13012666, -0.98159844, -0.009700896, 0.9911, 0.13276742, 0.9901386, 0.02807733, -0.13724926, -25.313744, 0.083297014, -12.663384)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="34" type="MeshInstance3D" parent="road_01" unique_id=826749941]
+transform = Transform3D(0.24882914, 0.13098973, -0.9596487, -0.009700897, 0.99109995, 0.1327674, 0.9684988, -0.023726938, 0.24788508, -25.313744, 0.083297014, -15.437046)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="35" type="MeshInstance3D" parent="road_01" unique_id=1011537557]
+transform = Transform3D(0.24882914, 0.13098973, -0.9596487, -0.009700897, 0.99109995, 0.1327674, 0.9684988, -0.023726938, 0.24788508, -25.993359, 0.083297014, -17.754519)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="36" type="MeshInstance3D" parent="road_01" unique_id=655976484]
+transform = Transform3D(0.00097611547, 0.1327829, -0.9911446, -0.009700901, 0.99109995, 0.13276741, 0.99995244, 0.009485396, 0.00225541, -26.389908, 0.083297014, -20.142319)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="37" type="MeshInstance3D" parent="road_01" unique_id=1157372807]
+transform = Transform3D(0.00097611547, 0.1327829, -0.9911446, -0.009700901, 0.99109995, 0.13276741, 0.99995244, 0.009485396, 0.00225541, -26.389908, 0.083297014, -22.717999)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="38" type="MeshInstance3D" parent="road_01" unique_id=1859795753]
+transform = Transform3D(0.00097611547, 0.1327829, -0.9911446, -0.009700901, 0.99109995, 0.13276741, 0.99995244, 0.009485396, 0.00225541, -26.389908, 0.083297014, -25.504318)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="39" type="MeshInstance3D" parent="road_01" unique_id=640734047]
+transform = Transform3D(-0.67343336, 0.09167339, -0.7335416, -0.009700901, 0.99109995, 0.13276742, 0.7391842, 0.09652597, -0.66655034, -26.005909, 0.083297014, -27.31028)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="40" type="MeshInstance3D" parent="road_01" unique_id=1101440462]
+transform = Transform3D(-0.9931971, 0.005857736, -0.116297305, -0.009700911, 0.99109995, 0.13276741, 0.11604002, 0.13299234, -0.9843007, -24.400448, 0.083297014, -28.592304)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="41" type="MeshInstance3D" parent="road_01" unique_id=1095825120]
+transform = Transform3D(-0.9916467, -0.026612967, 0.12620768, -0.00970091, 0.99109995, 0.13276741, -0.12861764, 0.13043398, -0.9830791, -21.816895, 0.083297014, -28.592304)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="42" type="MeshInstance3D" parent="road_01" unique_id=313523386]
+transform = Transform3D(-0.9998623, -0.007827684, -0.014623582, -0.00970091, 0.99109995, 0.13276741, 0.013454244, 0.13289094, -0.9910394, -19.462505, 0.083297014, -28.592304)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="43" type="MeshInstance3D" parent="road_01" unique_id=949160456]
+transform = Transform3D(-0.9998623, -0.007827684, -0.014623582, -0.00970091, 0.99109995, 0.13276741, 0.013454244, 0.13289094, -0.9910394, -16.731682, 0.083297014, -28.592304)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="44" type="MeshInstance3D" parent="road_01" unique_id=414507915]
+transform = Transform3D(-0.9998623, -0.007827684, -0.014623582, -0.00970091, 0.99109995, 0.13276741, 0.013454244, 0.13289094, -0.9910394, -14.256681, 0.083297014, -28.592304)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="45" type="MeshInstance3D" parent="road_01" unique_id=1964784349]
+transform = Transform3D(-0.98575115, 0.012819234, -0.16772045, -0.009700909, 0.99109995, 0.13276742, 0.16792972, 0.13250262, -0.97685355, -11.855775, 0.083297014, -28.80999)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="46" type="MeshInstance3D" parent="road_01" unique_id=1034661881]
+transform = Transform3D(-0.98575115, 0.012819234, -0.16772045, -0.009700909, 0.99109995, 0.13276742, 0.16792972, 0.13250262, -0.97685355, -9.344829, 0.083297014, -29.314072)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="47" type="MeshInstance3D" parent="road_01" unique_id=487763699]
+transform = Transform3D(-0.988513, -0.029531345, 0.14822212, -0.009700909, 0.99109995, 0.13276742, -0.15082362, 0.12980439, -0.98000175, -6.827729, 0.083297014, -29.3948)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="48" type="MeshInstance3D" parent="road_01" unique_id=927036050]
+transform = Transform3D(-0.9491499, -0.050908968, 0.31068087, -0.009700911, 0.99109995, 0.13276742, -0.31467468, 0.12300225, -0.9411963, -4.3559685, 0.083297014, -28.777336)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="49" type="MeshInstance3D" parent="road_01" unique_id=241775589]
+transform = Transform3D(-0.9961721, 0.0019562393, -0.087390244, -0.009700912, 0.99109995, 0.13276742, 0.08687225, 0.1331069, -0.9872872, -2.002966, 0.083297014, -28.191448)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="65" type="MeshInstance3D" parent="road_01" unique_id=1560553047]
+transform = Transform3D(0.019875892, 0.13293844, -0.9909251, -0.00970091, 0.99109995, 0.13276741, 0.9997554, 0.0069739963, 0.020988509, -2.332818, 0.083297014, -26.454124)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="67" type="MeshInstance3D" parent="road_01" unique_id=1585741363]
+transform = Transform3D(0.71971714, 0.099096075, -0.68715876, -0.009700909, 0.9910999, 0.13276738, 0.6941995, -0.08888885, 0.71427286, -1.4779215, 0.083297014, 1.0463228)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="68" type="MeshInstance3D" parent="road_01" unique_id=851666562]
+transform = Transform3D(0.71971714, 0.099096075, -0.68715876, -0.009700909, 0.9910999, 0.13276738, 0.6941995, -0.08888885, 0.71427286, 0.47042608, 0.083297014, 2.9182959)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="69" type="MeshInstance3D" parent="road_01" unique_id=2000867381]
+transform = Transform3D(0.9596322, 0.046550393, -0.27737856, -0.009700916, 0.9911, 0.1327674, 0.2810901, -0.12471697, 0.951543, 2.3839774, 0.083297014, 3.9412203)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="70" type="MeshInstance3D" parent="road_01" unique_id=1037332060]
+transform = Transform3D(0.98996234, -0.009202622, 0.14103043, -0.009700916, 0.9911, 0.1327674, -0.14099711, -0.13280274, 0.98106235, 4.998262, 0.083297014, 4.401778)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="71" type="MeshInstance3D" parent="road_01" unique_id=1297136272]
+transform = Transform3D(0.98996234, -0.009202622, 0.14103043, -0.009700916, 0.9911, 0.1327674, -0.14099711, -0.13280274, 0.98106235, 7.661542, 0.083297014, 4.012889)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="72" type="MeshInstance3D" parent="road_01" unique_id=477436156]
+transform = Transform3D(0.87327164, 0.07307881, -0.4817218, -0.009700913, 0.99109995, 0.13276738, 0.48713666, -0.11126878, 0.8662083, 9.875068, 0.083297014, 4.72705)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="73" type="MeshInstance3D" parent="road_01" unique_id=221609813]
+transform = Transform3D(0.6562379, 0.10649124, -0.7470015, -0.009700908, 0.9910999, 0.13276736, 0.7544915, -0.07988033, 0.65143025, 11.772647, 0.083297014, 6.565098)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="74" type="MeshInstance3D" parent="road_01" unique_id=845017521]
+transform = Transform3D(0.2533903, 0.13087639, -0.95847, -0.009700908, 0.9910999, 0.13276736, 0.9673153, -0.0243439, 0.25240457, 12.652091, 0.083297014, 8.658455)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="75" type="MeshInstance3D" parent="road_01" unique_id=1904175937]
+transform = Transform3D(0.87327164, 0.07307881, -0.4817218, -0.009700913, 0.99109995, 0.13276738, 0.48713666, -0.11126878, 0.8662083, 13.767582, 0.083297014, 10.179189)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="76" type="MeshInstance3D" parent="road_01" unique_id=662696842]
+transform = Transform3D(0.8688406, 0.074079864, -0.48951823, -0.0097009055, 0.9910999, 0.13276736, 0.4949966, -0.11060482, 0.86182624, 16.00543, 0.083297014, 11.425038)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="77" type="MeshInstance3D" parent="road_01" unique_id=1939564788]
+transform = Transform3D(0.7367581, 0.09685491, -0.66918343, -0.0097009055, 0.9910999, 0.13276736, 0.6760865, -0.091325685, 0.73114026, 17.851442, 0.083297014, 12.888688)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="78" type="MeshInstance3D" parent="road_01" unique_id=1190842213]
+transform = Transform3D(0.37764415, 0.126572, -0.9172591, -0.009700908, 0.9910999, 0.13276736, 0.9258998, -0.041240532, 0.37551072, 19.35549, 0.083297014, 15.043824)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="79" type="MeshInstance3D" parent="road_01" unique_id=1217866030]
+transform = Transform3D(0.37764415, 0.126572, -0.9172591, -0.009700908, 0.9910999, 0.13276736, 0.9258998, -0.041240532, 0.37551072, 20.487673, 0.083297014, 17.557785)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="80" type="MeshInstance3D" parent="road_01" unique_id=93584566]
+transform = Transform3D(0.98057497, 0.03544077, -0.19291562, -0.0097009055, 0.9910999, 0.13276736, 0.19590381, -0.12831682, 0.97219145, 21.868383, 0.083297014, 18.649996)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="81" type="MeshInstance3D" parent="road_01" unique_id=1102189993]
+transform = Transform3D(0.98057497, 0.03544077, -0.19291562, -0.0097009055, 0.9910999, 0.13276736, 0.19590381, -0.12831682, 0.97219145, 24.640545, 0.083297014, 19.371881)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="82" type="MeshInstance3D" parent="road_01" unique_id=963578678]
+transform = Transform3D(0.98057497, 0.03544077, -0.19291562, -0.0097009055, 0.9910999, 0.13276736, 0.19590381, -0.12831682, 0.97219145, 27.29079, 0.083297014, 20.003754)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="83" type="MeshInstance3D" parent="road_01" unique_id=1820174432]
+transform = Transform3D(0.48315364, -0.111600496, 0.8683936, -0.009700909, 0.9910999, 0.13276736, -0.87548167, -0.07257121, 0.47777104, 28.508114, 0.083297014, 19.458418)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="84" type="MeshInstance3D" parent="road_01" unique_id=1454518614]
+transform = Transform3D(-0.052977175, -0.13309646, 0.98968625, -0.009700914, 0.9911, 0.13276738, -0.99854857, -0.0025672354, -0.05379662, 29.130249, 0.083297014, 17.152029)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="85" type="MeshInstance3D" parent="road_01" unique_id=1889408060]
+transform = Transform3D(-0.052977175, -0.13309646, 0.98968625, -0.009700914, 0.9911, 0.13276738, -0.99854857, -0.0025672354, -0.05379662, 29.130249, 0.083297014, 14.362892)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="86" type="MeshInstance3D" parent="road_01" unique_id=780423957]
+transform = Transform3D(-0.052977175, -0.13309646, 0.98968625, -0.009700914, 0.9911, 0.13276738, -0.99854857, -0.0025672354, -0.05379662, 29.130249, 0.083297014, 11.684099)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="87" type="MeshInstance3D" parent="road_01" unique_id=524759647]
+transform = Transform3D(-0.052977175, -0.13309646, 0.98968625, -0.009700914, 0.9911, 0.13276738, -0.99854857, -0.0025672354, -0.05379662, 29.130249, 0.083297014, 8.969925)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="88" type="MeshInstance3D" parent="road_01" unique_id=1904841994]
+transform = Transform3D(-0.052977175, -0.13309646, 0.98968625, -0.009700914, 0.9911, 0.13276738, -0.99854857, -0.0025672354, -0.05379662, 29.130249, 0.083297014, 6.2478886)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="89" type="MeshInstance3D" parent="road_01" unique_id=12782623]
+transform = Transform3D(-0.052977175, -0.13309646, 0.98968625, -0.009700914, 0.9911, 0.13276738, -0.99854857, -0.0025672354, -0.05379662, 29.130249, 0.083297014, 3.563367)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="66" type="MeshInstance3D" parent="road_01" unique_id=533352227]
+transform = Transform3D(0.019875892, 0.13293844, -0.9909251, -0.00970091, 0.99109995, 0.13276741, 0.9997554, 0.0069739963, 0.020988509, -2.332818, 0.083297014, -23.936275)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="50" type="MeshInstance3D" parent="road_01" unique_id=2021082315]
+transform = Transform3D(-0.9961721, 0.0019562393, -0.087390244, -0.009700912, 0.99109995, 0.13276742, 0.08687225, 0.1331069, -0.9872872, 0.59726524, 0.083297014, -28.334322)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="51" type="MeshInstance3D" parent="road_01" unique_id=1263041509]
+transform = Transform3D(-0.9961721, 0.0019562393, -0.087390244, -0.009700912, 0.99109995, 0.13276742, 0.08687225, 0.1331069, -0.9872872, 3.3795357, 0.083297014, -28.443954)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="52" type="MeshInstance3D" parent="road_01" unique_id=319878776]
+transform = Transform3D(-0.97069556, -0.04121627, 0.23675138, -0.00970091, 0.99109995, 0.13276741, -0.24011624, 0.12658001, -0.96245635, 5.901437, 0.083297014, -28.273956)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="53" type="MeshInstance3D" parent="road_01" unique_id=1306133520]
+transform = Transform3D(-0.9110075, -0.063501604, 0.40747118, -0.009700906, 0.99109995, 0.13276741, -0.4122753, 0.11699926, -0.9035157, 8.647144, 0.083297014, -27.219091)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="54" type="MeshInstance3D" parent="road_01" unique_id=1580077532]
+transform = Transform3D(-0.9110075, -0.063501604, 0.40747118, -0.009700906, 0.99109995, 0.13276741, -0.4122753, 0.11699926, -0.9035157, 11.176304, 0.083297014, -25.931364)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="55" type="MeshInstance3D" parent="road_01" unique_id=2145742020]
+transform = Transform3D(-0.9110075, -0.063501604, 0.40747118, -0.009700906, 0.99109995, 0.13276741, -0.4122753, 0.11699926, -0.9035157, 13.680426, 0.083297014, -24.778454)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="56" type="MeshInstance3D" parent="road_01" unique_id=753036969]
+transform = Transform3D(-0.9110075, -0.063501604, 0.40747118, -0.009700906, 0.99109995, 0.13276741, -0.4122753, 0.11699926, -0.9035157, 16.154491, 0.083297014, -23.638212)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="57" type="MeshInstance3D" parent="road_01" unique_id=238095165]
+transform = Transform3D(-0.9110075, -0.063501604, 0.40747118, -0.009700906, 0.99109995, 0.13276741, -0.4122753, 0.11699926, -0.9035157, 18.70454, 0.2120583, -22.475794)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="58" type="MeshInstance3D" parent="road_01" unique_id=2115522829]
+transform = Transform3D(-0.8010064, -0.087181, 0.59227383, -0.009700903, 0.99109995, 0.13276741, -0.59857696, 0.100601956, -0.7947232, 20.558783, 0.107438326, -21.359383)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="59" type="MeshInstance3D" parent="road_01" unique_id=50866407]
+transform = Transform3D(-0.8010064, -0.087181, 0.59227383, -0.009700903, 0.99109995, 0.13276741, -0.59857696, 0.100601956, -0.7947232, 22.738281, 0.107438326, -19.770443)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="60" type="MeshInstance3D" parent="road_01" unique_id=2006735823]
+transform = Transform3D(-0.8010064, -0.087181, 0.59227383, -0.009700903, 0.99109995, 0.13276741, -0.59857696, 0.100601956, -0.7947232, 24.807194, 0.107438326, -18.25577)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="61" type="MeshInstance3D" parent="road_01" unique_id=1677071601]
+transform = Transform3D(-0.9616047, -0.045663297, 0.2706124, -0.009700902, 0.9910999, 0.1327674, -0.27426633, 0.12504454, -0.95348936, 27.015308, 0.107438326, -16.997566)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="62" type="MeshInstance3D" parent="road_01" unique_id=492491178]
+transform = Transform3D(-0.9616047, -0.045663297, 0.2706124, -0.009700902, 0.9910999, 0.1327674, -0.27426633, 0.12504454, -0.95348936, 29.438272, 0.107438326, -16.316982)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="63" type="MeshInstance3D" parent="road_01" unique_id=538870980]
+transform = Transform3D(-0.9616047, -0.045663297, 0.2706124, -0.009700902, 0.9910999, 0.1327674, -0.27426633, 0.12504454, -0.95348936, 31.997688, 0.107438326, -15.5966835)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="64" type="MeshInstance3D" parent="road_01" unique_id=883914188]
+transform = Transform3D(-0.99338573, -0.024743553, 0.112125665, -0.009700901, 0.99109983, 0.13276738, -0.11441277, 0.13080148, -0.9847846, 34.655125, 0.107438326, -15.1304865)
+material_override = SubResource("StandardMaterial3D_amtbh")
+mesh = SubResource("BoxMesh_g1j4k")
+
+[node name="road_02" type="Node3D" parent="." unique_id=575745402]
+
+[node name="01" type="MeshInstance3D" parent="road_02" unique_id=917819059]
+transform = Transform3D(0.0035954192, 0, -0.9999935, 0, 1, 0, 0.9999935, 0, 0.0035954192, -2.3264968, 0, -11.883638)
+material_override = SubResource("StandardMaterial3D_obg7t")
+mesh = SubResource("BoxMesh_gdhla")
+
+[node name="road_03" type="Node3D" parent="." unique_id=365990813]
 
 [node name="Village" type="Node3D" parent="." unique_id=2138485291]
 
