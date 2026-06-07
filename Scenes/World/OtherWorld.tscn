@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://d0bllj7m7hfhw" path="res://Scripts/CatVision/cat_vision_manager.gd" id="3_cat_vision"]
 [ext_resource type="PackedScene" path="res://Scenes/UI/JournalUI.tscn" id="4_journal"]
 [ext_resource type="AudioStream" uid="uid://t12hewewpnfp" path="res://Art/Audio/Music/LostInABadPlace.ogg" id="5_music"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/CatStatusHUD.tscn" id="6_cat_status"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ground"]
 size = Vector2(128, 128)
@@ -139,3 +140,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 24)
 script = ExtResource("3_cat_vision")
 
 [node name="JournalUI" parent="." instance=ExtResource("4_journal")]
+
+[node name="CatStatusHUD" parent="." instance=ExtResource("6_cat_status")]

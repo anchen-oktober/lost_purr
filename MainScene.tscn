@@ -20,6 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://blgh1cskovv0x" path="res://Art/Audio/Music/Contemplation.mp3" id="19_main_music"]
 [ext_resource type="AudioStream" uid="uid://t12hewewpnfp" path="res://Art/Audio/Music/LostInABadPlace.ogg" id="20_cat_vision_music"]
 [ext_resource type="PackedScene" uid="uid://d1ldeo2rynfap" path="res://Scenes/World/PowerLineNetwork.tscn" id="21_power_line"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/CatStatusHUD.tscn" id="22_cat_status"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_1305s"]
 size = Vector2(144, 144)
@@ -3398,5 +3399,7 @@ light_energy = 0.8
 omni_range = 3.0
 
 [node name="JournalUI" parent="." unique_id=907969829 instance=ExtResource("11_journal_ui")]
+
+[node name="CatStatusHUD" parent="." unique_id=361077728 instance=ExtResource("22_cat_status")]
 
 [editable path="Blockout/PowerLineNetwork"]

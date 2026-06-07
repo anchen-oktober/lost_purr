@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://Scripts/UI/cat_status_hud.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://Art/UI/cats_eye_1.png" id="2_normal"]
+[ext_resource type="Texture2D" path="res://Art/UI/cats_eye_2.png" id="3_vision"]
+[ext_resource type="Texture2D" path="res://Art/UI/cats_eye_3.png" id="4_danger"]
+
+[node name="CatStatusHUD" type="CanvasLayer"]
+layer = 8
+script = ExtResource("1_script")
+normal_eye = ExtResource("2_normal")
+cat_vision_eye = ExtResource("3_vision")
+danger_eye = ExtResource("4_danger")
+
+[node name="EyeTexture" type="TextureRect" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -244.0
+offset_top = -174.0
+offset_right = -24.0
+offset_bottom = -24.0
+mouse_filter = 2
+texture = ExtResource("2_normal")
+expand_mode = 1
+stretch_mode = 5

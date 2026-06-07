@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://blgh1cskovv0x" path="res://Art/Audio/Music/Contemplation.mp3" id="5_music"]
 [ext_resource type="AudioStream" uid="uid://t12hewewpnfp" path="res://Art/Audio/Music/LostInABadPlace.ogg" id="6_cat_music"]
 [ext_resource type="PackedScene" path="res://Scenes/Portals/ScenePortal.tscn" id="7_portal"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/CatStatusHUD.tscn" id="8_cat_status"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ground"]
 size = Vector2(184, 184)
@@ -355,3 +356,5 @@ prompt_text = "[E] Enter metro"
 script = ExtResource("3_cat_vision")
 
 [node name="JournalUI" parent="." instance=ExtResource("4_journal")]
+
+[node name="CatStatusHUD" parent="." instance=ExtResource("8_cat_status")]

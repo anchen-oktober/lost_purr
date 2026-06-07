@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" path="res://Scenes/UI/JournalUI.tscn" id="4_journal"]
 [ext_resource type="AudioStream" uid="uid://t12hewewpnfp" path="res://Art/Audio/Music/LostInABadPlace.ogg" id="5_music"]
 [ext_resource type="PackedScene" path="res://Scenes/Portals/ScenePortal.tscn" id="6_portal"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/CatStatusHUD.tscn" id="7_cat_status"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ground"]
 size = Vector2(144, 192)
@@ -274,3 +275,5 @@ prompt_text = "[E] Touch the distortion"
 script = ExtResource("3_cat_vision")
 
 [node name="JournalUI" parent="." instance=ExtResource("4_journal")]
+
+[node name="CatStatusHUD" parent="." instance=ExtResource("7_cat_status")]
