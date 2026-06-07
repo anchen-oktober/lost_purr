@@ -22,26 +22,14 @@
 [ext_resource type="PackedScene" uid="uid://d1ldeo2rynfap" path="res://Scenes/World/PowerLineNetwork.tscn" id="21_power_line"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_1305s"]
-size = Vector2(72, 72)
+size = Vector2(144, 144)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3mqji"]
 albedo_color = Color(0.33, 0.38, 0.25, 1)
 roughness = 0.9
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1305s"]
-size = Vector3(72, 0.1, 72)
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_1305s"]
-radius = 0.45
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cat_outline"]
-render_priority = 0
-shader = ExtResource("5_outline")
-shader_parameter/cat_texture = ExtResource("4_cat")
-shader_parameter/outline_color = Color(1, 0.72, 0.22, 0.82)
-shader_parameter/outline_pixels = 5.0
-shader_parameter/glow_pixels = 13.0
-shader_parameter/alpha_threshold = 0.08
+size = Vector3(144, 0.1, 144)
 
 [sub_resource type="Environment" id="Environment_x4av3"]
 background_mode = 1
@@ -68,6 +56,18 @@ albedo_color = Color(0.7593292, 1.540184e-06, 0.4585306, 1)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_8qg48"]
 radius = 0.1
 height = 1.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1305s"]
+radius = 0.45
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cat_outline"]
+render_priority = 0
+shader = ExtResource("5_outline")
+shader_parameter/cat_texture = ExtResource("4_cat")
+shader_parameter/outline_color = Color(1, 0.72, 0.22, 0.82)
+shader_parameter/outline_pixels = 5.0
+shader_parameter/glow_pixels = 13.0
+shader_parameter/alpha_threshold = 0.08
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xtmsi"]
 albedo_color = Color(0.8, 0.6933333, 0, 1)
@@ -823,42 +823,13 @@ surface_material_override/0 = SubResource("StandardMaterial3D_3mqji")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=219577791]
 shape = SubResource("BoxShape3D_1305s")
 
-[node name="PlayerCat" type="CharacterBody3D" parent="." unique_id=795165568]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.5, 3)
-visible = false
-script = ExtResource("1_3mqji")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerCat" unique_id=1671021864]
-shape = SubResource("SphereShape3D_1305s")
-
-[node name="CatBehindWallsGlow" type="Sprite3D" parent="PlayerCat" unique_id=884091671]
-transform = Transform3D(1.22, 0, 0, 0, 1.22, 0, 0, 0, 1.22, 0, 0.74, 0)
-material_override = SubResource("ShaderMaterial_cat_outline")
-pixel_size = 0.003
-billboard = 1
-no_depth_test = true
-texture = ExtResource("4_cat")
-script = ExtResource("6_outline_visibility")
-
-[node name="CatBillboard" type="Sprite3D" parent="PlayerCat" unique_id=951761677]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.74, 0)
-pixel_size = 0.003
-billboard = 1
-texture = ExtResource("4_cat")
-
-[node name="CatTrackingLight" type="OmniLight3D" parent="PlayerCat" unique_id=862726659]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
-light_color = Color(1, 0.78, 0.42, 1)
-light_energy = 0.45
-omni_range = 2.4
-
 [node name="CameraRig" type="Node3D" parent="." unique_id=1378474959]
 
 [node name="Camera3D" type="Camera3D" parent="CameraRig" unique_id=609572443 node_paths=PackedStringArray("target")]
 transform = Transform3D(0.8642748, -0.4120498, 0.2885204, 0, 0.57357645, 0.81915206, -0.5030199, -0.70797247, 0.4957277, 0, 22, 18)
 fov = 58.0
 script = ExtResource("2_x4av3")
-target = NodePath("../../PlayerCat")
+target = NodePath("../../Blockout/pers/PlayerCat")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=825650642]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0)
@@ -895,6 +866,34 @@ mesh = SubResource("CapsuleMesh_xtmsi")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3383045, 0.5020075, 26.623592)
 material_override = SubResource("StandardMaterial3D_anuui")
 mesh = SubResource("CapsuleMesh_8qg48")
+
+[node name="PlayerCat" type="CharacterBody3D" parent="Blockout/pers" unique_id=795165568]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.911705, 0.5, 25.946592)
+script = ExtResource("1_3mqji")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/pers/PlayerCat" unique_id=1671021864]
+shape = SubResource("SphereShape3D_1305s")
+
+[node name="CatBehindWallsGlow" type="Sprite3D" parent="Blockout/pers/PlayerCat" unique_id=884091671]
+transform = Transform3D(1.0404615, 0, 0, 0, 1.2859998, 0, 0, 0, 1.22, 0, 0.74, 0)
+material_override = SubResource("ShaderMaterial_cat_outline")
+pixel_size = 0.003
+billboard = 1
+no_depth_test = true
+texture = ExtResource("4_cat")
+script = ExtResource("6_outline_visibility")
+
+[node name="CatBillboard" type="Sprite3D" parent="Blockout/pers/PlayerCat" unique_id=951761677]
+transform = Transform3D(0.5807134, 0, 0, 0, 0.6465319, 0, 0, 0, 0.7943832, 0, 0.74, 0)
+pixel_size = 0.003
+billboard = 1
+texture = ExtResource("4_cat")
+
+[node name="CatTrackingLight" type="OmniLight3D" parent="Blockout/pers/PlayerCat" unique_id=862726659]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+light_color = Color(1, 0.78, 0.42, 1)
+light_energy = 0.45
+omni_range = 2.4
 
 [node name="houses_01" type="Node3D" parent="Blockout" unique_id=1251636146]
 
@@ -2080,7 +2079,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.409071, 0.5746994, -5.1138
 mesh = SubResource("BoxMesh_xtmsi")
 
 [node name="Village" type="Node3D" parent="." unique_id=2138485291]
-visible = false
 
 [node name="Roads" type="Node3D" parent="Village" unique_id=13723791]
 visible = false
@@ -3155,7 +3153,6 @@ material_override = SubResource("StandardMaterial3D_nid1k")
 mesh = SubResource("SphereMesh_um3ik")
 
 [node name="Interactables" type="Node3D" parent="." unique_id=1948611157]
-visible = false
 
 [node name="OldTobaccoSmell" parent="Interactables" unique_id=1856492240 instance=ExtResource("10_interactable")]
 transform = Transform3D(0.7, 0, 0, 0, 0.35, 0, 0, 0, 1.2, -8, 0.05, 6)
@@ -3309,7 +3306,6 @@ category = 0
 highlight_color = Color(0.95, 1, 0.72, 1)
 
 [node name="NPCs" type="Node3D" parent="." unique_id=354551645]
-visible = false
 
 [node name="StrayCat" parent="NPCs" unique_id=267664119 instance=ExtResource("12_npc")]
 transform = Transform3D(0.7, 0, 0, 0, 0.55, 0, 0, 0, 0.7, -9.82207, 0.05, 9)
@@ -3323,6 +3319,7 @@ highlight_color = Color(0.9, 0.82, 0.55, 1)
 
 [node name="OldWoman" parent="NPCs" unique_id=1142439175 instance=ExtResource("12_npc")]
 transform = Transform3D(0.85, 0, 0, 0, 1.15, 0, 0, 0, 0.85, 4.7431946, 0.08, 2.7195764)
+visible = false
 id = "old_woman"
 character_name = "Quiet Woman"
 short_phrase = "Be careful."

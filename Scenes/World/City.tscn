@@ -9,14 +9,14 @@
 [ext_resource type="PackedScene" path="res://Scenes/Portals/ScenePortal.tscn" id="7_portal"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ground"]
-size = Vector2(92, 92)
+size = Vector2(184, 184)
 
 [sub_resource type="StandardMaterial3D" id="Mat_ground"]
 albedo_color = Color(0.11, 0.12, 0.12, 1)
 roughness = 0.72
 
 [sub_resource type="BoxShape3D" id="Shape_ground"]
-size = Vector3(92, 0.1, 92)
+size = Vector3(184, 0.1, 184)
 
 [sub_resource type="Environment" id="Env_city"]
 background_mode = 1
