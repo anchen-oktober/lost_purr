@@ -1,0 +1,19 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scripts/World/fence_network.gd" id="1_fence"]
+
+[node name="FenceNetwork" type="Node3D"]
+script = ExtResource("1_fence")
+
+[node name="FencePoints" type="Node3D" parent="."]
+
+[node name="FencePoint_01" type="Marker3D" parent="FencePoints"]
+position = Vector3(18, 0, 21)
+
+[node name="FencePoint_02" type="Marker3D" parent="FencePoints"]
+position = Vector3(18, 0, 10)
+
+[node name="FencePoint_03" type="Marker3D" parent="FencePoints"]
+position = Vector3(26, 0, 6)
+
+[node name="Generated" type="Node3D" parent="."]

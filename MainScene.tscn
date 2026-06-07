@@ -21,6 +21,8 @@
 [ext_resource type="AudioStream" uid="uid://t12hewewpnfp" path="res://Art/Audio/Music/LostInABadPlace.ogg" id="20_cat_vision_music"]
 [ext_resource type="PackedScene" uid="uid://d1ldeo2rynfap" path="res://Scenes/World/PowerLineNetwork.tscn" id="21_power_line"]
 [ext_resource type="PackedScene" path="res://Scenes/UI/CatStatusHUD.tscn" id="22_cat_status"]
+[ext_resource type="PackedScene" path="res://Scenes/World/RoadNetwork.tscn" id="23_road_network"]
+[ext_resource type="PackedScene" path="res://Scenes/World/FenceNetwork.tscn" id="24_fence_network"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_1305s"]
 size = Vector2(144, 144)
@@ -854,6 +856,10 @@ autoplay = true
 [node name="Blockout" type="Node3D" parent="." unique_id=949445694]
 
 [node name="PowerLineNetwork" parent="Blockout" unique_id=1560074287 instance=ExtResource("21_power_line")]
+
+[node name="RoadNetwork" parent="Blockout" instance=ExtResource("23_road_network")]
+
+[node name="FenceNetwork" parent="Blockout" instance=ExtResource("24_fence_network")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0616226, 0, -1.7530594)
 
 [node name="pers" type="Node3D" parent="Blockout" unique_id=1924815139]
@@ -3403,3 +3409,5 @@ omni_range = 3.0
 [node name="CatStatusHUD" parent="." unique_id=361077728 instance=ExtResource("22_cat_status")]
 
 [editable path="Blockout/PowerLineNetwork"]
+[editable path="Blockout/RoadNetwork"]
+[editable path="Blockout/FenceNetwork"]

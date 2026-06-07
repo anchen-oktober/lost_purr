@@ -1,0 +1,22 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scripts/World/road_network.gd" id="1_road"]
+
+[node name="RoadNetwork" type="Node3D"]
+script = ExtResource("1_road")
+
+[node name="PathPoints" type="Node3D" parent="."]
+
+[node name="RoadPoint_01" type="Marker3D" parent="PathPoints"]
+position = Vector3(-25, 0.12, 22)
+
+[node name="RoadPoint_02" type="Marker3D" parent="PathPoints"]
+position = Vector3(-14, 0.12, 22)
+
+[node name="RoadPoint_03" type="Marker3D" parent="PathPoints"]
+position = Vector3(-4, 0.12, 17)
+
+[node name="RoadPoint_04" type="Marker3D" parent="PathPoints"]
+position = Vector3(8, 0.12, 17)
+
+[node name="Generated" type="Node3D" parent="."]
