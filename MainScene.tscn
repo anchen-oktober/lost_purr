@@ -3398,3 +3398,5 @@ light_energy = 0.8
 omni_range = 3.0
 
 [node name="JournalUI" parent="." unique_id=907969829 instance=ExtResource("11_journal_ui")]
+
+[editable path="Blockout/PowerLineNetwork"]

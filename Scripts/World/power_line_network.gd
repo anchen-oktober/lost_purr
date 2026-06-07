@@ -38,6 +38,12 @@ var _last_signature: String = ""
 var _rebuild_queued: bool = false
 
 
+func _enter_tree() -> void:
+	if Engine.is_editor_hint():
+		set_process(true)
+		_queue_rebuild()
+
+
 func _ready() -> void:
 	set_process(Engine.is_editor_hint())
 	_queue_rebuild()
