@@ -93,10 +93,10 @@ albedo_color = Color(0.7058824, 0.56078434, 0, 1)
 size = Vector3(6.775, 4.25, 4.735)
 
 [sub_resource type="BoxMesh" id="BoxMesh_nlw8m"]
-size = Vector3(0.15, 0.5, 2)
+size = Vector3(0.15, 0.5, 6)
 
 [sub_resource type="BoxMesh" id="BoxMesh_kvyqs"]
-size = Vector3(0.15, 1, 1)
+size = Vector3(0.15, 2, 10.74)
 
 [sub_resource type="BoxMesh" id="BoxMesh_i1thg"]
 size = Vector3(0.15, 0.7, 1)
@@ -115,6 +115,21 @@ albedo_color = Color(0.2509804, 0.2509804, 0.2509804, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_gdhla"]
 size = Vector3(25.52, 0.05, 1.73)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6dw4c"]
+albedo_color = Color(0.32366508, 0.24675804, 0.0583435, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nno2f"]
+size = Vector3(1.665, 0.38, 3.755)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v3bin"]
+albedo_color = Color(0.24713333, 0.55, 0.22550002, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_j6s8t"]
+size = Vector3(15, 0.5, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xtmsi"]
+size = Vector3(7.705, 2, 6.445)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7jkkr"]
 albedo_color = Color(0.64, 0.54, 0.42, 1)
@@ -800,6 +815,7 @@ emission_energy_multiplier = 1.8
 [node name="Ground" type="StaticBody3D" parent="." unique_id=993986553]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=1870375943]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1443162, 0.0058193207, -0.06747532)
 mesh = SubResource("PlaneMesh_1305s")
 surface_material_override/0 = SubResource("StandardMaterial3D_3mqji")
 
@@ -879,66 +895,61 @@ mesh = SubResource("CapsuleMesh_8qg48")
 [node name="houses_01" type="Node3D" parent="Blockout" unique_id=1251636146]
 
 [node name="01" type="MeshInstance3D" parent="Blockout/houses_01" unique_id=40437276]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.3388, 2.610918, 26.351671)
+transform = Transform3D(0.0073826397, 0, 0.99997276, 0, 1, 0, -0.99997276, 0, 0.0073826397, -8.107679, 2.610918, 26.351671)
 material_override = SubResource("StandardMaterial3D_xtmsi")
 mesh = SubResource("BoxMesh_1ms6g")
 
 [node name="02" type="MeshInstance3D" parent="Blockout/houses_01" unique_id=730551935]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.229218, 2.610918, -14.829161)
-material_override = SubResource("StandardMaterial3D_xtmsi")
-mesh = SubResource("BoxMesh_1ms6g")
-
-[node name="04" type="MeshInstance3D" parent="Blockout/houses_01" unique_id=802308276]
-transform = Transform3D(0.78302085, 0, -0.62199545, 0, 1, 0, 0.62199545, 0, 0.78302085, -2.4569712, 2.610918, 5.0708485)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.126787, 2.610918, -14.493332)
 material_override = SubResource("StandardMaterial3D_xtmsi")
 mesh = SubResource("BoxMesh_1ms6g")
 
 [node name="05" type="MeshInstance3D" parent="Blockout/houses_01" unique_id=733340590]
-transform = Transform3D(0.9998676, 0, 0.016265705, 0, 1, 0, -0.016265705, 0, 0.9998676, 5.5472307, 2.610918, 8.163242)
+transform = Transform3D(0.9998676, 0, 0.016265705, 0, 1, 0, -0.016265705, 0, 0.9998676, 3.0096073, 2.610918, 8.624924)
 material_override = SubResource("StandardMaterial3D_xtmsi")
 mesh = SubResource("BoxMesh_1ms6g")
 
 [node name="03" type="MeshInstance3D" parent="Blockout/houses_01" unique_id=1741206463]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.885163, 2.610918, -14.180039)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0746326, 2.610918, -15.169082)
 material_override = SubResource("StandardMaterial3D_xtmsi")
 mesh = SubResource("BoxMesh_1ms6g")
 
 [node name="06" type="MeshInstance3D" parent="Blockout/houses_01" unique_id=1208896216]
-transform = Transform3D(-0.024973104, 0, -0.99968815, 0, 1, 0, 0.99968815, 0, -0.024973104, 17.600826, 2.610918, 1.84344)
+transform = Transform3D(-0.024973104, 0, -0.99968815, 0, 1, 0, 0.99968815, 0, -0.024973104, 15.491032, 2.610918, 5.6491156)
 material_override = SubResource("StandardMaterial3D_xtmsi")
 mesh = SubResource("BoxMesh_1ms6g")
 
 [node name="07" type="MeshInstance3D" parent="Blockout/houses_01" unique_id=248830655]
-transform = Transform3D(-0.024973104, 0, -0.99968815, 0, 1, 0, 0.99968815, 0, -0.024973104, 17.600826, 2.610918, -4.6621866)
+transform = Transform3D(-0.024973104, 0, -0.99968815, 0, 1, 0, 0.99968815, 0, -0.024973104, 15.491032, 2.610918, -1.1044054)
 material_override = SubResource("StandardMaterial3D_xtmsi")
 mesh = SubResource("BoxMesh_1ms6g")
 
 [node name="houses_02" type="Node3D" parent="Blockout" unique_id=1540567250]
 
 [node name="01" type="MeshInstance3D" parent="Blockout/houses_02" unique_id=1676023262]
-transform = Transform3D(0.13291553, 0, 1.8760493, 0, 1, 0, -2.0251894, 0, 0.12312732, -36.586716, 1.2982664, 24.593773)
+transform = Transform3D(-0.02911599, 0, 1.8798922, 0, 1, 0, -2.0293376, 0, -0.026971772, -36.586716, 1.2982664, 28.204256)
 material_override = SubResource("StandardMaterial3D_8qg48")
 mesh = SubResource("BoxMesh_h86nx")
 
 [node name="02" type="MeshInstance3D" parent="Blockout/houses_02" unique_id=661705279]
-transform = Transform3D(0.13291553, 0, 1.8760493, 0, 1, 0, -2.0251894, 0, 0.12312732, -18.752155, 1.2982664, 3.2570763)
+transform = Transform3D(-0.03364949, 0, 1.8798269, 0, 1, 0, -2.0292673, 0, -0.031171434, -18.334154, 1.1010485, 0.07563019)
 material_override = SubResource("StandardMaterial3D_8qg48")
 mesh = SubResource("BoxMesh_h86nx")
 
 [node name="houses_03" type="Node3D" parent="Blockout" unique_id=1750523845]
 
 [node name="01" type="MeshInstance3D" parent="Blockout/houses_03" unique_id=1687109576]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5685215, 1.8377762, 31.927376)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.1589575, 1.8377762, 31.587372)
 mesh = SubResource("BoxMesh_7jkkr")
 surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
 
 [node name="02" type="MeshInstance3D" parent="Blockout/houses_03" unique_id=533995036]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.519756, 1.8377762, 31.816933)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.049635, 1.8377762, 31.52229)
 mesh = SubResource("BoxMesh_7jkkr")
 surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
 
 [node name="03" type="MeshInstance3D" parent="Blockout/houses_03" unique_id=1458489124]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.230011, 1.8377762, 31.434032)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.048666, 1.8377762, 31.434032)
 mesh = SubResource("BoxMesh_7jkkr")
 surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
 
@@ -953,17 +964,17 @@ mesh = SubResource("BoxMesh_7jkkr")
 surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
 
 [node name="07" type="MeshInstance3D" parent="Blockout/houses_03" unique_id=591553377]
-transform = Transform3D(0.6366033, 0, 0.7711915, 0, 1, 0, -0.7711915, 0, 0.6366033, -34.37217, 1.8377762, 12.929657)
+transform = Transform3D(0.6366033, 0, 0.7711915, 0, 1, 0, -0.7711915, 0, 0.6366033, -34.883434, 1.6802235, 13.653297)
 mesh = SubResource("BoxMesh_7jkkr")
 surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
 
 [node name="08" type="MeshInstance3D" parent="Blockout/houses_03" unique_id=31983949]
-transform = Transform3D(0.9941416, 0, 0.1080862, 0, 1, 0, -0.1080862, 0, 0.9941416, -28.695, 1.8377762, 10.432035)
+transform = Transform3D(0.99992347, 0, 0.0123741515, 0, 1, 0, -0.0123741515, 0, 0.99992347, -26.430721, 1.8377762, 10.5647955)
 mesh = SubResource("BoxMesh_7jkkr")
 surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
 
 [node name="09" type="MeshInstance3D" parent="Blockout/houses_03" unique_id=2008873995]
-transform = Transform3D(0.99999917, 0, 0.0012916327, 0, 1, 0, -0.0012916327, 0, 0.99999917, -22.082783, 1.8377762, 10.436283)
+transform = Transform3D(0.99999917, 0, 0.0012916327, 0, 1, 0, -0.0012916327, 0, 0.99999917, -20.487179, 1.8377762, 10.436283)
 mesh = SubResource("BoxMesh_7jkkr")
 surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
 
@@ -973,12 +984,17 @@ mesh = SubResource("BoxMesh_7jkkr")
 surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
 
 [node name="11" type="MeshInstance3D" parent="Blockout/houses_03" unique_id=350437722]
-transform = Transform3D(0.99999917, 0, 0.0012916327, 0, 1, 0, -0.0012916327, 0, 0.99999917, -15.5154085, 1.8377762, -33.309395)
+transform = Transform3D(0.99999917, 0, 0.0012916327, 0, 1, 0, -0.0012916327, 0, 0.99999917, -15.681629, 1.8377762, -33.309395)
 mesh = SubResource("BoxMesh_7jkkr")
 surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
 
 [node name="14" type="MeshInstance3D" parent="Blockout/houses_03" unique_id=877417100]
-transform = Transform3D(0.99999917, 0, 0.0012916327, 0, 1, 0, -0.0012916327, 0, 0.99999917, -14.417765, 1.8377762, -23.116854)
+transform = Transform3D(0.99999917, 0, 0.0012916327, 0, 1, 0, -0.0012916327, 0, 0.99999917, -13.429937, 1.8377762, -23.116854)
+mesh = SubResource("BoxMesh_7jkkr")
+surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
+
+[node name="21" type="MeshInstance3D" parent="Blockout/houses_03" unique_id=1128087363]
+transform = Transform3D(0.99999917, 0, 0.0012916327, 0, 1, 0, -0.0012916327, 0, 0.99999917, -20.993546, 1.8377762, -23.116854)
 mesh = SubResource("BoxMesh_7jkkr")
 surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
 
@@ -987,43 +1003,18 @@ transform = Transform3D(0.99999917, 0, 0.0012916327, 0, 1, 0, -0.0012916327, 0, 
 mesh = SubResource("BoxMesh_7jkkr")
 surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
 
-[node name="15" type="MeshInstance3D" parent="Blockout/houses_03" unique_id=1597164897]
-transform = Transform3D(0.99999917, 0, 0.0012916327, 0, 1, 0, -0.0012916327, 0, 0.99999917, 3.8443184, 1.8377762, -22.322475)
-mesh = SubResource("BoxMesh_7jkkr")
-surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
-
 [node name="16" type="MeshInstance3D" parent="Blockout/houses_03" unique_id=454376296]
-transform = Transform3D(0.922282, 0, -0.38651773, 0, 1, 0, 0.38651773, 0, 0.922282, 10.4722595, 1.8377762, -21.285866)
+transform = Transform3D(0.922282, 0, -0.38651773, 0, 1, 0, 0.38651773, 0, 0.922282, 13.4732275, 1.8377762, -19.067406)
 mesh = SubResource("BoxMesh_7jkkr")
 surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
 
 [node name="17" type="MeshInstance3D" parent="Blockout/houses_03" unique_id=876329415]
-transform = Transform3D(0.8796652, 0, -0.47559345, 0, 1, 0, 0.47559345, 0, 0.8796652, 16.730139, 1.8377762, -18.34967)
-mesh = SubResource("BoxMesh_7jkkr")
-surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
-
-[node name="19" type="MeshInstance3D" parent="Blockout/houses_03" unique_id=2075962944]
-transform = Transform3D(0.6281396, 0, -0.7781006, 0, 1, 0, 0.7781006, 0, 0.6281396, 15.10368, 1.8377762, 16.351326)
-mesh = SubResource("BoxMesh_7jkkr")
-surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
-
-[node name="21" type="MeshInstance3D" parent="Blockout/houses_03" unique_id=387992708]
-transform = Transform3D(-0.0016929507, 0, -0.9999987, 0, 1, 0, 0.9999987, 0, -0.0016929507, -9.256058, 1.8377762, -8.121958)
+transform = Transform3D(0.8796652, 0, -0.47559345, 0, 1, 0, 0.47559345, 0, 0.8796652, 18.82799, 1.8377762, -16.63797)
 mesh = SubResource("BoxMesh_7jkkr")
 surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
 
 [node name="18" type="MeshInstance3D" parent="Blockout/houses_03" unique_id=473903476]
-transform = Transform3D(0.8796652, 0, -0.47559345, 0, 1, 0, 0.47559345, 0, 0.8796652, 22.269495, 1.8377762, -14.646688)
-mesh = SubResource("BoxMesh_7jkkr")
-surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
-
-[node name="20" type="MeshInstance3D" parent="Blockout/houses_03" unique_id=1818571944]
-transform = Transform3D(0.6571895, 0.050031826, -0.75206316, 0.067488305, 0.9898806, 0.12482747, 0.750698, -0.13279071, 0.6471623, 11.846727, 4.6926613, 12.1002655)
-mesh = SubResource("BoxMesh_7jkkr")
-surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
-
-[node name="13" type="MeshInstance3D" parent="Blockout/houses_03" unique_id=933109004]
-transform = Transform3D(-0.007504914, 0, 0.9999718, 0, 1, 0, -0.9999718, 0, -0.007504914, -29.38652, 1.8377762, -8.198364)
+transform = Transform3D(0.8796652, 0, -0.47559345, 0, 1, 0, 0.47559345, 0, 0.8796652, 24.016052, 1.8377857, -13.742273)
 mesh = SubResource("BoxMesh_7jkkr")
 surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
 
@@ -1035,7 +1026,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_1ms6g")
 [node name="houses_04" type="Node3D" parent="Blockout" unique_id=1960062669]
 
 [node name="01" type="MeshInstance3D" parent="Blockout/houses_04" unique_id=1369048692]
-transform = Transform3D(-0.009645297, 0.0019700392, 0.99995166, 0.00120872, 0.9999974, -0.0019584727, -0.99995285, 0.0011897755, -0.009647654, -8.503516, 2.2430563, 11.228191)
+transform = Transform3D(-0.009645297, 0.0019700392, 0.99995166, 0.00120872, 0.9999974, -0.0019584727, -0.99995285, 0.0011897755, -0.009647654, -8.503516, 2.2430563, 10.20734)
 material_override = SubResource("StandardMaterial3D_h86nx")
 mesh = SubResource("BoxMesh_5i0cj")
 
@@ -1054,37 +1045,410 @@ transform = Transform3D(-0.009645297, 0.0019700392, 0.99995166, 0.00120872, 0.99
 material_override = SubResource("StandardMaterial3D_h86nx")
 mesh = SubResource("BoxMesh_5i0cj")
 
+[node name="08" type="MeshInstance3D" parent="Blockout/houses_04" unique_id=174924180]
+transform = Transform3D(-0.009645297, 0.0019700392, 0.99995166, 0.00120872, 0.9999974, -0.0019584727, -0.99995285, 0.0011897755, -0.009647654, -31.051779, 2.2430563, -10.177545)
+material_override = SubResource("StandardMaterial3D_h86nx")
+mesh = SubResource("BoxMesh_5i0cj")
+
 [node name="05" type="MeshInstance3D" parent="Blockout/houses_04" unique_id=742584176]
-transform = Transform3D(-0.009645297, 0.0019700392, 0.99995166, 0.00120872, 0.9999974, -0.0019584727, -0.99995285, 0.0011897755, -0.009647654, -7.117628, 2.2430563, -21.21588)
+transform = Transform3D(-0.009645297, 0.0019700392, 0.99995166, 0.00120872, 0.9999974, -0.0019584727, -0.99995285, 0.0011897755, -0.009647654, -4.2120037, 2.2430563, -21.879505)
+material_override = SubResource("StandardMaterial3D_h86nx")
+mesh = SubResource("BoxMesh_5i0cj")
+
+[node name="09" type="MeshInstance3D" parent="Blockout/houses_04" unique_id=628160982]
+transform = Transform3D(-0.009645297, 0.0019700392, 0.99995166, 0.00120872, 0.9999974, -0.0019584727, -0.99995285, 0.0011897755, -0.009647654, -4.103465, 2.2430563, -8.074996)
 material_override = SubResource("StandardMaterial3D_h86nx")
 mesh = SubResource("BoxMesh_5i0cj")
 
 [node name="07" type="MeshInstance3D" parent="Blockout/houses_04" unique_id=1386701147]
-transform = Transform3D(-0.9717574, 0.0016367437, 0.23597655, 0.0012087199, 0.9999973, -0.0019584724, -0.23597914, -0.0016179275, -0.9717569, 22.742956, 2.2430563, 24.459448)
+transform = Transform3D(-0.99992317, 0.0011844756, -0.01233533, 0.0012087198, 0.99999726, -0.0019584722, 0.012332991, -0.0019732297, -0.99992204, 22.742956, 2.2430563, 24.459448)
 material_override = SubResource("StandardMaterial3D_h86nx")
 mesh = SubResource("BoxMesh_5i0cj")
 
 [node name="06" type="MeshInstance3D" parent="Blockout/houses_04" unique_id=862181497]
-transform = Transform3D(-0.009645297, 0.0019700392, 0.99995166, 0.00120872, 0.9999974, -0.0019584727, -0.99995285, 0.0011897755, -0.009647654, 7.072212, 2.2430563, -8.80073)
+transform = Transform3D(-0.009645297, 0.0019700392, 0.99995166, 0.00120872, 0.9999974, -0.0019584727, -0.99995285, 0.0011897755, -0.009647654, 6.3501167, 2.2430563, -8.80073)
 material_override = SubResource("StandardMaterial3D_h86nx")
 mesh = SubResource("BoxMesh_5i0cj")
 
 [node name="fence_01" type="Node3D" parent="Blockout" unique_id=327404663]
 
 [node name="01" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=135782610]
-transform = Transform3D(0.0088312235, 0, -0.999961, 0, 1, 0, 0.999961, 0, 0.0088312235, 12.563734, 0.27687645, 26.311007)
+transform = Transform3D(0.99941254, 0, 0.03427156, 0, 1, 0, -0.03427156, 0, 0.99941254, -23.611902, 0.27687645, 18.881723)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="08" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=1145670241]
+transform = Transform3D(-0.017173203, 0, 0.9998525, 0, 1, 0, -0.9998525, 0, -0.017173203, -26.694147, 0.27687645, 15.964876)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="09" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=1891232138]
+transform = Transform3D(-0.017173203, 0, 0.9998525, 0, 1, 0, -0.9998525, 0, -0.017173203, -20.678467, 0.27687645, 15.964876)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="29" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=2101824819]
+transform = Transform3D(-0.017173203, 0, 0.9998525, 0, 1, 0, -0.9998525, 0, -0.017173203, -19.775213, 0.27687645, 5.1859217)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="31" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=908401566]
+transform = Transform3D(-0.017173203, 0, 0.9998525, 0, 1, 0, -0.9998525, 0, -0.017173203, -26.716393, 0.27687645, 5.3275213)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="34" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=1804742033]
+transform = Transform3D(-0.017173203, 0, 0.9998525, 0, 1, 0, -0.9998525, 0, -0.017173203, -27.953707, 0.27687645, 11.397692)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="32" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=509280078]
+transform = Transform3D(-0.017173203, 0, 0.9998525, 0, 1, 0, -0.9998525, 0, -0.017173203, -28.00412, 0.27687645, 5.3275213)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="30" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=687773295]
+transform = Transform3D(-0.017173203, 0, 0.9998525, 0, 1, 0, -0.9998525, 0, -0.017173203, -20.841427, 0.27687645, 5.1859217)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="35" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=2028565807]
+transform = Transform3D(-0.017173203, 0, 0.9998525, 0, 1, 0, -0.9998525, 0, -0.017173203, -7.999571, 0.27687263, -4.7586126)
+mesh = SubResource("BoxMesh_nlw8m")
+metadata/_edit_group_ = true
+
+[node name="62" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=1670794105]
+transform = Transform3D(-0.017173203, 0, 0.9998525, 0, 1, 0, -0.9998525, 0, -0.017173203, 9.87808, 0.27687263, -5.5905256)
+mesh = SubResource("BoxMesh_nlw8m")
+metadata/_edit_group_ = true
+
+[node name="74" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=1661155953]
+transform = Transform3D(-0.017173203, 0, 0.9998525, 0, 1, 0, -0.9998525, 0, -0.017173203, 19.904005, 0.27687263, -5.039918)
+mesh = SubResource("BoxMesh_nlw8m")
+metadata/_edit_group_ = true
+
+[node name="75" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=227430308]
+transform = Transform3D(-0.017173203, 0, 0.9998525, 0, 1, 0, -0.9998525, 0, -0.017173203, 20.04058, 0.27687263, 7.8463125)
+mesh = SubResource("BoxMesh_nlw8m")
+metadata/_edit_group_ = true
+
+[node name="81" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=75437922]
+transform = Transform3D(0.04761202, 0, 0.99886584, 0, 1, 0, -0.99886584, 0, 0.04761202, 23.913736, 0.27687263, 31.074924)
+mesh = SubResource("BoxMesh_nlw8m")
+metadata/_edit_group_ = true
+
+[node name="82" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=1242032205]
+transform = Transform3D(0.04761202, 0, 0.99886584, 0, 1, 0, -0.99886584, 0, 0.04761202, 20.763056, 0.27687263, 30.95272)
+mesh = SubResource("BoxMesh_nlw8m")
+metadata/_edit_group_ = true
+
+[node name="79" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=2011914791]
+transform = Transform3D(-0.017173203, 0, 0.9998525, 0, 1, 0, -0.9998525, 0, -0.017173203, 20.04058, 0.27687263, 1.8896484)
+mesh = SubResource("BoxMesh_nlw8m")
+metadata/_edit_group_ = true
+
+[node name="69" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=1439762185]
+transform = Transform3D(-0.017173203, 0, 0.9998525, 0, 1, 0, -0.9998525, 0, -0.017173203, 8.219587, 0.14514351, -13.679111)
+mesh = SubResource("BoxMesh_nlw8m")
+metadata/_edit_group_ = true
+
+[node name="70" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=2112756903]
+transform = Transform3D(-0.017173203, 0, 0.9998525, 0, 1, 0, -0.9998525, 0, -0.017173203, 9.405447, 0.14514351, -13.679111)
+mesh = SubResource("BoxMesh_nlw8m")
+metadata/_edit_group_ = true
+
+[node name="63" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=738961870]
+transform = Transform3D(-0.017173203, 0, 0.9998525, 0, 1, 0, -0.9998525, 0, -0.017173203, 1.9243708, 0.27687263, 13.33565)
+mesh = SubResource("BoxMesh_nlw8m")
+metadata/_edit_group_ = true
+
+[node name="68" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=564491028]
+transform = Transform3D(0.9998444, 0, -0.017644351, 0, 1, 0, 0.017644351, 0, 0.9998444, 26.81504, 0.27687263, 28.126617)
+mesh = SubResource("BoxMesh_nlw8m")
+metadata/_edit_group_ = true
+
+[node name="80" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=1489990514]
+transform = Transform3D(0.9998444, 0, -0.017644351, 0, 1, 0, 0.017644351, 0, 0.9998444, 17.699512, 0.27687263, 27.33152)
+mesh = SubResource("BoxMesh_nlw8m")
+metadata/_edit_group_ = true
+
+[node name="64" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=2050681137]
+transform = Transform3D(-0.017173203, 0, 0.9998525, 0, 1, 0, -0.9998525, 0, -0.017173203, 6.9209957, 0.27687263, 13.279628)
+mesh = SubResource("BoxMesh_nlw8m")
+metadata/_edit_group_ = true
+
+[node name="65" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=206880172]
+transform = Transform3D(-0.017173203, 0, 0.9998525, 0, 1, 0, -0.9998525, 0, -0.017173203, 2.1312284, 0.27687263, 6.9303904)
+mesh = SubResource("BoxMesh_nlw8m")
+metadata/_edit_group_ = true
+
+[node name="66" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=97057531]
+transform = Transform3D(-0.017173203, 0, 0.9998525, 0, 1, 0, -0.9998525, 0, -0.017173203, 6.754677, 0.27687263, 6.953309)
+mesh = SubResource("BoxMesh_nlw8m")
+metadata/_edit_group_ = true
+
+[node name="48" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=147502018]
+transform = Transform3D(-0.017173203, 0, 0.9998525, 0, 1, 0, -0.9998525, 0, -0.017173203, -7.999571, 0.27687263, -25.206768)
+mesh = SubResource("BoxMesh_nlw8m")
+metadata/_edit_group_ = true
+
+[node name="43" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=1441702090]
+transform = Transform3D(-0.017173203, 0, 0.9998525, 0, 1, 0, -0.9998525, 0, -0.017173203, -8.033334, 0.27687645, -13.086407)
+mesh = SubResource("BoxMesh_nlw8m")
+metadata/_edit_group_ = true
+
+[node name="44" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=565408171]
+transform = Transform3D(-0.017173203, 0, 0.9998525, 0, 1, 0, -0.9998525, 0, -0.017173203, -8.034243, 0.27687645, -18.852608)
+mesh = SubResource("BoxMesh_nlw8m")
+metadata/_edit_group_ = true
+
+[node name="55" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=269363214]
+transform = Transform3D(-0.017173203, 0, 0.9998525, 0, 1, 0, -0.9998525, 0, -0.017173203, -15.810038, 0.27687645, -16.400686)
+mesh = SubResource("BoxMesh_nlw8m")
+metadata/_edit_group_ = true
+
+[node name="56" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=1334454640]
+transform = Transform3D(-0.017173203, 0, 0.9998525, 0, 1, 0, -0.9998525, 0, -0.017173203, -13.87561, 0.27687645, -16.400686)
+mesh = SubResource("BoxMesh_nlw8m")
+metadata/_edit_group_ = true
+
+[node name="59" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=61010921]
+transform = Transform3D(-0.017173203, 0, 0.9998525, 0, 1, 0, -0.9998525, 0, -0.017173203, -13.87561, 0.27687645, -10.431727)
+mesh = SubResource("BoxMesh_nlw8m")
+metadata/_edit_group_ = true
+
+[node name="60" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=190623674]
+transform = Transform3D(-0.017173203, 0, 0.9998525, 0, 1, 0, -0.9998525, 0, -0.017173203, -19.74473, 0.27687645, -10.2781315)
+mesh = SubResource("BoxMesh_nlw8m")
+metadata/_edit_group_ = true
+
+[node name="61" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=1924199101]
+transform = Transform3D(-0.017173203, 0, 0.9998525, 0, 1, 0, -0.9998525, 0, -0.017173203, -21.232822, 0.27687645, -10.2781315)
+mesh = SubResource("BoxMesh_nlw8m")
+metadata/_edit_group_ = true
+
+[node name="38" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=1065269365]
+transform = Transform3D(-0.017173203, 0, 0.9998525, 0, 1, 0, -0.9998525, 0, -0.017173203, -28.433214, 0.27687645, -2.7625685)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="50" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=1430038380]
+transform = Transform3D(-0.017173203, 0, 0.9998525, 0, 1, 0, -0.9998525, 0, -0.017173203, -36.038303, 0.27687645, -6.557704)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="51" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=1042420938]
+transform = Transform3D(-0.017173203, 0, 0.9998525, 0, 1, 0, -0.9998525, 0, -0.017173203, -36.038303, 0.27687645, -16.010452)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="52" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=1738695157]
+transform = Transform3D(-0.017173203, 0, 0.9998525, 0, 1, 0, -0.9998525, 0, -0.017173203, -36.038303, 0.27687645, -26.266672)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="49" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=297325468]
+transform = Transform3D(-0.017173203, 0, 0.9998525, 0, 1, 0, -0.9998525, 0, -0.017173203, -23.29459, 0.27687645, -2.7625685)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="10" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=729682765]
+transform = Transform3D(-0.017173203, 0, 0.9998525, 0, 1, 0, -0.9998525, 0, -0.017173203, -14.900254, 0.27687645, 15.964876)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="20" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=2140130877]
+transform = Transform3D(-0.017173203, 0, 0.9998525, 0, 1, 0, -0.9998525, 0, -0.017173203, -7.006564, 0.27687645, 18.158506)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="27" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=1606493169]
+transform = Transform3D(-0.017173203, 0, 0.9998525, 0, 1, 0, -0.9998525, 0, -0.017173203, -3.8756132, 0.27687645, -2.848034)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="39" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=1887510239]
+transform = Transform3D(-0.017173203, 0, 0.9998525, 0, 1, 0, -0.9998525, 0, -0.017173203, -3.8756132, 0.27687645, 13.488316)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="21" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=1996655278]
+transform = Transform3D(-0.017173203, 0, 0.9998525, 0, 1, 0, -0.9998525, 0, -0.017173203, -6.512185, 0.27687645, 34.786522)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="11" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=2085924451]
+transform = Transform3D(-0.017173203, 0, 0.9998525, 0, 1, 0, -0.9998525, 0, -0.017173203, -14.757767, 0.27687645, 38.602528)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="16" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=462276974]
+transform = Transform3D(-0.017173203, 0, 0.9998525, 0, 1, 0, -0.9998525, 0, -0.017173203, -20.789257, 0.27687645, 38.602528)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="17" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=1721227871]
+transform = Transform3D(-0.017173203, 0, 0.9998525, 0, 1, 0, -0.9998525, 0, -0.017173203, -26.461905, 0.27687645, 38.602528)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="05" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=39495574]
+transform = Transform3D(0.99941254, 0, 0.03427156, 0, 1, 0, -0.03427156, 0, 0.99941254, -29.766222, 0.27687645, 19.053812)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="06" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=90559872]
+transform = Transform3D(0.99941254, 0, 0.03427156, 0, 1, 0, -0.03427156, 0, 0.99941254, -17.782286, 0.27687645, 19.053812)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="07" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=1305914692]
+transform = Transform3D(0.99941254, 0, 0.03427156, 0, 1, 0, -0.03427156, 0, 0.99941254, -11.892192, 0.27687645, 19.053812)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="26" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=1497279493]
+transform = Transform3D(0.99941254, 0, 0.03427156, 0, 1, 0, -0.03427156, 0, 0.99941254, -16.72848, 0.27687645, 8.073374)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="28" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=932146842]
+transform = Transform3D(0.99941254, 0, 0.03427156, 0, 1, 0, -0.03427156, 0, 0.99941254, -23.660664, 0.27687645, 8.222011)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="33" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=1419468208]
+transform = Transform3D(0.99941254, 0, 0.03427156, 0, 1, 0, -0.03427156, 0, 0.99941254, -30.868505, 0.27687645, 8.434588)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="36" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=864915273]
+transform = Transform3D(0.99941254, 0, 0.03427156, 0, 1, 0, -0.03427156, 0, 0.99941254, -31.059883, 0.27687645, 2.3962612)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="45" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=1547377309]
+transform = Transform3D(0.99941254, 0, 0.03427156, 0, 1, 0, -0.03427156, 0, 0.99941254, -10.964428, 0.27687645, -7.866454)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="46" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=2114309236]
+transform = Transform3D(0.99941254, 0, 0.03427156, 0, 1, 0, -0.03427156, 0, 0.99941254, -10.947242, 0.27687645, -10.077537)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="47" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=1573169952]
+transform = Transform3D(0.999987, 0, -0.0050963312, 0, 1, 0, 0.0050963312, 0, 0.999987, -10.907641, 0.27687645, -16.203121)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="53" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=1723987304]
+transform = Transform3D(0.9998822, 0.0019847965, -0.015222438, -0.0019297244, 0.9999915, 0.0036319674, 0.015229508, -0.0036021671, 0.99987745, -10.907189, 0.27687645, -21.574303)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="54" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=329001900]
+transform = Transform3D(0.9998822, 0.0019847965, -0.015222438, -0.0019297244, 0.9999915, 0.0036319674, 0.015229508, -0.0036021671, 0.99987745, -23.552608, 0.27687645, -19.257355)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="57" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=1655260814]
+transform = Transform3D(0.9998822, 0.0019847965, -0.015222438, -0.0019297244, 0.9999915, 0.0036319674, 0.015229508, -0.0036021671, 0.99987745, -17.139832, 0.27687645, -19.257355)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="58" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=1788345091]
+transform = Transform3D(0.9998822, 0.0019847965, -0.015222438, -0.0019297244, 0.9999915, 0.0036319674, 0.015229508, -0.0036021671, 0.99987745, -17.139832, 0.27687645, -21.008165)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="37" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=1800806827]
+transform = Transform3D(0.99941254, 0, 0.03427156, 0, 1, 0, -0.03427156, 0, 0.99941254, -31.168331, 0.27687645, 0.24585867)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="18" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=467211970]
+transform = Transform3D(0.99941254, 0, 0.03427156, 0, 1, 0, -0.03427156, 0, 0.99941254, -9.953198, 0.27687645, 21.041054)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="25" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=548778655]
+transform = Transform3D(0.99941254, 0, 0.03427156, 0, 1, 0, -0.03427156, 0, 0.99941254, -35.836987, 0.27687645, 22.016808)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="19" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=16239804]
+transform = Transform3D(0.99941254, 0, 0.03427156, 0, 1, 0, -0.03427156, 0, 0.99941254, -9.6385, 0.27687645, 31.87608)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="22" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=1884154398]
+transform = Transform3D(0.99941254, 0, 0.03427156, 0, 1, 0, -0.03427156, 0, 0.99941254, -3.4965515, 0.27687645, 31.90467)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="40" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=1457140544]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9438653, 0.27687645, 0.103811264)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="41" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=217510908]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9438653, 0.27687645, 5.944548)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="42" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=1146411537]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9438653, 0.27687645, 10.453292)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="23" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=1966701069]
+transform = Transform3D(0.99941254, 0, 0.03427156, 0, 1, 0, -0.03427156, 0, 0.99941254, -3.5687923, 0.27687645, 26.36863)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="24" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=485966319]
+transform = Transform3D(0.99941254, 0, 0.03427156, 0, 1, 0, -0.03427156, 0, 0.99941254, -3.725811, 0.27687645, 20.972267)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="67" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=1760503960]
+transform = Transform3D(0.99941254, 0, 0.03427156, 0, 1, 0, -0.03427156, 0, 0.99941254, 9.631131, 1.1413708, 9.5633545)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="72" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=1279874512]
+transform = Transform3D(0.99941254, 0, 0.03427156, 0, 1, 0, -0.03427156, 0, 0.99941254, 12.583387, 1.1413708, -8.813622)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="73" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=6998152]
+transform = Transform3D(0.99941254, 0, 0.03427156, 0, 1, 0, -0.03427156, 0, 0.99941254, 12.583387, 1.1413708, -10.929982)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="71" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=291279745]
+transform = Transform3D(0.99941254, 0, 0.03427156, 0, 1, 0, -0.03427156, 0, 0.99941254, 9.631131, 1.1413708, 10.27135)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="76" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=841555032]
+transform = Transform3D(0.99941254, 0, 0.03427156, 0, 1, 0, -0.03427156, 0, 0.99941254, 22.683926, 1.1413708, 5.127637)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="77" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=1513643946]
+transform = Transform3D(0.99941254, 0, 0.03427156, 0, 1, 0, -0.03427156, 0, 0.99941254, 22.683926, 1.1413708, -0.333848)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="78" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=1421660977]
+transform = Transform3D(0.99941254, 0, 0.03427156, 0, 1, 0, -0.03427156, 0, 0.99941254, 22.683926, 1.1413708, -2.174899)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="12" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=1471726512]
+transform = Transform3D(0.99941254, 0, 0.03427156, 0, 1, 0, -0.03427156, 0, 0.99941254, -11.799866, 0.50226974, 35.528107)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="13" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=1297953833]
+transform = Transform3D(0.99941254, 0, 0.03427156, 0, 1, 0, -0.03427156, 0, 0.99941254, -17.788536, 0.50226974, 35.528107)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="14" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=541219425]
+transform = Transform3D(0.99941254, 0, 0.03427156, 0, 1, 0, -0.03427156, 0, 0.99941254, -23.61835, 0.50226974, 35.528107)
+mesh = SubResource("BoxMesh_nlw8m")
+
+[node name="15" type="MeshInstance3D" parent="Blockout/fence_01" unique_id=1324055325]
+transform = Transform3D(0.99941254, 0, 0.03427156, 0, 1, 0, -0.03427156, 0, 0.99941254, -29.438828, 0.50226974, 35.528107)
 mesh = SubResource("BoxMesh_nlw8m")
 
 [node name="fence_02" type="Node3D" parent="Blockout" unique_id=1697671563]
 
 [node name="01" type="MeshInstance3D" parent="Blockout/fence_02" unique_id=436405457]
-transform = Transform3D(0.035632055, 0, 0.999365, 0, 1, 0, -0.999365, 0, 0.035632055, 16.639149, 0.5301075, 26.095526)
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -1.9040852, 1.079361, 28.544065)
+mesh = SubResource("BoxMesh_kvyqs")
+
+[node name="07" type="MeshInstance3D" parent="Blockout/fence_02" unique_id=134818852]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 17.038792, 1.079361, 27.712015)
+mesh = SubResource("BoxMesh_kvyqs")
+
+[node name="08" type="MeshInstance3D" parent="Blockout/fence_02" unique_id=232791154]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 12.176315, 1.2725258, -35.066666)
+mesh = SubResource("BoxMesh_kvyqs")
+
+[node name="09" type="MeshInstance3D" parent="Blockout/fence_02" unique_id=674107799]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 1.2414379, 1.2725258, -35.161957)
+mesh = SubResource("BoxMesh_kvyqs")
+
+[node name="02" type="MeshInstance3D" parent="Blockout/fence_02" unique_id=549086963]
+transform = Transform3D(0.99992746, 0, -0.012042465, 0, 1, 0, 0.012042465, 0, 0.99992746, -1.8790786, 0.88875866, 25.075787)
+mesh = SubResource("BoxMesh_kvyqs")
+
+[node name="03" type="MeshInstance3D" parent="Blockout/fence_02" unique_id=511732486]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.516902, 0.88875866, 19.756203)
+mesh = SubResource("BoxMesh_kvyqs")
+
+[node name="05" type="MeshInstance3D" parent="Blockout/fence_02" unique_id=2097551803]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6.7545586, 0.88875866, -35.62538)
+mesh = SubResource("BoxMesh_kvyqs")
+
+[node name="04" type="MeshInstance3D" parent="Blockout/fence_02" unique_id=1732262021]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 9.106501, 0.88875866, 19.756203)
 mesh = SubResource("BoxMesh_kvyqs")
 
 [node name="fence_03" type="Node3D" parent="Blockout" unique_id=2063598646]
 
 [node name="01" type="MeshInstance3D" parent="Blockout/fence_03" unique_id=276058907]
-transform = Transform3D(-0.03997481, 0, -0.9992007, 0, 1, 0, 0.9992007, 0, -0.03997481, 18.201084, 0.37384892, 26.096355)
+transform = Transform3D(-0.03997481, 0, -0.9992007, 0, 1, 0, 0.9992007, 0, -0.03997481, 9.883842, 0.37384892, 35.16398)
 mesh = SubResource("BoxMesh_i1thg")
 
 [node name="fence_04" type="Node3D" parent="Blockout" unique_id=812761667]
@@ -1097,8 +1461,92 @@ mesh = SubResource("BoxMesh_i1thg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.127546, 0.49166203, 22.785345)
 mesh = SubResource("BoxMesh_3slyh")
 
+[node name="09" type="MeshInstance3D" parent="Blockout/garage_01" unique_id=1206334265]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.335264, 0.49166203, 11.201904)
+mesh = SubResource("BoxMesh_3slyh")
+
+[node name="10" type="MeshInstance3D" parent="Blockout/garage_01" unique_id=931072185]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.432192, 0.49166203, 11.272778)
+mesh = SubResource("BoxMesh_3slyh")
+
+[node name="13" type="MeshInstance3D" parent="Blockout/garage_01" unique_id=666786591]
+transform = Transform3D(-0.007190708, 0, 0.99997425, 0, 1, 0, -0.99997425, 0, -0.007190708, -17.471096, 0.49166203, 4.1133614)
+mesh = SubResource("BoxMesh_3slyh")
+
+[node name="14" type="MeshInstance3D" parent="Blockout/garage_01" unique_id=523658600]
+transform = Transform3D(0.9999936, 0, 0.0035953668, 0, 1, 0, -0.0035953668, 0, 0.9999936, -10.002645, 0.49166203, 4.6630993)
+mesh = SubResource("BoxMesh_3slyh")
+
+[node name="15" type="MeshInstance3D" parent="Blockout/garage_01" unique_id=1263625947]
+transform = Transform3D(0.9999936, 0, 0.0035953668, 0, 1, 0, -0.0035953668, 0, 0.9999936, -10.002645, 0.49166203, 6.150078)
+mesh = SubResource("BoxMesh_3slyh")
+
+[node name="16" type="MeshInstance3D" parent="Blockout/garage_01" unique_id=142702564]
+transform = Transform3D(0.9999936, 0, 0.0035953668, 0, 1, 0, -0.0035953668, 0, 0.9999936, -2.5376444, 0.49166203, -17.969147)
+mesh = SubResource("BoxMesh_3slyh")
+
+[node name="17" type="MeshInstance3D" parent="Blockout/garage_01" unique_id=1445760959]
+transform = Transform3D(0.9999936, 0, 0.0035953668, 0, 1, 0, -0.0035953668, 0, 0.9999936, -2.5376444, 0.49166203, -12.249842)
+mesh = SubResource("BoxMesh_3slyh")
+
+[node name="18" type="MeshInstance3D" parent="Blockout/garage_01" unique_id=163883979]
+transform = Transform3D(0.98585266, 0.1675775, 0.0035445245, -0.16757643, 0.9858589, -0.0006025026, -0.0035953668, 0, 0.9999936, -23.020576, 2.900322, -11.536176)
+mesh = SubResource("BoxMesh_3slyh")
+
+[node name="21" type="MeshInstance3D" parent="Blockout/garage_01" unique_id=265470082]
+transform = Transform3D(0.98585266, 0.1675775, 0.0035445245, -0.16757643, 0.9858589, -0.0006025026, -0.0035953668, 0, 0.9999936, -28.825287, 2.900322, -14.619763)
+mesh = SubResource("BoxMesh_3slyh")
+
+[node name="22" type="MeshInstance3D" parent="Blockout/garage_01" unique_id=1168353726]
+transform = Transform3D(0.98585266, 0.1675775, 0.0035445245, -0.16757643, 0.9858589, -0.0006025026, -0.0035953668, 0, 0.9999936, -28.825287, 2.900322, -17.855852)
+mesh = SubResource("BoxMesh_3slyh")
+
+[node name="19" type="MeshInstance3D" parent="Blockout/garage_01" unique_id=100949948]
+transform = Transform3D(0.9999936, 0, 0.0035953668, 0, 1, 0, -0.0035953668, 0, 0.9999936, -18.0053, 0.58171844, -23.861303)
+mesh = SubResource("BoxMesh_3slyh")
+
+[node name="23" type="MeshInstance3D" parent="Blockout/garage_01" unique_id=1317661893]
+transform = Transform3D(0.9999936, 0, 0.0035953668, 0, 1, 0, -0.0035953668, 0, 0.9999936, -19.281727, 0.58171844, -31.679373)
+mesh = SubResource("BoxMesh_3slyh")
+
+[node name="26" type="MeshInstance3D" parent="Blockout/garage_01" unique_id=953569367]
+transform = Transform3D(0.9999936, 0, 0.0035953668, 0, 1, 0, -0.0035953668, 0, 0.9999936, 4.709096, 0.58171844, -12.925777)
+mesh = SubResource("BoxMesh_3slyh")
+
+[node name="28" type="MeshInstance3D" parent="Blockout/garage_01" unique_id=1263152117]
+transform = Transform3D(0.9999936, 0, 0.0035953668, 0, 1, 0, -0.0035953668, 0, 0.9999936, 14.497557, 0.58171844, -4.301653)
+mesh = SubResource("BoxMesh_3slyh")
+
+[node name="29" type="MeshInstance3D" parent="Blockout/garage_01" unique_id=342089933]
+transform = Transform3D(0.9999936, 0, 0.0035953668, 0, 1, 0, -0.0035953668, 0, 0.9999936, 14.4012985, 0.58171844, 2.644229)
+mesh = SubResource("BoxMesh_3slyh")
+
+[node name="27" type="MeshInstance3D" parent="Blockout/garage_01" unique_id=2001576327]
+transform = Transform3D(0.9999936, 0, 0.0035953668, 0, 1, 0, -0.0035953668, 0, 0.9999936, 6.257347, 0.58171844, 7.6733055)
+mesh = SubResource("BoxMesh_3slyh")
+
+[node name="30" type="MeshInstance3D" parent="Blockout/garage_01" unique_id=1362863804]
+transform = Transform3D(0.9999936, 0, 0.0035953668, 0, 1, 0, -0.0035953668, 0, 0.9999936, 18.544323, 0.58171844, 23.260616)
+mesh = SubResource("BoxMesh_3slyh")
+
+[node name="24" type="MeshInstance3D" parent="Blockout/garage_01" unique_id=1910307154]
+transform = Transform3D(0.9999936, 0, 0.0035953668, 0, 1, 0, -0.0035953668, 0, 0.9999936, -12.409653, 0.58171844, -32.606327)
+mesh = SubResource("BoxMesh_3slyh")
+
+[node name="25" type="MeshInstance3D" parent="Blockout/garage_01" unique_id=693531817]
+transform = Transform3D(0.9999936, 0, 0.0035953668, 0, 1, 0, -0.0035953668, 0, 0.9999936, -6.263868, 0.58171844, -31.58869)
+mesh = SubResource("BoxMesh_3slyh")
+
+[node name="20" type="MeshInstance3D" parent="Blockout/garage_01" unique_id=294198182]
+transform = Transform3D(0.9999936, 0, 0.0035953668, 0, 1, 0, -0.0035953668, 0, 0.9999936, -16.38364, 0.58171844, -23.861303)
+mesh = SubResource("BoxMesh_3slyh")
+
+[node name="11" type="MeshInstance3D" parent="Blockout/garage_01" unique_id=2082955887]
+transform = Transform3D(0.6478541, 0, 0.7617645, 0, 1, 0, -0.7617645, 0, 0.6478541, -32.333473, 0.7128601, 11.064472)
+mesh = SubResource("BoxMesh_3slyh")
+
 [node name="05" type="MeshInstance3D" parent="Blockout/garage_01" unique_id=1078057225]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.943346, 0.49166203, 30.726645)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.013325, 0.49166203, 30.726645)
 mesh = SubResource("BoxMesh_3slyh")
 
 [node name="02" type="MeshInstance3D" parent="Blockout/garage_01" unique_id=1497934380]
@@ -1110,468 +1558,522 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.937202, 0.49166203, 23.27
 mesh = SubResource("BoxMesh_3slyh")
 
 [node name="04" type="MeshInstance3D" parent="Blockout/garage_01" unique_id=873765419]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.495491, 0.49166203, 30.579424)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.138304, 0.49166203, 30.864943)
+mesh = SubResource("BoxMesh_3slyh")
+
+[node name="08" type="MeshInstance3D" parent="Blockout/garage_01" unique_id=1856230333]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.268769, 0.49166203, 29.384684)
+mesh = SubResource("BoxMesh_3slyh")
+
+[node name="12" type="MeshInstance3D" parent="Blockout/garage_01" unique_id=17195297]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.481674, 0.49166203, 31.89875)
 mesh = SubResource("BoxMesh_3slyh")
 
 [node name="06" type="MeshInstance3D" parent="Blockout/garage_01" unique_id=471650248]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.910133, 0.49166203, 30.579424)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.058537, 0.49166203, 30.678778)
 mesh = SubResource("BoxMesh_3slyh")
 
-[node name="road_01" type="Node3D" parent="." unique_id=291860273]
+[node name="road_01" type="Node3D" parent="Blockout" unique_id=291860273]
 
-[node name="01" type="MeshInstance3D" parent="road_01" unique_id=670735248]
+[node name="01" type="MeshInstance3D" parent="Blockout/road_01" unique_id=670735248]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.043463, 0.083297014, 26.266768)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="02" type="MeshInstance3D" parent="road_01" unique_id=1280757395]
+[node name="02" type="MeshInstance3D" parent="Blockout/road_01" unique_id=1280757395]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.962978, 0.083297014, 26.266768)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="03" type="MeshInstance3D" parent="road_01" unique_id=863864737]
+[node name="03" type="MeshInstance3D" parent="Blockout/road_01" unique_id=863864737]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.989754, 0.083297014, 26.266768)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="04" type="MeshInstance3D" parent="road_01" unique_id=2138538669]
+[node name="04" type="MeshInstance3D" parent="Blockout/road_01" unique_id=2138538669]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.700409, 0.083297014, 26.266768)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="05" type="MeshInstance3D" parent="road_01" unique_id=1461960229]
+[node name="05" type="MeshInstance3D" parent="Blockout/road_01" unique_id=1461960229]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.381626, 0.083297014, 26.266768)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="06" type="MeshInstance3D" parent="road_01" unique_id=871035996]
+[node name="06" type="MeshInstance3D" parent="Blockout/road_01" unique_id=871035996]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.256393, 0.083297014, 26.266768)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="07" type="MeshInstance3D" parent="road_01" unique_id=894147389]
+[node name="07" type="MeshInstance3D" parent="Blockout/road_01" unique_id=894147389]
 transform = Transform3D(0.6042792, 0, -0.79677254, 0, 1, 0, 0.79677254, 0, 0.6042792, -31.15983, 0.083297014, 25.458794)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="08" type="MeshInstance3D" parent="road_01" unique_id=566258419]
+[node name="08" type="MeshInstance3D" parent="Blockout/road_01" unique_id=566258419]
 transform = Transform3D(0.11611595, 0, -0.99323577, 0, 1, 0, 0.99323577, 0, 0.11611595, -32.032875, 0.083297014, 23.115517)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="09" type="MeshInstance3D" parent="road_01" unique_id=1648130559]
+[node name="09" type="MeshInstance3D" parent="Blockout/road_01" unique_id=1648130559]
 transform = Transform3D(-0.10572612, 0, -0.99439526, 0, 1, 0, 0.99439526, 0, -0.10572612, -31.999712, 0.083297014, 20.652313)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="11" type="MeshInstance3D" parent="road_01" unique_id=728443297]
+[node name="11" type="MeshInstance3D" parent="Blockout/road_01" unique_id=728443297]
 transform = Transform3D(0.28337935, 0, -0.959008, 0, 1, 0, 0.959008, 0, 0.28337935, -32.458733, 0.083297014, 18.004232)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="10" type="MeshInstance3D" parent="road_01" unique_id=702708052]
+[node name="10" type="MeshInstance3D" parent="Blockout/road_01" unique_id=702708052]
 transform = Transform3D(-0.5610003, 0, -0.82781565, 0, 1, 0, 0.82781565, 0, -0.5610003, -32.10049, 0.083297014, 16.52418)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="12" type="MeshInstance3D" parent="road_01" unique_id=1196236089]
+[node name="12" type="MeshInstance3D" parent="Blockout/road_01" unique_id=1196236089]
 transform = Transform3D(-0.7084631, 0, -0.70574784, 0, 1, 0, 0.70574784, 0, -0.7084631, -30.800533, 0.083297014, 15.083376)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="13" type="MeshInstance3D" parent="road_01" unique_id=2011568639]
+[node name="13" type="MeshInstance3D" parent="Blockout/road_01" unique_id=2011568639]
 transform = Transform3D(-0.9998093, 0, 0.019529112, 0, 1, 0, -0.019529112, 0, -0.9998093, -28.789465, 0.083297014, 14.421009)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="14" type="MeshInstance3D" parent="road_01" unique_id=564619784]
+[node name="14" type="MeshInstance3D" parent="Blockout/road_01" unique_id=564619784]
 transform = Transform3D(-0.9998093, 0, 0.019529112, 0, 1, 0, -0.019529112, 0, -0.9998093, -26.242886, 0.083297014, 14.421009)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="15" type="MeshInstance3D" parent="road_01" unique_id=263440383]
+[node name="15" type="MeshInstance3D" parent="Blockout/road_01" unique_id=263440383]
 transform = Transform3D(-0.9998093, 0, 0.019529112, 0, 1, 0, -0.019529112, 0, -0.9998093, -23.658993, 0.083297014, 14.421009)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="16" type="MeshInstance3D" parent="road_01" unique_id=300050515]
+[node name="16" type="MeshInstance3D" parent="Blockout/road_01" unique_id=300050515]
 transform = Transform3D(-0.9998093, 0, 0.019529112, 0, 1, 0, -0.019529112, 0, -0.9998093, -21.32805, 0.083297014, 14.421009)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="17" type="MeshInstance3D" parent="road_01" unique_id=450849231]
+[node name="17" type="MeshInstance3D" parent="Blockout/road_01" unique_id=450849231]
 transform = Transform3D(-0.9998093, 0, 0.019529112, 0, 1, 0, -0.019529112, 0, -0.9998093, -19.358627, 0.083297014, 14.421009)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="18" type="MeshInstance3D" parent="road_01" unique_id=585804665]
+[node name="18" type="MeshInstance3D" parent="Blockout/road_01" unique_id=585804665]
 transform = Transform3D(-0.9998093, 0, 0.019529112, 0, 1, 0, -0.019529112, 0, -0.9998093, -16.66831, 0.083297014, 14.421009)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="19" type="MeshInstance3D" parent="road_01" unique_id=1149555097]
+[node name="19" type="MeshInstance3D" parent="Blockout/road_01" unique_id=1149555097]
 transform = Transform3D(-0.6616261, 0, -0.74983394, 0, 1, 0, 0.74983394, 0, -0.6616261, -15.073497, 0.083297014, 13.724869)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="20" type="MeshInstance3D" parent="road_01" unique_id=1123919480]
+[node name="20" type="MeshInstance3D" parent="Blockout/road_01" unique_id=1123919480]
 transform = Transform3D(0.07287255, 0, -0.9973413, 0, 1, 0, 0.9973413, 0, 0.07287255, -14.380912, 0.083297014, 11.711071)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="21" type="MeshInstance3D" parent="road_01" unique_id=241802500]
+[node name="21" type="MeshInstance3D" parent="Blockout/road_01" unique_id=241802500]
 transform = Transform3D(-0.027502857, 0.13245896, -0.9908069, -0.009700891, 0.9910999, 0.13276741, 0.99957466, 0.013263191, -0.025973104, -14.370489, 0.083297014, 9.149971)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="22" type="MeshInstance3D" parent="road_01" unique_id=468365325]
+[node name="22" type="MeshInstance3D" parent="Blockout/road_01" unique_id=468365325]
 transform = Transform3D(-0.027502857, 0.13245896, -0.9908069, -0.009700891, 0.9910999, 0.13276741, 0.99957466, 0.013263191, -0.025973104, -14.370489, 0.083297014, 6.2782993)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="23" type="MeshInstance3D" parent="road_01" unique_id=1841806753]
+[node name="23" type="MeshInstance3D" parent="Blockout/road_01" unique_id=1841806753]
 transform = Transform3D(-0.027502857, 0.13245896, -0.9908069, -0.009700891, 0.9910999, 0.13276741, 0.99957466, 0.013263191, -0.025973104, -14.370489, 0.083297014, 3.3929873)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="24" type="MeshInstance3D" parent="road_01" unique_id=1450592827]
+[node name="24" type="MeshInstance3D" parent="Blockout/road_01" unique_id=1450592827]
 transform = Transform3D(-0.027502857, 0.13245896, -0.9908069, -0.009700891, 0.9910999, 0.13276741, 0.99957466, 0.013263191, -0.025973104, -14.370489, 0.083297014, 0.5059128)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="25" type="MeshInstance3D" parent="road_01" unique_id=1242162665]
+[node name="25" type="MeshInstance3D" parent="Blockout/road_01" unique_id=1242162665]
 transform = Transform3D(-0.027502857, 0.13245896, -0.9908069, -0.009700891, 0.9910999, 0.13276741, 0.99957466, 0.013263191, -0.025973104, -14.370489, 0.083297014, -2.1398716)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="26" type="MeshInstance3D" parent="road_01" unique_id=1122955595]
+[node name="26" type="MeshInstance3D" parent="Blockout/road_01" unique_id=1122955595]
 transform = Transform3D(0.65374553, 0.106754266, -0.7491464, -0.009700892, 0.9910999, 0.13276742, 0.75665224, -0.079528704, 0.6489626, -15.073115, 0.083297014, -4.2381554)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="27" type="MeshInstance3D" parent="road_01" unique_id=1948248423]
+[node name="27" type="MeshInstance3D" parent="Blockout/road_01" unique_id=1948248423]
 transform = Transform3D(0.99988973, 0.008122236, 0.012426764, -0.009700897, 0.9910999, 0.13276742, -0.0112378, -0.13287331, 0.9910693, -16.809727, 0.083297014, -5.310519)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="28" type="MeshInstance3D" parent="road_01" unique_id=1059621911]
+[node name="28" type="MeshInstance3D" parent="Blockout/road_01" unique_id=1059621911]
 transform = Transform3D(0.99988973, 0.008122236, 0.012426764, -0.009700897, 0.9910999, 0.13276742, -0.0112378, -0.13287331, 0.9910693, -19.48059, 0.083297014, -5.310519)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="29" type="MeshInstance3D" parent="road_01" unique_id=807571496]
+[node name="29" type="MeshInstance3D" parent="Blockout/road_01" unique_id=807571496]
 transform = Transform3D(0.99988973, 0.008122236, 0.012426764, -0.009700897, 0.9910999, 0.13276742, -0.0112378, -0.13287331, 0.9910693, -21.989841, 0.083297014, -5.310519)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="30" type="MeshInstance3D" parent="road_01" unique_id=2123792721]
+[node name="30" type="MeshInstance3D" parent="Blockout/road_01" unique_id=2123792721]
 transform = Transform3D(0.8531278, 0.07746275, -0.515919, -0.009700898, 0.9910999, 0.13276741, 0.52161163, -0.108262666, 0.8462862, -23.884937, 0.083297014, -5.9007144)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="31" type="MeshInstance3D" parent="road_01" unique_id=1411771943]
+[node name="31" type="MeshInstance3D" parent="Blockout/road_01" unique_id=1411771943]
 transform = Transform3D(0.40215147, 0.12542972, -0.9069408, -0.009700892, 0.9910999, 0.13276741, 0.9155217, -0.044594456, 0.3997889, -25.50148, 0.083297014, -7.793494)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="32" type="MeshInstance3D" parent="road_01" unique_id=1349705279]
+[node name="32" type="MeshInstance3D" parent="Blockout/road_01" unique_id=1349705279]
 transform = Transform3D(-0.13975534, 0.13012666, -0.98159844, -0.009700896, 0.9911, 0.13276742, 0.9901386, 0.02807733, -0.13724926, -25.754457, 0.083297014, -10.076307)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="33" type="MeshInstance3D" parent="road_01" unique_id=169600645]
+[node name="33" type="MeshInstance3D" parent="Blockout/road_01" unique_id=169600645]
 transform = Transform3D(-0.13975534, 0.13012666, -0.98159844, -0.009700896, 0.9911, 0.13276742, 0.9901386, 0.02807733, -0.13724926, -25.313744, 0.083297014, -12.663384)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="34" type="MeshInstance3D" parent="road_01" unique_id=826749941]
+[node name="34" type="MeshInstance3D" parent="Blockout/road_01" unique_id=826749941]
 transform = Transform3D(0.24882914, 0.13098973, -0.9596487, -0.009700897, 0.99109995, 0.1327674, 0.9684988, -0.023726938, 0.24788508, -25.313744, 0.083297014, -15.437046)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="35" type="MeshInstance3D" parent="road_01" unique_id=1011537557]
+[node name="35" type="MeshInstance3D" parent="Blockout/road_01" unique_id=1011537557]
 transform = Transform3D(0.24882914, 0.13098973, -0.9596487, -0.009700897, 0.99109995, 0.1327674, 0.9684988, -0.023726938, 0.24788508, -25.993359, 0.083297014, -17.754519)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="36" type="MeshInstance3D" parent="road_01" unique_id=655976484]
+[node name="36" type="MeshInstance3D" parent="Blockout/road_01" unique_id=655976484]
 transform = Transform3D(0.00097611547, 0.1327829, -0.9911446, -0.009700901, 0.99109995, 0.13276741, 0.99995244, 0.009485396, 0.00225541, -26.389908, 0.083297014, -20.142319)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="37" type="MeshInstance3D" parent="road_01" unique_id=1157372807]
+[node name="37" type="MeshInstance3D" parent="Blockout/road_01" unique_id=1157372807]
 transform = Transform3D(0.00097611547, 0.1327829, -0.9911446, -0.009700901, 0.99109995, 0.13276741, 0.99995244, 0.009485396, 0.00225541, -26.389908, 0.083297014, -22.717999)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="38" type="MeshInstance3D" parent="road_01" unique_id=1859795753]
+[node name="38" type="MeshInstance3D" parent="Blockout/road_01" unique_id=1859795753]
 transform = Transform3D(0.00097611547, 0.1327829, -0.9911446, -0.009700901, 0.99109995, 0.13276741, 0.99995244, 0.009485396, 0.00225541, -26.389908, 0.083297014, -25.504318)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="39" type="MeshInstance3D" parent="road_01" unique_id=640734047]
+[node name="39" type="MeshInstance3D" parent="Blockout/road_01" unique_id=640734047]
 transform = Transform3D(-0.67343336, 0.09167339, -0.7335416, -0.009700901, 0.99109995, 0.13276742, 0.7391842, 0.09652597, -0.66655034, -26.005909, 0.083297014, -27.31028)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="40" type="MeshInstance3D" parent="road_01" unique_id=1101440462]
+[node name="40" type="MeshInstance3D" parent="Blockout/road_01" unique_id=1101440462]
 transform = Transform3D(-0.9931971, 0.005857736, -0.116297305, -0.009700911, 0.99109995, 0.13276741, 0.11604002, 0.13299234, -0.9843007, -24.400448, 0.083297014, -28.592304)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="41" type="MeshInstance3D" parent="road_01" unique_id=1095825120]
+[node name="41" type="MeshInstance3D" parent="Blockout/road_01" unique_id=1095825120]
 transform = Transform3D(-0.9916467, -0.026612967, 0.12620768, -0.00970091, 0.99109995, 0.13276741, -0.12861764, 0.13043398, -0.9830791, -21.816895, 0.083297014, -28.592304)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="42" type="MeshInstance3D" parent="road_01" unique_id=313523386]
+[node name="42" type="MeshInstance3D" parent="Blockout/road_01" unique_id=313523386]
 transform = Transform3D(-0.9998623, -0.007827684, -0.014623582, -0.00970091, 0.99109995, 0.13276741, 0.013454244, 0.13289094, -0.9910394, -19.462505, 0.083297014, -28.592304)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="43" type="MeshInstance3D" parent="road_01" unique_id=949160456]
+[node name="43" type="MeshInstance3D" parent="Blockout/road_01" unique_id=949160456]
 transform = Transform3D(-0.9998623, -0.007827684, -0.014623582, -0.00970091, 0.99109995, 0.13276741, 0.013454244, 0.13289094, -0.9910394, -16.731682, 0.083297014, -28.592304)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="44" type="MeshInstance3D" parent="road_01" unique_id=414507915]
+[node name="44" type="MeshInstance3D" parent="Blockout/road_01" unique_id=414507915]
 transform = Transform3D(-0.9998623, -0.007827684, -0.014623582, -0.00970091, 0.99109995, 0.13276741, 0.013454244, 0.13289094, -0.9910394, -14.256681, 0.083297014, -28.592304)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="45" type="MeshInstance3D" parent="road_01" unique_id=1964784349]
+[node name="45" type="MeshInstance3D" parent="Blockout/road_01" unique_id=1964784349]
 transform = Transform3D(-0.98575115, 0.012819234, -0.16772045, -0.009700909, 0.99109995, 0.13276742, 0.16792972, 0.13250262, -0.97685355, -11.855775, 0.083297014, -28.80999)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="46" type="MeshInstance3D" parent="road_01" unique_id=1034661881]
+[node name="46" type="MeshInstance3D" parent="Blockout/road_01" unique_id=1034661881]
 transform = Transform3D(-0.98575115, 0.012819234, -0.16772045, -0.009700909, 0.99109995, 0.13276742, 0.16792972, 0.13250262, -0.97685355, -9.344829, 0.083297014, -29.314072)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="47" type="MeshInstance3D" parent="road_01" unique_id=487763699]
+[node name="47" type="MeshInstance3D" parent="Blockout/road_01" unique_id=487763699]
 transform = Transform3D(-0.988513, -0.029531345, 0.14822212, -0.009700909, 0.99109995, 0.13276742, -0.15082362, 0.12980439, -0.98000175, -6.827729, 0.083297014, -29.3948)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="48" type="MeshInstance3D" parent="road_01" unique_id=927036050]
+[node name="48" type="MeshInstance3D" parent="Blockout/road_01" unique_id=927036050]
 transform = Transform3D(-0.9491499, -0.050908968, 0.31068087, -0.009700911, 0.99109995, 0.13276742, -0.31467468, 0.12300225, -0.9411963, -4.3559685, 0.083297014, -28.777336)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="49" type="MeshInstance3D" parent="road_01" unique_id=241775589]
+[node name="49" type="MeshInstance3D" parent="Blockout/road_01" unique_id=241775589]
 transform = Transform3D(-0.9961721, 0.0019562393, -0.087390244, -0.009700912, 0.99109995, 0.13276742, 0.08687225, 0.1331069, -0.9872872, -2.002966, 0.083297014, -28.191448)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="65" type="MeshInstance3D" parent="road_01" unique_id=1560553047]
-transform = Transform3D(0.019875892, 0.13293844, -0.9909251, -0.00970091, 0.99109995, 0.13276741, 0.9997554, 0.0069739963, 0.020988509, -2.332818, 0.083297014, -26.454124)
+[node name="65" type="MeshInstance3D" parent="Blockout/road_01" unique_id=1560553047]
+transform = Transform3D(0.019875892, 0.13293844, -0.9909251, -0.00970091, 0.99109995, 0.13276741, 0.9997554, 0.0069739963, 0.020988509, 0.6312437, 0.083297014, -26.454124)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="67" type="MeshInstance3D" parent="road_01" unique_id=1585741363]
-transform = Transform3D(0.71971714, 0.099096075, -0.68715876, -0.009700909, 0.9910999, 0.13276738, 0.6941995, -0.08888885, 0.71427286, -1.4779215, 0.083297014, 1.0463228)
+[node name="67" type="MeshInstance3D" parent="Blockout/road_01" unique_id=1585741363]
+transform = Transform3D(0.71971714, 0.099096075, -0.68715876, -0.009700909, 0.9910999, 0.13276738, 0.6941995, -0.08888885, 0.71427286, 1.522253, 0.083297014, 1.0463228)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="68" type="MeshInstance3D" parent="road_01" unique_id=851666562]
-transform = Transform3D(0.71971714, 0.099096075, -0.68715876, -0.009700909, 0.9910999, 0.13276738, 0.6941995, -0.08888885, 0.71427286, 0.47042608, 0.083297014, 2.9182959)
+[node name="68" type="MeshInstance3D" parent="Blockout/road_01" unique_id=851666562]
+transform = Transform3D(0.71971714, 0.099096075, -0.68715876, -0.009700909, 0.9910999, 0.13276738, 0.6941995, -0.08888885, 0.71427286, 3.280972, 0.083297014, 2.9182959)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="69" type="MeshInstance3D" parent="road_01" unique_id=2000867381]
-transform = Transform3D(0.9596322, 0.046550393, -0.27737856, -0.009700916, 0.9911, 0.1327674, 0.2810901, -0.12471697, 0.951543, 2.3839774, 0.083297014, 3.9412203)
+[node name="69" type="MeshInstance3D" parent="Blockout/road_01" unique_id=2000867381]
+transform = Transform3D(0.9596322, 0.046550393, -0.27737856, -0.009700916, 0.9911, 0.1327674, 0.2810901, -0.12471697, 0.951543, 5.0550256, 0.083297014, 3.9412203)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="70" type="MeshInstance3D" parent="road_01" unique_id=1037332060]
-transform = Transform3D(0.98996234, -0.009202622, 0.14103043, -0.009700916, 0.9911, 0.1327674, -0.14099711, -0.13280274, 0.98106235, 4.998262, 0.083297014, 4.401778)
-material_override = SubResource("StandardMaterial3D_amtbh")
-mesh = SubResource("BoxMesh_g1j4k")
-
-[node name="71" type="MeshInstance3D" parent="road_01" unique_id=1297136272]
+[node name="71" type="MeshInstance3D" parent="Blockout/road_01" unique_id=1297136272]
 transform = Transform3D(0.98996234, -0.009202622, 0.14103043, -0.009700916, 0.9911, 0.1327674, -0.14099711, -0.13280274, 0.98106235, 7.661542, 0.083297014, 4.012889)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="72" type="MeshInstance3D" parent="road_01" unique_id=477436156]
+[node name="72" type="MeshInstance3D" parent="Blockout/road_01" unique_id=477436156]
 transform = Transform3D(0.87327164, 0.07307881, -0.4817218, -0.009700913, 0.99109995, 0.13276738, 0.48713666, -0.11126878, 0.8662083, 9.875068, 0.083297014, 4.72705)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="73" type="MeshInstance3D" parent="road_01" unique_id=221609813]
+[node name="73" type="MeshInstance3D" parent="Blockout/road_01" unique_id=221609813]
 transform = Transform3D(0.6562379, 0.10649124, -0.7470015, -0.009700908, 0.9910999, 0.13276736, 0.7544915, -0.07988033, 0.65143025, 11.772647, 0.083297014, 6.565098)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="74" type="MeshInstance3D" parent="road_01" unique_id=845017521]
-transform = Transform3D(0.2533903, 0.13087639, -0.95847, -0.009700908, 0.9910999, 0.13276736, 0.9673153, -0.0243439, 0.25240457, 12.652091, 0.083297014, 8.658455)
+[node name="74" type="MeshInstance3D" parent="Blockout/road_01" unique_id=845017521]
+transform = Transform3D(0.53473914, 0.11733556, -0.83683115, -0.009700908, 0.9910999, 0.13276735, 0.8449614, -0.06287783, 0.53111804, 13.167304, 0.083297014, 8.658455)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="75" type="MeshInstance3D" parent="road_01" unique_id=1904175937]
-transform = Transform3D(0.87327164, 0.07307881, -0.4817218, -0.009700913, 0.99109995, 0.13276738, 0.48713666, -0.11126878, 0.8662083, 13.767582, 0.083297014, 10.179189)
+[node name="75" type="MeshInstance3D" parent="Blockout/road_01" unique_id=1904175937]
+transform = Transform3D(0.87327164, 0.07307881, -0.4817218, -0.009700913, 0.99109995, 0.13276738, 0.48713666, -0.11126878, 0.8662083, 14.628517, 0.083297014, 10.523114)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="76" type="MeshInstance3D" parent="road_01" unique_id=662696842]
+[node name="76" type="MeshInstance3D" parent="Blockout/road_01" unique_id=662696842]
 transform = Transform3D(0.8688406, 0.074079864, -0.48951823, -0.0097009055, 0.9910999, 0.13276736, 0.4949966, -0.11060482, 0.86182624, 16.00543, 0.083297014, 11.425038)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="77" type="MeshInstance3D" parent="road_01" unique_id=1939564788]
+[node name="77" type="MeshInstance3D" parent="Blockout/road_01" unique_id=1939564788]
 transform = Transform3D(0.7367581, 0.09685491, -0.66918343, -0.0097009055, 0.9910999, 0.13276736, 0.6760865, -0.091325685, 0.73114026, 17.851442, 0.083297014, 12.888688)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="78" type="MeshInstance3D" parent="road_01" unique_id=1190842213]
+[node name="78" type="MeshInstance3D" parent="Blockout/road_01" unique_id=1190842213]
 transform = Transform3D(0.37764415, 0.126572, -0.9172591, -0.009700908, 0.9910999, 0.13276736, 0.9258998, -0.041240532, 0.37551072, 19.35549, 0.083297014, 15.043824)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="79" type="MeshInstance3D" parent="road_01" unique_id=1217866030]
+[node name="79" type="MeshInstance3D" parent="Blockout/road_01" unique_id=1217866030]
 transform = Transform3D(0.37764415, 0.126572, -0.9172591, -0.009700908, 0.9910999, 0.13276736, 0.9258998, -0.041240532, 0.37551072, 20.487673, 0.083297014, 17.557785)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="80" type="MeshInstance3D" parent="road_01" unique_id=93584566]
+[node name="80" type="MeshInstance3D" parent="Blockout/road_01" unique_id=93584566]
 transform = Transform3D(0.98057497, 0.03544077, -0.19291562, -0.0097009055, 0.9910999, 0.13276736, 0.19590381, -0.12831682, 0.97219145, 21.868383, 0.083297014, 18.649996)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="81" type="MeshInstance3D" parent="road_01" unique_id=1102189993]
-transform = Transform3D(0.98057497, 0.03544077, -0.19291562, -0.0097009055, 0.9910999, 0.13276736, 0.19590381, -0.12831682, 0.97219145, 24.640545, 0.083297014, 19.371881)
+[node name="81" type="MeshInstance3D" parent="Blockout/road_01" unique_id=1102189993]
+transform = Transform3D(0.9967249, -0.0010756925, 0.080857605, -0.009700907, 0.9910999, 0.13276736, -0.080280945, -0.13311686, 0.98784345, 24.257359, 1.047168, 18.87574)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="82" type="MeshInstance3D" parent="road_01" unique_id=963578678]
-transform = Transform3D(0.98057497, 0.03544077, -0.19291562, -0.0097009055, 0.9910999, 0.13276736, 0.19590381, -0.12831682, 0.97219145, 27.29079, 0.083297014, 20.003754)
+[node name="82" type="MeshInstance3D" parent="Blockout/road_01" unique_id=963578678]
+transform = Transform3D(0.98057497, 0.03544077, -0.19291562, -0.0097009055, 0.9910999, 0.13276736, 0.19590381, -0.12831682, 0.97219145, 27.29079, 0.083297014, 18.718761)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="83" type="MeshInstance3D" parent="road_01" unique_id=1820174432]
-transform = Transform3D(0.48315364, -0.111600496, 0.8683936, -0.009700909, 0.9910999, 0.13276736, -0.87548167, -0.07257121, 0.47777104, 28.508114, 0.083297014, 19.458418)
+[node name="83" type="MeshInstance3D" parent="Blockout/road_01" unique_id=1820174432]
+transform = Transform3D(0.48315364, -0.111600496, 0.8683936, -0.009700909, 0.9910999, 0.13276736, -0.87548167, -0.07257121, 0.47777104, 28.508114, 0.083297014, 18.04746)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="84" type="MeshInstance3D" parent="road_01" unique_id=1454518614]
+[node name="84" type="MeshInstance3D" parent="Blockout/road_01" unique_id=1454518614]
 transform = Transform3D(-0.052977175, -0.13309646, 0.98968625, -0.009700914, 0.9911, 0.13276738, -0.99854857, -0.0025672354, -0.05379662, 29.130249, 0.083297014, 17.152029)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="85" type="MeshInstance3D" parent="road_01" unique_id=1889408060]
+[node name="85" type="MeshInstance3D" parent="Blockout/road_01" unique_id=1889408060]
 transform = Transform3D(-0.052977175, -0.13309646, 0.98968625, -0.009700914, 0.9911, 0.13276738, -0.99854857, -0.0025672354, -0.05379662, 29.130249, 0.083297014, 14.362892)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="86" type="MeshInstance3D" parent="road_01" unique_id=780423957]
+[node name="86" type="MeshInstance3D" parent="Blockout/road_01" unique_id=780423957]
 transform = Transform3D(-0.052977175, -0.13309646, 0.98968625, -0.009700914, 0.9911, 0.13276738, -0.99854857, -0.0025672354, -0.05379662, 29.130249, 0.083297014, 11.684099)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="87" type="MeshInstance3D" parent="road_01" unique_id=524759647]
+[node name="87" type="MeshInstance3D" parent="Blockout/road_01" unique_id=524759647]
 transform = Transform3D(-0.052977175, -0.13309646, 0.98968625, -0.009700914, 0.9911, 0.13276738, -0.99854857, -0.0025672354, -0.05379662, 29.130249, 0.083297014, 8.969925)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="88" type="MeshInstance3D" parent="road_01" unique_id=1904841994]
+[node name="88" type="MeshInstance3D" parent="Blockout/road_01" unique_id=1904841994]
 transform = Transform3D(-0.052977175, -0.13309646, 0.98968625, -0.009700914, 0.9911, 0.13276738, -0.99854857, -0.0025672354, -0.05379662, 29.130249, 0.083297014, 6.2478886)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="89" type="MeshInstance3D" parent="road_01" unique_id=12782623]
+[node name="89" type="MeshInstance3D" parent="Blockout/road_01" unique_id=12782623]
 transform = Transform3D(-0.052977175, -0.13309646, 0.98968625, -0.009700914, 0.9911, 0.13276738, -0.99854857, -0.0025672354, -0.05379662, 29.130249, 0.083297014, 3.563367)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="66" type="MeshInstance3D" parent="road_01" unique_id=533352227]
-transform = Transform3D(0.019875892, 0.13293844, -0.9909251, -0.00970091, 0.99109995, 0.13276741, 0.9997554, 0.0069739963, 0.020988509, -2.332818, 0.083297014, -23.936275)
+[node name="66" type="MeshInstance3D" parent="Blockout/road_01" unique_id=533352227]
+transform = Transform3D(0.019875892, 0.13293844, -0.9909251, -0.00970091, 0.99109995, 0.13276741, 0.9997554, 0.0069739963, 0.020988509, 0.6177516, 0.083297014, -23.936275)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="50" type="MeshInstance3D" parent="road_01" unique_id=2021082315]
+[node name="50" type="MeshInstance3D" parent="Blockout/road_01" unique_id=2021082315]
 transform = Transform3D(-0.9961721, 0.0019562393, -0.087390244, -0.009700912, 0.99109995, 0.13276742, 0.08687225, 0.1331069, -0.9872872, 0.59726524, 0.083297014, -28.334322)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="51" type="MeshInstance3D" parent="road_01" unique_id=1263041509]
+[node name="51" type="MeshInstance3D" parent="Blockout/road_01" unique_id=1263041509]
 transform = Transform3D(-0.9961721, 0.0019562393, -0.087390244, -0.009700912, 0.99109995, 0.13276742, 0.08687225, 0.1331069, -0.9872872, 3.3795357, 0.083297014, -28.443954)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="52" type="MeshInstance3D" parent="road_01" unique_id=319878776]
+[node name="52" type="MeshInstance3D" parent="Blockout/road_01" unique_id=319878776]
 transform = Transform3D(-0.97069556, -0.04121627, 0.23675138, -0.00970091, 0.99109995, 0.13276741, -0.24011624, 0.12658001, -0.96245635, 5.901437, 0.083297014, -28.273956)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="53" type="MeshInstance3D" parent="road_01" unique_id=1306133520]
+[node name="53" type="MeshInstance3D" parent="Blockout/road_01" unique_id=1306133520]
 transform = Transform3D(-0.9110075, -0.063501604, 0.40747118, -0.009700906, 0.99109995, 0.13276741, -0.4122753, 0.11699926, -0.9035157, 8.647144, 0.083297014, -27.219091)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="54" type="MeshInstance3D" parent="road_01" unique_id=1580077532]
+[node name="54" type="MeshInstance3D" parent="Blockout/road_01" unique_id=1580077532]
 transform = Transform3D(-0.9110075, -0.063501604, 0.40747118, -0.009700906, 0.99109995, 0.13276741, -0.4122753, 0.11699926, -0.9035157, 11.176304, 0.083297014, -25.931364)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="55" type="MeshInstance3D" parent="road_01" unique_id=2145742020]
+[node name="55" type="MeshInstance3D" parent="Blockout/road_01" unique_id=2145742020]
 transform = Transform3D(-0.9110075, -0.063501604, 0.40747118, -0.009700906, 0.99109995, 0.13276741, -0.4122753, 0.11699926, -0.9035157, 13.680426, 0.083297014, -24.778454)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="56" type="MeshInstance3D" parent="road_01" unique_id=753036969]
+[node name="56" type="MeshInstance3D" parent="Blockout/road_01" unique_id=753036969]
 transform = Transform3D(-0.9110075, -0.063501604, 0.40747118, -0.009700906, 0.99109995, 0.13276741, -0.4122753, 0.11699926, -0.9035157, 16.154491, 0.083297014, -23.638212)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="57" type="MeshInstance3D" parent="road_01" unique_id=238095165]
+[node name="57" type="MeshInstance3D" parent="Blockout/road_01" unique_id=238095165]
 transform = Transform3D(-0.9110075, -0.063501604, 0.40747118, -0.009700906, 0.99109995, 0.13276741, -0.4122753, 0.11699926, -0.9035157, 18.70454, 0.2120583, -22.475794)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="58" type="MeshInstance3D" parent="road_01" unique_id=2115522829]
+[node name="58" type="MeshInstance3D" parent="Blockout/road_01" unique_id=2115522829]
 transform = Transform3D(-0.8010064, -0.087181, 0.59227383, -0.009700903, 0.99109995, 0.13276741, -0.59857696, 0.100601956, -0.7947232, 20.558783, 0.107438326, -21.359383)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="59" type="MeshInstance3D" parent="road_01" unique_id=50866407]
+[node name="59" type="MeshInstance3D" parent="Blockout/road_01" unique_id=50866407]
 transform = Transform3D(-0.8010064, -0.087181, 0.59227383, -0.009700903, 0.99109995, 0.13276741, -0.59857696, 0.100601956, -0.7947232, 22.738281, 0.107438326, -19.770443)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="60" type="MeshInstance3D" parent="road_01" unique_id=2006735823]
+[node name="60" type="MeshInstance3D" parent="Blockout/road_01" unique_id=2006735823]
 transform = Transform3D(-0.8010064, -0.087181, 0.59227383, -0.009700903, 0.99109995, 0.13276741, -0.59857696, 0.100601956, -0.7947232, 24.807194, 0.107438326, -18.25577)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="61" type="MeshInstance3D" parent="road_01" unique_id=1677071601]
+[node name="61" type="MeshInstance3D" parent="Blockout/road_01" unique_id=1677071601]
 transform = Transform3D(-0.9616047, -0.045663297, 0.2706124, -0.009700902, 0.9910999, 0.1327674, -0.27426633, 0.12504454, -0.95348936, 27.015308, 0.107438326, -16.997566)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="62" type="MeshInstance3D" parent="road_01" unique_id=492491178]
+[node name="62" type="MeshInstance3D" parent="Blockout/road_01" unique_id=492491178]
 transform = Transform3D(-0.9616047, -0.045663297, 0.2706124, -0.009700902, 0.9910999, 0.1327674, -0.27426633, 0.12504454, -0.95348936, 29.438272, 0.107438326, -16.316982)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="63" type="MeshInstance3D" parent="road_01" unique_id=538870980]
+[node name="63" type="MeshInstance3D" parent="Blockout/road_01" unique_id=538870980]
 transform = Transform3D(-0.9616047, -0.045663297, 0.2706124, -0.009700902, 0.9910999, 0.1327674, -0.27426633, 0.12504454, -0.95348936, 31.997688, 0.107438326, -15.5966835)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="64" type="MeshInstance3D" parent="road_01" unique_id=883914188]
+[node name="64" type="MeshInstance3D" parent="Blockout/road_01" unique_id=883914188]
 transform = Transform3D(-0.99338573, -0.024743553, 0.112125665, -0.009700901, 0.99109983, 0.13276738, -0.11441277, 0.13080148, -0.9847846, 34.655125, 0.107438326, -15.1304865)
 material_override = SubResource("StandardMaterial3D_amtbh")
 mesh = SubResource("BoxMesh_g1j4k")
 
-[node name="road_02" type="Node3D" parent="." unique_id=575745402]
+[node name="road_02" type="Node3D" parent="Blockout" unique_id=575745402]
 
-[node name="01" type="MeshInstance3D" parent="road_02" unique_id=917819059]
-transform = Transform3D(0.0035954192, 0, -0.9999935, 0, 1, 0, 0.9999935, 0, 0.0035954192, -2.3264968, 0, -11.883638)
+[node name="01" type="MeshInstance3D" parent="Blockout/road_02" unique_id=917819059]
+transform = Transform3D(0.0035954192, 0, -0.9999935, 0, 1, 0, 0.9999935, 0, 0.0035954192, 0.5898812, 0, -11.883638)
 material_override = SubResource("StandardMaterial3D_obg7t")
 mesh = SubResource("BoxMesh_gdhla")
 
-[node name="road_03" type="Node3D" parent="." unique_id=365990813]
+[node name="road_03" type="Node3D" parent="Blockout" unique_id=365990813]
+
+[node name="01" type="MeshInstance3D" parent="Blockout/road_03" unique_id=2084671621]
+transform = Transform3D(1, 0, 0, 0, 0.76279247, -0.64664334, 0, 0.64664334, 0.76279247, 29.516327, 0.7167759, 2.8716173)
+material_override = SubResource("StandardMaterial3D_6dw4c")
+mesh = SubResource("BoxMesh_nno2f")
+
+[node name="02" type="MeshInstance3D" parent="Blockout/road_03" unique_id=1171850701]
+transform = Transform3D(1, 0, 0, 0, 0.76279247, -0.64664334, 0, 0.64664334, 0.76279247, 29.62973, 2.545721, 0.5841036)
+material_override = SubResource("StandardMaterial3D_6dw4c")
+mesh = SubResource("BoxMesh_nno2f")
+
+[node name="03" type="MeshInstance3D" parent="Blockout/road_03" unique_id=1575329235]
+transform = Transform3D(1, 0, 0, 0, 0.9682262, -0.25007585, 0, 0.25007585, 0.9682262, 29.547226, 3.354002, -1.8761721)
+material_override = SubResource("StandardMaterial3D_6dw4c")
+mesh = SubResource("BoxMesh_nno2f")
+
+[node name="04" type="MeshInstance3D" parent="Blockout/road_03" unique_id=1060450007]
+transform = Transform3D(1, 0, 0, 0, 0.9989918, 0.044892207, 0, -0.044892207, 0.9989918, 29.82515, 3.354002, -5.394768)
+material_override = SubResource("StandardMaterial3D_6dw4c")
+mesh = SubResource("BoxMesh_nno2f")
+
+[node name="05" type="MeshInstance3D" parent="Blockout/road_03" unique_id=1598199413]
+transform = Transform3D(1, 0, 0, 0, 0.90298307, 0.42967594, 0, -0.42967594, 0.90298307, 29.82515, 2.269781, -8.671576)
+material_override = SubResource("StandardMaterial3D_6dw4c")
+mesh = SubResource("BoxMesh_nno2f")
+
+[node name="06" type="MeshInstance3D" parent="Blockout/road_03" unique_id=1524613002]
+transform = Transform3D(1, 0, 0, 0, 0.90298307, 0.42967594, 0, -0.42967594, 0.90298307, 29.82515, 0.8948879, -10.852246)
+material_override = SubResource("StandardMaterial3D_6dw4c")
+mesh = SubResource("BoxMesh_nno2f")
+
+[node name="football_field" type="Node3D" parent="Blockout" unique_id=429156179]
+
+[node name="01" type="MeshInstance3D" parent="Blockout/football_field" unique_id=1098542321]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.6742144, 0, 26.784595)
+material_override = SubResource("StandardMaterial3D_v3bin")
+mesh = SubResource("BoxMesh_j6s8t")
+
+[node name="hill" type="Node3D" parent="Blockout" unique_id=1131655409]
+
+[node name="01" type="MeshInstance3D" parent="Blockout/hill" unique_id=1026832591]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.409071, 0, -0.66973114)
+mesh = SubResource("BoxMesh_xtmsi")
+
+[node name="02" type="MeshInstance3D" parent="Blockout/hill" unique_id=1279201205]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.409071, 2.1741943, -3.2057247)
+mesh = SubResource("BoxMesh_xtmsi")
+
+[node name="03" type="MeshInstance3D" parent="Blockout/hill" unique_id=2108200678]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.409071, 0.5746994, -5.113888)
+mesh = SubResource("BoxMesh_xtmsi")
 
 [node name="Village" type="Node3D" parent="." unique_id=2138485291]
 
@@ -2098,10 +2600,9 @@ material_override = SubResource("StandardMaterial3D_i1thg")
 mesh = SubResource("BoxMesh_sn4nu")
 
 [node name="StreetLamps" type="Node3D" parent="Village" unique_id=949193091]
-visible = false
 
 [node name="StreetLamp_01" type="Node3D" parent="Village/StreetLamps" unique_id=123332482]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.434652, 0.079488754, -5.627498)
 
 [node name="Pole" type="MeshInstance3D" parent="Village/StreetLamps/StreetLamp_01" unique_id=644809571]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 0)
@@ -2121,7 +2622,7 @@ shadow_enabled = true
 omni_range = 9.25
 
 [node name="StreetLamp_02" type="Node3D" parent="Village/StreetLamps" unique_id=858935171]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.718342, 0, -5.584944)
 
 [node name="Pole" type="MeshInstance3D" parent="Village/StreetLamps/StreetLamp_02" unique_id=155907415]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 0)
@@ -2141,7 +2642,7 @@ shadow_enabled = true
 omni_range = 9.25
 
 [node name="StreetLamp_03" type="Node3D" parent="Village/StreetLamps" unique_id=715452680]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -14)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.32155, 0, -29.76751)
 
 [node name="Pole" type="MeshInstance3D" parent="Village/StreetLamps/StreetLamp_03" unique_id=251385641]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 0)
@@ -2181,7 +2682,7 @@ shadow_enabled = true
 omni_range = 9.25
 
 [node name="StreetLamp_05" type="Node3D" parent="Village/StreetLamps" unique_id=859245400]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -14)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5446892, 0, -14.913538)
 
 [node name="Pole" type="MeshInstance3D" parent="Village/StreetLamps/StreetLamp_05" unique_id=512564099]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 0)
@@ -2241,7 +2742,7 @@ shadow_enabled = true
 omni_range = 9.25
 
 [node name="StreetLamp_08" type="Node3D" parent="Village/StreetLamps" unique_id=2068320361]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0, 11)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.264452, 0.035038948, 13.263027)
 
 [node name="Pole" type="MeshInstance3D" parent="Village/StreetLamps/StreetLamp_08" unique_id=1156770578]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 0)
@@ -2261,7 +2762,7 @@ shadow_enabled = true
 omni_range = 9.25
 
 [node name="StreetLamp_09" type="Node3D" parent="Village/StreetLamps" unique_id=90750395]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.668507, 0, 24.964155)
 
 [node name="Pole" type="MeshInstance3D" parent="Village/StreetLamps/StreetLamp_09" unique_id=1647167412]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 0)
@@ -2281,7 +2782,7 @@ shadow_enabled = true
 omni_range = 9.25
 
 [node name="StreetLamp_10" type="Node3D" parent="Village/StreetLamps" unique_id=2043117276]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7276487, 0.15515041, -30.549685)
 
 [node name="Pole" type="MeshInstance3D" parent="Village/StreetLamps/StreetLamp_10" unique_id=1495131541]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 0)
@@ -2301,7 +2802,7 @@ shadow_enabled = true
 omni_range = 9.25
 
 [node name="StreetLamp_11" type="Node3D" parent="Village/StreetLamps" unique_id=1084089589]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 13)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.860912, 0, 13)
 
 [node name="Pole" type="MeshInstance3D" parent="Village/StreetLamps/StreetLamp_11" unique_id=238616393]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 0)
@@ -2321,7 +2822,7 @@ shadow_enabled = true
 omni_range = 9.25
 
 [node name="StreetLamp_12" type="Node3D" parent="Village/StreetLamps" unique_id=54693346]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 14)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 19.643623)
 
 [node name="Pole" type="MeshInstance3D" parent="Village/StreetLamps/StreetLamp_12" unique_id=1701931392]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 0)
@@ -2361,7 +2862,7 @@ shadow_enabled = true
 omni_range = 9.25
 
 [node name="StreetLamp_14" type="Node3D" parent="Village/StreetLamps" unique_id=1146451496]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 26)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.409117, 0, 25.147402)
 
 [node name="Pole" type="MeshInstance3D" parent="Village/StreetLamps/StreetLamp_14" unique_id=338676009]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 0)
