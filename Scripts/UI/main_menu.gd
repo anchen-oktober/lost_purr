@@ -1,6 +1,6 @@
 extends Control
 
-@export var game_scene_path: String = "res://Scenes/World/Village.tscn"
+@export var game_scene_path: String = "res://MainScene.tscn"
 
 @onready var new_game_button: Button = $Root/Menu/NewGameButton
 @onready var load_button: Button = $Root/Menu/LoadButton

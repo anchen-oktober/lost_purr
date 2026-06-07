@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://d1ldeo2rynfap"]
+
+[ext_resource type="Script" uid="uid://u4r88fshbmis" path="res://Scripts/World/power_line_network.gd" id="1_power_line"]
+
+[node name="PowerLineNetwork" type="Node3D" unique_id=1121647261]
+script = ExtResource("1_power_line")
+
+[node name="PolePoints" type="Node3D" parent="." unique_id=1522302597]
+
+[node name="Pole_01" type="Marker3D" parent="PolePoints" unique_id=440843654]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, -27)
+
+[node name="Pole_02" type="Marker3D" parent="PolePoints" unique_id=1751352673]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, -13)
+
+[node name="Pole_03" type="Marker3D" parent="PolePoints" unique_id=864194110]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 1)
+
+[node name="Pole_04" type="Marker3D" parent="PolePoints" unique_id=1325698747]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 15)
+
+[node name="Pole_05" type="Marker3D" parent="PolePoints" unique_id=1930764301]
+transform = Transform3D(0.9130889, 0, -0.40776044, 0, 1, 0, 0.40776044, 0, 0.9130889, -24, 0, 28)
+
+[node name="Pole_06" type="Marker3D" parent="PolePoints" unique_id=179519946]
+transform = Transform3D(0.9130889, 0, -0.40776044, 0, 1, 0, 0.40776044, 0, 0.9130889, -7.971302, 0, 13.895512)
+
+[node name="Pole_07" type="Marker3D" parent="PolePoints" unique_id=1135736053]
+transform = Transform3D(0.9130889, 0, -0.40776044, 0, 1, 0, 0.40776044, 0, 0.9130889, 1.0374737, 0, 5.9682193)
+
+[node name="Generated" type="Node3D" parent="." unique_id=874936983]
