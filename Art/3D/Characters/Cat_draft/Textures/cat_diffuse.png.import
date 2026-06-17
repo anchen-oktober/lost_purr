@@ -3,8 +3,8 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bi6ewawmcwpcu"
-path.s3tc="res://.godot/imported/cat_diffuse.png-99ae45cadc05b7efd152bef7e8a71a2d.s3tc.ctex"
-path.etc2="res://.godot/imported/cat_diffuse.png-99ae45cadc05b7efd152bef7e8a71a2d.etc2.ctex"
+path.s3tc="res://.godot/imported/cat_diffuse.png-5287817ea1387725b26c04264ab4df57.s3tc.ctex"
+path.etc2="res://.godot/imported/cat_diffuse.png-5287817ea1387725b26c04264ab4df57.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://Art/3D/Characters/Cat_draft/textures/cat_diffuse.png"
-dest_files=["res://.godot/imported/cat_diffuse.png-99ae45cadc05b7efd152bef7e8a71a2d.s3tc.ctex", "res://.godot/imported/cat_diffuse.png-99ae45cadc05b7efd152bef7e8a71a2d.etc2.ctex"]
+source_file="res://Art/3D/Characters/Cat_draft/Textures/cat_diffuse.png"
+dest_files=["res://.godot/imported/cat_diffuse.png-5287817ea1387725b26c04264ab4df57.s3tc.ctex", "res://.godot/imported/cat_diffuse.png-5287817ea1387725b26c04264ab4df57.etc2.ctex"]
 
 [params]
 
