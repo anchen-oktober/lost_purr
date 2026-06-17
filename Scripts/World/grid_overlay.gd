@@ -39,6 +39,7 @@ extends Node3D
 
 var _is_grid_visible: bool = false
 var _rebuild_queued: bool = false
+var _was_toggle_key_pressed: bool = false
 
 
 func _enter_tree() -> void:
@@ -46,7 +47,8 @@ func _enter_tree() -> void:
 		_disable_grid()
 		return
 
-	set_process_input(not Engine.is_editor_hint())
+	set_process(Engine.is_editor_hint())
+	set_process_input(false)
 	_queue_rebuild()
 
 
@@ -55,23 +57,22 @@ func _ready() -> void:
 		_disable_grid()
 		return
 
-	set_process_input(not Engine.is_editor_hint())
+	set_process(Engine.is_editor_hint())
+	set_process_input(false)
 	_is_grid_visible = visible_in_editor if Engine.is_editor_hint() else start_visible_in_debug
 	_queue_rebuild()
 	_apply_visibility()
 
 
-func _input(event: InputEvent) -> void:
-	if Engine.is_editor_hint() or _should_disable_for_build():
+func _process(_delta: float) -> void:
+	if not Engine.is_editor_hint() or _should_disable_for_build():
 		return
 
-	var key_event: InputEventKey = event as InputEventKey
-	if key_event != null and key_event.echo:
-		return
-
-	if event.is_action_pressed("toggle_grid"):
-		toggle_grid()
-		get_viewport().set_input_as_handled()
+	var toggle_key_pressed: bool = Input.is_key_pressed(KEY_G)
+	if toggle_key_pressed and not _was_toggle_key_pressed:
+		visible_in_editor = not visible_in_editor
+		_apply_visibility()
+	_was_toggle_key_pressed = toggle_key_pressed
 
 
 func toggle_grid() -> void:
@@ -152,7 +153,7 @@ func _apply_visibility() -> void:
 
 
 func _should_disable_for_build() -> bool:
-	return editor_only and not Engine.is_editor_hint() and not OS.is_debug_build()
+	return editor_only and not Engine.is_editor_hint()
 
 
 func _disable_grid() -> void:
