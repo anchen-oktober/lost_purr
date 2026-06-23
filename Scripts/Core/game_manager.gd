@@ -1,15 +1,70 @@
 extends Node
 
 const PLAYER_NAME: String = "PlayerCat"
+const QUICK_TRAVEL_SCENES: Dictionary = {
+	KEY_1: {
+		"scene": "res://Scenes/World/Village.tscn",
+		"spawn": "SpawnFromVillage",
+	},
+	KEY_2: {
+		"scene": "res://Scenes/Levels/Park.tscn",
+		"spawn": "SpawnFromPark",
+	},
+	KEY_3: {
+		"scene": "res://Scenes/World/City.tscn",
+		"spawn": "SpawnFromCity",
+	},
+	KEY_4: {
+		"scene": "res://Scenes/World/OtherWorld.tscn",
+		"spawn": "SpawnFromMetro",
+	},
+	KEY_KP_1: {
+		"scene": "res://Scenes/World/Village.tscn",
+		"spawn": "SpawnFromVillage",
+	},
+	KEY_KP_2: {
+		"scene": "res://Scenes/Levels/Park.tscn",
+		"spawn": "SpawnFromPark",
+	},
+	KEY_KP_3: {
+		"scene": "res://Scenes/World/City.tscn",
+		"spawn": "SpawnFromCity",
+	},
+	KEY_KP_4: {
+		"scene": "res://Scenes/World/OtherWorld.tscn",
+		"spawn": "SpawnFromMetro",
+	},
+}
 
 var pending_spawn_name: String = ""
 var player_state: Dictionary = {}
 var fade_layer: CanvasLayer
 var fade_rect: ColorRect
+var is_quick_traveling: bool = false
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	_create_fade_overlay()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is not InputEventKey:
+		return
+
+	var key_event: InputEventKey = event as InputEventKey
+	if not key_event.pressed or key_event.echo:
+		return
+
+	if is_quick_traveling or JournalManager.is_scene_input_blocked():
+		return
+
+	var destination: Dictionary = QUICK_TRAVEL_SCENES.get(key_event.physical_keycode, {})
+	if destination.is_empty():
+		return
+
+	get_viewport().set_input_as_handled()
+	is_quick_traveling = true
+	await change_scene(destination["scene"], destination["spawn"])
+	is_quick_traveling = false
 
 func change_scene(scene_path: String, spawn_name: String) -> void:
 	pending_spawn_name = spawn_name
