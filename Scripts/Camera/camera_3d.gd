@@ -9,8 +9,7 @@ extends Node3D
 @export var third_person_distance: float = 6.5
 @export var third_person_height: float = 2.6
 @export var third_person_look_height: float = 0.85
-@export var third_person_smoothness: float = 4.5
-@export var third_person_look_smoothness: float = 6.0
+@export var third_person_smoothness: float = 7.0
 @export var third_person_turn_smoothness: float = 1.5
 @export var third_person_auto_follow_movement: bool = false
 
@@ -25,12 +24,9 @@ var target_zoom: float = 1.0
 var yaw: float = 0.0
 var is_rotating_with_mouse: bool = false
 var camera_mode: CameraMode = CameraMode.ISOMETRIC
-var current_look_position: Vector3
 
 func _ready() -> void:
 	base_offset = position
-	if target:
-		current_look_position = target.global_position
 
 func _unhandled_input(event: InputEvent) -> void:
 	if JournalManager.is_scene_input_blocked():
@@ -57,7 +53,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		var mouse_motion: InputEventMouseMotion = event as InputEventMouseMotion
 		yaw -= mouse_motion.relative.x * mouse_rotation_sensitivity
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	var zoom_weight: float = 1.0 - exp(-zoom_smoothness * delta)
 	current_zoom = lerpf(current_zoom, target_zoom, zoom_weight)
 
@@ -79,7 +75,6 @@ func _toggle_camera_mode() -> void:
 	if camera_mode == CameraMode.ISOMETRIC:
 		camera_mode = CameraMode.THIRD_PERSON
 		is_rotating_with_mouse = false
-		current_look_position = target.global_position + Vector3.UP * third_person_look_height
 	else:
 		camera_mode = CameraMode.ISOMETRIC
 
@@ -94,11 +89,8 @@ func _update_third_person_camera(delta: float) -> void:
 	var rotated_back: Vector3 = Vector3(0.0, 0.0, third_person_distance).rotated(Vector3.UP, yaw)
 	var desired_position: Vector3 = target.global_position + rotated_back + Vector3.UP * third_person_height
 	var follow_weight: float = 1.0 - exp(-third_person_smoothness * delta)
-	var look_weight: float = 1.0 - exp(-third_person_look_smoothness * delta)
-	var desired_look_position: Vector3 = target.global_position + Vector3.UP * third_person_look_height
 	global_position = global_position.lerp(desired_position, follow_weight)
-	current_look_position = current_look_position.lerp(desired_look_position, look_weight)
-	look_at(current_look_position, Vector3.UP)
+	look_at(target.global_position + Vector3.UP * third_person_look_height, Vector3.UP)
 
 func _update_third_person_yaw(delta: float) -> void:
 	if not third_person_auto_follow_movement or is_rotating_with_mouse:
