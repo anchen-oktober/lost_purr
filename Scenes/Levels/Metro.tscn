@@ -267,7 +267,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -34)
 
 [node name="PortalToOtherWorld" parent="Portals" instance=ExtResource("6_portal")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -38)
-target_scene_path = "res://Scenes/World/OtherWorld.tscn"
+target_scene_path = "res://Scenes/Levels/OtherWorld.tscn"
 target_spawn_name = "SpawnFromMetro"
 prompt_text = "[E] Touch the distortion"
 

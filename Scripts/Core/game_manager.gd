@@ -3,7 +3,7 @@ extends Node
 const PLAYER_NAME: String = "PlayerCat"
 const QUICK_TRAVEL_SCENES: Dictionary = {
 	KEY_1: {
-		"scene": "res://Scenes/World/Village.tscn",
+		"scene": "res://MainScene.tscn",
 		"spawn": "SpawnFromVillage",
 	},
 	KEY_2: {
@@ -11,15 +11,19 @@ const QUICK_TRAVEL_SCENES: Dictionary = {
 		"spawn": "SpawnFromPark",
 	},
 	KEY_3: {
-		"scene": "res://Scenes/World/City.tscn",
+		"scene": "res://Scenes/Levels/City.tscn",
 		"spawn": "SpawnFromCity",
 	},
 	KEY_4: {
-		"scene": "res://Scenes/World/OtherWorld.tscn",
+		"scene": "res://Scenes/Levels/Metro.tscn",
+		"spawn": "SpawnFromCity",
+	},
+	KEY_5: {
+		"scene": "res://Scenes/Levels/OtherWorld.tscn",
 		"spawn": "SpawnFromMetro",
 	},
 	KEY_KP_1: {
-		"scene": "res://Scenes/World/Village.tscn",
+		"scene": "res://MainScene.tscn",
 		"spawn": "SpawnFromVillage",
 	},
 	KEY_KP_2: {
@@ -27,11 +31,15 @@ const QUICK_TRAVEL_SCENES: Dictionary = {
 		"spawn": "SpawnFromPark",
 	},
 	KEY_KP_3: {
-		"scene": "res://Scenes/World/City.tscn",
+		"scene": "res://Scenes/Levels/City.tscn",
 		"spawn": "SpawnFromCity",
 	},
 	KEY_KP_4: {
-		"scene": "res://Scenes/World/OtherWorld.tscn",
+		"scene": "res://Scenes/Levels/Metro.tscn",
+		"spawn": "SpawnFromCity",
+	},
+	KEY_KP_5: {
+		"scene": "res://Scenes/Levels/OtherWorld.tscn",
 		"spawn": "SpawnFromMetro",
 	},
 }

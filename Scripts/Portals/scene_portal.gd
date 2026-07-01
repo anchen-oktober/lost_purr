@@ -1,7 +1,7 @@
 extends Area3D
 
 @export_file("*.tscn") var target_scene_path: String
-@export var target_spawn_name: String = "SpawnFromVillage"
+@export var target_spawn_name: String = "SpawnFromPark"
 @export var prompt_text: String = "[E] Travel"
 
 var player_inside: bool = false

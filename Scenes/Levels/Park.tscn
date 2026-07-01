@@ -176,30 +176,6 @@ shape = SubResource("BoxShape3D_bytuc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -122, 0.5, 98)
 script = ExtResource("2_sofi1")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerCat" unique_id=1786541971]
-shape = SubResource("SphereShape3D_player")
-
-[node name="CatBehindWallsGlow" type="Sprite3D" parent="PlayerCat" unique_id=1831112620]
-transform = Transform3D(1.22, 0, 0, 0, 1.22, 0, 0, 0, 1.22, 0, 0.74, 0)
-material_override = SubResource("ShaderMaterial_outline")
-pixel_size = 0.003
-billboard = 1
-no_depth_test = true
-texture = ExtResource("4_66fau")
-script = ExtResource("5_xmsq0")
-
-[node name="CatBillboard" type="Sprite3D" parent="PlayerCat" unique_id=969765494]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.74, 0)
-pixel_size = 0.003
-billboard = 1
-texture = ExtResource("4_66fau")
-
-[node name="CatTrackingLight" type="OmniLight3D" parent="PlayerCat" unique_id=1001291453]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
-light_color = Color(1, 0.78, 0.42, 1)
-light_energy = 0.45
-omni_range = 2.4
-
 [node name="CameraRig" type="Node3D" parent="." unique_id=31899292]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22, 18)
 
@@ -241,21 +217,6 @@ script = ExtResource("13_15ykr")
 normal_eye = ExtResource("14_xtfnb")
 cat_vision_eye = ExtResource("15_drvil")
 danger_eye = ExtResource("16_eej17")
-
-[node name="EyeTexture" type="TextureRect" parent="CatStatusHUD" unique_id=1654569749]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -244.0
-offset_top = -174.0
-offset_right = -24.0
-offset_bottom = -24.0
-mouse_filter = 2
-texture = ExtResource("14_xtfnb")
-expand_mode = 1
-stretch_mode = 5
 
 [node name="Roads" type="Node3D" parent="." unique_id=2005975140]
 
@@ -2401,15 +2362,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 122, 0.5, 96)
 [node name="PortalToCity" type="Area3D" parent="Portals" unique_id=1275602352 instance=ExtResource("17_cvqfq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 133, 0, 102)
 script = ExtResource("18_hkrgk")
-target_scene_path = "res://Scenes/World/City.tscn"
+target_scene_path = "res://Scenes/Levels/City.tscn"
 target_spawn_name = "SpawnFromPark"
 prompt_text = "[E] Go to the city"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Portals/PortalToCity" unique_id=332797956]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
-shape = SubResource("BoxShape3D_portal")
-
-[node name="Marker" type="MeshInstance3D" parent="Portals/PortalToCity" unique_id=1059644310]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.04, 0)
-mesh = SubResource("CylinderMesh_portal")
-surface_material_override/0 = SubResource("StandardMaterial3D_portal")
