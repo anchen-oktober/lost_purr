@@ -138,6 +138,8 @@ func _try_purr() -> void:
 	var player: Node = get_tree().current_scene.find_child("PlayerCat", true, false)
 	if player != null and player.has_method("play_purr_effect"):
 		player.call("play_purr_effect")
+	if player != null and player.has_method("restore_fear_by_purr"):
+		player.call("restore_fear_by_purr")
 
 	if nearby_npc != null:
 		nearby_npc.receive_purr()

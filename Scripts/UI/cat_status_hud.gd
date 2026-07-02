@@ -21,6 +21,9 @@ var current_fear: float = 0.0
 var current_calmness: float = 100.0
 var current_fear_state: String = "Calm"
 var is_fear_critical: bool = false
+var is_trauma_avoidance_active: bool = false
+var blocked_zone_name: String = "none"
+var is_blocked_zone_radius_visible: bool = false
 var shake_time: float = 0.0
 var eye_base_position: Vector2
 
@@ -39,12 +42,20 @@ func _ready() -> void:
 
 	if player_cat != null and player_cat.has_signal("fear_changed"):
 		player_cat.connect("fear_changed", _on_fear_changed)
+		if player_cat.has_signal("trauma_avoidance_changed"):
+			player_cat.connect("trauma_avoidance_changed", _on_trauma_avoidance_changed)
 		if player_cat.has_method("get_calmness") and player_cat.has_method("get_fear_state"):
 			_on_fear_changed(
 				float(player_cat.get("fear")),
 				float(player_cat.call("get_calmness")),
 				String(player_cat.call("get_fear_state")),
 				bool(player_cat.get("is_critical_fear"))
+			)
+		if player_cat.has_method("get_blocked_zone_name") and player_cat.has_method("is_blocked_zone_radius_visible"):
+			_on_trauma_avoidance_changed(
+				bool(player_cat.get("has_active_trauma_avoidance")),
+				String(player_cat.call("get_blocked_zone_name")),
+				bool(player_cat.call("is_blocked_zone_radius_visible"))
 			)
 	else:
 		_update_fear_debug_text()
@@ -72,6 +83,12 @@ func _on_fear_changed(fear: float, calmness: float, state: String, is_critical: 
 	is_fear_critical = is_critical
 	_update_fear_debug_text()
 	update_cat_eyes_indicator()
+
+func _on_trauma_avoidance_changed(is_active: bool, zone_name: String, radius_visible: bool) -> void:
+	is_trauma_avoidance_active = is_active
+	blocked_zone_name = zone_name
+	is_blocked_zone_radius_visible = radius_visible
+	_update_fear_debug_text()
 
 func update_cat_eyes_indicator() -> void:
 	var next_texture: Texture2D = normal_eye
@@ -124,8 +141,11 @@ func _update_fear_debug_text() -> void:
 		return
 
 	fear_debug_label.visible = debug_text_visible
-	fear_debug_label.text = "Fear: %d / 100\nCalmness: %d%%\nState: %s" % [
+	fear_debug_label.text = "Fear: %d / 100\nCalmness: %d%%\nState: %s\nTrauma Avoidance: %s\nBlocked Zone: %s\nBlocked Zone Radius Visible: %s" % [
 		roundi(current_fear),
 		roundi(current_calmness),
 		current_fear_state,
+		"ON" if is_trauma_avoidance_active else "OFF",
+		blocked_zone_name,
+		str(is_blocked_zone_radius_visible),
 	]
