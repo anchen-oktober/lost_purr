@@ -2,6 +2,8 @@ extends Node
 
 signal cat_state_changed(state: int)
 
+const OTHER_WORLD_LOCATION_ID: String = "OtherWorld"
+
 enum CatState {
 	NORMAL,
 	CAT_VISION,
@@ -42,9 +44,12 @@ enum CatState {
 
 var vision_amount: float = 0.0
 var danger_amount: float = 0.0
-var cat_vision_active: bool = false
-var danger_active: bool = false
+var is_cat_vision_enabled: bool = false
+var is_cat_vision_forced: bool = false
+var is_cat_critical: bool = false
+var current_location_id: String = ""
 var current_state: CatState = CatState.NORMAL
+var _cat_vision_enabled_before_forced: bool = false
 
 func _ready() -> void:
 	var current_scene: Node = get_tree().current_scene
@@ -60,19 +65,26 @@ func _ready() -> void:
 
 	_set_revealed_objects_visible(false)
 	_apply_environment(0.0, 0.0)
+	set_location(_detect_current_location_id())
 	cat_state_changed.emit(current_state)
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	var key_event: InputEventKey = event as InputEventKey
 	if key_event == null:
 		return
-	if key_event.pressed and not key_event.echo and (
-		key_event.physical_keycode == KEY_F1 or key_event.keycode == KEY_F1
-	):
-		set_danger_active(not danger_active)
+	if not key_event.pressed or key_event.echo:
+		return
+	if JournalManager.is_scene_input_blocked():
+		return
+
+	if key_event.physical_keycode == KEY_SHIFT or key_event.keycode == KEY_SHIFT:
+		toggle_cat_vision()
+		get_viewport().set_input_as_handled()
+	elif key_event.physical_keycode == KEY_F1 or key_event.keycode == KEY_F1:
+		set_cat_critical(not is_cat_critical)
+		get_viewport().set_input_as_handled()
 
 func _process(delta: float) -> void:
-	cat_vision_active = Input.is_physical_key_pressed(KEY_SHIFT)
 	_refresh_state()
 
 	var vision_target: float = 1.0 if current_state == CatState.CAT_VISION else 0.0
@@ -85,18 +97,58 @@ func _process(delta: float) -> void:
 	_update_cat_vision_music(vision_amount)
 	_update_revealed_objects(vision_amount)
 
-func set_danger_active(is_active: bool) -> void:
-	danger_active = is_active
+func set_location(location_id: String) -> void:
+	var next_location_id: String = _normalize_location_id(location_id)
+	var was_forced: bool = is_cat_vision_forced
+	current_location_id = next_location_id
+
+	if current_location_id == OTHER_WORLD_LOCATION_ID:
+		if not was_forced:
+			_cat_vision_enabled_before_forced = is_cat_vision_enabled
+		is_cat_vision_forced = true
+		is_cat_vision_enabled = true
+	elif was_forced:
+		is_cat_vision_forced = false
+		is_cat_vision_enabled = _cat_vision_enabled_before_forced
+	else:
+		is_cat_vision_forced = false
+
 	_refresh_state()
+
+func toggle_cat_vision() -> void:
+	if is_cat_vision_forced:
+		is_cat_vision_enabled = true
+		_refresh_state()
+		return
+
+	is_cat_vision_enabled = not is_cat_vision_enabled
+	_refresh_state()
+
+func set_cat_vision_enabled(is_enabled: bool) -> void:
+	if is_cat_vision_forced and not is_enabled:
+		is_cat_vision_enabled = true
+	else:
+		is_cat_vision_enabled = is_enabled
+	_refresh_state()
+
+func set_cat_critical(value: bool) -> void:
+	is_cat_critical = value
+	_refresh_state()
+
+func set_danger_active(is_active: bool) -> void:
+	set_cat_critical(is_active)
 
 func get_cat_state() -> int:
 	return current_state
 
 func _refresh_state() -> void:
 	var next_state: CatState = CatState.NORMAL
-	if danger_active:
+	if is_cat_vision_forced:
+		is_cat_vision_enabled = true
+
+	if is_cat_critical:
 		next_state = CatState.DANGER
-	elif cat_vision_active:
+	elif is_cat_vision_enabled:
 		next_state = CatState.CAT_VISION
 
 	if next_state == current_state:
@@ -104,6 +156,42 @@ func _refresh_state() -> void:
 
 	current_state = next_state
 	cat_state_changed.emit(current_state)
+
+func _detect_current_location_id() -> String:
+	var scene_root: Node = _find_scene_root()
+	if scene_root == null:
+		return ""
+
+	return scene_root.name
+
+func _find_scene_root() -> Node:
+	if get_tree().current_scene == null:
+		return null
+
+	var level_container: Node = get_tree().current_scene.get_node_or_null("LevelContainer")
+	if level_container != null:
+		var node: Node = self
+		while node != null and node.get_parent() != level_container:
+			node = node.get_parent()
+		if node != null:
+			return node
+
+	return get_tree().current_scene
+
+func _normalize_location_id(location_id: String) -> String:
+	match location_id:
+		"other_world", "OtherWorld":
+			return OTHER_WORLD_LOCATION_ID
+		"village", "Village":
+			return "Village"
+		"park", "Park":
+			return "Park"
+		"city", "City":
+			return "City"
+		"metro", "Metro":
+			return "Metro"
+		_:
+			return location_id
 
 func _apply_environment(vision: float, danger: float) -> void:
 	if world_environment == null or world_environment.environment == null:

@@ -96,6 +96,8 @@ func change_level(level_id: String, spawn_name: String = "") -> void:
 
 	var scene_container: Node = _find_scene_container()
 	if scene_container == null:
+		current_level_id = level_id
+		current_spawn_name = resolved_spawn_name
 		await change_scene(path, resolved_spawn_name)
 		return
 
@@ -122,6 +124,7 @@ func change_level(level_id: String, spawn_name: String = "") -> void:
 
 	await get_tree().process_frame
 	await get_tree().process_frame
+	_apply_location_to_cat_vision(level_id)
 	_restore_player_at_spawn()
 	_set_bootstrap_loading_visible(false)
 	await _fade_to(0.0, 0.35)
@@ -139,11 +142,38 @@ func change_scene(scene_path: String, spawn_name: String) -> void:
 
 	await get_tree().process_frame
 	await get_tree().process_frame
+	_apply_location_to_cat_vision(current_level_id)
 	_restore_player_at_spawn()
 	await _fade_to(0.0, 0.45)
 
 func register_current_scene_player() -> void:
+	_apply_location_to_cat_vision(current_level_id)
 	_restore_player_at_spawn()
+
+func _apply_location_to_cat_vision(level_id: String) -> void:
+	if get_tree().current_scene == null:
+		return
+
+	var cat_vision_manager: Node = get_tree().current_scene.find_child("CatVisionManager", true, false)
+	if cat_vision_manager == null or not cat_vision_manager.has_method("set_location"):
+		return
+
+	cat_vision_manager.call("set_location", _get_location_id(level_id))
+
+func _get_location_id(level_id: String) -> String:
+	match level_id:
+		"other_world":
+			return "OtherWorld"
+		"village":
+			return "Village"
+		"park":
+			return "Park"
+		"city":
+			return "City"
+		"metro":
+			return "Metro"
+		_:
+			return level_id
 
 func _load_packed_scene(path: String) -> PackedScene:
 	var request_error: int = ResourceLoader.load_threaded_request(path)
@@ -181,6 +211,9 @@ func _restore_player_at_spawn() -> void:
 			player.set("moving", false)
 			player.set("mouse_down", false)
 			player.velocity = Vector3.ZERO
+
+	if player.has_method("set_level_start_recovery_point"):
+		player.call("set_level_start_recovery_point", player.global_transform)
 
 	pending_spawn_name = ""
 
