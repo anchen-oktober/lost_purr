@@ -46,6 +46,9 @@ func _ready() -> void:
 	last_fear_source_position = global_position
 	_find_cat_vision_manager()
 	_update_fear_state()
+	var calm_manager: Node = get_node_or_null("/root/CatCalmManager")
+	if calm_manager != null and calm_manager.has_method("register_player"):
+		calm_manager.call("register_player", self)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if controls_locked:
