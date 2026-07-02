@@ -348,7 +348,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 0.5, 25)
 
 [node name="PortalToMetro" parent="Portals" instance=ExtResource("7_portal")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 0, 24)
-target_scene_path = "res://Scenes/Levels/Metro.tscn"
+target_level_id = "metro"
 target_spawn_name = "SpawnFromCity"
 prompt_text = "[E] Enter metro"
 

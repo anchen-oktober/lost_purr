@@ -2362,6 +2362,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 122, 0.5, 96)
 [node name="PortalToCity" type="Area3D" parent="Portals" unique_id=1275602352 instance=ExtResource("17_cvqfq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 133, 0, 102)
 script = ExtResource("18_hkrgk")
-target_scene_path = "res://Scenes/Levels/City.tscn"
+target_level_id = "city"
 target_spawn_name = "SpawnFromPark"
 prompt_text = "[E] Go to the city"

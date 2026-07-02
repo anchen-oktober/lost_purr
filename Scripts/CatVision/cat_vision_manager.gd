@@ -67,7 +67,7 @@ func _input(event: InputEvent) -> void:
 	if key_event == null:
 		return
 	if key_event.pressed and not key_event.echo and (
-		key_event.physical_keycode == KEY_1 or key_event.keycode == KEY_1
+		key_event.physical_keycode == KEY_F1 or key_event.keycode == KEY_F1
 	):
 		set_danger_active(not danger_active)
 

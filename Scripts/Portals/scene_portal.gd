@@ -1,6 +1,6 @@
 extends Area3D
 
-@export_file("*.tscn") var target_scene_path: String
+@export var target_level_id: String = "park"
 @export var target_spawn_name: String = "SpawnFromPark"
 @export var prompt_text: String = "[E] Travel"
 
@@ -38,12 +38,12 @@ func _on_body_exited(body: Node3D) -> void:
 	_set_prompt_visible(false)
 
 func _start_transition() -> void:
-	if target_scene_path == "":
+	if target_level_id == "":
 		return
 
 	is_transitioning = true
 	_set_prompt_visible(false)
-	await GameManager.change_scene(target_scene_path, target_spawn_name)
+	await GameManager.change_level(target_level_id, target_spawn_name)
 	is_transitioning = false
 
 func _create_prompt() -> void:
