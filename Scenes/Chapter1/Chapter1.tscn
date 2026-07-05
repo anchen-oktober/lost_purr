@@ -1,0 +1,440 @@
+[gd_scene load_steps=18 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Chapter1/chapter1_quest_manager.gd" id="1_manager"]
+[ext_resource type="Script" path="res://Scripts/Chapter1/chapter1_trigger.gd" id="2_trigger"]
+[ext_resource type="Script" path="res://Scripts/CatVision/cat_vision_reveal.gd" id="3_reveal"]
+[ext_resource type="Script" path="res://Scripts/UI/tutorial_hint_manager.gd" id="4_hint"]
+[ext_resource type="Script" path="res://Scripts/UI/dialogue_manager.gd" id="5_dialogue"]
+[ext_resource type="PackedScene" path="res://Scenes/NPC/NPC.tscn" id="6_npc"]
+[ext_resource type="Script" path="res://Scripts/Chapter1/chapter1_moving_car.gd" id="7_car"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_trigger_small"]
+size = Vector3(3, 2, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_trigger_wide"]
+size = Vector3(8, 2, 5)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_trigger"]
+radius = 2.2
+
+[sub_resource type="BoxMesh" id="BoxMesh_tracks"]
+size = Vector3(2.4, 0.06, 1.1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_aura"]
+radius = 0.34
+height = 0.68
+
+[sub_resource type="BoxMesh" id="BoxMesh_car"]
+size = Vector3(2.4, 0.7, 1.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_car"]
+size = Vector3(2.5, 1, 1.3)
+
+[sub_resource type="StandardMaterial3D" id="Material_tracks"]
+albedo_color = Color(0.18, 0.16, 0.13, 1)
+roughness = 0.92
+
+[sub_resource type="StandardMaterial3D" id="Material_owner_aura"]
+albedo_color = Color(1, 0.72, 0.28, 0.58)
+emission_enabled = true
+emission = Color(1, 0.68, 0.24, 1)
+emission_energy_multiplier = 0.8
+
+[sub_resource type="StandardMaterial3D" id="Material_strange_aura"]
+albedo_color = Color(0.28, 0.68, 1, 0.48)
+emission_enabled = true
+emission = Color(0.18, 0.58, 1, 1)
+emission_energy_multiplier = 0.65
+
+[sub_resource type="StandardMaterial3D" id="Material_car"]
+albedo_color = Color(0.14, 0.16, 0.18, 1)
+emission_enabled = true
+emission = Color(0.45, 0.06, 0.04, 1)
+emission_energy_multiplier = 0.25
+
+[node name="Chapter1" type="Node3D"]
+script = ExtResource("1_manager")
+
+[node name="TutorialHintManager" type="CanvasLayer" parent="."]
+script = ExtResource("4_hint")
+
+[node name="DialogueManager" type="CanvasLayer" parent="."]
+script = ExtResource("5_dialogue")
+
+[node name="Markers" type="Node3D" parent="."]
+
+[node name="M_StartRoom" type="Marker3D" parent="Markers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -12)
+
+[node name="M_CarTracks" type="Marker3D" parent="Markers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -9)
+
+[node name="M_AuraTrail_01" type="Marker3D" parent="Markers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -6)
+
+[node name="M_AuraTrail_02" type="Marker3D" parent="Markers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -4)
+
+[node name="M_AuraTrail_03" type="Marker3D" parent="Markers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
+
+[node name="M_AnimalControlScene" type="Marker3D" parent="Markers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 1)
+
+[node name="M_ChaseStart" type="Marker3D" parent="Markers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 2)
+
+[node name="M_ChaseEnd" type="Marker3D" parent="Markers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 7)
+
+[node name="M_Neighbor" type="Marker3D" parent="Markers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 8)
+
+[node name="M_OtherCat" type="Marker3D" parent="Markers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, 6)
+
+[node name="M_RoadStart" type="Marker3D" parent="Markers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 0, 4)
+
+[node name="M_RoadIsland" type="Marker3D" parent="Markers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39, 0, 4)
+
+[node name="M_RoadEnd" type="Marker3D" parent="Markers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46, 0, 4)
+
+[node name="M_ParkExit" type="Marker3D" parent="Markers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 4)
+
+[node name="M_CarLaneA_Start" type="Marker3D" parent="Markers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0.4, 1.2)
+
+[node name="M_CarLaneA_End" type="Marker3D" parent="Markers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46, 0.4, 1.2)
+
+[node name="M_CarLaneB_Start" type="Marker3D" parent="Markers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46, 0.4, 6.7)
+
+[node name="M_CarLaneB_End" type="Marker3D" parent="Markers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0.4, 6.7)
+
+[node name="Triggers" type="Node3D" parent="."]
+
+[node name="TR_IntroCutscene" type="Area3D" parent="Triggers"]
+script = ExtResource("2_trigger")
+trigger_id = "TR_IntroCutscene"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Triggers/TR_IntroCutscene"]
+shape = SubResource("BoxShape3D_trigger_small")
+
+[node name="TR_CarTracks" type="Area3D" parent="Triggers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0.2, -9)
+script = ExtResource("2_trigger")
+trigger_id = "TR_CarTracks"
+activation_type = 1
+context_hint = "E - осмотреть"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Triggers/TR_CarTracks"]
+shape = SubResource("SphereShape3D_trigger")
+
+[node name="TR_CarTracksCatVision" type="Area3D" parent="Triggers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0.2, -9)
+script = ExtResource("2_trigger")
+trigger_id = "TR_CarTracksCatVision"
+activation_type = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Triggers/TR_CarTracksCatVision"]
+shape = SubResource("SphereShape3D_trigger")
+
+[node name="TR_AuraTrailProgress" type="Area3D" parent="Triggers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.2, -2)
+script = ExtResource("2_trigger")
+trigger_id = "TR_AuraTrailProgress"
+one_shot = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Triggers/TR_AuraTrailProgress"]
+shape = SubResource("BoxShape3D_trigger_wide")
+
+[node name="TR_AnimalControlScene" type="Area3D" parent="Triggers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.2, 1)
+script = ExtResource("2_trigger")
+trigger_id = "TR_AnimalControlScene"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Triggers/TR_AnimalControlScene"]
+shape = SubResource("BoxShape3D_trigger_wide")
+
+[node name="TR_ChaseEnd" type="Area3D" parent="Triggers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0.2, 7)
+script = ExtResource("2_trigger")
+trigger_id = "TR_ChaseEnd"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Triggers/TR_ChaseEnd"]
+shape = SubResource("BoxShape3D_trigger_wide")
+
+[node name="TR_NeighborArea" type="Area3D" parent="Triggers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0.2, 8)
+script = ExtResource("2_trigger")
+trigger_id = "TR_NeighborArea"
+activation_type = 2
+context_hint = "R - мурчать"
+one_shot = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Triggers/TR_NeighborArea"]
+shape = SubResource("SphereShape3D_trigger")
+
+[node name="TR_OtherCatDialogue" type="Area3D" parent="Triggers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0.2, 6)
+script = ExtResource("2_trigger")
+trigger_id = "TR_OtherCatDialogue"
+activation_type = 1
+context_hint = "E - поговорить"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Triggers/TR_OtherCatDialogue"]
+shape = SubResource("SphereShape3D_trigger")
+
+[node name="TR_RoadStart" type="Area3D" parent="Triggers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 0.2, 4)
+script = ExtResource("2_trigger")
+trigger_id = "TR_RoadStart"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Triggers/TR_RoadStart"]
+shape = SubResource("BoxShape3D_trigger_wide")
+
+[node name="TR_RoadSafeIsland" type="Area3D" parent="Triggers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39, 0.2, 4)
+script = ExtResource("2_trigger")
+trigger_id = "TR_RoadSafeIsland"
+one_shot = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Triggers/TR_RoadSafeIsland"]
+shape = SubResource("BoxShape3D_trigger_small")
+
+[node name="TR_RoadEnd" type="Area3D" parent="Triggers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46, 0.2, 4)
+script = ExtResource("2_trigger")
+trigger_id = "TR_RoadEnd"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Triggers/TR_RoadEnd"]
+shape = SubResource("BoxShape3D_trigger_wide")
+
+[node name="NPC" type="Node3D" parent="."]
+
+[node name="NPC_AnimalControl_01" parent="NPC" instance=ExtResource("6_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+id = "animal_control_01"
+character_name = "Служба отлова"
+character_type = 0
+attitude = 2
+short_phrase = "Не дай ему уйти!"
+patrol_enabled = false
+
+[node name="NPC_AnimalControl_02" parent="NPC" instance=ExtResource("6_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 1)
+id = "animal_control_02"
+character_name = "Служба отлова"
+character_type = 0
+attitude = 2
+short_phrase = "Вон еще один!"
+patrol_enabled = false
+
+[node name="NPC_KindNeighbor" parent="NPC" instance=ExtResource("6_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 8)
+id = "kind_neighbor"
+character_name = "Соседка"
+character_type = 0
+attitude = 1
+short_phrase = "Иди домой, малыш."
+patrol_enabled = false
+
+[node name="NPC_OtherCat" parent="NPC" instance=ExtResource("6_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, 6)
+id = "other_cat_chapter1"
+character_name = "Другой кот"
+character_type = 1
+attitude = 1
+short_phrase = "Смотри тем, что помнит дорогу."
+patrol_enabled = false
+
+[node name="CatVision" type="Node3D" parent="."]
+
+[node name="OBJ_CarTracks" type="Node3D" parent="CatVision"]
+transform = Transform3D(0.966, 0, -0.259, 0, 1, 0, 0.259, 0, 0.966, -11, 0.04, -9)
+script = ExtResource("3_reveal")
+visible_only_in_cat_vision = false
+normal_visibility = true
+highlight_color = Color(1, 0.68, 0.28, 0.8)
+reveal_type = 0
+
+[node name="Visual" type="MeshInstance3D" parent="CatVision/OBJ_CarTracks"]
+mesh = SubResource("BoxMesh_tracks")
+surface_material_override/0 = SubResource("Material_tracks")
+
+[node name="GlowLight" type="OmniLight3D" parent="CatVision/OBJ_CarTracks"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+omni_range = 3.5
+
+[node name="OBJ_OwnerAuraTrail_01" type="Node3D" parent="CatVision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.18, -6)
+script = ExtResource("3_reveal")
+highlight_color = Color(1, 0.72, 0.28, 0.82)
+reveal_type = 0
+
+[node name="Visual" type="MeshInstance3D" parent="CatVision/OBJ_OwnerAuraTrail_01"]
+mesh = SubResource("SphereMesh_aura")
+surface_material_override/0 = SubResource("Material_owner_aura")
+
+[node name="OBJ_OwnerAuraTrail_02" type="Node3D" parent="CatVision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.18, -4)
+script = ExtResource("3_reveal")
+highlight_color = Color(1, 0.72, 0.28, 0.82)
+reveal_type = 0
+
+[node name="Visual" type="MeshInstance3D" parent="CatVision/OBJ_OwnerAuraTrail_02"]
+mesh = SubResource("SphereMesh_aura")
+surface_material_override/0 = SubResource("Material_owner_aura")
+
+[node name="OBJ_OwnerAuraTrail_03" type="Node3D" parent="CatVision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.18, -2)
+script = ExtResource("3_reveal")
+highlight_color = Color(1, 0.72, 0.28, 0.82)
+reveal_type = 0
+
+[node name="Visual" type="MeshInstance3D" parent="CatVision/OBJ_OwnerAuraTrail_03"]
+mesh = SubResource("SphereMesh_aura")
+surface_material_override/0 = SubResource("Material_owner_aura")
+
+[node name="OBJ_OwnerAuraTrail_04" type="Node3D" parent="CatVision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.18, 0)
+script = ExtResource("3_reveal")
+highlight_color = Color(1, 0.72, 0.28, 0.82)
+reveal_type = 0
+
+[node name="Visual" type="MeshInstance3D" parent="CatVision/OBJ_OwnerAuraTrail_04"]
+mesh = SubResource("SphereMesh_aura")
+surface_material_override/0 = SubResource("Material_owner_aura")
+
+[node name="OBJ_OwnerAuraTrail_Road_01" type="Node3D" parent="CatVision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 0.18, 5)
+script = ExtResource("3_reveal")
+highlight_color = Color(1, 0.72, 0.28, 0.82)
+reveal_type = 0
+
+[node name="Visual" type="MeshInstance3D" parent="CatVision/OBJ_OwnerAuraTrail_Road_01"]
+mesh = SubResource("SphereMesh_aura")
+surface_material_override/0 = SubResource("Material_owner_aura")
+
+[node name="OBJ_OwnerAuraTrail_Road_02" type="Node3D" parent="CatVision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 0.18, 4)
+script = ExtResource("3_reveal")
+highlight_color = Color(1, 0.72, 0.28, 0.82)
+reveal_type = 0
+
+[node name="Visual" type="MeshInstance3D" parent="CatVision/OBJ_OwnerAuraTrail_Road_02"]
+mesh = SubResource("SphereMesh_aura")
+surface_material_override/0 = SubResource("Material_owner_aura")
+
+[node name="OBJ_OwnerAuraTrail_Road_03" type="Node3D" parent="CatVision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0.18, 4)
+script = ExtResource("3_reveal")
+highlight_color = Color(1, 0.72, 0.28, 0.82)
+reveal_type = 0
+
+[node name="Visual" type="MeshInstance3D" parent="CatVision/OBJ_OwnerAuraTrail_Road_03"]
+mesh = SubResource("SphereMesh_aura")
+surface_material_override/0 = SubResource("Material_owner_aura")
+
+[node name="OBJ_StrangeAura_01" type="Node3D" parent="CatVision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.25, -8)
+script = ExtResource("3_reveal")
+highlight_color = Color(0.22, 0.62, 1, 0.72)
+reveal_type = 1
+
+[node name="Visual" type="MeshInstance3D" parent="CatVision/OBJ_StrangeAura_01"]
+mesh = SubResource("SphereMesh_aura")
+surface_material_override/0 = SubResource("Material_strange_aura")
+
+[node name="OBJ_StrangeAura_02" type="Node3D" parent="CatVision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 0.25, 7)
+script = ExtResource("3_reveal")
+highlight_color = Color(0.22, 0.62, 1, 0.72)
+reveal_type = 1
+
+[node name="Visual" type="MeshInstance3D" parent="CatVision/OBJ_StrangeAura_02"]
+mesh = SubResource("SphereMesh_aura")
+surface_material_override/0 = SubResource("Material_strange_aura")
+
+[node name="OBJ_HiddenClue_01" type="Node3D" parent="CatVision"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.22, -5)
+script = ExtResource("3_reveal")
+highlight_color = Color(0.82, 0.92, 0.86, 0.75)
+reveal_type = 2
+
+[node name="Visual" type="MeshInstance3D" parent="CatVision/OBJ_HiddenClue_01"]
+mesh = SubResource("SphereMesh_aura")
+surface_material_override/0 = SubResource("Material_owner_aura")
+
+[node name="OBJ_HiddenClue_02" type="Node3D" parent="CatVision"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 37, 0.22, 2)
+script = ExtResource("3_reveal")
+highlight_color = Color(0.82, 0.92, 0.86, 0.75)
+reveal_type = 2
+
+[node name="Visual" type="MeshInstance3D" parent="CatVision/OBJ_HiddenClue_02"]
+mesh = SubResource("SphereMesh_aura")
+surface_material_override/0 = SubResource("Material_owner_aura")
+
+[node name="OBJ_FalseTrail_01" type="Node3D" parent="CatVision"]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 34, 0.18, 9)
+script = ExtResource("3_reveal")
+highlight_color = Color(0.42, 0.48, 0.62, 0.6)
+reveal_type = 4
+max_alpha = 0.35
+
+[node name="Visual" type="MeshInstance3D" parent="CatVision/OBJ_FalseTrail_01"]
+mesh = SubResource("SphereMesh_aura")
+surface_material_override/0 = SubResource("Material_strange_aura")
+
+[node name="Road" type="Node3D" parent="."]
+
+[node name="OBJ_AnimalControlCar" type="MeshInstance3D" parent="Road"]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 7, 0.45, 2)
+mesh = SubResource("BoxMesh_car")
+surface_material_override/0 = SubResource("Material_car")
+
+[node name="OBJ_LowFence_JumpTutorial" type="MeshInstance3D" parent="Road"]
+transform = Transform3D(1.8, 0, 0, 0, 0.35, 0, 0, 0, 0.18, 14, 0.2, 5)
+mesh = SubResource("BoxMesh_car")
+surface_material_override/0 = SubResource("Material_tracks")
+
+[node name="OBJ_TrafficLight" type="OmniLight3D" parent="Road"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 2.2, 4)
+light_color = Color(0.15, 1, 0.32, 1)
+light_energy = 1.3
+omni_range = 3.0
+
+[node name="OBJ_MovingCar_A" type="Area3D" parent="Road" groups=["chapter1_moving_cars"]]
+script = ExtResource("7_car")
+start_marker_path = NodePath("../../Markers/M_CarLaneA_Start")
+end_marker_path = NodePath("../../Markers/M_CarLaneA_End")
+speed = 6.0
+wait_at_end = 1.4
+
+[node name="Visual" type="MeshInstance3D" parent="Road/OBJ_MovingCar_A"]
+mesh = SubResource("BoxMesh_car")
+surface_material_override/0 = SubResource("Material_car")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Road/OBJ_MovingCar_A"]
+shape = SubResource("BoxShape3D_car")
+
+[node name="OBJ_MovingCar_B" type="Area3D" parent="Road" groups=["chapter1_moving_cars"]]
+script = ExtResource("7_car")
+start_marker_path = NodePath("../../Markers/M_CarLaneB_Start")
+end_marker_path = NodePath("../../Markers/M_CarLaneB_End")
+speed = 5.2
+wait_at_end = 1.0
+
+[node name="Visual" type="MeshInstance3D" parent="Road/OBJ_MovingCar_B"]
+mesh = SubResource("BoxMesh_car")
+surface_material_override/0 = SubResource("Material_car")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Road/OBJ_MovingCar_B"]
+shape = SubResource("BoxShape3D_car")

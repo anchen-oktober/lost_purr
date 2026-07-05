@@ -35,6 +35,7 @@ const QUICK_TRAVEL_LEVELS: Dictionary = {
 	KEY_KP_4: {"level": "metro", "spawn": "SpawnFromCity"},
 	KEY_KP_5: {"level": "other_world", "spawn": "SpawnFromMetro"},
 }
+const CHAPTER1_SCENE_PATH: String = "res://Scenes/Chapter1/Chapter1.tscn"
 
 var pending_spawn_name: String = ""
 var player_state: Dictionary = {}
@@ -119,6 +120,7 @@ func change_level(level_id: String, spawn_name: String = "") -> void:
 
 	var level_instance: Node = packed_scene.instantiate()
 	scene_container.add_child(level_instance)
+	_attach_chapter_overlay(level_id, level_instance)
 	current_level_id = level_id
 	current_spawn_name = resolved_spawn_name
 
@@ -190,6 +192,22 @@ func _load_packed_scene(path: String) -> PackedScene:
 		return null
 
 	return ResourceLoader.load_threaded_get(path) as PackedScene
+
+func _attach_chapter_overlay(level_id: String, level_instance: Node) -> void:
+	if level_id != "village" or level_instance == null:
+		return
+	if level_instance.find_child("Chapter1", true, false) != null:
+		return
+	if not ResourceLoader.exists(CHAPTER1_SCENE_PATH):
+		push_warning("Chapter 1 scene not found: %s" % CHAPTER1_SCENE_PATH)
+		return
+
+	var chapter_scene := load(CHAPTER1_SCENE_PATH) as PackedScene
+	if chapter_scene == null:
+		push_warning("Could not load Chapter 1 scene.")
+		return
+
+	level_instance.add_child(chapter_scene.instantiate())
 
 func _store_player_state() -> void:
 	var player: CharacterBody3D = _find_player()
