@@ -37,6 +37,7 @@ var _hint_manager: Node
 var _dialogue_manager: Node
 var _cat_vision_manager: Node
 var _player: CharacterBody3D
+var _chapter_root: Node
 
 func _ready() -> void:
 	for quest_id in QUEST_ORDER:
@@ -63,12 +64,20 @@ func complete_quest(quest_id: String) -> void:
 
 func _find_nodes() -> void:
 	var current_scene := get_tree().current_scene
-	_hint_manager = find_child("TutorialHintManager", true, false)
-	_dialogue_manager = find_child("DialogueManager", true, false)
+	_chapter_root = _get_chapter_root()
+	_hint_manager = _chapter_root.find_child("TutorialHintManager", true, false)
+	_dialogue_manager = _chapter_root.find_child("DialogueManager", true, false)
 	_player = current_scene.find_child("PlayerCat", true, false) as CharacterBody3D if current_scene != null else null
 	_cat_vision_manager = current_scene.find_child("CatVisionManager", true, false) if current_scene != null else null
-	_collect_named_nodes(find_child("Markers", true, false), _markers)
-	_collect_named_nodes(find_child("Triggers", true, false), _triggers)
+	_collect_chapter_references(_chapter_root)
+
+func _get_chapter_root() -> Node:
+	if name == "Chapter1":
+		return self
+	var parent := get_parent()
+	if parent != null and parent.name == "Chapter1":
+		return parent
+	return self
 
 func _collect_named_nodes(root: Node, target: Dictionary) -> void:
 	if root == null:
@@ -76,6 +85,17 @@ func _collect_named_nodes(root: Node, target: Dictionary) -> void:
 	for child in root.get_children():
 		target[child.name] = child
 		_collect_named_nodes(child, target)
+
+func _collect_chapter_references(root: Node) -> void:
+	if root == null:
+		return
+	for child in root.get_children():
+		var child_name := String(child.name)
+		if child_name.begins_with("M_"):
+			_markers[child_name] = child
+		if child_name.begins_with("TR_") or child.has_signal("chapter_triggered"):
+			_triggers[child_name] = child
+		_collect_chapter_references(child)
 
 func _connect_chapter_nodes() -> void:
 	for trigger in _triggers.values():
@@ -289,7 +309,7 @@ func _complete_neighbor_purr() -> void:
 	_hide_hint()
 	if _player != null and _player.has_method("play_purr_effect"):
 		_player.call("play_purr_effect")
-	var neighbor := find_child("NPC_KindNeighbor", true, false)
+	var neighbor := _chapter_root.find_child("NPC_KindNeighbor", true, false)
 	if neighbor != null and neighbor.has_method("change_attitude"):
 		neighbor.call("change_attitude", CHARACTER_ATTITUDE_FRIENDLY)
 	if _dialogue_manager != null:
@@ -316,7 +336,7 @@ func _update_chase(delta: float) -> void:
 		return
 
 	for npc_name in ["NPC_AnimalControl_01", "NPC_AnimalControl_02"]:
-		var npc := find_child(npc_name, true, false) as Node3D
+		var npc := _chapter_root.find_child(npc_name, true, false) as Node3D
 		if npc == null:
 			continue
 		var direction := _player.global_position - npc.global_position
