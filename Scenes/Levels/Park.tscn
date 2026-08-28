@@ -1,23 +1,13 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://dgtwr5dxhq3dx"]
 
-[ext_resource type="PackedScene" path="res://Scenes/Player/PlayerCat.tscn" id="1_vnmf1"]
-[ext_resource type="Script" path="res://Scripts/Player/player_cat.gd" id="2_sofi1"]
-[ext_resource type="Shader" path="res://Shaders/cat_outline.gdshader" id="3_g85ha"]
-[ext_resource type="Texture2D" path="res://Art/CatBilboard.png" id="4_66fau"]
-[ext_resource type="Script" path="res://Scripts/Cat/cat_outline_visibility.gd" id="5_xmsq0"]
-[ext_resource type="Script" path="res://Scripts/Camera/camera_3d.gd" id="6_aj7p5"]
-[ext_resource type="AudioStream" path="res://Art/Audio/Music/Contemplation.mp3" id="7_24vvy"]
-[ext_resource type="AudioStream" path="res://Art/Audio/Music/LostInABadPlace.ogg" id="8_a0c2j"]
-[ext_resource type="Script" path="res://Scripts/CatVision/cat_vision_manager.gd" id="9_d3pem"]
+[ext_resource type="PackedScene" uid="uid://cynjaq2ehwmmk" path="res://Scenes/Player/PlayerCat.tscn" id="1_vnmf1"]
+[ext_resource type="Script" uid="uid://ligvtd7i5o31" path="res://Scripts/Camera/camera_3d.gd" id="6_aj7p5"]
+[ext_resource type="AudioStream" uid="uid://blgh1cskovv0x" path="res://Art/Audio/Music/Contemplation.mp3" id="7_24vvy"]
+[ext_resource type="AudioStream" uid="uid://t12hewewpnfp" path="res://Art/Audio/Music/LostInABadPlace.ogg" id="8_a0c2j"]
+[ext_resource type="Script" uid="uid://d0bllj7m7hfhw" path="res://Scripts/CatVision/cat_vision_manager.gd" id="9_d3pem"]
 [ext_resource type="PackedScene" path="res://Scenes/UI/JournalUI.tscn" id="10_2v0qu"]
-[ext_resource type="Script" path="res://Scripts/Journal/journal_ui.gd" id="11_kaqmq"]
 [ext_resource type="PackedScene" path="res://Scenes/UI/CatStatusHUD.tscn" id="12_0hrds"]
-[ext_resource type="Script" path="res://Scripts/UI/cat_status_hud.gd" id="13_15ykr"]
-[ext_resource type="Texture2D" path="res://Art/UI/cats_eye_1.png" id="14_xtfnb"]
-[ext_resource type="Texture2D" path="res://Art/UI/cats_eye_2.png" id="15_drvil"]
-[ext_resource type="Texture2D" path="res://Art/UI/cats_eye_3.png" id="16_eej17"]
 [ext_resource type="PackedScene" path="res://Scenes/Portals/ScenePortal.tscn" id="17_cvqfq"]
-[ext_resource type="Script" path="res://Scripts/Portals/scene_portal.gd" id="18_hkrgk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xewtb"]
 albedo_color = Color(0.24, 0.31, 0.2, 1)
@@ -28,18 +18,6 @@ size = Vector2(320, 280)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bytuc"]
 size = Vector3(320, 0.1, 280)
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_player"]
-radius = 0.45
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_outline"]
-render_priority = 0
-shader = ExtResource("3_g85ha")
-shader_parameter/cat_texture = ExtResource("4_66fau")
-shader_parameter/outline_color = Color(1, 0.72, 0.22, 0.82)
-shader_parameter/outline_pixels = 5.0
-shader_parameter/glow_pixels = 13.0
-shader_parameter/alpha_threshold = 0.08
 
 [sub_resource type="Environment" id="Environment_55ydh"]
 background_mode = 1
@@ -145,22 +123,6 @@ emission_enabled = true
 emission = Color(0.44, 0.34, 1, 1)
 emission_energy_multiplier = 1.4
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_portal"]
-size = Vector3(3.2, 2.4, 3.2)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_portal"]
-top_radius = 1.1
-bottom_radius = 1.1
-height = 0.08
-radial_segments = 32
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_portal"]
-transparency = 1
-albedo_color = Color(1, 0.76, 0.32, 0.42)
-emission_enabled = true
-emission = Color(1, 0.62, 0.22, 1)
-emission_energy_multiplier = 1.35
-
 [node name="Park" type="Node3D" unique_id=1965551222]
 
 [node name="Ground" type="StaticBody3D" parent="." unique_id=295839620]
@@ -172,9 +134,8 @@ mesh = SubResource("PlaneMesh_1ieav")
 [node name="@CollisionShape3D@2" type="CollisionShape3D" parent="Ground" unique_id=751803101]
 shape = SubResource("BoxShape3D_bytuc")
 
-[node name="PlayerCat" type="CharacterBody3D" parent="." unique_id=1297715493 instance=ExtResource("1_vnmf1")]
+[node name="PlayerCat" parent="." unique_id=1297715493 instance=ExtResource("1_vnmf1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -122, 0.5, 98)
-script = ExtResource("2_sofi1")
 
 [node name="CameraRig" type="Node3D" parent="." unique_id=31899292]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22, 18)
@@ -207,16 +168,9 @@ autoplay = true
 [node name="CatVisionManager" type="Node" parent="." unique_id=729151459]
 script = ExtResource("9_d3pem")
 
-[node name="JournalUI" type="CanvasLayer" parent="." unique_id=1226404952 instance=ExtResource("10_2v0qu")]
-layer = 10
-script = ExtResource("11_kaqmq")
+[node name="JournalUI" parent="." unique_id=1226404952 instance=ExtResource("10_2v0qu")]
 
-[node name="CatStatusHUD" type="CanvasLayer" parent="." unique_id=536755293 instance=ExtResource("12_0hrds")]
-layer = 8
-script = ExtResource("13_15ykr")
-normal_eye = ExtResource("14_xtfnb")
-cat_vision_eye = ExtResource("15_drvil")
-danger_eye = ExtResource("16_eej17")
+[node name="CatStatusHUD" parent="." unique_id=536755293 instance=ExtResource("12_0hrds")]
 
 [node name="Roads" type="Node3D" parent="." unique_id=2005975140]
 
@@ -2359,9 +2313,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 122, 0.5, 96)
 
 [node name="Portals" type="Node3D" parent="." unique_id=831751968]
 
-[node name="PortalToCity" type="Area3D" parent="Portals" unique_id=1275602352 instance=ExtResource("17_cvqfq")]
+[node name="PortalToCity" parent="Portals" unique_id=1275602352 instance=ExtResource("17_cvqfq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 133, 0, 102)
-script = ExtResource("18_hkrgk")
 target_level_id = "city"
-target_spawn_name = "SpawnFromPark"
 prompt_text = "[E] Go to the city"
