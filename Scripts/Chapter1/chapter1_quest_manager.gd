@@ -1,146 +1,120 @@
 extends Node
 class_name Chapter1QuestManager
 
-var completed_or_started_events: Dictionary = {}
+enum QuestState {
+	INACTIVE,
+	ACTIVE,
+	COMPLETED,
+	FAILED,
+}
 
+const QUEST_ORDER: Array[String] = [
+	"Cutscene_Intro",
+	"Quest_01_GoToCarTracks",
+	"Tutorial_01_Run",
+	"Quest_02_InspectTracksWithCatVision",
+	"Tutorial_02_CatVision",
+	"Quest_03_FollowOwnerAura",
+	"Quest_04_EscapeAnimalControl",
+	"Tutorial_03_Jump",
+	"Quest_045_PurrWithNeighbor",
+	"Quest_05_TalkToOtherCat",
+	"Dialogue_01_OtherCat",
+	"Quest_06_FollowTrailToRoad",
+	"Quest_07_CrossRoadToPark",
+	"Chapter_01_End",
+]
+const CHARACTER_ATTITUDE_FRIENDLY: int = 0
+
+var quest_states: Dictionary = {}
+var current_stage: String = ""
+var _triggers: Dictionary = {}
+var _markers: Dictionary = {}
+var _chase_active: bool = false
+var _road_checkpoint: Node3D = null
+var _cat_vision_completed: bool = false
 var _hint_manager: Node
 var _dialogue_manager: Node
 var _cat_vision_manager: Node
 var _player: CharacterBody3D
 var _chapter_root: Node
-var _chase_active: bool = false
 
 func _ready() -> void:
+	for quest_id in QUEST_ORDER:
+		quest_states[quest_id] = QuestState.INACTIVE
 	_find_nodes()
 	_configure_dialogues()
-	_connect_helpers()
+	_connect_chapter_nodes()
+	_set_all_triggers_enabled(false)
+	call_deferred("_start_intro")
 
 func _process(delta: float) -> void:
 	if _chase_active:
 		_update_chase(delta)
 
-func start_quest(quest_id: String) -> void:
-	if quest_id == "":
-		push_warning("Chapter1QuestManager.start_quest called with empty quest_id.")
-		return
-	if completed_or_started_events.has(quest_id):
-		return
-
-	completed_or_started_events[quest_id] = true
-	match quest_id:
-		"Cutscene_Intro":
-			start_intro_cutscene()
-		"Quest_01_GoToCarTracks":
-			show_hint("Найди следы машины.")
-		"Quest_02_CatVision", "Tutorial_02_CatVision", "Quest_02_InspectTracksWithCatVision":
-			show_hint("Left Shift - кошачье зрение.")
-		"Quest_03_FollowOwnerAura":
-			show_hint("След виден только кошачьим зрением.")
-		"Quest_04_AnimalControl", "Quest_04_EscapeAnimalControl":
-			start_animal_control_chase()
-		"Quest_04_AnimalControlEnd":
-			stop_animal_control_chase()
-			show_hint("Ты оторвался. Найди безопасный проход дальше.")
-		"Quest_05_NeighborPurr", "Quest_045_PurrWithNeighbor":
-			show_hint("R - мурчать.")
-		"Dialogue_OtherCat", "Dialogue_01_OtherCat":
-			start_dialogue("DIALOGUE_OtherCat")
-		"Quest_07_RoadCrossing", "Quest_07_CrossRoadToPark":
-			show_hint("Дождись зеленого света.")
-		"Chapter1_End", "Chapter_01_End":
-			finish_chapter()
-		_:
-			push_warning("Unknown Chapter1 quest_id: %s" % quest_id)
-
-func show_hint(text: String, duration: float = 0.0) -> void:
-	if _hint_manager != null and _hint_manager.has_method("show_hint"):
-		_hint_manager.call("show_hint", text, duration)
-
-func hide_hint() -> void:
-	if _hint_manager != null and _hint_manager.has_method("hide_hint"):
-		_hint_manager.call("hide_hint")
-
-func show_context_hint(text: String) -> void:
-	if _hint_manager != null and _hint_manager.has_method("show_context_hint"):
-		_hint_manager.call("show_context_hint", text)
-
-func hide_context_hint() -> void:
-	if _hint_manager != null and _hint_manager.has_method("hide_context_hint"):
-		_hint_manager.call("hide_context_hint")
-
-func start_dialogue(dialogue_id: String) -> void:
-	if dialogue_id == "":
-		return
-	if _dialogue_manager != null and _dialogue_manager.has_method("start_dialogue"):
-		_dialogue_manager.call("start_dialogue", dialogue_id)
-
-func start_intro_cutscene() -> void:
-	start_dialogue("DIALOGUE_Intro")
-
-func start_animal_control_chase() -> void:
-	start_dialogue("DIALOGUE_AnimalControl")
-	_chase_active = true
-	show_hint("Убеги от службы отлова.", 3.0)
-	if _cat_vision_manager != null and _cat_vision_manager.has_method("set_danger_active"):
-		_cat_vision_manager.call("set_danger_active", true)
-
-func stop_animal_control_chase() -> void:
-	_chase_active = false
-	if _cat_vision_manager != null and _cat_vision_manager.has_method("set_danger_active"):
-		_cat_vision_manager.call("set_danger_active", false)
-
-func finish_chapter() -> void:
-	stop_animal_control_chase()
-	hide_hint()
-	start_dialogue("DIALOGUE_ChapterEnd")
-
-func is_event_started(quest_id: String) -> bool:
-	return completed_or_started_events.has(quest_id)
-
 func get_quest_state(quest_id: String) -> int:
-	return 1 if completed_or_started_events.has(quest_id) else 0
+	return int(quest_states.get(quest_id, QuestState.INACTIVE))
 
 func is_quest_active(quest_id: String) -> bool:
-	return completed_or_started_events.has(quest_id)
+	return get_quest_state(quest_id) == QuestState.ACTIVE
 
 func complete_quest(quest_id: String) -> void:
-	completed_or_started_events[quest_id] = true
+	if quest_states.get(quest_id, QuestState.INACTIVE) == QuestState.ACTIVE:
+		quest_states[quest_id] = QuestState.COMPLETED
 
 func _find_nodes() -> void:
 	var current_scene := get_tree().current_scene
 	_chapter_root = _get_chapter_root()
-	_hint_manager = _find_child_in_chapter_or_scene("TutorialHintManager")
-	_dialogue_manager = _find_child_in_chapter_or_scene("DialogueManager")
+	_hint_manager = _chapter_root.find_child("TutorialHintManager", true, false)
+	_dialogue_manager = _chapter_root.find_child("DialogueManager", true, false)
 	_player = current_scene.find_child("PlayerCat", true, false) as CharacterBody3D if current_scene != null else null
 	_cat_vision_manager = current_scene.find_child("CatVisionManager", true, false) if current_scene != null else null
+	_collect_chapter_references(_chapter_root)
 
 func _get_chapter_root() -> Node:
-	var node: Node = self
-	while node != null:
-		if node.name == "Chapter1":
-			return node
-		node = node.get_parent()
+	if name == "Chapter1":
+		return self
+	var parent := get_parent()
+	if parent != null and parent.name == "Chapter1":
+		return parent
 	return self
 
-func _find_child_in_chapter_or_scene(child_name: String) -> Node:
-	if _chapter_root != null:
-		var child := _chapter_root.find_child(child_name, true, false)
-		if child != null:
-			return child
-	var current_scene := get_tree().current_scene
-	return current_scene.find_child(child_name, true, false) if current_scene != null else null
+func _collect_named_nodes(root: Node, target: Dictionary) -> void:
+	if root == null:
+		return
+	for child in root.get_children():
+		target[child.name] = child
+		_collect_named_nodes(child, target)
 
-func _connect_helpers() -> void:
-	if _dialogue_manager != null and _dialogue_manager.has_signal("dialogue_finished"):
-		if not _dialogue_manager.is_connected("dialogue_finished", _on_dialogue_finished):
-			_dialogue_manager.connect("dialogue_finished", _on_dialogue_finished)
+func _collect_chapter_references(root: Node) -> void:
+	if root == null:
+		return
+	for child in root.get_children():
+		var child_name := String(child.name)
+		if child_name.begins_with("M_"):
+			_markers[child_name] = child
+		if child_name.begins_with("TR_") or child.has_signal("chapter_triggered"):
+			_triggers[child_name] = child
+		_collect_chapter_references(child)
+
+func _connect_chapter_nodes() -> void:
+	for trigger in _triggers.values():
+		if trigger != null and trigger.has_signal("chapter_triggered"):
+			trigger.chapter_triggered.connect(_on_chapter_triggered)
+			trigger.player_entered_trigger.connect(_on_player_entered_trigger)
+			trigger.player_exited_trigger.connect(_on_player_exited_trigger)
 
 	for car in get_tree().get_nodes_in_group("chapter1_moving_cars"):
-		if car.has_signal("player_hit_car") and not car.is_connected("player_hit_car", _on_player_hit_car):
+		if car.has_signal("player_hit_car"):
 			car.connect("player_hit_car", _on_player_hit_car)
 
+	if _dialogue_manager != null:
+		_dialogue_manager.connect("dialogue_finished", _on_dialogue_finished)
+	if _cat_vision_manager != null and _cat_vision_manager.has_signal("cat_state_changed"):
+		_cat_vision_manager.connect("cat_state_changed", _on_cat_state_changed)
+
 func _configure_dialogues() -> void:
-	if _dialogue_manager == null or not _dialogue_manager.has_method("set_dialogues"):
+	if _dialogue_manager == null:
 		return
 
 	_dialogue_manager.call("set_dialogues", {
@@ -186,25 +160,238 @@ func _configure_dialogues() -> void:
 		],
 	})
 
-func _on_dialogue_finished(dialogue_id: String) -> void:
-	completed_or_started_events[dialogue_id] = true
+func _start_intro() -> void:
+	_activate_stage("Cutscene_Intro")
+	if _dialogue_manager != null:
+		_start_dialogue("DIALOGUE_Intro")
+	else:
+		_begin_car_tracks_quest()
 
-func _on_player_hit_car(player: Node) -> void:
-	show_hint("Осторожно, машины!", 2.0)
-	if player != null and player.has_method("apply_knockback"):
-		player.call("apply_knockback", -player.global_transform.basis.z * 5.0)
+func _activate_stage(stage_id: String) -> void:
+	current_stage = stage_id
+	if quest_states.has(stage_id) and quest_states[stage_id] == QuestState.INACTIVE:
+		quest_states[stage_id] = QuestState.ACTIVE
+
+func _set_trigger_enabled(trigger_name: String, is_enabled: bool) -> void:
+	var trigger: Node = _triggers.get(trigger_name) as Node
+	if trigger != null and trigger.has_method("set_trigger_enabled"):
+		trigger.call("set_trigger_enabled", is_enabled)
+
+func _set_all_triggers_enabled(is_enabled: bool) -> void:
+	for trigger in _triggers.values():
+		if trigger != null and trigger.has_method("set_trigger_enabled"):
+			trigger.call("set_trigger_enabled", is_enabled)
+
+func _on_chapter_triggered(trigger_id: String, reason: String, player: Node) -> void:
+	match trigger_id:
+		"TR_CarTracks":
+			if is_quest_active("Quest_01_GoToCarTracks"):
+				complete_quest("Quest_01_GoToCarTracks")
+				if _dialogue_manager != null:
+					_start_dialogue("DIALOGUE_CarTracks")
+		"TR_CarTracksCatVision":
+			if is_quest_active("Quest_02_InspectTracksWithCatVision"):
+				_complete_cat_vision_tutorial()
+		"TR_AuraTrailProgress":
+			if is_quest_active("Quest_03_FollowOwnerAura"):
+				_hide_hint()
+		"TR_AnimalControlScene":
+			if is_quest_active("Quest_03_FollowOwnerAura"):
+				complete_quest("Quest_03_FollowOwnerAura")
+				if _dialogue_manager != null:
+					_start_dialogue("DIALOGUE_AnimalControl")
+		"TR_ChaseEnd":
+			if is_quest_active("Quest_04_EscapeAnimalControl"):
+				_complete_chase()
+		"TR_NeighborArea":
+			if is_quest_active("Quest_045_PurrWithNeighbor") and reason == "purr":
+				_complete_neighbor_purr()
+		"TR_OtherCatDialogue":
+			if is_quest_active("Quest_05_TalkToOtherCat"):
+				complete_quest("Quest_05_TalkToOtherCat")
+				_activate_stage("Dialogue_01_OtherCat")
+				if _dialogue_manager != null:
+					_start_dialogue("DIALOGUE_OtherCat")
+		"TR_RoadStart":
+			if is_quest_active("Quest_06_FollowTrailToRoad"):
+				complete_quest("Quest_06_FollowTrailToRoad")
+				_activate_stage("Quest_07_CrossRoadToPark")
+				_road_checkpoint = _markers.get("M_RoadStart") as Node3D
+				_show_hint("Дождись зеленого света.")
+				_set_trigger_enabled("TR_RoadSafeIsland", true)
+				_set_trigger_enabled("TR_RoadEnd", true)
+		"TR_RoadSafeIsland":
+			_road_checkpoint = _markers.get("M_RoadIsland") as Node3D
+			_show_hint("Спрячься на островке безопасности.", 3.0)
+		"TR_RoadEnd":
+			if is_quest_active("Quest_07_CrossRoadToPark"):
+				complete_quest("Quest_07_CrossRoadToPark")
+				_activate_stage("Chapter_01_End")
+				_hide_hint()
+				if _dialogue_manager != null:
+					_start_dialogue("DIALOGUE_ChapterEnd")
+
+func _on_player_entered_trigger(trigger_id: String, _player_node: Node) -> void:
+	var trigger: Node = _triggers.get(trigger_id) as Node
+	if trigger != null and String(trigger.get("context_hint")) != "":
+		_show_context_hint(String(trigger.get("context_hint")))
+
+func _on_player_exited_trigger(_trigger_id: String, _player_node: Node) -> void:
+	if _hint_manager != null:
+		_hide_context_hint()
+
+func _on_dialogue_finished(dialogue_id: String) -> void:
+	match dialogue_id:
+		"DIALOGUE_Intro":
+			complete_quest("Cutscene_Intro")
+			_begin_car_tracks_quest()
+		"DIALOGUE_CarTracks":
+			_begin_cat_vision_tutorial()
+		"DIALOGUE_AnimalControl":
+			_begin_chase()
+		"DIALOGUE_KindNeighbor_AfterPurr":
+			_begin_other_cat_quest()
+		"DIALOGUE_OtherCat":
+			complete_quest("Dialogue_01_OtherCat")
+			_begin_road_trail_quest()
+		"DIALOGUE_ChapterEnd":
+			complete_quest("Chapter_01_End")
+
+func _begin_car_tracks_quest() -> void:
+	_activate_stage("Quest_01_GoToCarTracks")
+	_show_hint("Найди следы машины.")
+	_set_trigger_enabled("TR_CarTracks", true)
+
+func _begin_cat_vision_tutorial() -> void:
+	_activate_stage("Tutorial_01_Run")
+	_show_hint("Удерживай ЛКМ, чтобы бежать.", 4.0)
+	complete_quest("Tutorial_01_Run")
+	_activate_stage("Quest_02_InspectTracksWithCatVision")
+	_activate_stage("Tutorial_02_CatVision")
+	_show_hint("Left Shift - кошачье зрение.")
+	_set_trigger_enabled("TR_CarTracksCatVision", true)
+
+func _complete_cat_vision_tutorial() -> void:
+	if _cat_vision_completed:
+		return
+	_cat_vision_completed = true
+	complete_quest("Quest_02_InspectTracksWithCatVision")
+	complete_quest("Tutorial_02_CatVision")
+	_hide_hint()
+	_activate_stage("Quest_03_FollowOwnerAura")
+	_show_hint("Иди за аурой, используя кошачье зрение.")
+	_set_trigger_enabled("TR_AuraTrailProgress", true)
+	_set_trigger_enabled("TR_AnimalControlScene", true)
+
+func _begin_chase() -> void:
+	_activate_stage("Quest_04_EscapeAnimalControl")
+	_activate_stage("Tutorial_03_Jump")
+	_show_hint("Пробел - прыгнуть.")
+	_chase_active = true
+	_set_trigger_enabled("TR_ChaseEnd", true)
+	var chase_start := _markers.get("M_ChaseStart") as Node3D
+	if chase_start != null and _player != null and _player.has_method("set_recovery_point"):
+		_player.call("set_recovery_point", chase_start.global_transform, false)
+
+func _complete_chase() -> void:
+	_chase_active = false
+	complete_quest("Quest_04_EscapeAnimalControl")
+	complete_quest("Tutorial_03_Jump")
+	_hide_hint()
+	_activate_stage("Quest_045_PurrWithNeighbor")
+	_show_hint("R - мурчать.")
+	_set_trigger_enabled("TR_NeighborArea", true)
+	if _dialogue_manager != null:
+		_start_dialogue("DIALOGUE_KindNeighbor_BeforePurr")
+
+func _complete_neighbor_purr() -> void:
+	complete_quest("Quest_045_PurrWithNeighbor")
+	_hide_hint()
+	if _player != null and _player.has_method("play_purr_effect"):
+		_player.call("play_purr_effect")
+	var neighbor := _chapter_root.find_child("NPC_KindNeighbor", true, false)
+	if neighbor != null and neighbor.has_method("change_attitude"):
+		neighbor.call("change_attitude", CHARACTER_ATTITUDE_FRIENDLY)
+	if _dialogue_manager != null:
+		_start_dialogue("DIALOGUE_KindNeighbor_AfterPurr")
+	else:
+		_begin_other_cat_quest()
+
+func _begin_other_cat_quest() -> void:
+	_activate_stage("Quest_05_TalkToOtherCat")
+	_show_hint("E - поговорить.")
+	_set_trigger_enabled("TR_OtherCatDialogue", true)
+
+func _begin_road_trail_quest() -> void:
+	_activate_stage("Quest_06_FollowTrailToRoad")
+	_show_hint("След ведет к дороге.")
+	_set_trigger_enabled("TR_RoadStart", true)
+
+func _on_cat_state_changed(state: int) -> void:
+	if is_quest_active("Quest_03_FollowOwnerAura") and int(state) != 1:
+		_show_hint("След виден только кошачьим зрением.", 3.0)
 
 func _update_chase(delta: float) -> void:
-	if _player == null or _chapter_root == null:
+	if _player == null:
 		return
-	_update_chase_for_node(_chapter_root, delta)
 
-func _update_chase_for_node(node: Node, delta: float) -> void:
-	if node == null:
+	for npc_name in ["NPC_AnimalControl_01", "NPC_AnimalControl_02"]:
+		var npc := _chapter_root.find_child(npc_name, true, false) as Node3D
+		if npc == null:
+			continue
+		var direction := _player.global_position - npc.global_position
+		direction.y = 0.0
+		var distance := direction.length()
+		if distance <= 1.1:
+			_reset_to_chase_start()
+			return
+		if distance > 0.08:
+			npc.global_position += direction.normalized() * 2.2 * delta
+
+func _reset_to_chase_start() -> void:
+	var chase_start := _markers.get("M_ChaseStart") as Node3D
+	if chase_start == null or _player == null:
 		return
-	if node.name.begins_with("NPC_AnimalControl") and node is Node3D:
-		var npc := node as Node3D
-		var target := _player.global_position
-		npc.global_position = npc.global_position.move_toward(target, 2.4 * delta)
-	for child in node.get_children():
-		_update_chase_for_node(child, delta)
+
+	_player.global_transform = chase_start.global_transform
+	_player.velocity = Vector3.ZERO
+	_player.set("target_position", _player.global_position)
+	_player.set("moving", false)
+	_player.set("mouse_down", false)
+	_show_hint("Убеги от службы отлова.", 3.0)
+
+func _on_player_hit_car(player: Node) -> void:
+	if player == null:
+		return
+	var checkpoint := _road_checkpoint
+	if checkpoint == null:
+		checkpoint = _markers.get("M_RoadStart") as Node3D
+	if checkpoint == null:
+		return
+	(player as Node3D).global_transform = checkpoint.global_transform
+	if player is CharacterBody3D:
+		(player as CharacterBody3D).velocity = Vector3.ZERO
+	player.set("target_position", (player as Node3D).global_position)
+	player.set("moving", false)
+	player.set("mouse_down", false)
+	_show_hint("Дождись зеленого света.", 3.0)
+
+func _show_hint(text: String, duration: float = 0.0) -> void:
+	if _hint_manager != null and _hint_manager.has_method("show_hint"):
+		_hint_manager.call("show_hint", text, duration)
+
+func _hide_hint() -> void:
+	if _hint_manager != null and _hint_manager.has_method("hide_hint"):
+		_hint_manager.call("hide_hint")
+
+func _show_context_hint(text: String) -> void:
+	if _hint_manager != null and _hint_manager.has_method("show_context_hint"):
+		_hint_manager.call("show_context_hint", text)
+
+func _hide_context_hint() -> void:
+	if _hint_manager != null and _hint_manager.has_method("hide_context_hint"):
+		_hint_manager.call("hide_context_hint")
+
+func _start_dialogue(dialogue_id: String) -> void:
+	if _dialogue_manager != null and _dialogue_manager.has_method("start_dialogue"):
+		_dialogue_manager.call("start_dialogue", dialogue_id)
