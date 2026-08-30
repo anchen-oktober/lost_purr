@@ -8,6 +8,16 @@
 [ext_resource type="PackedScene" path="res://Scenes/UI/JournalUI.tscn" id="10_2v0qu"]
 [ext_resource type="PackedScene" path="res://Scenes/UI/CatStatusHUD.tscn" id="12_0hrds"]
 [ext_resource type="PackedScene" path="res://Scenes/Portals/ScenePortal.tscn" id="17_cvqfq"]
+[ext_resource type="Script" path="res://Scripts/Park/cat_vision_trail.gd" id="18_trail"]
+[ext_resource type="Script" path="res://Scripts/Park/park_memory_trigger.gd" id="19_memory"]
+[ext_resource type="Script" path="res://Scripts/Park/memory_sequence_controller.gd" id="20_sequence"]
+[ext_resource type="Script" path="res://Scripts/Park/memory_interactable.gd" id="21_interact"]
+[ext_resource type="Script" path="res://Scripts/Park/maze_sequence_controller.gd" id="22_maze"]
+[ext_resource type="Script" path="res://Scripts/Park/maze_path_trigger.gd" id="23_maze_trigger"]
+[ext_resource type="Script" path="res://Scripts/Park/old_crow.gd" id="24_crow"]
+[ext_resource type="Script" path="res://Scripts/Park/park_exit_trigger.gd" id="25_exit"]
+[ext_resource type="Script" path="res://Scripts/Park/purr_dog_encounter.gd" id="26_dog"]
+[ext_resource type="Script" path="res://Scripts/Park/silent_watcher.gd" id="27_silent"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xewtb"]
 albedo_color = Color(0.24, 0.31, 0.2, 1)
@@ -30,6 +40,19 @@ albedo_color = Color(0.58, 0.47, 0.34, 1)
 roughness = 0.92
 
 [sub_resource type="BoxMesh" id="BoxMesh_feuad"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_park_trigger"]
+size = Vector3(7, 3, 7)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_park_interact"]
+radius = 3.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_park_trail"]
+transparency = 1
+albedo_color = Color(0.22, 0.95, 0.78, 0.8)
+emission_enabled = true
+emission = Color(0.12, 0.8, 0.63, 1)
+emission_energy_multiplier = 1.7
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7n1c2"]
 albedo_color = Color(0.47, 0.39, 0.29, 1)
@@ -2315,5 +2338,157 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 122, 0.5, 96)
 
 [node name="PortalToCity" parent="Portals" unique_id=1275602352 instance=ExtResource("17_cvqfq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 133, 0, 102)
+script = ExtResource("25_exit")
 target_level_id = "city"
 prompt_text = "[E] Go to the city"
+
+[node name="Gameplay" type="Node3D" parent="."]
+
+[node name="Entrance" type="Node3D" parent="Gameplay"]
+
+[node name="RealTrail" type="Node3D" parent="Gameplay/Entrance"]
+script = ExtResource("18_trail")
+trail_type = 0
+event_id = "park_real_trail"
+
+[node name="FootprintGlow" type="MeshInstance3D" parent="Gameplay/Entrance/RealTrail"]
+transform = Transform3D(1.3, 0, 0, 0, 0.04, 0, 0, 0, 6, -100, 0.08, 62)
+material_override = SubResource("StandardMaterial3D_park_trail")
+mesh = SubResource("BoxMesh_feuad")
+
+[node name="FalseTrailA" type="Node3D" parent="Gameplay/Entrance"]
+script = ExtResource("18_trail")
+trail_type = 1
+event_id = "park_false_trail_a"
+
+[node name="FootprintGlow" type="MeshInstance3D" parent="Gameplay/Entrance/FalseTrailA"]
+transform = Transform3D(1.0, 0, 0, 0, 0.04, 0, 0, 0, 5, -87, 0.08, 50)
+material_override = SubResource("StandardMaterial3D_park_trail")
+mesh = SubResource("BoxMesh_feuad")
+
+[node name="FalseTrailB" type="Node3D" parent="Gameplay/Entrance"]
+script = ExtResource("18_trail")
+trail_type = 1
+event_id = "park_false_trail_b"
+
+[node name="FootprintGlow" type="MeshInstance3D" parent="Gameplay/Entrance/FalseTrailB"]
+transform = Transform3D(1.0, 0, 0, 0, 0.04, 0, 0, 0, 5, -65, 0.08, 34)
+material_override = SubResource("StandardMaterial3D_park_trail")
+mesh = SubResource("BoxMesh_feuad")
+
+[node name="OwnerMemory1" type="Area3D" parent="Gameplay/Entrance"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90, 1, 52)
+script = ExtResource("19_memory")
+event_id = "park_owner_trail_1"
+require_cat_vision = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Entrance/OwnerMemory1"]
+shape = SubResource("BoxShape3D_park_trigger")
+
+[node name="Playground" type="Node3D" parent="Gameplay"]
+
+[node name="PlaygroundSequence" type="Node" parent="Gameplay/Playground"]
+script = ExtResource("20_sequence")
+
+[node name="SwingInteraction" type="Area3D" parent="Gameplay/Playground" node_paths=PackedStringArray("controller")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70, 1, 35)
+script = ExtResource("21_interact")
+stage_id = "swing"
+controller = NodePath("../PlaygroundSequence")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Playground/SwingInteraction"]
+shape = SubResource("SphereShape3D_park_interact")
+
+[node name="CarouselInteraction" type="Area3D" parent="Gameplay/Playground" node_paths=PackedStringArray("controller")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58, 1, 28)
+script = ExtResource("21_interact")
+stage_id = "carousel"
+controller = NodePath("../PlaygroundSequence")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Playground/CarouselInteraction"]
+shape = SubResource("SphereShape3D_park_interact")
+
+[node name="SlideInteraction" type="Area3D" parent="Gameplay/Playground" node_paths=PackedStringArray("controller")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 1, 40)
+script = ExtResource("21_interact")
+stage_id = "slide"
+controller = NodePath("../PlaygroundSequence")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Playground/SlideInteraction"]
+shape = SubResource("SphereShape3D_park_interact")
+
+[node name="Maze" type="Node3D" parent="Gameplay"]
+
+[node name="MazeSequence" type="Node" parent="Gameplay/Maze"]
+script = ExtResource("22_maze")
+
+[node name="Path0" type="Area3D" parent="Gameplay/Maze" node_paths=PackedStringArray("controller")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 1, -32)
+script = ExtResource("23_maze_trigger")
+sequence_index = 0
+controller = NodePath("../MazeSequence")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Maze/Path0"]
+shape = SubResource("BoxShape3D_park_trigger")
+
+[node name="Path1" type="Area3D" parent="Gameplay/Maze" node_paths=PackedStringArray("controller")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1, -53)
+script = ExtResource("23_maze_trigger")
+sequence_index = 1
+controller = NodePath("../MazeSequence")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Maze/Path1"]
+shape = SubResource("BoxShape3D_park_trigger")
+
+[node name="Path2" type="Area3D" parent="Gameplay/Maze" node_paths=PackedStringArray("controller")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, -60)
+script = ExtResource("23_maze_trigger")
+sequence_index = 2
+controller = NodePath("../MazeSequence")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Maze/Path2"]
+shape = SubResource("BoxShape3D_park_trigger")
+
+[node name="Path3" type="Area3D" parent="Gameplay/Maze" node_paths=PackedStringArray("controller")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 1, -48)
+script = ExtResource("23_maze_trigger")
+sequence_index = 3
+controller = NodePath("../MazeSequence")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Maze/Path3"]
+shape = SubResource("BoxShape3D_park_trigger")
+
+[node name="OtherWorldMemory" type="Area3D" parent="Gameplay/Maze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 1, -46)
+script = ExtResource("19_memory")
+event_id = "park_other_world"
+require_cat_vision = true
+journal_entry_id = "park_other_world_memory"
+journal_title = "He Saw Them"
+journal_description = "He saw them too."
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Maze/OtherWorldMemory"]
+shape = SubResource("BoxShape3D_park_trigger")
+
+[node name="AbandonedArea" type="Node3D" parent="Gameplay"]
+
+[node name="SilentWatcher" type="Node3D" parent="Gameplay/AbandonedArea" node_paths=PackedStringArray("position_targets")]
+script = ExtResource("27_silent")
+position_targets = [NodePath("../../../SilentSpawnPoints/SilentPoint_05"), NodePath("../../../SilentSpawnPoints/SilentPoint_06"), NodePath("../../../SilentSpawnPoints/SilentPoint_07")]
+
+[node name="DogEncounter" type="Area3D" parent="Gameplay/AbandonedArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 1, 24)
+script = ExtResource("26_dog")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/AbandonedArea/DogEncounter"]
+shape = SubResource("BoxShape3D_park_trigger")
+
+[node name="Finale" type="Node3D" parent="Gameplay"]
+
+[node name="OldCrow" type="Area3D" parent="Gameplay/Finale" node_paths=PackedStringArray("exit_trigger")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66, 1, 48)
+script = ExtResource("24_crow")
+exit_trigger = NodePath("../../../Portals/PortalToCity")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Finale/OldCrow"]
+shape = SubResource("BoxShape3D_park_trigger")

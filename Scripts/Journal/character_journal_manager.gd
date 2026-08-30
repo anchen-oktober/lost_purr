@@ -1,6 +1,7 @@
 extends Node
 
 signal characters_changed
+signal purr_started(player: Node3D)
 
 const SAVE_PATH: String = "user://character_journal.json"
 
@@ -140,6 +141,8 @@ func _try_purr() -> void:
 		player.call("play_purr_effect")
 	if player != null and player.has_method("restore_fear_by_purr"):
 		player.call("restore_fear_by_purr")
+	if player is Node3D:
+		purr_started.emit(player as Node3D)
 
 	if nearby_npc != null:
 		nearby_npc.receive_purr()

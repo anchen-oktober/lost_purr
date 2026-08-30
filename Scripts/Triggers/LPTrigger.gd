@@ -231,7 +231,7 @@ func _is_cat_vision_active() -> bool:
 	if cat_vision_manager.has_method("get_cat_state"):
 		return int(cat_vision_manager.call("get_cat_state")) == 1
 
-	return bool(cat_vision_manager.get("is_cat_vision_enabled")) or bool(cat_vision_manager.get("is_cat_vision_forced"))
+	return false
 
 func _update_prompt() -> void:
 	if not _uses_interaction():

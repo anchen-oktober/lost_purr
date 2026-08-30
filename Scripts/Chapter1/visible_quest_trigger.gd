@@ -103,7 +103,7 @@ func _is_cat_vision_active() -> bool:
 		return false
 	if manager.has_method("get_cat_state"):
 		return int(manager.call("get_cat_state")) == 1
-	return bool(manager.get("is_cat_vision_enabled"))
+	return false
 
 func _find_quest_manager() -> Node:
 	var node: Node = self
