@@ -17,7 +17,6 @@
 [ext_resource type="Texture2D" path="res://Art/UI/cats_eye_2.png" id="15_drvil"]
 [ext_resource type="Texture2D" path="res://Art/UI/cats_eye_3.png" id="16_eej17"]
 [ext_resource type="PackedScene" path="res://Scenes/Portals/ScenePortal.tscn" id="17_cvqfq"]
-<<<<<<< HEAD
 [ext_resource type="Script" path="res://Scripts/Park/cat_vision_trail.gd" id="18_trail"]
 [ext_resource type="Script" path="res://Scripts/Park/park_memory_trigger.gd" id="19_memory"]
 [ext_resource type="Script" path="res://Scripts/Park/memory_sequence_controller.gd" id="20_sequence"]
@@ -28,9 +27,6 @@
 [ext_resource type="Script" path="res://Scripts/Park/park_exit_trigger.gd" id="25_exit"]
 [ext_resource type="Script" path="res://Scripts/Park/purr_dog_encounter.gd" id="26_dog"]
 [ext_resource type="Script" path="res://Scripts/Park/silent_watcher.gd" id="27_silent"]
-=======
-[ext_resource type="Script" path="res://Scripts/Portals/scene_portal.gd" id="18_hkrgk"]
->>>>>>> 2d3daa34e8b8a34edb39cd22a712c0a5906bac39
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xewtb"]
 albedo_color = Color(0.24, 0.31, 0.2, 1)
@@ -2387,11 +2383,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 122, 0.5, 96)
 
 [node name="PortalToCity" type="Area3D" parent="Portals" unique_id=1275602352 instance=ExtResource("17_cvqfq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 133, 0, 102)
-<<<<<<< HEAD
 script = ExtResource("25_exit")
-=======
-script = ExtResource("18_hkrgk")
->>>>>>> 2d3daa34e8b8a34edb39cd22a712c0a5906bac39
 target_level_id = "city"
 target_spawn_name = "SpawnFromPark"
 prompt_text = "[E] Go to the city"
