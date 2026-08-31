@@ -17,6 +17,7 @@ signal trauma_avoidance_changed(is_active: bool, blocked_zone_name: String, radi
 @export var can_purr_restore: bool = true
 @export var critical_recovery_delay: float = 0.35
 @export var trauma_block_radius: float = 4.0
+@export var interaction_fallback_range: float = 4.0
 
 var target_position: Vector3
 var moving: bool = false
@@ -38,19 +39,25 @@ var blocked_zone_name: String = "none"
 var last_fear_source_position: Vector3
 var temporary_trauma_radius: Node = null
 var trauma_warning_cooldown: float = 0.0
+var fallback_interactable: Node3D = null
+var interaction_candidates: Array[Node3D] = []
+var interaction_trigger_candidates: Array[Area3D] = []
+var fallback_trigger: Area3D = null
 
 func _ready() -> void:
+	add_to_group("player")
 	target_position = global_position
 	level_start_transform = global_transform
 	last_recovery_transform = level_start_transform
 	last_fear_source_position = global_position
 	_find_cat_vision_manager()
+	call_deferred("_cache_interaction_candidates")
 	_update_fear_state()
 	var calm_manager: Node = get_node_or_null("/root/CatCalmManager")
 	if calm_manager != null and calm_manager.has_method("register_player"):
 		calm_manager.call("register_player", self)
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if controls_locked:
 		return
 
@@ -107,6 +114,8 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		return
 
+	_update_interaction_fallback()
+
 	if mouse_down:
 		hold_time += delta
 		update_target_from_mouse()
@@ -126,6 +135,60 @@ func _physics_process(delta: float) -> void:
 		_stop_horizontal_movement()
 
 	move_and_slide()
+
+func _update_interaction_fallback() -> void:
+	if interaction_candidates.is_empty():
+		_cache_interaction_candidates()
+
+	var closest_interactable: Node3D = null
+	var closest_distance: float = interaction_fallback_range
+	for candidate in interaction_candidates:
+		if not is_instance_valid(candidate):
+			continue
+		var distance := global_position.distance_to(candidate.global_position)
+		if distance <= closest_distance:
+			closest_interactable = candidate
+			closest_distance = distance
+
+	if closest_interactable != fallback_interactable:
+		if fallback_interactable != null:
+			JournalManager.clear_nearby_object(fallback_interactable)
+		fallback_interactable = closest_interactable
+		if fallback_interactable != null:
+			JournalManager.set_nearby_object(fallback_interactable)
+	_update_interaction_trigger_fallback()
+
+func _update_interaction_trigger_fallback() -> void:
+	var closest_trigger: Area3D = null
+	var closest_distance: float = interaction_fallback_range
+	for trigger in interaction_trigger_candidates:
+		if not is_instance_valid(trigger):
+			continue
+		var distance := global_position.distance_to(trigger.global_position)
+		if distance <= closest_distance:
+			closest_trigger = trigger
+			closest_distance = distance
+
+	if closest_trigger == fallback_trigger:
+		return
+	if fallback_trigger != null and is_instance_valid(fallback_trigger):
+		fallback_trigger.call("_on_body_exited", self)
+	fallback_trigger = closest_trigger
+	if fallback_trigger != null:
+		fallback_trigger.call("_on_body_entered", self)
+
+func _cache_interaction_candidates() -> void:
+	interaction_candidates.clear()
+	var current_scene := get_tree().current_scene
+	if current_scene == null:
+		return
+	for node in current_scene.find_children("*", "Node3D", true, false):
+		if node.has_method("interact") and node is Node3D:
+			if node.has_method("is_interaction_available") and not bool(node.call("is_interaction_available")):
+				continue
+			interaction_candidates.append(node as Node3D)
+		if node is Area3D and node.is_in_group("LPTrigger"):
+			interaction_trigger_candidates.append(node as Area3D)
 
 func update_target_from_mouse() -> void:
 	var camera: Camera3D = get_viewport().get_camera_3d()

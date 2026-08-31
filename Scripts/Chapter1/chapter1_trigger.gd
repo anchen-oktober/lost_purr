@@ -30,7 +30,7 @@ func _process(_delta: float) -> void:
 		_try_activate("cat_vision")
 	_cat_vision_was_active = is_active
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if not enabled or not player_inside:
 		return
 

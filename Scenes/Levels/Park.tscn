@@ -27,6 +27,9 @@
 [ext_resource type="Script" path="res://Scripts/Park/park_exit_trigger.gd" id="25_exit"]
 [ext_resource type="Script" path="res://Scripts/Park/purr_dog_encounter.gd" id="26_dog"]
 [ext_resource type="Script" path="res://Scripts/Park/silent_watcher.gd" id="27_silent"]
+[ext_resource type="Script" path="res://Scripts/Park/park_interactive_object.gd" id="28_park_interactive"]
+[ext_resource type="Script" path="res://Scripts/Triggers/LPTrigger.gd" id="29_lp_trigger"]
+[ext_resource type="Script" path="res://Scripts/Triggers/LPSafePoint.gd" id="30_safe_point"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xewtb"]
 albedo_color = Color(0.24, 0.31, 0.2, 1)
@@ -2388,123 +2391,135 @@ target_level_id = "city"
 target_spawn_name = "SpawnFromPark"
 prompt_text = "[E] Go to the city"
 
-[node name="Gameplay" type="Node3D" parent="."]
+[node name="ParkGameplay" type="Node3D" parent="."]
 
-[node name="Entrance" type="Node3D" parent="Gameplay"]
+[node name="Zone01_Entrance" type="Node3D" parent="ParkGameplay"]
 
-[node name="RealTrail" type="Node3D" parent="Gameplay/Entrance"]
+[node name="OwnerScent_01_Trail" type="Node3D" parent="ParkGameplay/Zone01_Entrance"]
 script = ExtResource("18_trail")
 trail_type = 0
 event_id = "park_real_trail"
 
-[node name="FootprintGlow" type="MeshInstance3D" parent="Gameplay/Entrance/RealTrail"]
+[node name="FootprintGlow" type="MeshInstance3D" parent="ParkGameplay/Zone01_Entrance/OwnerScent_01_Trail"]
 transform = Transform3D(1.3, 0, 0, 0, 0.04, 0, 0, 0, 6, -100, 0.08, 62)
 material_override = SubResource("StandardMaterial3D_park_trail")
 mesh = SubResource("BoxMesh_feuad")
 
-[node name="FalseTrailA" type="Node3D" parent="Gameplay/Entrance"]
+[node name="FalseScent_01_Trail" type="Node3D" parent="ParkGameplay/Zone01_Entrance"]
 script = ExtResource("18_trail")
 trail_type = 1
 event_id = "park_false_trail_a"
 
-[node name="FootprintGlow" type="MeshInstance3D" parent="Gameplay/Entrance/FalseTrailA"]
+[node name="FootprintGlow" type="MeshInstance3D" parent="ParkGameplay/Zone01_Entrance/FalseScent_01_Trail"]
 transform = Transform3D(1.0, 0, 0, 0, 0.04, 0, 0, 0, 5, -87, 0.08, 50)
 material_override = SubResource("StandardMaterial3D_park_trail")
 mesh = SubResource("BoxMesh_feuad")
 
-[node name="FalseTrailB" type="Node3D" parent="Gameplay/Entrance"]
+[node name="FalseScent_02_Trail" type="Node3D" parent="ParkGameplay/Zone01_Entrance"]
 script = ExtResource("18_trail")
 trail_type = 1
 event_id = "park_false_trail_b"
 
-[node name="FootprintGlow" type="MeshInstance3D" parent="Gameplay/Entrance/FalseTrailB"]
+[node name="FootprintGlow" type="MeshInstance3D" parent="ParkGameplay/Zone01_Entrance/FalseScent_02_Trail"]
 transform = Transform3D(1.0, 0, 0, 0, 0.04, 0, 0, 0, 5, -65, 0.08, 34)
 material_override = SubResource("StandardMaterial3D_park_trail")
 mesh = SubResource("BoxMesh_feuad")
 
-[node name="OwnerMemory1" type="Area3D" parent="Gameplay/Entrance"]
+[node name="OwnerScent_01_AutoMemory" type="Area3D" parent="ParkGameplay/Zone01_Entrance"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90, 1, 52)
 script = ExtResource("19_memory")
 event_id = "park_owner_trail_1"
 require_cat_vision = true
+monitoring = false
+monitorable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Entrance/OwnerMemory1"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkGameplay/Zone01_Entrance/OwnerScent_01_AutoMemory"]
 shape = SubResource("BoxShape3D_park_trigger")
 
-[node name="Playground" type="Node3D" parent="Gameplay"]
+[node name="Zone04_CatVisionPuzzle" type="Node3D" parent="ParkGameplay"]
 
-[node name="PlaygroundSequence" type="Node" parent="Gameplay/Playground"]
+[node name="ScentPuzzleController" type="Node" parent="ParkGameplay/Zone04_CatVisionPuzzle"]
 script = ExtResource("20_sequence")
 
-[node name="SwingInteraction" type="Area3D" parent="Gameplay/Playground" node_paths=PackedStringArray("controller")]
+[node name="ScentPuzzle_A_Swing" type="Area3D" parent="ParkGameplay/Zone04_CatVisionPuzzle" node_paths=PackedStringArray("controller")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70, 1, 35)
 script = ExtResource("21_interact")
 stage_id = "swing"
 controller = NodePath("../PlaygroundSequence")
+interaction_enabled = false
+monitoring = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Playground/SwingInteraction"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkGameplay/Zone04_CatVisionPuzzle/ScentPuzzle_A_Swing"]
 shape = SubResource("SphereShape3D_park_interact")
 
-[node name="CarouselInteraction" type="Area3D" parent="Gameplay/Playground" node_paths=PackedStringArray("controller")]
+[node name="ScentPuzzle_B_Carousel" type="Area3D" parent="ParkGameplay/Zone04_CatVisionPuzzle" node_paths=PackedStringArray("controller")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58, 1, 28)
 script = ExtResource("21_interact")
 stage_id = "carousel"
 controller = NodePath("../PlaygroundSequence")
+interaction_enabled = false
+monitoring = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Playground/CarouselInteraction"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkGameplay/Zone04_CatVisionPuzzle/ScentPuzzle_B_Carousel"]
 shape = SubResource("SphereShape3D_park_interact")
 
-[node name="SlideInteraction" type="Area3D" parent="Gameplay/Playground" node_paths=PackedStringArray("controller")]
+[node name="ScentPuzzle_C_Slide" type="Area3D" parent="ParkGameplay/Zone04_CatVisionPuzzle" node_paths=PackedStringArray("controller")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 1, 40)
 script = ExtResource("21_interact")
 stage_id = "slide"
 controller = NodePath("../PlaygroundSequence")
+interaction_enabled = false
+monitoring = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Playground/SlideInteraction"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkGameplay/Zone04_CatVisionPuzzle/ScentPuzzle_C_Slide"]
 shape = SubResource("SphereShape3D_park_interact")
 
-[node name="Maze" type="Node3D" parent="Gameplay"]
+[node name="Zone02_Investigation" type="Node3D" parent="ParkGameplay"]
 
-[node name="MazeSequence" type="Node" parent="Gameplay/Maze"]
+[node name="LostTrailRoute" type="Node" parent="ParkGameplay/Zone02_Investigation"]
 script = ExtResource("22_maze")
 
-[node name="Path0" type="Area3D" parent="Gameplay/Maze" node_paths=PackedStringArray("controller")]
+[node name="TrailMarker_01" type="Area3D" parent="ParkGameplay/Zone02_Investigation" node_paths=PackedStringArray("controller")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 1, -32)
 script = ExtResource("23_maze_trigger")
 sequence_index = 0
 controller = NodePath("../MazeSequence")
+monitoring = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Maze/Path0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkGameplay/Zone02_Investigation/TrailMarker_01"]
 shape = SubResource("BoxShape3D_park_trigger")
 
-[node name="Path1" type="Area3D" parent="Gameplay/Maze" node_paths=PackedStringArray("controller")]
+[node name="TrailMarker_02" type="Area3D" parent="ParkGameplay/Zone02_Investigation" node_paths=PackedStringArray("controller")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1, -53)
 script = ExtResource("23_maze_trigger")
 sequence_index = 1
 controller = NodePath("../MazeSequence")
+monitoring = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Maze/Path1"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkGameplay/Zone02_Investigation/TrailMarker_02"]
 shape = SubResource("BoxShape3D_park_trigger")
 
-[node name="Path2" type="Area3D" parent="Gameplay/Maze" node_paths=PackedStringArray("controller")]
+[node name="TrailMarker_03" type="Area3D" parent="ParkGameplay/Zone02_Investigation" node_paths=PackedStringArray("controller")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, -60)
 script = ExtResource("23_maze_trigger")
 sequence_index = 2
 controller = NodePath("../MazeSequence")
+monitoring = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Maze/Path2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkGameplay/Zone02_Investigation/TrailMarker_03"]
 shape = SubResource("BoxShape3D_park_trigger")
 
-[node name="Path3" type="Area3D" parent="Gameplay/Maze" node_paths=PackedStringArray("controller")]
+[node name="TrailMarker_04" type="Area3D" parent="ParkGameplay/Zone02_Investigation" node_paths=PackedStringArray("controller")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 1, -48)
 script = ExtResource("23_maze_trigger")
 sequence_index = 3
 controller = NodePath("../MazeSequence")
+monitoring = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Maze/Path3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkGameplay/Zone02_Investigation/TrailMarker_04"]
 shape = SubResource("BoxShape3D_park_trigger")
 
-[node name="OtherWorldMemory" type="Area3D" parent="Gameplay/Maze"]
+[node name="OtherWorldTree_AutoMemory" type="Area3D" parent="ParkGameplay/Zone02_Investigation"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 1, -46)
 script = ExtResource("19_memory")
 event_id = "park_other_world"
@@ -2512,29 +2527,411 @@ require_cat_vision = true
 journal_entry_id = "park_other_world_memory"
 journal_title = "He Saw Them"
 journal_description = "He saw them too."
+monitoring = false
+monitorable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Maze/OtherWorldMemory"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkGameplay/Zone02_Investigation/OtherWorldTree_AutoMemory"]
 shape = SubResource("BoxShape3D_park_trigger")
 
-[node name="AbandonedArea" type="Node3D" parent="Gameplay"]
+[node name="Zone05_QuietEncounter" type="Node3D" parent="ParkGameplay"]
 
-[node name="SilentWatcher" type="Node3D" parent="Gameplay/AbandonedArea" node_paths=PackedStringArray("position_targets")]
+[node name="QuietEntity" type="Node3D" parent="ParkGameplay/Zone05_QuietEncounter" node_paths=PackedStringArray("position_targets")]
 script = ExtResource("27_silent")
 position_targets = [NodePath("../../../SilentSpawnPoints/SilentPoint_05"), NodePath("../../../SilentSpawnPoints/SilentPoint_06"), NodePath("../../../SilentSpawnPoints/SilentPoint_07")]
 
-[node name="DogEncounter" type="Area3D" parent="Gameplay/AbandonedArea"]
+[node name="QuietEncounterTrigger" type="Area3D" parent="ParkGameplay/Zone05_QuietEncounter"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 1, 24)
 script = ExtResource("26_dog")
+monitoring = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/AbandonedArea/DogEncounter"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkGameplay/Zone05_QuietEncounter/QuietEncounterTrigger"]
 shape = SubResource("BoxShape3D_park_trigger")
 
-[node name="Finale" type="Node3D" parent="Gameplay"]
+[node name="Zone06_Crows" type="Node3D" parent="ParkGameplay"]
 
-[node name="OldCrow" type="Area3D" parent="Gameplay/Finale" node_paths=PackedStringArray("exit_trigger")]
+[node name="CrowNPC" type="Area3D" parent="ParkGameplay/Zone06_Crows" node_paths=PackedStringArray("exit_trigger")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66, 1, 48)
-script = ExtResource("24_crow")
-exit_trigger = NodePath("../../../Portals/PortalToCity")
+script = ExtResource("28_park_interactive")
+interaction_id = "park_crow_conversation"
+interaction_text = "Listen to the crow"
+cat_reaction = "Она всё видела."
+set_park_flag = "crow_conversation_completed"
+optional_dialogue = ["Твой двуногий? Видела.", "Сидел там долго.", "Тени ходили вокруг.", "Он тоже их видел.", "Потом встал. Пошёл к городу."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Finale/OldCrow"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkGameplay/Zone06_Crows/CrowNPC"]
 shape = SubResource("BoxShape3D_park_trigger")
+
+[node name="OwnerScent_01" type="Area3D" parent="ParkGameplay/Zone01_Entrance"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -108, 1, 76)
+script = ExtResource("28_park_interactive")
+interaction_id = "park_owner_scent_01"
+interaction_text = "Smell the edge of the path"
+cat_reaction = "Он был здесь."
+set_park_flag = "owner_trail_discovered"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkGameplay/Zone01_Entrance/OwnerScent_01"]
+shape = SubResource("SphereShape3D_park_interact")
+
+[node name="FalseScent_01" type="Area3D" parent="ParkGameplay/Zone01_Entrance"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87, 1, 50)
+script = ExtResource("28_park_interactive")
+interaction_id = "park_false_scent_01"
+interaction_text = "Examine the split trail"
+cat_reaction = "Запах ломается. Не он."
+requires_cat_vision = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkGameplay/Zone01_Entrance/FalseScent_01"]
+shape = SubResource("SphereShape3D_park_interact")
+
+[node name="FalseScent_02" type="Area3D" parent="ParkGameplay/Zone01_Entrance"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65, 1, 34)
+script = ExtResource("28_park_interactive")
+interaction_id = "park_false_scent_02"
+interaction_text = "Examine the cold trail"
+cat_reaction = "Холодный след. Здесь был Тихий."
+requires_cat_vision = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkGameplay/Zone01_Entrance/FalseScent_02"]
+shape = SubResource("SphereShape3D_park_interact")
+
+[node name="QuietTrace_01" type="Area3D" parent="ParkGameplay/Zone01_Entrance"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62, 1, 20)
+script = ExtResource("28_park_interactive")
+interaction_id = "park_quiet_trace_01"
+interaction_text = "Study the crushed grass"
+cat_reaction = "Не он."
+requires_cat_vision = true
+cat_vision_only_visible = true
+optional_dialogue = ["Высокая тень скользит между деревьями."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkGameplay/Zone01_Entrance/QuietTrace_01"]
+shape = SubResource("SphereShape3D_park_interact")
+
+[node name="OwnerBench" type="Area3D" parent="ParkGameplay/Zone02_Investigation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 1, 14)
+script = ExtResource("28_park_interactive")
+interaction_id = "park_owner_bench"
+interaction_text = "Smell the bench"
+cat_reaction = "Он остановился здесь."
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkGameplay/Zone02_Investigation/OwnerBench"]
+shape = SubResource("SphereShape3D_park_interact")
+
+[node name="OtherWorldTree" type="Area3D" parent="ParkGameplay/Zone02_Investigation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 1, -46)
+script = ExtResource("28_park_interactive")
+interaction_id = "park_other_world_tree"
+interaction_text = "Look behind the tree"
+cat_reaction = "Он тоже это видел."
+requires_cat_vision = true
+set_park_flag = "other_world_memory_seen"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkGameplay/Zone02_Investigation/OtherWorldTree"]
+shape = SubResource("SphereShape3D_park_interact")
+
+[node name="CrowClue" type="Area3D" parent="ParkGameplay/Zone02_Investigation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 1, -48)
+script = ExtResource("28_park_interactive")
+interaction_id = "park_crow_clue"
+interaction_text = "Inspect the feathers"
+cat_reaction = "Вороны были здесь."
+optional_dialogue = ["Сверху отвечает короткое карканье."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkGameplay/Zone02_Investigation/CrowClue"]
+shape = SubResource("SphereShape3D_park_interact")
+
+[node name="Zone03_Danger" type="Node3D" parent="ParkGameplay"]
+
+[node name="BrokenLamp" type="Area3D" parent="ParkGameplay/Zone03_Danger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 1, 24)
+script = ExtResource("28_park_interactive")
+interaction_id = "park_broken_lamp"
+interaction_text = "Inspect the broken lamp"
+cat_reaction = "Здесь нет света."
+optional_dialogue = ["В Cat Vision в темноте заметны следы Тихих."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkGameplay/Zone03_Danger/BrokenLamp"]
+shape = SubResource("SphereShape3D_park_interact")
+
+[node name="FearArea" type="Area3D" parent="ParkGameplay/Zone03_Danger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62, 1, -55)
+script = ExtResource("29_lp_trigger")
+trigger_id = "park_dark_alley"
+trigger_name = "Cold darkness"
+trigger_category = 1
+calm_delta = -12.0
+is_repeatable = true
+cooldown = 2.0
+creates_fear_zone = true
+feedback_type = 2
+is_periodic = true
+periodic_interval = 2.0
+max_total_delta_per_enter = -36.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkGameplay/Zone03_Danger/FearArea"]
+scale = Vector3(4, 1, 3)
+shape = SubResource("BoxShape3D_park_trigger")
+
+[node name="SafeLight_01" type="Area3D" parent="ParkGameplay/Zone03_Danger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 1, -71)
+script = ExtResource("30_safe_point")
+safe_point_id = "park_light_01"
+restore_calm_on_use = 15.0
+restore_on_enter = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkGameplay/Zone03_Danger/SafeLight_01"]
+shape = SubResource("BoxShape3D_park_trigger")
+
+[node name="SafeLight_02" type="Area3D" parent="ParkGameplay/Zone03_Danger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72, 1, -47)
+script = ExtResource("30_safe_point")
+safe_point_id = "park_light_02"
+restore_calm_on_use = 15.0
+restore_on_enter = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkGameplay/Zone03_Danger/SafeLight_02"]
+shape = SubResource("BoxShape3D_park_trigger")
+
+[node name="OwnerScent_Danger" type="Area3D" parent="ParkGameplay/Zone03_Danger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82, 1, -59)
+script = ExtResource("28_park_interactive")
+interaction_id = "park_owner_scent_danger"
+interaction_text = "Smell the safe patch of ground"
+cat_reaction = "Он прошёл и здесь. Тихие шли рядом."
+requires_cat_vision = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkGameplay/Zone03_Danger/OwnerScent_Danger"]
+shape = SubResource("SphereShape3D_park_interact")
+
+[node name="ScentPuzzle_A" type="Area3D" parent="ParkGameplay/Zone04_CatVisionPuzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70, 1, 35)
+script = ExtResource("28_park_interactive")
+interaction_id = "park_scent_puzzle_a"
+interaction_text = "Smell the swing"
+cat_reaction = "Едва заметно..."
+requires_cat_vision = true
+set_park_flag = "park_scent_puzzle_a"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkGameplay/Zone04_CatVisionPuzzle/ScentPuzzle_A"]
+shape = SubResource("SphereShape3D_park_interact")
+
+[node name="ScentPuzzle_B" type="Area3D" parent="ParkGameplay/Zone04_CatVisionPuzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58, 1, 28)
+script = ExtResource("28_park_interactive")
+interaction_id = "park_scent_puzzle_b"
+interaction_text = "Smell the carousel"
+cat_reaction = "След продолжается."
+requires_cat_vision = true
+required_park_flag = "park_scent_puzzle_a"
+set_park_flag = "park_scent_puzzle_b"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkGameplay/Zone04_CatVisionPuzzle/ScentPuzzle_B"]
+shape = SubResource("SphereShape3D_park_interact")
+
+[node name="ScentPuzzle_C" type="Area3D" parent="ParkGameplay/Zone04_CatVisionPuzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 1, 40)
+script = ExtResource("28_park_interactive")
+interaction_id = "park_scent_puzzle_c"
+interaction_text = "Smell the slide"
+cat_reaction = "Туда."
+requires_cat_vision = true
+required_park_flag = "park_scent_puzzle_b"
+set_park_flag = "maze_completed"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkGameplay/Zone04_CatVisionPuzzle/ScentPuzzle_C"]
+shape = SubResource("SphereShape3D_park_interact")
+
+[node name="OldNewspaper" type="Area3D" parent="ParkGameplay/Zone04_CatVisionPuzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62, 1, 48)
+script = ExtResource("28_park_interactive")
+interaction_id = "park_ambient_newspaper"
+interaction_text = "Inspect the newspaper"
+cat_reaction = "Старый запах."
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkGameplay/Zone04_CatVisionPuzzle/OldNewspaper"]
+shape = SubResource("SphereShape3D_park_interact")
+
+[node name="DogScent" type="Area3D" parent="ParkGameplay/Zone04_CatVisionPuzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45, 1, 20)
+script = ExtResource("28_park_interactive")
+interaction_id = "park_ambient_dog_scent"
+interaction_text = "Smell the paw prints"
+cat_reaction = "Чужой."
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkGameplay/Zone04_CatVisionPuzzle/DogScent"]
+shape = SubResource("SphereShape3D_park_interact")
+
+[node name="OwnerPanicTrace" type="Area3D" parent="ParkGameplay/Zone05_QuietEncounter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 1, -66)
+script = ExtResource("28_park_interactive")
+interaction_id = "park_owner_panic_trace"
+interaction_text = "Read the scattered footprints"
+cat_reaction = "Он бежал."
+requires_cat_vision = true
+set_park_flag = "silent_encounter_seen"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkGameplay/Zone05_QuietEncounter/OwnerPanicTrace"]
+shape = SubResource("SphereShape3D_park_interact")
+
+[node name="ColdShadow" type="Area3D" parent="ParkGameplay/Zone05_QuietEncounter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74, 1, -47)
+script = ExtResource("29_lp_trigger")
+trigger_id = "park_quiet_presence"
+trigger_name = "A Quiet watches from cover"
+trigger_category = 1
+calm_delta = -18.0
+is_repeatable = true
+cooldown = 3.0
+creates_fear_zone = true
+feedback_type = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkGameplay/Zone05_QuietEncounter/ColdShadow"]
+shape = SubResource("BoxShape3D_park_trigger")
+
+[node name="OwnerMemorySpot" type="Area3D" parent="ParkGameplay/Zone06_Crows"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62, 1, 42)
+script = ExtResource("28_park_interactive")
+interaction_id = "park_owner_memory_spot"
+interaction_text = "Smell where he sat"
+cat_reaction = "Он сидел здесь. Потом ушёл."
+requires_cat_vision = true
+optional_dialogue = ["Остаточный силуэт человека поднимается; вокруг него — следы Тихих."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkGameplay/Zone06_Crows/OwnerMemorySpot"]
+shape = SubResource("SphereShape3D_park_interact")
+
+[node name="WarmCrowOakLight" type="Area3D" parent="ParkGameplay/Zone06_Crows"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 1, 52)
+script = ExtResource("30_safe_point")
+safe_point_id = "park_crow_oak_light"
+restore_calm_on_use = 20.0
+restore_on_enter = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkGameplay/Zone06_Crows/WarmCrowOakLight"]
+shape = SubResource("BoxShape3D_park_trigger")
+
+[node name="Zone07_Exit" type="Node3D" parent="ParkGameplay"]
+
+[node name="FinalOwnerScent" type="Area3D" parent="ParkGameplay/Zone07_Exit"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110, 1, 89)
+script = ExtResource("28_park_interactive")
+interaction_id = "park_final_owner_scent"
+interaction_text = "Smell the clear trail"
+cat_reaction = "Он пошёл туда."
+required_park_flag = "crow_conversation_completed"
+set_park_flag = "park_exit_opened"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkGameplay/Zone07_Exit/FinalOwnerScent"]
+shape = SubResource("SphereShape3D_park_interact")
+
+[node name="ForgottenScarf" type="Area3D" parent="ParkGameplay/Zone07_Exit"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102, 1, 83)
+script = ExtResource("28_park_interactive")
+interaction_id = "park_ambient_scarf"
+interaction_text = "Inspect the forgotten cloth"
+cat_reaction = "Не его."
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkGameplay/Zone07_Exit/ForgottenScarf"]
+shape = SubResource("SphereShape3D_park_interact")
+
+; Visible placeholder props. Each is deliberately a child of its E Area so the
+; Scene Tree and the game world describe the same physical object.
+[node name="OwnerGloveMesh" type="MeshInstance3D" parent="ParkGameplay/Zone01_Entrance/OwnerScent_01"]
+transform = Transform3D(0.5, 0, 0, 0, 0.08, 0, 0, 0, 0.25, 0, -0.88, 0)
+material_override = SubResource("StandardMaterial3D_p8ftw")
+mesh = SubResource("BoxMesh_feuad")
+
+[node name="FalseCupMesh" type="MeshInstance3D" parent="ParkGameplay/Zone01_Entrance/FalseScent_01"]
+transform = Transform3D(0.22, 0, 0, 0, 0.35, 0, 0, 0, 0.22, 0, -0.65, 0)
+material_override = SubResource("StandardMaterial3D_w16gn")
+mesh = SubResource("CylinderMesh_vydf8")
+
+[node name="FalseFabricMesh" type="MeshInstance3D" parent="ParkGameplay/Zone01_Entrance/FalseScent_02"]
+transform = Transform3D(0.65, 0, 0, 0, 0.035, 0, 0, 0, 0.35, 0, -0.95, 0)
+material_override = SubResource("StandardMaterial3D_rlrqs")
+mesh = SubResource("BoxMesh_feuad")
+
+[node name="CrushedGrassTraceMesh" type="MeshInstance3D" parent="ParkGameplay/Zone01_Entrance/QuietTrace_01"]
+transform = Transform3D(0.9, 0, 0, 0, 0.02, 0, 0, 0, 0.45, 0, -0.97, 0)
+material_override = SubResource("StandardMaterial3D_tmuru")
+mesh = SubResource("BoxMesh_feuad")
+
+[node name="OwnerBenchMesh" type="MeshInstance3D" parent="ParkGameplay/Zone02_Investigation/OwnerBench"]
+transform = Transform3D(2.1, 0, 0, 0, 0.38, 0, 0, 0, 0.65, 0, -0.62, 0)
+material_override = SubResource("StandardMaterial3D_jfcn6")
+mesh = SubResource("BoxMesh_feuad")
+
+[node name="OtherWorldTreeTrunkMesh" type="MeshInstance3D" parent="ParkGameplay/Zone02_Investigation/OtherWorldTree"]
+transform = Transform3D(1.4, 0, 0, 0, 4.2, 0, 0, 0, 1.4, 0, 1.1, 0)
+material_override = SubResource("StandardMaterial3D_qvkle")
+mesh = SubResource("CylinderMesh_vydf8")
+
+[node name="FeatherClusterMesh" type="MeshInstance3D" parent="ParkGameplay/Zone02_Investigation/CrowClue"]
+transform = Transform3D(0.7, 0, 0, 0, 0.025, 0, 0, 0, 0.45, 0, -0.97, 0)
+material_override = SubResource("StandardMaterial3D_rlrqs")
+mesh = SubResource("BoxMesh_feuad")
+
+[node name="BrokenLampPoleMesh" type="MeshInstance3D" parent="ParkGameplay/Zone03_Danger/BrokenLamp"]
+transform = Transform3D(0.18, 0, 0, 0, 2.5, 0, 0, 0, 0.18, 0, 0.25, 0)
+material_override = SubResource("StandardMaterial3D_vmfad")
+mesh = SubResource("CylinderMesh_vydf8")
+
+[node name="BrokenLampHeadMesh" type="MeshInstance3D" parent="ParkGameplay/Zone03_Danger/BrokenLamp"]
+transform = Transform3D(0.65, 0, 0, 0, 0.18, 0, 0, 0, 0.45, 0, 2.5, 0)
+material_override = SubResource("StandardMaterial3D_hnhfv")
+mesh = SubResource("BoxMesh_feuad")
+
+[node name="OwnerCupMesh" type="MeshInstance3D" parent="ParkGameplay/Zone03_Danger/OwnerScent_Danger"]
+transform = Transform3D(0.25, 0, 0, 0, 0.32, 0, 0, 0, 0.25, 0, -0.68, 0)
+material_override = SubResource("StandardMaterial3D_p8ftw")
+mesh = SubResource("CylinderMesh_vydf8")
+
+[node name="SwingScentToyMesh" type="MeshInstance3D" parent="ParkGameplay/Zone04_CatVisionPuzzle/ScentPuzzle_A"]
+transform = Transform3D(0.32, 0, 0, 0, 0.18, 0, 0, 0, 0.32, 0, -0.8, 0)
+material_override = SubResource("StandardMaterial3D_hnhfv")
+mesh = SubResource("CylinderMesh_vydf8")
+
+[node name="CarouselRibbonMesh" type="MeshInstance3D" parent="ParkGameplay/Zone04_CatVisionPuzzle/ScentPuzzle_B"]
+transform = Transform3D(0.8, 0, 0, 0, 0.03, 0, 0, 0, 0.18, 0, -0.94, 0)
+material_override = SubResource("StandardMaterial3D_rlrqs")
+mesh = SubResource("BoxMesh_feuad")
+
+[node name="SlideScentMesh" type="MeshInstance3D" parent="ParkGameplay/Zone04_CatVisionPuzzle/ScentPuzzle_C"]
+transform = Transform3D(0.55, 0, 0, 0, 0.035, 0, 0, 0, 0.55, 0, -0.94, 0)
+material_override = SubResource("StandardMaterial3D_park_trail")
+mesh = SubResource("BoxMesh_feuad")
+
+[node name="NewspaperMesh" type="MeshInstance3D" parent="ParkGameplay/Zone04_CatVisionPuzzle/OldNewspaper"]
+transform = Transform3D(0.58, 0, 0, 0, 0.025, 0, 0, 0, 0.4, 0, -0.96, 0)
+material_override = SubResource("StandardMaterial3D_jdd6x")
+mesh = SubResource("BoxMesh_feuad")
+
+[node name="DogPawPrintMesh" type="MeshInstance3D" parent="ParkGameplay/Zone04_CatVisionPuzzle/DogScent"]
+transform = Transform3D(0.4, 0, 0, 0, 0.02, 0, 0, 0, 0.4, 0, -0.97, 0)
+material_override = SubResource("StandardMaterial3D_qvkle")
+mesh = SubResource("BoxMesh_feuad")
+
+[node name="PanicHideoutMesh" type="MeshInstance3D" parent="ParkGameplay/Zone05_QuietEncounter/OwnerPanicTrace"]
+transform = Transform3D(0.95, 0, 0, 0, 0.03, 0, 0, 0, 0.6, 0, -0.94, 0)
+material_override = SubResource("StandardMaterial3D_tmuru")
+mesh = SubResource("BoxMesh_feuad")
+
+[node name="CrowMesh" type="MeshInstance3D" parent="ParkGameplay/Zone06_Crows/CrowNPC"]
+transform = Transform3D(0.32, 0, 0, 0, 0.75, 0, 0, 0, 0.32, 0, 0.1, 0)
+material_override = SubResource("StandardMaterial3D_12kq2")
+mesh = SubResource("CylinderMesh_vydf8")
+
+[node name="OwnerMemoryBenchMesh" type="MeshInstance3D" parent="ParkGameplay/Zone06_Crows/OwnerMemorySpot"]
+transform = Transform3D(2.1, 0, 0, 0, 0.38, 0, 0, 0, 0.65, 0, -0.62, 0)
+material_override = SubResource("StandardMaterial3D_jfcn6")
+mesh = SubResource("BoxMesh_feuad")
+
+[node name="CityboundScarfMesh" type="MeshInstance3D" parent="ParkGameplay/Zone07_Exit/FinalOwnerScent"]
+transform = Transform3D(0.85, 0, 0, 0, 0.035, 0, 0, 0, 0.23, 0, -0.94, 0)
+material_override = SubResource("StandardMaterial3D_p8ftw")
+mesh = SubResource("BoxMesh_feuad")
+
+[node name="ForgottenScarfMesh" type="MeshInstance3D" parent="ParkGameplay/Zone07_Exit/ForgottenScarf"]
+transform = Transform3D(0.7, 0, 0, 0, 0.035, 0, 0, 0, 0.22, 0, -0.94, 0)
+material_override = SubResource("StandardMaterial3D_w16gn")
+mesh = SubResource("BoxMesh_feuad")

@@ -87,7 +87,7 @@ func _process(delta: float) -> void:
 			periodic_time_left = maxf(periodic_interval, 0.05)
 			_try_periodic_activation()
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if not player_inside:
 		return
 	var key_event: InputEventKey = event as InputEventKey

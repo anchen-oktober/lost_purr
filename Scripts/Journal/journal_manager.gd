@@ -190,7 +190,7 @@ var current_popup_requires_cat_vision: bool = false
 func _ready() -> void:
 	load_progress()
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if event is InputEventKey and not event.echo:
 		if event.physical_keycode == KEY_SHIFT and not event.pressed:
 			_close_cat_vision_prompt()
@@ -207,7 +207,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			elif nearby_object != null and (journal_ui == null or not journal_ui.is_journal_open()):
 				nearby_object.interact()
 				get_viewport().set_input_as_handled()
-		elif event.physical_keycode == KEY_J:
+		elif event.physical_keycode == KEY_TAB or event.physical_keycode == KEY_J:
 			_toggle_journal()
 			get_viewport().set_input_as_handled()
 

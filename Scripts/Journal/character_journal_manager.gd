@@ -42,7 +42,7 @@ var journal_ui: Node = null
 func _ready() -> void:
 	load_progress()
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if not (event is InputEventKey) or not event.pressed or event.echo:
 		return
 

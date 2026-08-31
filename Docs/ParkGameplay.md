@@ -2,7 +2,7 @@
 
 Flow: Entrance → false/real Cat Vision trails → Playground → Maze → Abandoned Park → Old Crow → City.
 
-`Gameplay` was added to `Scenes/Levels/Park.tscn`; it is independent from the authored environment nodes. Its Areas are deliberately designer-movable and each shape is visible in the Godot editor.
+`ParkGameplay` was added to `Scenes/Levels/Park.tscn`; it is independent from the authored environment nodes. Its Areas are deliberately designer-movable and each shape is visible in the Godot editor.
 
 ## Components
 
@@ -28,3 +28,13 @@ Park flags are stored in the existing `user://memory_journal.json` as `_park_sta
 Move any Area or trail without code. Assign optional audio/VFX resources directly to `ParkMemoryTrigger`; add a new memory by copying an Area and supplying a unique `event_id`. Add Cat Vision markers/trails by copying `CatVisionTrail`. Add Silent positions as `Marker3D` nodes and reference them in `position_targets`. Set the City target via `PortalToCity.target_level_id`.
 
 Current visual/audio content intentionally uses existing geometry and small glowing trail placeholders. Child shadows, animation, dog/human art, patrol AI, and bespoke memory VFX remain art/design placement work; all their script hooks accept null assets safely.
+
+## Park rebuild notes
+
+The current hierarchy is `Zone01_Entrance`, `Zone02_Investigation`, `Zone03_Danger`, `Zone04_CatVisionPuzzle`, `Zone05_QuietEncounter`, `Zone06_Crows`, and `Zone07_Exit`. It anchors clues to the existing entrance fork, central/maze route, Abandoned Zone, Playground, Silent spawn cover, Crow Oak and City overlook. Every E object in those zones now has an explicit `*Mesh` child: glove, cup, fabric, crushed grass, bench, tree trunk, feathers, lamp, toy/ribbon, newspaper, paw print, panic trace, crow or scarf.
+
+`Scripts/Park/park_interactive_object.gd` is a thin reusable Area3D component; it uses the existing JournalManager E prompt/input and exposes ID/text, one-shot, Cat Vision gating/visibility, flags, Calm delta, short dialogue and optional activation in the Inspector. Collision shapes act as the editor debug visualization but are not rendered in builds.
+
+Legacy invisible memory/path areas are disabled in Park. The old Playground sequence areas remain only as disabled compatibility nodes; the physical Cat Vision clue props are the active puzzle.
+
+The existing glowing rectangular trail meshes need replacement with final footprint/scent VFX. QuietTrace, OtherWorldTree and OwnerMemorySpot need final shadow/silhouette VFX; the Crow placeholder and SilentWatcher need final animated art. Paper, feathers, crushed grass and scarf currently use named interaction volumes placed on final environmental landmarks.
