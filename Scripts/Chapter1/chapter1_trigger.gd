@@ -30,7 +30,7 @@ func _process(_delta: float) -> void:
 		_try_activate("cat_vision")
 	_cat_vision_was_active = is_active
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if not enabled or not player_inside:
 		return
 
@@ -94,7 +94,7 @@ func _is_cat_vision_active() -> bool:
 		return false
 	if manager.has_method("get_cat_state"):
 		return int(manager.call("get_cat_state")) == 1
-	return bool(manager.get("is_cat_vision_enabled"))
+	return false
 
 func _get_trigger_id() -> String:
 	return trigger_id if trigger_id != "" else name

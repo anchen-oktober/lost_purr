@@ -87,7 +87,7 @@ func _process(delta: float) -> void:
 			periodic_time_left = maxf(periodic_interval, 0.05)
 			_try_periodic_activation()
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if not player_inside:
 		return
 	var key_event: InputEventKey = event as InputEventKey
@@ -231,7 +231,7 @@ func _is_cat_vision_active() -> bool:
 	if cat_vision_manager.has_method("get_cat_state"):
 		return int(cat_vision_manager.call("get_cat_state")) == 1
 
-	return bool(cat_vision_manager.get("is_cat_vision_enabled")) or bool(cat_vision_manager.get("is_cat_vision_forced"))
+	return false
 
 func _update_prompt() -> void:
 	if not _uses_interaction():

@@ -68,7 +68,7 @@ func _ready() -> void:
 	set_location(_detect_current_location_id())
 	cat_state_changed.emit(current_state)
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	var key_event: InputEventKey = event as InputEventKey
 	if key_event == null:
 		return

@@ -168,8 +168,21 @@ const MEMORY_DEFINITIONS: Dictionary = {
 		"category": MemoryType.TRACE,
 		"requires_cat_vision": true,
 	},
+	"park_playground_memory": {
+		"title": "Not Alone",
+		"short_description": "He was here. And he was not alone.",
+		"full_description": "The playground remembers the human looking back. Two long shadows followed the same path.",
+		"category": MemoryType.PLACE,
+	},
+	"park_other_world_memory": {
+		"title": "He Saw Them",
+		"short_description": "He saw them too.",
+		"full_description": "At the hedge maze the human stopped at the edge of another world. He could see what followed him.",
+		"category": MemoryType.ANOMALY,
+	},
 }
 var collected_entries: Dictionary = {}
+var park_state: Dictionary = {"owner_trail_discovered": false, "playground_memory_completed": false, "maze_completed": false, "other_world_memory_seen": false, "silent_encounter_seen": false, "crow_conversation_completed": false, "park_exit_opened": false, "found_memory_ids": {}, "triggered_event_ids": {}}
 var nearby_object: Node = null
 var journal_ui: Node = null
 var current_popup_requires_cat_vision: bool = false
@@ -177,7 +190,7 @@ var current_popup_requires_cat_vision: bool = false
 func _ready() -> void:
 	load_progress()
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if event is InputEventKey and not event.echo:
 		if event.physical_keycode == KEY_SHIFT and not event.pressed:
 			_close_cat_vision_prompt()
@@ -194,7 +207,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			elif nearby_object != null and (journal_ui == null or not journal_ui.is_journal_open()):
 				nearby_object.interact()
 				get_viewport().set_input_as_handled()
-		elif event.physical_keycode == KEY_J:
+		elif event.physical_keycode == KEY_TAB or event.physical_keycode == KEY_J:
 			_toggle_journal()
 			get_viewport().set_input_as_handled()
 
@@ -255,7 +268,9 @@ func save_progress() -> void:
 	if file == null:
 		return
 
-	file.store_string(JSON.stringify(collected_entries))
+	var save_data: Dictionary = collected_entries.duplicate(true)
+	save_data["_park_state"] = park_state
+	file.store_string(JSON.stringify(save_data))
 
 func load_progress() -> void:
 	if not FileAccess.file_exists(SAVE_PATH):
@@ -268,6 +283,27 @@ func load_progress() -> void:
 	var parsed: Variant = JSON.parse_string(file.get_as_text())
 	if parsed is Dictionary:
 		collected_entries = parsed as Dictionary
+		if collected_entries.has("_park_state") and collected_entries["_park_state"] is Dictionary:
+			park_state.merge(collected_entries["_park_state"] as Dictionary, true)
+			collected_entries.erase("_park_state")
+
+func get_park_flag(flag_name: String) -> bool:
+	return bool(park_state.get(flag_name, false))
+
+func set_park_flag(flag_name: String, value: bool = true) -> void:
+	if bool(park_state.get(flag_name, false)) == value: return
+	park_state[flag_name] = value
+	save_progress()
+
+func is_park_event_triggered(event_id: String) -> bool:
+	return bool((park_state.get("triggered_event_ids", {}) as Dictionary).get(event_id, false))
+
+func mark_park_event_triggered(event_id: String) -> void:
+	if event_id.is_empty(): return
+	var events: Dictionary = park_state.get("triggered_event_ids", {}) as Dictionary
+	events[event_id] = true
+	park_state["triggered_event_ids"] = events
+	save_progress()
 
 func get_category_name(category: int) -> String:
 	return str(CATEGORY_NAMES.get(category, "Entry"))

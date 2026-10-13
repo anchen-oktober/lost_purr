@@ -34,9 +34,11 @@ func _ready() -> void:
 		cat_vision_manager = current_scene.find_child("CatVisionManager", true, false)
 		player_cat = current_scene.find_child("PlayerCat", true, false)
 
-	if cat_vision_manager != null:
-		cat_vision_manager.cat_state_changed.connect(_on_cat_state_changed)
-		_on_cat_state_changed(int(cat_vision_manager.get_cat_state()))
+	if cat_vision_manager != null and cat_vision_manager.has_signal("cat_state_changed"):
+		cat_vision_manager.connect("cat_state_changed", _on_cat_state_changed)
+
+	if cat_vision_manager != null and cat_vision_manager.has_method("get_cat_state"):
+		_on_cat_state_changed(int(cat_vision_manager.call("get_cat_state")))
 	else:
 		_on_cat_state_changed(NORMAL_STATE)
 

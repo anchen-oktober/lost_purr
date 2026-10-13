@@ -1,6 +1,9 @@
 extends Node
 
 const PLAYER_NAME: String = "PlayerCat"
+const PLAYER_SCRIPT: Script = preload("res://Scripts/Player/player_cat.gd")
+const GAMEPLAY_CAMERA_SCRIPT: Script = preload("res://Scripts/Camera/camera_3d.gd")
+const CAT_VISION_MANAGER_SCRIPT: Script = preload("res://Scripts/CatVision/cat_vision_manager.gd")
 const LEVELS: Dictionary = {
 	"village": {
 		"path": "res://Scenes/Levels/Village.scn",
@@ -128,6 +131,7 @@ func change_level(level_id: String, spawn_name: String = "") -> void:
 	await get_tree().process_frame
 	_apply_location_to_cat_vision(level_id)
 	_restore_player_at_spawn()
+	_validate_gameplay_startup(level_id)
 	_set_bootstrap_loading_visible(false)
 	await _fade_to(0.0, 0.35)
 
@@ -157,7 +161,16 @@ func _apply_location_to_cat_vision(level_id: String) -> void:
 		return
 
 	var cat_vision_manager: Node = get_tree().current_scene.find_child("CatVisionManager", true, false)
-	if cat_vision_manager == null or not cat_vision_manager.has_method("set_location"):
+	if cat_vision_manager == null:
+		return
+	if not cat_vision_manager.has_method("set_location"):
+		push_warning("CatVisionManager was missing its controller; restoring it.")
+		cat_vision_manager.set_script(CAT_VISION_MANAGER_SCRIPT)
+		cat_vision_manager.set_process_input(true)
+		cat_vision_manager.set_process(true)
+		cat_vision_manager.call("_ready")
+	if not cat_vision_manager.has_method("set_location"):
+		push_error("[STARTUP ERROR] CatVisionManager controller could not be restored.")
 		return
 
 	cat_vision_manager.call("set_location", _get_location_id(level_id))
@@ -219,6 +232,7 @@ func _store_player_state() -> void:
 func _restore_player_at_spawn() -> void:
 	var player: CharacterBody3D = _find_player()
 	if player == null:
+		push_error("[STARTUP ERROR] PlayerCat was not spawned.")
 		return
 
 	if pending_spawn_name != "":
@@ -229,11 +243,49 @@ func _restore_player_at_spawn() -> void:
 			player.set("moving", false)
 			player.set("mouse_down", false)
 			player.velocity = Vector3.ZERO
+		else:
+			push_warning("Player spawn point not found: %s" % pending_spawn_name)
 
 	if player.has_method("set_level_start_recovery_point"):
 		player.call("set_level_start_recovery_point", player.global_transform)
 
 	pending_spawn_name = ""
+
+func _validate_gameplay_startup(level_id: String) -> void:
+	var player: CharacterBody3D = _find_player()
+	if player == null:
+		push_error("[STARTUP ERROR] PlayerCat was not spawned for level: %s" % level_id)
+	else:
+		if not player.has_method("update_target_from_mouse"):
+			push_warning("PlayerCat was missing its controller; restoring it.")
+			player.set_script(PLAYER_SCRIPT)
+			player.set_process_input(true)
+			player.set_physics_process(true)
+			player.call("_ready")
+		if not player.is_in_group("player"):
+			player.add_to_group("player")
+		var players: Array[Node] = get_tree().get_nodes_in_group("player")
+		if players.size() != 1:
+			push_error("[STARTUP ERROR] Expected exactly one player, found %d." % players.size())
+		if player.get("controls_locked") == true:
+			push_error("[STARTUP ERROR] PlayerCat controls are locked after loading %s." % level_id)
+
+	var active_camera: Camera3D = get_viewport().get_camera_3d()
+	if active_camera == null:
+		push_error("[STARTUP ERROR] No active gameplay Camera3D after loading %s." % level_id)
+	else:
+		if not active_camera.has_method("_update_isometric_camera"):
+			push_warning("Gameplay Camera3D was missing its controller; restoring it.")
+			active_camera.set_script(GAMEPLAY_CAMERA_SCRIPT)
+			active_camera.set_process_input(true)
+			active_camera.set_physics_process(true)
+			active_camera.call("_ready")
+		if player != null and active_camera.get("target") != player:
+			active_camera.set("target", player)
+			if active_camera.has_method("_update_isometric_camera"):
+				active_camera.call("_update_isometric_camera")
+		if player != null and not active_camera.is_position_in_frustum(player.global_position):
+			push_error("[STARTUP ERROR] Active Camera3D cannot see PlayerCat after loading %s." % level_id)
 
 func _find_player() -> CharacterBody3D:
 	if get_tree().current_scene == null:

@@ -28,7 +28,7 @@ var camera_mode: CameraMode = CameraMode.ISOMETRIC
 func _ready() -> void:
 	base_offset = position
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if JournalManager.is_scene_input_blocked():
 		is_rotating_with_mouse = false
 		return

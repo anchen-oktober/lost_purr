@@ -19,7 +19,9 @@ func _ready() -> void:
 	settings_button.disabled = true
 
 func _start_new_game() -> void:
-	await GameManager.change_scene(game_scene_path, "SpawnFromVillage")
+	# MainScene owns the initial level load. Going through GameManager here used to
+	# overlap its awaited scene transition with MainScene._ready() starting Village.
+	get_tree().change_scene_to_file(game_scene_path)
 
 func _exit_game() -> void:
 	get_tree().quit()
