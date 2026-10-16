@@ -20,7 +20,7 @@ func build() -> void:
 		_add_lamp("StreetLamp_%02d" % [index + 1], lamp_positions[index])
 
 func _add_lamp(lamp_name: String, position: Vector3) -> void:
-	var lamp: Node3D = Node3D.new()
+	var lamp: Node3D = preload("res://Scripts/World/healing_lamp.gd").new()
 	lamp.name = lamp_name
 	lamp.position = position
 	_add_scene_child(self, lamp)
@@ -47,6 +47,21 @@ func _add_lamp(lamp_name: String, position: Vector3) -> void:
 	light.omni_range = 9.25
 	light.shadow_enabled = true
 	_add_scene_child(lamp, light)
+
+	var area := Area3D.new()
+	area.name = "TriggerArea"
+	area.position = Vector3(0, 0.5, 0)
+	area.collision_layer = 0
+	area.collision_mask = 1
+	_add_scene_child(lamp, area)
+	var collision := CollisionShape3D.new()
+	collision.name = "CollisionShape3D"
+	var shape := SphereShape3D.new()
+	shape.radius = 3.0
+	collision.shape = shape
+	_add_scene_child(area, collision)
+	if lamp.is_node_ready():
+		lamp.refresh_lamp()
 
 func _add_box(parent: Node3D, name: String, base_position: Vector3, size: Vector3, material: Material) -> MeshInstance3D:
 	var box: MeshInstance3D = MeshInstance3D.new()

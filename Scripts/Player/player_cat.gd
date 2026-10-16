@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+const FearReturnPath = preload("res://Scripts/Player/fear_return_path.gd")
+
 const TraumaRadiusVisualScript: Script = preload("res://Scripts/Trauma/trauma_radius_visual.gd")
 
 signal fear_changed(fear: float, calmness: float, state: String, is_critical: bool)
@@ -16,7 +18,14 @@ signal trauma_avoidance_changed(is_active: bool, blocked_zone_name: String, radi
 @export var purr_restore_cooldown: float = 3.0
 @export var can_purr_restore: bool = true
 @export var critical_recovery_delay: float = 0.35
-@export var trauma_block_radius: float = 4.0
+@export_range(0.1, 30.0, 0.1) var trauma_block_radius: float = 4.0:
+	set(value):
+		trauma_block_radius = maxf(0.1, value)
+		if is_instance_valid(temporary_trauma_radius):
+			temporary_trauma_radius.call("set_radius", trauma_block_radius)
+@export var flee_speed: float = 8.0
+@export var hiding_recovery_rate: float = 25.0
+@export var minimum_hiding_time: float = 1.0
 @export var interaction_fallback_range: float = 4.0
 
 var target_position: Vector3
@@ -30,6 +39,12 @@ var move_speed_multiplier: float = 1.0
 var last_recovery_transform: Transform3D
 var level_start_transform: Transform3D
 var controls_locked: bool = false
+var fear_recovery_phase: String = ""
+var flee_path: PackedVector3Array = PackedVector3Array()
+var flee_destination: Vector3
+var flee_retry_left: float = 0.0
+var hiding_time: float = 0.0
+var _normal_billboard_scale: Vector3 = Vector3.ONE
 var cat_vision_manager: Node
 var positive_restore_block_time: float = 0.0
 var purr_restore_cooldown_left: float = 0.0
@@ -50,7 +65,7 @@ func _ready() -> void:
 	level_start_transform = global_transform
 	last_recovery_transform = level_start_transform
 	last_fear_source_position = global_position
-	_find_cat_vision_manager()
+	call_deferred("_find_cat_vision_manager")
 	call_deferred("_cache_interaction_candidates")
 	_update_fear_state()
 	var calm_manager: Node = get_node_or_null("/root/CatCalmManager")
@@ -105,6 +120,10 @@ func _physics_process(delta: float) -> void:
 	elif velocity.y < 0.0:
 		velocity.y = 0.0
 
+	if not fear_recovery_phase.is_empty():
+		_process_fear_recovery(delta)
+		return
+
 	if controls_locked or JournalManager.is_scene_input_blocked():
 		mouse_down = false
 		moving = false
@@ -134,7 +153,29 @@ func _physics_process(delta: float) -> void:
 	else:
 		_stop_horizontal_movement()
 
+	_move_with_trauma_boundary(delta)
+
+func _move_with_trauma_boundary(delta: float) -> void:
+	var previous: Vector3 = global_position
+	if has_active_trauma_avoidance:
+		var center := Vector2(last_fear_source_position.x, last_fear_source_position.z)
+		var from := Vector2(previous.x, previous.z)
+		var to := from + Vector2(velocity.x, velocity.z) * delta
+		var closest: Vector2 = Geometry2D.get_closest_point_to_segment(center, from, to)
+		var radius: float = trauma_block_radius + 0.45
+		if closest.distance_to(center) < radius and (from.distance_to(center) >= radius or to.distance_to(center) < from.distance_to(center)):
+			_stop_horizontal_movement()
+			moving = false
+			target_position = global_position
+			_pulse_active_trauma_warning()
 	move_and_slide()
+	if has_active_trauma_avoidance:
+		var old_distance := Vector2(previous.x - last_fear_source_position.x, previous.z - last_fear_source_position.z).length()
+		var new_distance := Vector2(global_position.x - last_fear_source_position.x, global_position.z - last_fear_source_position.z).length()
+		if new_distance < trauma_block_radius + 0.45 and new_distance < old_distance:
+			global_position.x = previous.x
+			global_position.z = previous.z
+			_stop_horizontal_movement()
 
 func _update_interaction_fallback() -> void:
 	if interaction_candidates.is_empty():
@@ -215,10 +256,11 @@ func _stop_horizontal_movement() -> void:
 	velocity.z = 0.0
 
 func apply_fear_damage(amount: float, source_node: Node = null) -> void:
-	if is_critical_fear:
+	if is_critical_fear or amount <= 0.0:
 		return
 
-	_register_fear_source(source_node)
+	# Continuous danger suspends passive healing through the existing recovery gate.
+	positive_restore_block_time = maxf(positive_restore_block_time, 0.25)
 	fear = clampf(fear + amount, 0.0, max_fear)
 	_update_fear_state()
 
@@ -262,6 +304,8 @@ func get_calmness() -> float:
 	return maxf(0.0, max_fear - fear)
 
 func get_fear_state() -> String:
+	if fear_recovery_phase == "Hiding":
+		return "Hiding"
 	if is_critical_fear or fear >= max_fear:
 		return "Critical"
 
@@ -301,61 +345,84 @@ func _update_fear_state() -> void:
 	else:
 		move_speed_multiplier = 0.0
 
-	if has_active_trauma_avoidance and not is_critical_fear and calmness >= max_fear:
-		_clear_trauma_avoidance()
-
 	fear_changed.emit(fear, calmness, get_fear_state(), is_critical_fear)
 
-func _enter_critical_fear(source_node: Node = null) -> void:
+func _enter_critical_fear(_source_node: Node = null) -> void:
 	if is_critical_fear:
 		return
-
-	_activate_trauma_avoidance(source_node)
+	last_fear_source_position = global_position
+	_activate_trauma_avoidance(null)
 	is_critical_fear = true
 	controls_locked = true
+	fear_recovery_phase = "Fleeing"
 	mouse_down = false
 	moving = false
-	target_position = global_position
-	_stop_horizontal_movement()
-	if cat_vision_manager != null and cat_vision_manager.has_method("set_cat_critical"):
+	flee_destination = last_recovery_transform.origin
+	flee_path = FearReturnPath.build(self, flee_destination)
+	flee_retry_left = 1.0
+	if is_instance_valid(cat_vision_manager):
 		cat_vision_manager.call("set_cat_critical", true)
 	_update_fear_state()
-	await get_tree().create_timer(critical_recovery_delay).timeout
-	_return_to_recovery_point()
+	print("[Fear] Fleeing to SafePoint ", flee_destination)
+
+func _process_fear_recovery(delta: float) -> void:
+	mouse_down = false
+	moving = false
+	if fear_recovery_phase == "Fleeing":
+		var remaining := Vector2(global_position.x - flee_destination.x, global_position.z - flee_destination.z)
+		if remaining.length() <= 0.25 and absf(global_position.y - flee_destination.y) < 1.0:
+			_return_to_recovery_point()
+			return
+		while not flee_path.is_empty() and Vector2(flee_path[0].x - global_position.x, flee_path[0].z - global_position.z).length() <= 0.25:
+			flee_path.remove_at(0)
+		flee_retry_left -= delta
+		if (flee_path.is_empty() or get_position_delta().length() < 0.005) and flee_retry_left <= 0.0:
+			flee_path = FearReturnPath.build(self, flee_destination)
+			flee_retry_left = 1.0
+		_stop_horizontal_movement()
+		if not flee_path.is_empty():
+			var direction: Vector3 = flee_path[0] - global_position
+			direction.y = 0.0
+			var movement: Vector3 = direction.normalized() * minf(flee_speed, direction.length() / delta)
+			velocity.x = movement.x
+			velocity.z = movement.z
+		move_and_slide()
+	elif fear_recovery_phase == "Hiding":
+		_stop_horizontal_movement()
+		move_and_slide()
+		hiding_time += delta
+		restore_fear(maxf(hiding_recovery_rate, 0.1) * delta)
+		if fear <= 0.0 and hiding_time >= minimum_hiding_time:
+			fear_recovery_phase = ""
+			is_critical_fear = false
+			controls_locked = false
+			target_position = global_position
+			var billboard := get_node_or_null("CatBillboard") as Sprite3D
+			if billboard != null: billboard.scale = _normal_billboard_scale
+			_update_fear_state()
+			print("[Fear] Recovered; player control restored")
 
 func _return_to_recovery_point() -> void:
-	var recovery_transform: Transform3D = last_recovery_transform
-	if recovery_transform.origin == Vector3.ZERO:
-		recovery_transform = level_start_transform
-
-	global_transform = recovery_transform
+	# Arrival starts hiding; no teleport and no immediate control restoration.
+	fear_recovery_phase = "Hiding"
+	hiding_time = 0.0
 	target_position = global_position
 	velocity = Vector3.ZERO
-	positive_restore_block_time = 0.25
-	is_critical_fear = false
-	controls_locked = false
-	if cat_vision_manager != null and cat_vision_manager.has_method("set_cat_critical"):
+	var billboard := get_node_or_null("CatBillboard") as Sprite3D
+	if billboard != null:
+		_normal_billboard_scale = billboard.scale
+		billboard.scale = _normal_billboard_scale * Vector3(1.0, 0.6, 1.0)
+	if is_instance_valid(cat_vision_manager):
 		cat_vision_manager.call("set_cat_critical", false)
-	restore_fear_quarter()
+	_update_fear_state()
+	print("[Fear] Arrived at SafePoint; hiding and recovering")
 
-func _register_fear_source(source_node: Node) -> void:
-	if source_node is Node3D:
-		last_fear_source_position = (source_node as Node3D).global_position
-	else:
-		last_fear_source_position = global_position
-
-func _activate_trauma_avoidance(source_node: Node) -> void:
+func _activate_trauma_avoidance(_source_node: Node) -> void:
 	_clear_trauma_avoidance()
 	has_active_trauma_avoidance = true
-	current_trauma_zone = source_node
-
-	if current_trauma_zone != null and current_trauma_zone.has_method("set_trauma_radius_visible"):
-		blocked_zone_name = current_trauma_zone.name
-		current_trauma_zone.call("set_trauma_radius_visible", true)
-	else:
-		blocked_zone_name = "temporary"
-		_show_temporary_trauma_radius()
-
+	current_trauma_zone = null
+	blocked_zone_name = "last_fright"
+	_show_temporary_trauma_radius()
 	_emit_trauma_avoidance_changed()
 
 func _clear_trauma_avoidance() -> void:
@@ -376,12 +443,12 @@ func _show_temporary_trauma_radius() -> void:
 	temporary_trauma_radius = TraumaRadiusVisualScript.new()
 	temporary_trauma_radius.name = "TemporaryTraumaRadius"
 	get_tree().current_scene.add_child(temporary_trauma_radius)
-	temporary_trauma_radius.global_position = Vector3(last_fear_source_position.x, 0.035, last_fear_source_position.z)
+	temporary_trauma_radius.global_position = Vector3(last_fear_source_position.x, last_fear_source_position.y - 0.4, last_fear_source_position.z)
 	temporary_trauma_radius.call("set_radius", trauma_block_radius)
 	temporary_trauma_radius.call("set_trauma_radius_visible", true)
 
 func _is_position_blocked_by_trauma(world_position: Vector3) -> bool:
-	if not has_active_trauma_avoidance or get_calmness() >= max_fear:
+	if not has_active_trauma_avoidance:
 		return false
 
 	if current_trauma_zone != null and current_trauma_zone.has_method("contains_world_position"):

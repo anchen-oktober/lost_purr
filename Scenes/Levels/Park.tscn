@@ -1,5 +1,6 @@
 [gd_scene format=3]
 
+[ext_resource type="Script" path="res://Scripts/World/healing_lamp.gd" id="HealingLamp"]
 [ext_resource type="PackedScene" path="res://Scenes/Player/PlayerCat.tscn" id="1_vnmf1"]
 [ext_resource type="Script" path="res://Scripts/Player/player_cat.gd" id="2_sofi1"]
 [ext_resource type="Shader" path="res://Shaders/cat_outline.gdshader" id="3_g85ha"]
@@ -30,6 +31,9 @@
 [ext_resource type="Script" path="res://Scripts/Park/park_interactive_object.gd" id="28_park_interactive"]
 [ext_resource type="Script" path="res://Scripts/Triggers/LPTrigger.gd" id="29_lp_trigger"]
 [ext_resource type="Script" path="res://Scripts/Triggers/LPSafePoint.gd" id="30_safe_point"]
+
+[sub_resource type="SphereShape3D" id="SphereShape_healing_lamp"]
+radius = 3.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xewtb"]
 albedo_color = Color(0.24, 0.31, 0.2, 1)
@@ -1098,37 +1102,63 @@ transform = Transform3D(0.4, 0, 0, 0, 2.1, 0, 0, 0, 2, -96, 1.05, 69)
 material_override = SubResource("StandardMaterial3D_vmfad")
 mesh = SubResource("BoxMesh_feuad")
 
-[node name="PlaygroundLamp_01_Pole" type="MeshInstance3D" parent="Playground" unique_id=733402520]
+[node name="PlaygroundLamp_01" type="Node3D" parent="Playground"]
+script = ExtResource("HealingLamp")
+light_path = NodePath("PlaygroundLamp_01_Glow")
+head_path = NodePath("PlaygroundLamp_01_Head")
+
+[node name="PlaygroundLamp_01_Pole" type="MeshInstance3D" parent="Playground/PlaygroundLamp_01" unique_id=733402520]
 transform = Transform3D(0.18, 0, 0, 0, 2.7, 0, 0, 0, 0.18, -62, 1.35, 66)
 material_override = SubResource("StandardMaterial3D_vmfad")
 mesh = SubResource("CylinderMesh_vydf8")
 
-[node name="PlaygroundLamp_01_Head" type="MeshInstance3D" parent="Playground" unique_id=1408667081]
+[node name="PlaygroundLamp_01_Head" type="MeshInstance3D" parent="Playground/PlaygroundLamp_01" unique_id=1408667081]
 transform = Transform3D(0.9, 0, 0, 0, 0.42, 0, 0, 0, 0.9, -62, 2.85, 66)
 material_override = SubResource("StandardMaterial3D_cdv3k")
 mesh = SubResource("BoxMesh_feuad")
 
-[node name="PlaygroundLamp_01_Glow" type="OmniLight3D" parent="Playground" unique_id=1930210519]
+[node name="PlaygroundLamp_01_Glow" type="OmniLight3D" parent="Playground/PlaygroundLamp_01" unique_id=1930210519]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62, 2.8, 66)
 light_color = Color(1, 0.63, 0.32, 1)
 light_energy = 2.0
 omni_range = 11.0
 
-[node name="PlaygroundLamp_02_Pole" type="MeshInstance3D" parent="Playground" unique_id=221850705]
+[node name="TriggerArea" type="Area3D" parent="Playground/PlaygroundLamp_01"]
+position = Vector3(-62, 0.5, 66)
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Playground/PlaygroundLamp_01/TriggerArea"]
+shape = SubResource("SphereShape_healing_lamp")
+
+[node name="PlaygroundLamp_02" type="Node3D" parent="Playground"]
+script = ExtResource("HealingLamp")
+light_path = NodePath("PlaygroundLamp_02_Glow")
+head_path = NodePath("PlaygroundLamp_02_Head")
+
+[node name="PlaygroundLamp_02_Pole" type="MeshInstance3D" parent="Playground/PlaygroundLamp_02" unique_id=221850705]
 transform = Transform3D(0.18, 0, 0, 0, 2.7, 0, 0, 0, 0.18, -101, 1.35, 68)
 material_override = SubResource("StandardMaterial3D_vmfad")
 mesh = SubResource("CylinderMesh_vydf8")
 
-[node name="PlaygroundLamp_02_Head" type="MeshInstance3D" parent="Playground" unique_id=1845343351]
+[node name="PlaygroundLamp_02_Head" type="MeshInstance3D" parent="Playground/PlaygroundLamp_02" unique_id=1845343351]
 transform = Transform3D(0.9, 0, 0, 0, 0.42, 0, 0, 0, 0.9, -101, 2.85, 68)
 material_override = SubResource("StandardMaterial3D_cdv3k")
 mesh = SubResource("BoxMesh_feuad")
 
-[node name="PlaygroundLamp_02_Glow" type="OmniLight3D" parent="Playground" unique_id=39647604]
+[node name="PlaygroundLamp_02_Glow" type="OmniLight3D" parent="Playground/PlaygroundLamp_02" unique_id=39647604]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -101, 2.8, 68)
 light_color = Color(1, 0.63, 0.32, 1)
 light_energy = 2.0
 omni_range = 11.0
+
+[node name="TriggerArea" type="Area3D" parent="Playground/PlaygroundLamp_02"]
+position = Vector3(-101, 0.5, 68)
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Playground/PlaygroundLamp_02/TriggerArea"]
+shape = SubResource("SphereShape_healing_lamp")
 
 [node name="CentralSquare" type="Node3D" parent="." unique_id=225630204]
 
@@ -1222,101 +1252,179 @@ transform = Transform3D(4, 0, 0, 0, 0.4, 0, 0, 0, 2.2, 18.671188, 0.2, -14.44704
 material_override = SubResource("StandardMaterial3D_ao1xf")
 mesh = SubResource("CylinderMesh_vydf8")
 
-[node name="CentralLamp_01_Pole" type="MeshInstance3D" parent="CentralSquare" unique_id=372594327]
+[node name="CentralLamp_01" type="Node3D" parent="CentralSquare"]
+script = ExtResource("HealingLamp")
+light_path = NodePath("CentralLamp_01_Glow")
+head_path = NodePath("CentralLamp_01_Head")
+
+[node name="CentralLamp_01_Pole" type="MeshInstance3D" parent="CentralSquare/CentralLamp_01" unique_id=372594327]
 transform = Transform3D(0.18, 0, 0, 0, 2.7, 0, 0, 0, 0.18, 31, 1.35, 0)
 material_override = SubResource("StandardMaterial3D_vmfad")
 mesh = SubResource("CylinderMesh_vydf8")
 
-[node name="CentralLamp_01_Head" type="MeshInstance3D" parent="CentralSquare" unique_id=1429578885]
+[node name="CentralLamp_01_Head" type="MeshInstance3D" parent="CentralSquare/CentralLamp_01" unique_id=1429578885]
 transform = Transform3D(0.9, 0, 0, 0, 0.42, 0, 0, 0, 0.9, 31, 2.85, 0)
 material_override = SubResource("StandardMaterial3D_cdv3k")
 mesh = SubResource("BoxMesh_feuad")
 
-[node name="CentralLamp_01_Glow" type="OmniLight3D" parent="CentralSquare" unique_id=32866539]
+[node name="CentralLamp_01_Glow" type="OmniLight3D" parent="CentralSquare/CentralLamp_01" unique_id=32866539]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 2.8, 0)
 light_color = Color(1, 0.63, 0.32, 1)
 light_energy = 2.0
 omni_range = 11.0
 
-[node name="CentralLamp_02_Pole" type="MeshInstance3D" parent="CentralSquare" unique_id=1937892041]
+[node name="TriggerArea" type="Area3D" parent="CentralSquare/CentralLamp_01"]
+position = Vector3(31, 0.5, 0)
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CentralSquare/CentralLamp_01/TriggerArea"]
+shape = SubResource("SphereShape_healing_lamp")
+
+[node name="CentralLamp_02" type="Node3D" parent="CentralSquare"]
+script = ExtResource("HealingLamp")
+light_path = NodePath("CentralLamp_02_Glow")
+head_path = NodePath("CentralLamp_02_Head")
+
+[node name="CentralLamp_02_Pole" type="MeshInstance3D" parent="CentralSquare/CentralLamp_02" unique_id=1937892041]
 transform = Transform3D(0.18, 0, 0, 0, 2.7, 0, 0, 0, 0.18, 15.5, 1.35, 20.784609)
 material_override = SubResource("StandardMaterial3D_vmfad")
 mesh = SubResource("CylinderMesh_vydf8")
 
-[node name="CentralLamp_02_Head" type="MeshInstance3D" parent="CentralSquare" unique_id=1838664492]
+[node name="CentralLamp_02_Head" type="MeshInstance3D" parent="CentralSquare/CentralLamp_02" unique_id=1838664492]
 transform = Transform3D(0.9, 0, 0, 0, 0.42, 0, 0, 0, 0.9, 15.5, 2.85, 20.784609)
 material_override = SubResource("StandardMaterial3D_cdv3k")
 mesh = SubResource("BoxMesh_feuad")
 
-[node name="CentralLamp_02_Glow" type="OmniLight3D" parent="CentralSquare" unique_id=156181189]
+[node name="CentralLamp_02_Glow" type="OmniLight3D" parent="CentralSquare/CentralLamp_02" unique_id=156181189]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 2.8, 20.784609)
 light_color = Color(1, 0.63, 0.32, 1)
 light_energy = 2.0
 omni_range = 11.0
 
-[node name="CentralLamp_03_Pole" type="MeshInstance3D" parent="CentralSquare" unique_id=1603380087]
+[node name="TriggerArea" type="Area3D" parent="CentralSquare/CentralLamp_02"]
+position = Vector3(15.5, 0.5, 20.784609)
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CentralSquare/CentralLamp_02/TriggerArea"]
+shape = SubResource("SphereShape_healing_lamp")
+
+[node name="CentralLamp_03" type="Node3D" parent="CentralSquare"]
+script = ExtResource("HealingLamp")
+light_path = NodePath("CentralLamp_03_Glow")
+head_path = NodePath("CentralLamp_03_Head")
+
+[node name="CentralLamp_03_Pole" type="MeshInstance3D" parent="CentralSquare/CentralLamp_03" unique_id=1603380087]
 transform = Transform3D(0.18, 0, 0, 0, 2.7, 0, 0, 0, 0.18, -15.5, 1.35, 20.784609)
 material_override = SubResource("StandardMaterial3D_vmfad")
 mesh = SubResource("CylinderMesh_vydf8")
 
-[node name="CentralLamp_03_Head" type="MeshInstance3D" parent="CentralSquare" unique_id=2029121222]
+[node name="CentralLamp_03_Head" type="MeshInstance3D" parent="CentralSquare/CentralLamp_03" unique_id=2029121222]
 transform = Transform3D(0.9, 0, 0, 0, 0.42, 0, 0, 0, 0.9, -15.5, 2.85, 20.784609)
 material_override = SubResource("StandardMaterial3D_cdv3k")
 mesh = SubResource("BoxMesh_feuad")
 
-[node name="CentralLamp_03_Glow" type="OmniLight3D" parent="CentralSquare" unique_id=140952279]
+[node name="CentralLamp_03_Glow" type="OmniLight3D" parent="CentralSquare/CentralLamp_03" unique_id=140952279]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 2.8, 20.784609)
 light_color = Color(1, 0.63, 0.32, 1)
 light_energy = 2.0
 omni_range = 11.0
 
-[node name="CentralLamp_04_Pole" type="MeshInstance3D" parent="CentralSquare" unique_id=287465767]
+[node name="TriggerArea" type="Area3D" parent="CentralSquare/CentralLamp_03"]
+position = Vector3(-15.5, 0.5, 20.784609)
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CentralSquare/CentralLamp_03/TriggerArea"]
+shape = SubResource("SphereShape_healing_lamp")
+
+[node name="CentralLamp_04" type="Node3D" parent="CentralSquare"]
+script = ExtResource("HealingLamp")
+light_path = NodePath("CentralLamp_04_Glow")
+head_path = NodePath("CentralLamp_04_Head")
+
+[node name="CentralLamp_04_Pole" type="MeshInstance3D" parent="CentralSquare/CentralLamp_04" unique_id=287465767]
 transform = Transform3D(0.18, 0, 0, 0, 2.7, 0, 0, 0, 0.18, -31, 1.35, 2.9390552e-15)
 material_override = SubResource("StandardMaterial3D_vmfad")
 mesh = SubResource("CylinderMesh_vydf8")
 
-[node name="CentralLamp_04_Head" type="MeshInstance3D" parent="CentralSquare" unique_id=267049207]
+[node name="CentralLamp_04_Head" type="MeshInstance3D" parent="CentralSquare/CentralLamp_04" unique_id=267049207]
 transform = Transform3D(0.9, 0, 0, 0, 0.42, 0, 0, 0, 0.9, -31, 2.85, 2.9390552e-15)
 material_override = SubResource("StandardMaterial3D_cdv3k")
 mesh = SubResource("BoxMesh_feuad")
 
-[node name="CentralLamp_04_Glow" type="OmniLight3D" parent="CentralSquare" unique_id=2015497399]
+[node name="CentralLamp_04_Glow" type="OmniLight3D" parent="CentralSquare/CentralLamp_04" unique_id=2015497399]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, 2.8, 2.9390552e-15)
 light_color = Color(1, 0.63, 0.32, 1)
 light_energy = 2.0
 omni_range = 11.0
 
-[node name="CentralLamp_05_Pole" type="MeshInstance3D" parent="CentralSquare" unique_id=708626470]
+[node name="TriggerArea" type="Area3D" parent="CentralSquare/CentralLamp_04"]
+position = Vector3(-31, 0.5, 2.9390552e-15)
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CentralSquare/CentralLamp_04/TriggerArea"]
+shape = SubResource("SphereShape_healing_lamp")
+
+[node name="CentralLamp_05" type="Node3D" parent="CentralSquare"]
+script = ExtResource("HealingLamp")
+light_path = NodePath("CentralLamp_05_Glow")
+head_path = NodePath("CentralLamp_05_Head")
+
+[node name="CentralLamp_05_Pole" type="MeshInstance3D" parent="CentralSquare/CentralLamp_05" unique_id=708626470]
 transform = Transform3D(0.18, 0, 0, 0, 2.7, 0, 0, 0, 0.18, -15.5, 1.35, -20.784609)
 material_override = SubResource("StandardMaterial3D_vmfad")
 mesh = SubResource("CylinderMesh_vydf8")
 
-[node name="CentralLamp_05_Head" type="MeshInstance3D" parent="CentralSquare" unique_id=1284455668]
+[node name="CentralLamp_05_Head" type="MeshInstance3D" parent="CentralSquare/CentralLamp_05" unique_id=1284455668]
 transform = Transform3D(0.9, 0, 0, 0, 0.42, 0, 0, 0, 0.9, -15.5, 2.85, -20.784609)
 material_override = SubResource("StandardMaterial3D_cdv3k")
 mesh = SubResource("BoxMesh_feuad")
 
-[node name="CentralLamp_05_Glow" type="OmniLight3D" parent="CentralSquare" unique_id=659338013]
+[node name="CentralLamp_05_Glow" type="OmniLight3D" parent="CentralSquare/CentralLamp_05" unique_id=659338013]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 2.8, -20.784609)
 light_color = Color(1, 0.63, 0.32, 1)
 light_energy = 2.0
 omni_range = 11.0
 
-[node name="CentralLamp_06_Pole" type="MeshInstance3D" parent="CentralSquare" unique_id=242269869]
+[node name="TriggerArea" type="Area3D" parent="CentralSquare/CentralLamp_05"]
+position = Vector3(-15.5, 0.5, -20.784609)
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CentralSquare/CentralLamp_05/TriggerArea"]
+shape = SubResource("SphereShape_healing_lamp")
+
+[node name="CentralLamp_06" type="Node3D" parent="CentralSquare"]
+script = ExtResource("HealingLamp")
+light_path = NodePath("CentralLamp_06_Glow")
+head_path = NodePath("CentralLamp_06_Head")
+
+[node name="CentralLamp_06_Pole" type="MeshInstance3D" parent="CentralSquare/CentralLamp_06" unique_id=242269869]
 transform = Transform3D(0.18, 0, 0, 0, 2.7, 0, 0, 0, 0.18, 15.5, 1.35, -20.784609)
 material_override = SubResource("StandardMaterial3D_vmfad")
 mesh = SubResource("CylinderMesh_vydf8")
 
-[node name="CentralLamp_06_Head" type="MeshInstance3D" parent="CentralSquare" unique_id=1239570780]
+[node name="CentralLamp_06_Head" type="MeshInstance3D" parent="CentralSquare/CentralLamp_06" unique_id=1239570780]
 transform = Transform3D(0.9, 0, 0, 0, 0.42, 0, 0, 0, 0.9, 15.5, 2.85, -20.784609)
 material_override = SubResource("StandardMaterial3D_cdv3k")
 mesh = SubResource("BoxMesh_feuad")
 
-[node name="CentralLamp_06_Glow" type="OmniLight3D" parent="CentralSquare" unique_id=1049356997]
+[node name="CentralLamp_06_Glow" type="OmniLight3D" parent="CentralSquare/CentralLamp_06" unique_id=1049356997]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 2.8, -20.784609)
 light_color = Color(1, 0.63, 0.32, 1)
 light_energy = 2.0
 omni_range = 11.0
+
+[node name="TriggerArea" type="Area3D" parent="CentralSquare/CentralLamp_06"]
+position = Vector3(15.5, 0.5, -20.784609)
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CentralSquare/CentralLamp_06/TriggerArea"]
+shape = SubResource("SphereShape_healing_lamp")
 
 [node name="Maze" type="Node3D" parent="." unique_id=1469042641]
 
@@ -1855,37 +1963,63 @@ transform = Transform3D(1.2894853, 0, 0.17523825, 0, 0.8, 0, -0.5451857, 0, 0.41
 material_override = SubResource("StandardMaterial3D_drhr3")
 mesh = SubResource("BoxMesh_feuad")
 
-[node name="CrowOakLamp_01_Pole" type="MeshInstance3D" parent="CrowOak" unique_id=1254059899]
+[node name="CrowOakLamp_01" type="Node3D" parent="CrowOak"]
+script = ExtResource("HealingLamp")
+light_path = NodePath("CrowOakLamp_01_Glow")
+head_path = NodePath("CrowOakLamp_01_Head")
+
+[node name="CrowOakLamp_01_Pole" type="MeshInstance3D" parent="CrowOak/CrowOakLamp_01" unique_id=1254059899]
 transform = Transform3D(0.18, 0, 0, 0, 2.7, 0, 0, 0, 0.18, 45, 1.35, 52)
 material_override = SubResource("StandardMaterial3D_vmfad")
 mesh = SubResource("CylinderMesh_vydf8")
 
-[node name="CrowOakLamp_01_Head" type="MeshInstance3D" parent="CrowOak" unique_id=815083907]
+[node name="CrowOakLamp_01_Head" type="MeshInstance3D" parent="CrowOak/CrowOakLamp_01" unique_id=815083907]
 transform = Transform3D(0.9, 0, 0, 0, 0.42, 0, 0, 0, 0.9, 45, 2.85, 52)
 material_override = SubResource("StandardMaterial3D_cdv3k")
 mesh = SubResource("BoxMesh_feuad")
 
-[node name="CrowOakLamp_01_Glow" type="OmniLight3D" parent="CrowOak" unique_id=518725585]
+[node name="CrowOakLamp_01_Glow" type="OmniLight3D" parent="CrowOak/CrowOakLamp_01" unique_id=518725585]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 2.8, 52)
 light_color = Color(1, 0.63, 0.32, 1)
 light_energy = 2.0
 omni_range = 11.0
 
-[node name="CrowOakLamp_02_Pole" type="MeshInstance3D" parent="CrowOak" unique_id=852827788]
+[node name="TriggerArea" type="Area3D" parent="CrowOak/CrowOakLamp_01"]
+position = Vector3(45, 0.5, 52)
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CrowOak/CrowOakLamp_01/TriggerArea"]
+shape = SubResource("SphereShape_healing_lamp")
+
+[node name="CrowOakLamp_02" type="Node3D" parent="CrowOak"]
+script = ExtResource("HealingLamp")
+light_path = NodePath("CrowOakLamp_02_Glow")
+head_path = NodePath("CrowOakLamp_02_Head")
+
+[node name="CrowOakLamp_02_Pole" type="MeshInstance3D" parent="CrowOak/CrowOakLamp_02" unique_id=852827788]
 transform = Transform3D(0.18, 0, 0, 0, 2.7, 0, 0, 0, 0.18, 78, 1.35, 32)
 material_override = SubResource("StandardMaterial3D_vmfad")
 mesh = SubResource("CylinderMesh_vydf8")
 
-[node name="CrowOakLamp_02_Head" type="MeshInstance3D" parent="CrowOak" unique_id=2061860370]
+[node name="CrowOakLamp_02_Head" type="MeshInstance3D" parent="CrowOak/CrowOakLamp_02" unique_id=2061860370]
 transform = Transform3D(0.9, 0, 0, 0, 0.42, 0, 0, 0, 0.9, 78, 2.85, 32)
 material_override = SubResource("StandardMaterial3D_cdv3k")
 mesh = SubResource("BoxMesh_feuad")
 
-[node name="CrowOakLamp_02_Glow" type="OmniLight3D" parent="CrowOak" unique_id=1268560568]
+[node name="CrowOakLamp_02_Glow" type="OmniLight3D" parent="CrowOak/CrowOakLamp_02" unique_id=1268560568]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78, 2.8, 32)
 light_color = Color(1, 0.63, 0.32, 1)
 light_energy = 2.0
 omni_range = 11.0
+
+[node name="TriggerArea" type="Area3D" parent="CrowOak/CrowOakLamp_02"]
+position = Vector3(78, 0.5, 32)
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CrowOak/CrowOakLamp_02/TriggerArea"]
+shape = SubResource("SphereShape_healing_lamp")
 
 [node name="CityExit" type="Node3D" parent="." unique_id=1667732784]
 
@@ -1909,37 +2043,63 @@ transform = Transform3D(5.5, 0, 0, 0, 2.2, 0, 0, 0, 0.25, 112, 1.8, 104)
 material_override = SubResource("StandardMaterial3D_qvkle")
 mesh = SubResource("BoxMesh_feuad")
 
-[node name="ExitLamp_01_Pole" type="MeshInstance3D" parent="CityExit" unique_id=518965514]
+[node name="ExitLamp_01" type="Node3D" parent="CityExit"]
+script = ExtResource("HealingLamp")
+light_path = NodePath("ExitLamp_01_Glow")
+head_path = NodePath("ExitLamp_01_Head")
+
+[node name="ExitLamp_01_Pole" type="MeshInstance3D" parent="CityExit/ExitLamp_01" unique_id=518965514]
 transform = Transform3D(0.18, 0, 0, 0, 2.7, 0, 0, 0, 0.18, 110, 1.35, 89)
 material_override = SubResource("StandardMaterial3D_vmfad")
 mesh = SubResource("CylinderMesh_vydf8")
 
-[node name="ExitLamp_01_Head" type="MeshInstance3D" parent="CityExit" unique_id=1443952733]
+[node name="ExitLamp_01_Head" type="MeshInstance3D" parent="CityExit/ExitLamp_01" unique_id=1443952733]
 transform = Transform3D(0.9, 0, 0, 0, 0.42, 0, 0, 0, 0.9, 110, 2.85, 89)
 material_override = SubResource("StandardMaterial3D_cdv3k")
 mesh = SubResource("BoxMesh_feuad")
 
-[node name="ExitLamp_01_Glow" type="OmniLight3D" parent="CityExit" unique_id=1976537046]
+[node name="ExitLamp_01_Glow" type="OmniLight3D" parent="CityExit/ExitLamp_01" unique_id=1976537046]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110, 2.8, 89)
 light_color = Color(1, 0.63, 0.32, 1)
 light_energy = 2.0
 omni_range = 11.0
 
-[node name="ExitLamp_02_Pole" type="MeshInstance3D" parent="CityExit" unique_id=997345735]
+[node name="TriggerArea" type="Area3D" parent="CityExit/ExitLamp_01"]
+position = Vector3(110, 0.5, 89)
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CityExit/ExitLamp_01/TriggerArea"]
+shape = SubResource("SphereShape_healing_lamp")
+
+[node name="ExitLamp_02" type="Node3D" parent="CityExit"]
+script = ExtResource("HealingLamp")
+light_path = NodePath("ExitLamp_02_Glow")
+head_path = NodePath("ExitLamp_02_Head")
+
+[node name="ExitLamp_02_Pole" type="MeshInstance3D" parent="CityExit/ExitLamp_02" unique_id=997345735]
 transform = Transform3D(0.18, 0, 0, 0, 2.7, 0, 0, 0, 0.18, 127, 1.35, 104)
 material_override = SubResource("StandardMaterial3D_vmfad")
 mesh = SubResource("CylinderMesh_vydf8")
 
-[node name="ExitLamp_02_Head" type="MeshInstance3D" parent="CityExit" unique_id=880287654]
+[node name="ExitLamp_02_Head" type="MeshInstance3D" parent="CityExit/ExitLamp_02" unique_id=880287654]
 transform = Transform3D(0.9, 0, 0, 0, 0.42, 0, 0, 0, 0.9, 127, 2.85, 104)
 material_override = SubResource("StandardMaterial3D_cdv3k")
 mesh = SubResource("BoxMesh_feuad")
 
-[node name="ExitLamp_02_Glow" type="OmniLight3D" parent="CityExit" unique_id=50914825]
+[node name="ExitLamp_02_Glow" type="OmniLight3D" parent="CityExit/ExitLamp_02" unique_id=50914825]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 127, 2.8, 104)
 light_color = Color(1, 0.63, 0.32, 1)
 light_energy = 2.0
 omni_range = 11.0
+
+[node name="TriggerArea" type="Area3D" parent="CityExit/ExitLamp_02"]
+position = Vector3(127, 0.5, 104)
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CityExit/ExitLamp_02/TriggerArea"]
+shape = SubResource("SphereShape_healing_lamp")
 
 [node name="CitySilhouette_01" type="MeshInstance3D" parent="CityExit" unique_id=628078652]
 transform = Transform3D(5.5, 0, 0, 0, 12, 0, 0, 0, 6, 152, 6, 62)
@@ -2336,37 +2496,63 @@ transform = Transform3D(4.5, 0, 0, 0, 2, 0, 0, 0, 0.25, -109, 2.35, 89)
 material_override = SubResource("StandardMaterial3D_qvkle")
 mesh = SubResource("BoxMesh_feuad")
 
-[node name="EntranceLamp_01_Pole" type="MeshInstance3D" parent="ParkEntrance" unique_id=1356992409]
+[node name="EntranceLamp_01" type="Node3D" parent="ParkEntrance"]
+script = ExtResource("HealingLamp")
+light_path = NodePath("EntranceLamp_01_Glow")
+head_path = NodePath("EntranceLamp_01_Head")
+
+[node name="EntranceLamp_01_Pole" type="MeshInstance3D" parent="ParkEntrance/EntranceLamp_01" unique_id=1356992409]
 transform = Transform3D(0.18, 0, 0, 0, 2.7, 0, 0, 0, 0.18, -121, 1.35, 86)
 material_override = SubResource("StandardMaterial3D_vmfad")
 mesh = SubResource("CylinderMesh_vydf8")
 
-[node name="EntranceLamp_01_Head" type="MeshInstance3D" parent="ParkEntrance" unique_id=454854759]
+[node name="EntranceLamp_01_Head" type="MeshInstance3D" parent="ParkEntrance/EntranceLamp_01" unique_id=454854759]
 transform = Transform3D(0.9, 0, 0, 0, 0.42, 0, 0, 0, 0.9, -121, 2.85, 86)
 material_override = SubResource("StandardMaterial3D_cdv3k")
 mesh = SubResource("BoxMesh_feuad")
 
-[node name="EntranceLamp_01_Glow" type="OmniLight3D" parent="ParkEntrance" unique_id=663009092]
+[node name="EntranceLamp_01_Glow" type="OmniLight3D" parent="ParkEntrance/EntranceLamp_01" unique_id=663009092]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -121, 2.8, 86)
 light_color = Color(1, 0.63, 0.32, 1)
 light_energy = 2.0
 omni_range = 11.0
 
-[node name="EntranceLamp_02_Pole" type="MeshInstance3D" parent="ParkEntrance" unique_id=1923955142]
+[node name="TriggerArea" type="Area3D" parent="ParkEntrance/EntranceLamp_01"]
+position = Vector3(-121, 0.5, 86)
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkEntrance/EntranceLamp_01/TriggerArea"]
+shape = SubResource("SphereShape_healing_lamp")
+
+[node name="EntranceLamp_02" type="Node3D" parent="ParkEntrance"]
+script = ExtResource("HealingLamp")
+light_path = NodePath("EntranceLamp_02_Glow")
+head_path = NodePath("EntranceLamp_02_Head")
+
+[node name="EntranceLamp_02_Pole" type="MeshInstance3D" parent="ParkEntrance/EntranceLamp_02" unique_id=1923955142]
 transform = Transform3D(0.18, 0, 0, 0, 2.7, 0, 0, 0, 0.18, -100, 1.35, 74)
 material_override = SubResource("StandardMaterial3D_vmfad")
 mesh = SubResource("CylinderMesh_vydf8")
 
-[node name="EntranceLamp_02_Head" type="MeshInstance3D" parent="ParkEntrance" unique_id=1024267092]
+[node name="EntranceLamp_02_Head" type="MeshInstance3D" parent="ParkEntrance/EntranceLamp_02" unique_id=1024267092]
 transform = Transform3D(0.9, 0, 0, 0, 0.42, 0, 0, 0, 0.9, -100, 2.85, 74)
 material_override = SubResource("StandardMaterial3D_cdv3k")
 mesh = SubResource("BoxMesh_feuad")
 
-[node name="EntranceLamp_02_Glow" type="OmniLight3D" parent="ParkEntrance" unique_id=1050500308]
+[node name="EntranceLamp_02_Glow" type="OmniLight3D" parent="ParkEntrance/EntranceLamp_02" unique_id=1050500308]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 2.8, 74)
 light_color = Color(1, 0.63, 0.32, 1)
 light_energy = 2.0
 omni_range = 11.0
+
+[node name="TriggerArea" type="Area3D" parent="ParkEntrance/EntranceLamp_02"]
+position = Vector3(-100, 0.5, 74)
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParkEntrance/EntranceLamp_02/TriggerArea"]
+shape = SubResource("SphereShape_healing_lamp")
 
 [node name="SpawnPoints" type="Node3D" parent="." unique_id=759799477]
 
@@ -2535,9 +2721,11 @@ shape = SubResource("BoxShape3D_park_trigger")
 
 [node name="Zone05_QuietEncounter" type="Node3D" parent="ParkGameplay"]
 
-[node name="QuietEntity" type="Node3D" parent="ParkGameplay/Zone05_QuietEncounter" node_paths=PackedStringArray("position_targets")]
+[node name="QuietEntity" type="Node3D" parent="ParkGameplay/Zone05_QuietEncounter"]
+position = Vector3(58, 0.5, -66)
 script = ExtResource("27_silent")
-position_targets = [NodePath("../../../SilentSpawnPoints/SilentPoint_05"), NodePath("../../../SilentSpawnPoints/SilentPoint_06"), NodePath("../../../SilentSpawnPoints/SilentPoint_07")]
+debug_enabled = true
+patrol_points = [NodePath("../../../SilentSpawnPoints/SilentPoint_05"), NodePath("../../../SilentSpawnPoints/SilentPoint_06"), NodePath("../../../SilentSpawnPoints/SilentPoint_07")]
 
 [node name="QuietEncounterTrigger" type="Area3D" parent="ParkGameplay/Zone05_QuietEncounter"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 1, 24)

@@ -16,6 +16,7 @@ const CRITICAL_STATE: int = 2
 var cat_vision_manager: Node
 var player_cat: Node
 var fade_tween: Tween
+var eye_target_color: Color = Color.TRANSPARENT
 var current_cat_state: int = NORMAL_STATE
 var current_fear: float = 0.0
 var current_calmness: float = 100.0
@@ -29,6 +30,10 @@ var eye_base_position: Vector2
 
 func _ready() -> void:
 	eye_base_position = cat_eyes_indicator.position
+	# Direct scene launches assign current_scene after _ready.
+	call_deferred("_bind_fear_system")
+
+func _bind_fear_system() -> void:
 	var current_scene: Node = get_tree().current_scene
 	if current_scene != null:
 		cat_vision_manager = current_scene.find_child("CatVisionManager", true, false)
@@ -95,20 +100,23 @@ func _on_trauma_avoidance_changed(is_active: bool, zone_name: String, radius_vis
 func update_cat_eyes_indicator() -> void:
 	var next_texture: Texture2D = normal_eye
 	var next_modulate: Color = _get_fear_eye_modulate()
-	if current_cat_state == CRITICAL_STATE or is_fear_critical:
+	if current_cat_state == CRITICAL_STATE or (is_fear_critical and current_fear_state != "Hiding"):
 		next_texture = danger_eye
 	elif current_cat_state == CAT_VISION_STATE:
 		next_texture = cat_vision_eye
 		next_modulate = Color(1.0, 1.0, 1.0, 0.88)
-	elif current_calmness <= 25.0 and current_calmness > 0.0 and panic_eye != null:
+	elif current_calmness <= 50.0:
+		next_texture = cat_vision_eye
+	elif current_calmness <= 75.0 and panic_eye != null:
 		next_texture = panic_eye
 
-	if cat_eyes_indicator.texture == next_texture and _colors_are_close(cat_eyes_indicator.modulate, next_modulate):
+	if cat_eyes_indicator.texture == next_texture and _colors_are_close(eye_target_color, next_modulate):
 		return
 
 	if fade_tween != null and fade_tween.is_valid():
 		fade_tween.kill()
 
+	eye_target_color = next_modulate
 	cat_eyes_indicator.texture = next_texture
 	cat_eyes_indicator.modulate = Color(next_modulate.r, next_modulate.g, next_modulate.b, 0.35)
 	fade_tween = create_tween()

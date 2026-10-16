@@ -1,5 +1,6 @@
 [gd_scene format=3]
 
+[ext_resource type="Script" path="res://Scripts/World/healing_lamp.gd" id="HealingLamp"]
 [ext_resource type="PackedScene" path="res://Scenes/Player/PlayerCat.tscn" id="1_player"]
 [ext_resource type="Script" uid="uid://ligvtd7i5o31" path="res://Scripts/Camera/camera_3d.gd" id="2_camera"]
 [ext_resource type="Script" uid="uid://d0bllj7m7hfhw" path="res://Scripts/CatVision/cat_vision_manager.gd" id="3_cat_vision"]
@@ -8,6 +9,9 @@
 [ext_resource type="AudioStream" uid="uid://t12hewewpnfp" path="res://Art/Audio/Music/LostInABadPlace.ogg" id="6_cat_music"]
 [ext_resource type="PackedScene" path="res://Scenes/Portals/ScenePortal.tscn" id="7_portal"]
 [ext_resource type="PackedScene" path="res://Scenes/UI/CatStatusHUD.tscn" id="8_cat_status"]
+
+[sub_resource type="SphereShape3D" id="SphereShape_healing_lamp"]
+radius = 3.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ground"]
 size = Vector2(184, 184)
@@ -262,39 +266,65 @@ surface_material_override/0 = SubResource("Mat_construction")
 
 [node name="StreetLamps" type="Node3D" parent="CityLayout"]
 
-[node name="Lamp_01_Pole" type="MeshInstance3D" parent="CityLayout/StreetLamps"]
+[node name="Lamp_01" type="Node3D" parent="CityLayout/StreetLamps"]
+script = ExtResource("HealingLamp")
+light_path = NodePath("Lamp_01_Glow")
+head_path = NodePath("Lamp_01_Head")
+
+[node name="Lamp_01_Pole" type="MeshInstance3D" parent="CityLayout/StreetLamps/Lamp_01"]
 transform = Transform3D(0.16, 0, 0, 0, 3.2, 0, 0, 0, 0.16, -7, 1.6, -23)
 mesh = SubResource("Mesh_cylinder")
 surface_material_override/0 = SubResource("Mat_lamp")
 
-[node name="Lamp_01_Head" type="MeshInstance3D" parent="CityLayout/StreetLamps"]
+[node name="Lamp_01_Head" type="MeshInstance3D" parent="CityLayout/StreetLamps/Lamp_01"]
 transform = Transform3D(0.65, 0, 0, 0, 0.32, 0, 0, 0, 0.65, -7, 3.3, -23)
 mesh = SubResource("Mesh_box")
 surface_material_override/0 = SubResource("Mat_light")
 
-[node name="Lamp_01_Glow" type="OmniLight3D" parent="CityLayout/StreetLamps"]
+[node name="Lamp_01_Glow" type="OmniLight3D" parent="CityLayout/StreetLamps/Lamp_01"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 3.3, -23)
 light_color = Color(1, 0.67, 0.42, 1)
 light_energy = 2.4
 omni_range = 10
 shadow_enabled = true
 
-[node name="Lamp_02_Pole" type="MeshInstance3D" parent="CityLayout/StreetLamps"]
+[node name="TriggerArea" type="Area3D" parent="CityLayout/StreetLamps/Lamp_01"]
+position = Vector3(-7, 0.5, -23)
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CityLayout/StreetLamps/Lamp_01/TriggerArea"]
+shape = SubResource("SphereShape_healing_lamp")
+
+[node name="Lamp_02" type="Node3D" parent="CityLayout/StreetLamps"]
+script = ExtResource("HealingLamp")
+light_path = NodePath("Lamp_02_Glow")
+head_path = NodePath("Lamp_02_Head")
+
+[node name="Lamp_02_Pole" type="MeshInstance3D" parent="CityLayout/StreetLamps/Lamp_02"]
 transform = Transform3D(0.16, 0, 0, 0, 3.2, 0, 0, 0, 0.16, 8, 1.6, 14)
 mesh = SubResource("Mesh_cylinder")
 surface_material_override/0 = SubResource("Mat_lamp")
 
-[node name="Lamp_02_Head" type="MeshInstance3D" parent="CityLayout/StreetLamps"]
+[node name="Lamp_02_Head" type="MeshInstance3D" parent="CityLayout/StreetLamps/Lamp_02"]
 transform = Transform3D(0.65, 0, 0, 0, 0.32, 0, 0, 0, 0.65, 8, 3.3, 14)
 mesh = SubResource("Mesh_box")
 surface_material_override/0 = SubResource("Mat_light")
 
-[node name="Lamp_02_Glow" type="OmniLight3D" parent="CityLayout/StreetLamps"]
+[node name="Lamp_02_Glow" type="OmniLight3D" parent="CityLayout/StreetLamps/Lamp_02"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3.3, 14)
 light_color = Color(1, 0.67, 0.42, 1)
 light_energy = 2.1
 omni_range = 9
 shadow_enabled = true
+
+[node name="TriggerArea" type="Area3D" parent="CityLayout/StreetLamps/Lamp_02"]
+position = Vector3(8, 0.5, 14)
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CityLayout/StreetLamps/Lamp_02/TriggerArea"]
+shape = SubResource("SphereShape_healing_lamp")
 
 [node name="MetroEntrance" type="Node3D" parent="CityLayout"]
 

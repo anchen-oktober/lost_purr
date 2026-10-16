@@ -191,6 +191,8 @@ func _ready() -> void:
 	load_progress()
 
 func _input(event: InputEvent) -> void:
+	if is_player_control_locked():
+		return
 	if event is InputEventKey and not event.echo:
 		if event.physical_keycode == KEY_SHIFT and not event.pressed:
 			_close_cat_vision_prompt()
@@ -260,8 +262,12 @@ func get_entries_for_category(category: int) -> Array[Dictionary]:
 func is_collected(entry_id: String) -> bool:
 	return collected_entries.has(entry_id)
 
+func is_player_control_locked() -> bool:
+	var player: Node = get_tree().get_first_node_in_group("player")
+	return is_instance_valid(player) and player.get("controls_locked") == true
+
 func is_scene_input_blocked() -> bool:
-	return journal_ui != null and (journal_ui.is_journal_open() or journal_ui.is_memory_popup_open())
+	return is_player_control_locked() or (journal_ui != null and (journal_ui.is_journal_open() or journal_ui.is_memory_popup_open()))
 
 func save_progress() -> void:
 	var file: FileAccess = FileAccess.open(SAVE_PATH, FileAccess.WRITE)

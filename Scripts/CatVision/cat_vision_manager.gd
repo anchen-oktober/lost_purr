@@ -52,6 +52,9 @@ var current_state: CatState = CatState.NORMAL
 var _cat_vision_enabled_before_forced: bool = false
 
 func _ready() -> void:
+	call_deferred("_initialize_scene")
+
+func _initialize_scene() -> void:
 	var current_scene: Node = get_tree().current_scene
 	if current_scene != null:
 		if world_environment == null:
@@ -151,11 +154,18 @@ func _refresh_state() -> void:
 	elif is_cat_vision_enabled:
 		next_state = CatState.CAT_VISION
 
+	# Quiet threats follow the vision toggle even when DANGER overrides the atmosphere.
+	_update_quiet_visibility()
 	if next_state == current_state:
 		return
 
 	current_state = next_state
 	cat_state_changed.emit(current_state)
+
+func _update_quiet_visibility() -> void:
+	for node in get_tree().get_nodes_in_group("silent"):
+		if node is Node3D:
+			(node as Node3D).visible = is_cat_vision_enabled
 
 func _detect_current_location_id() -> String:
 	var scene_root: Node = _find_scene_root()

@@ -43,6 +43,8 @@ func _ready() -> void:
 	load_progress()
 
 func _input(event: InputEvent) -> void:
+	if JournalManager.is_player_control_locked():
+		return
 	if not (event is InputEventKey) or not event.pressed or event.echo:
 		return
 

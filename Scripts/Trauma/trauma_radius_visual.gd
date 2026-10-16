@@ -49,11 +49,9 @@ func pulse_trauma_radius_warning() -> void:
 	warning_tween = create_tween()
 	warning_tween.set_trans(Tween.TRANS_SINE)
 	warning_tween.set_ease(Tween.EASE_OUT)
-	warning_tween.tween_property(self, "scale", Vector3.ONE * 1.08, 0.12)
-	warning_tween.parallel().tween_property(fill_material, "albedo_color", Color(fill_color.r, fill_color.g, fill_color.b, 0.48), 0.12)
+	warning_tween.tween_property(fill_material, "albedo_color", Color(fill_color.r, fill_color.g, fill_color.b, 0.48), 0.12)
 	warning_tween.parallel().tween_property(border_material, "albedo_color", Color(border_color.r, border_color.g, border_color.b, 0.95), 0.12)
-	warning_tween.tween_property(self, "scale", Vector3.ONE, 0.24)
-	warning_tween.parallel().tween_property(fill_material, "albedo_color", fill_color, 0.24)
+	warning_tween.tween_property(fill_material, "albedo_color", fill_color, 0.24)
 	warning_tween.parallel().tween_property(border_material, "albedo_color", border_color, 0.24)
 
 func is_radius_visible() -> bool:
@@ -120,7 +118,7 @@ func _create_material(color: Color) -> StandardMaterial3D:
 	material.albedo_color = color
 	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-	material.no_depth_test = false
+	material.no_depth_test = true
 	material.cull_mode = BaseMaterial3D.CULL_DISABLED
 	return material
 
@@ -131,8 +129,8 @@ func _start_pulse() -> void:
 	pulse_tween.set_loops()
 	pulse_tween.set_trans(Tween.TRANS_SINE)
 	pulse_tween.set_ease(Tween.EASE_IN_OUT)
-	pulse_tween.tween_property(self, "scale", Vector3.ONE * (1.0 + pulse_scale_amount), pulse_duration)
-	pulse_tween.tween_property(self, "scale", Vector3.ONE * (1.0 - pulse_scale_amount * 0.45), pulse_duration)
+	pulse_tween.tween_property(fill_material, "albedo_color:a", fill_color.a + pulse_scale_amount, pulse_duration)
+	pulse_tween.tween_property(fill_material, "albedo_color:a", fill_color.a, pulse_duration)
 
 func _stop_pulse() -> void:
 	if pulse_tween != null and pulse_tween.is_valid():

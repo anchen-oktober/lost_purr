@@ -88,6 +88,8 @@ func _process(delta: float) -> void:
 			_try_periodic_activation()
 
 func _input(event: InputEvent) -> void:
+	if JournalManager.is_player_control_locked():
+		return
 	if not player_inside:
 		return
 	var key_event: InputEventKey = event as InputEventKey

@@ -6,7 +6,7 @@ const GAMEPLAY_CAMERA_SCRIPT: Script = preload("res://Scripts/Camera/camera_3d.g
 const CAT_VISION_MANAGER_SCRIPT: Script = preload("res://Scripts/CatVision/cat_vision_manager.gd")
 const LEVELS: Dictionary = {
 	"village": {
-		"path": "res://Scenes/Levels/Village.scn",
+		"path": "res://Scenes/Levels/Village.tscn",
 		"spawn": "SpawnFromVillage",
 	},
 	"park": {
@@ -153,8 +153,17 @@ func change_scene(scene_path: String, spawn_name: String) -> void:
 	await _fade_to(0.0, 0.45)
 
 func register_current_scene_player() -> void:
+	var scene: Node = get_tree().current_scene
+	if scene != null:
+		for level_id: String in LEVELS:
+			if LEVELS[level_id]["path"] == scene.scene_file_path:
+				current_level_id = level_id
+				current_spawn_name = LEVELS[level_id]["spawn"]
+				pending_spawn_name = current_spawn_name
+				break
 	_apply_location_to_cat_vision(current_level_id)
 	_restore_player_at_spawn()
+	_validate_gameplay_startup(current_level_id)
 
 func _apply_location_to_cat_vision(level_id: String) -> void:
 	if get_tree().current_scene == null:

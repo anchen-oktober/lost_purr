@@ -108,8 +108,9 @@ func _set_calm_without_player(value: float, trigger_id: String, reason: String) 
 	_log_calm_change(old_value, current_calm, trigger_id, reason)
 
 func _find_player() -> void:
-	if player_cat != null:
+	if is_instance_valid(player_cat):
 		return
+	player_cat = null
 	if get_tree().current_scene == null:
 		return
 	var player: Node = get_tree().current_scene.find_child("PlayerCat", true, false)
