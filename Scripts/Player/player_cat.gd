@@ -6,6 +6,7 @@ const TraumaRadiusVisualScript: Script = preload("res://Scripts/Trauma/trauma_ra
 
 signal fear_changed(fear: float, calmness: float, state: String, is_critical: bool)
 signal trauma_avoidance_changed(is_active: bool, blocked_zone_name: String, radius_visible: bool)
+signal movement_blocked(details: Dictionary)
 
 @export var speed: float = 5.0
 @export var hold_threshold: float = 0.2
@@ -27,6 +28,11 @@ signal trauma_avoidance_changed(is_active: bool, blocked_zone_name: String, radi
 @export var hiding_recovery_rate: float = 25.0
 @export var minimum_hiding_time: float = 1.0
 @export var interaction_fallback_range: float = 4.0
+@export var movement_debug_enabled: bool = false
+
+var last_movement_blockage: Dictionary = {}
+var _movement_debug_last_key: String = ""
+var _movement_debug_last_time: int = 0
 
 var target_position: Vector3
 var moving: bool = false
@@ -61,6 +67,10 @@ var fallback_trigger: Area3D = null
 
 func _ready() -> void:
 	add_to_group("player")
+	if OS.has_feature("debug") and "--movement-debug" in OS.get_cmdline_user_args():
+		movement_debug_enabled = true
+	if movement_debug_enabled:
+		get_tree().debug_collisions_hint = true
 	target_position = global_position
 	level_start_transform = global_transform
 	last_recovery_transform = level_start_transform
@@ -73,11 +83,20 @@ func _ready() -> void:
 		calm_manager.call("register_player", self)
 
 func _input(event: InputEvent) -> void:
+	if OS.has_feature("debug") and event is InputEventKey and event.pressed and not event.echo and event.physical_keycode == KEY_F8:
+		movement_debug_enabled = not movement_debug_enabled
+		get_tree().debug_collisions_hint = movement_debug_enabled
+		print("[Movement] Diagnostics and collision shapes: ", movement_debug_enabled)
+		get_viewport().set_input_as_handled()
+		return
 	if controls_locked:
+		if event is InputEventMouseButton and event.pressed:
+			_report_movement_blockage("logic", {"reason": "controls_locked", "phase": fear_recovery_phase})
 		return
 
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if JournalManager.is_scene_input_blocked():
+			_report_movement_blockage("logic", {"reason": "journal_input_blocked"})
 			mouse_down = false
 			moving = false
 			_stop_horizontal_movement()
@@ -125,12 +144,14 @@ func _physics_process(delta: float) -> void:
 		return
 
 	if controls_locked or JournalManager.is_scene_input_blocked():
+		if moving or mouse_down:
+			_report_movement_blockage("logic", {"reason": "controls_locked" if controls_locked else "journal_input_blocked"})
 		mouse_down = false
 		moving = false
 		_stop_horizontal_movement()
 
 	if controls_locked:
-		move_and_slide()
+		_move_and_diagnose()
 		return
 
 	_update_interaction_fallback()
@@ -144,6 +165,8 @@ func _physics_process(delta: float) -> void:
 		direction.y = 0.0
 
 		if direction.length() > 0.1:
+			if move_speed_multiplier <= 0.0:
+				_report_movement_blockage("logic", {"reason": "fear_speed_zero", "phase": fear_recovery_phase})
 			direction = direction.normalized()
 			velocity.x = direction.x * speed * move_speed_multiplier
 			velocity.z = direction.z * speed * move_speed_multiplier
@@ -164,18 +187,73 @@ func _move_with_trauma_boundary(delta: float) -> void:
 		var closest: Vector2 = Geometry2D.get_closest_point_to_segment(center, from, to)
 		var radius: float = trauma_block_radius + 0.45
 		if closest.distance_to(center) < radius and (from.distance_to(center) >= radius or to.distance_to(center) < from.distance_to(center)):
+			_report_movement_blockage("logic", {"reason": "trauma_boundary", "zone": blocked_zone_name, "center": last_fear_source_position, "radius": radius})
 			_stop_horizontal_movement()
 			moving = false
 			target_position = global_position
 			_pulse_active_trauma_warning()
-	move_and_slide()
+	_move_and_diagnose()
 	if has_active_trauma_avoidance:
 		var old_distance := Vector2(previous.x - last_fear_source_position.x, previous.z - last_fear_source_position.z).length()
 		var new_distance := Vector2(global_position.x - last_fear_source_position.x, global_position.z - last_fear_source_position.z).length()
 		if new_distance < trauma_block_radius + 0.45 and new_distance < old_distance:
+			_report_movement_blockage("logic", {"reason": "trauma_boundary_rollback", "zone": blocked_zone_name, "center": last_fear_source_position, "radius": trauma_block_radius + 0.45})
 			global_position.x = previous.x
 			global_position.z = previous.z
 			_stop_horizontal_movement()
+
+func _move_and_diagnose() -> void:
+	var requested := Vector3(velocity.x, 0.0, velocity.z)
+	var previous: Vector3 = global_position
+	move_and_slide()
+	if not movement_debug_enabled or requested.length_squared() < 0.0001:
+		return
+	var actual := Vector3(global_position.x - previous.x, 0.0, global_position.z - previous.z)
+	var expected: float = requested.length() * get_physics_process_delta_time()
+	if actual.dot(requested.normalized()) >= expected * 0.5:
+		return
+	for index in range(get_slide_collision_count()):
+		var contact: KinematicCollision3D = get_slide_collision(index)
+		if contact.get_normal().dot(requested.normalized()) >= -0.05:
+			continue
+		var collider: Object = contact.get_collider()
+		var details: Dictionary = {
+			"reason": "slide_collision", "contact": contact.get_position(),
+			"normal": contact.get_normal(), "rid": contact.get_collider_rid(),
+			"shape_index": contact.get_collider_shape(),
+		}
+		if collider is Node:
+			details["collider"] = str(collider.get_path())
+		if collider is Node3D:
+			details["collider_position"] = collider.global_position
+			details["collider_visible"] = collider.is_visible_in_tree()
+		if collider is CollisionObject3D:
+			var owner_id: int = collider.shape_find_owner(contact.get_collider_shape())
+			var shape_owner: Object = collider.shape_owner_get_owner(owner_id)
+			if shape_owner is Node:
+				details["shape"] = str(shape_owner.get_path())
+		if collider != null and collider.is_class("Terrain3D"):
+			var spacing: float = float(collider.get("vertex_spacing"))
+			var point: Vector3 = contact.get_position()
+			details["terrain_cell"] = Vector2i(floori(point.x / spacing), floori(point.z / spacing))
+		_report_movement_blockage("physics", details)
+
+func _report_movement_blockage(kind: String, details: Dictionary) -> void:
+	if not movement_debug_enabled:
+		return
+	details["kind"] = kind
+	details["player_position"] = global_position
+	details["target"] = target_position
+	details["fear"] = fear
+	last_movement_blockage = details
+	var key: String = kind + str(details.get("reason", "")) + str(details.get("collider", ""))
+	var now: int = Time.get_ticks_msec()
+	if key == _movement_debug_last_key and now - _movement_debug_last_time < 1000:
+		return
+	_movement_debug_last_key = key
+	_movement_debug_last_time = now
+	movement_blocked.emit(details)
+	print("[Movement] ", details)
 
 func _update_interaction_fallback() -> void:
 	if interaction_candidates.is_empty():
@@ -245,6 +323,7 @@ func update_target_from_mouse() -> void:
 	target_position = ray_origin + ray_direction * distance
 
 	if _is_position_blocked_by_trauma(target_position):
+		_report_movement_blockage("logic", {"reason": "trauma_target", "zone": blocked_zone_name, "center": last_fear_source_position, "radius": trauma_block_radius})
 		mouse_down = false
 		moving = false
 		target_position = global_position
@@ -386,10 +465,12 @@ func _process_fear_recovery(delta: float) -> void:
 			var movement: Vector3 = direction.normalized() * minf(flee_speed, direction.length() / delta)
 			velocity.x = movement.x
 			velocity.z = movement.z
-		move_and_slide()
+		else:
+			_report_movement_blockage("logic", {"reason": "fear_return_path_empty", "destination": flee_destination})
+		_move_and_diagnose()
 	elif fear_recovery_phase == "Hiding":
 		_stop_horizontal_movement()
-		move_and_slide()
+		_move_and_diagnose()
 		hiding_time += delta
 		restore_fear(maxf(hiding_recovery_rate, 0.1) * delta)
 		if fear <= 0.0 and hiding_time >= minimum_hiding_time:

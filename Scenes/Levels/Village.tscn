@@ -150,7 +150,7 @@ background_mode = 1
 background_color = Color(0.36, 0.26, 0.18, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.9019608, 0.7882353, 0.62352943, 1)
-ambient_light_energy = 0.95
+ambient_light_energy = 0.76
 fog_enabled = true
 fog_light_color = Color(0.8039216, 0.73333335, 0.6509804, 1)
 fog_light_energy = 0.65
@@ -159,7 +159,6 @@ fog_density = 0.003
 fog_sky_affect = 0.28
 volumetric_fog_density = 0.0
 adjustment_enabled = true
-adjustment_contrast = 0.92
 adjustment_saturation = 0.82
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8vrpf"]
@@ -890,6 +889,9 @@ radial_segments = 8
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="BoxMesh" id="BoxMesh_4j1fs"]
 size = Vector3(0.42, 0.25, 0.42)
@@ -907,6 +909,9 @@ radial_segments = 8
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="BoxMesh" id="BoxMesh_mkc8j"]
 size = Vector3(0.42, 0.25, 0.42)
@@ -918,6 +923,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ns4n4"]
 radius = 3.0
@@ -926,6 +934,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_px6ec"]
 radius = 3.0
@@ -934,6 +945,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_s4wul"]
 radius = 3.0
@@ -942,6 +956,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qkvpv"]
 radius = 3.0
@@ -950,6 +967,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_j0yjt"]
 radius = 3.0
@@ -958,6 +978,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ywvbk"]
 radius = 3.0
@@ -966,6 +989,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0u6pj"]
 radius = 3.0
@@ -974,6 +1000,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_o8xwm"]
 radius = 3.0
@@ -982,6 +1011,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1nsxm"]
 radius = 3.0
@@ -990,6 +1022,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_tk6ew"]
 radius = 3.0
@@ -998,6 +1033,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_uv1ax"]
 radius = 3.0
@@ -1006,6 +1044,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_rdh75"]
 radius = 3.0
@@ -1014,6 +1055,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_83reh"]
 radius = 3.0
@@ -1022,6 +1066,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ckudd"]
 radius = 3.0
@@ -1030,6 +1077,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_bpsap"]
 radius = 3.0
@@ -1038,6 +1088,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mf7lw"]
 radius = 3.0
@@ -1046,6 +1099,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ehmvx"]
 radius = 3.0
@@ -1054,6 +1110,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vvd03"]
 radius = 3.0
@@ -1062,6 +1121,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8bnys"]
 radius = 3.0
@@ -1070,6 +1132,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_a1ag5"]
 radius = 3.0
@@ -1078,6 +1143,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wll1l"]
 radius = 3.0
@@ -1086,6 +1154,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nj1if"]
 radius = 3.0
@@ -1094,6 +1165,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_lediu"]
 radius = 3.0
@@ -1102,6 +1176,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_i1oe4"]
 radius = 3.0
@@ -1110,6 +1187,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_x41ve"]
 radius = 3.0
@@ -1118,6 +1198,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_s4mrw"]
 radius = 3.0
@@ -1126,6 +1209,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_reu34"]
 radius = 3.0
@@ -1134,6 +1220,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_j44yj"]
 radius = 3.0
@@ -1142,6 +1231,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3sxtq"]
 radius = 3.0
@@ -1150,6 +1242,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_plpbn"]
 radius = 3.0
@@ -1158,6 +1253,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_shxw8"]
 radius = 3.0
@@ -1166,6 +1264,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_piwwi"]
 radius = 3.0
@@ -1174,6 +1275,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_kvgh8"]
 radius = 3.0
@@ -1182,6 +1286,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_d6kkj"]
 radius = 3.0
@@ -1190,6 +1297,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ycfo5"]
 radius = 3.0
@@ -1198,6 +1308,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_rotyv"]
 radius = 3.0
@@ -1206,6 +1319,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ojd58"]
 radius = 3.0
@@ -1214,6 +1330,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qfh21"]
 radius = 3.0
@@ -1222,6 +1341,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_kkml2"]
 radius = 3.0
@@ -1230,6 +1352,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nichx"]
 radius = 3.0
@@ -1238,6 +1363,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_301gb"]
 radius = 3.0
@@ -1246,6 +1374,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1d4ns"]
 radius = 3.0
@@ -1254,6 +1385,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_egx5d"]
 radius = 3.0
@@ -1262,6 +1396,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vij53"]
 radius = 3.0
@@ -1270,6 +1407,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_i4c4n"]
 radius = 3.0
@@ -1278,6 +1418,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_sr2oo"]
 radius = 3.0
@@ -1286,6 +1429,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qrded"]
 radius = 3.0
@@ -1294,6 +1440,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dmdov"]
 radius = 3.0
@@ -1302,6 +1451,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7eeo6"]
 radius = 3.0
@@ -1310,6 +1462,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_bskjx"]
 radius = 3.0
@@ -1318,6 +1473,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_a54er"]
 radius = 3.0
@@ -1326,6 +1484,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wp46r"]
 radius = 3.0
@@ -1334,6 +1495,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_rqlax"]
 radius = 3.0
@@ -1342,6 +1506,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0wlc0"]
 radius = 3.0
@@ -1350,6 +1517,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_a37e4"]
 radius = 3.0
@@ -1358,6 +1528,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_hmcu6"]
 radius = 3.0
@@ -1366,6 +1539,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6wpji"]
 radius = 3.0
@@ -1374,6 +1550,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nf8ox"]
 radius = 3.0
@@ -1382,6 +1561,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_klc74"]
 radius = 3.0
@@ -1390,6 +1572,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_d2tgc"]
 radius = 3.0
@@ -1398,6 +1583,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_krxh7"]
 radius = 3.0
@@ -1406,6 +1594,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_m1hol"]
 radius = 3.0
@@ -1414,6 +1605,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_oli18"]
 radius = 3.0
@@ -1422,6 +1616,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_w0pdo"]
 radius = 3.0
@@ -1430,6 +1627,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_o5gx4"]
 radius = 3.0
@@ -1438,6 +1638,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_pftyo"]
 radius = 3.0
@@ -1446,6 +1649,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6tejx"]
 radius = 3.0
@@ -1454,6 +1660,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0eh2u"]
 radius = 3.0
@@ -1462,6 +1671,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0rgxg"]
 radius = 3.0
@@ -1470,6 +1682,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_rx8r3"]
 radius = 3.0
@@ -1478,6 +1693,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_2fqab"]
 radius = 3.0
@@ -1486,6 +1704,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5mugl"]
 radius = 3.0
@@ -1494,6 +1715,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_78mn8"]
 radius = 3.0
@@ -1502,6 +1726,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5mctd"]
 radius = 3.0
@@ -1510,6 +1737,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1fcg3"]
 radius = 3.0
@@ -1518,6 +1748,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_pl2mb"]
 radius = 3.0
@@ -1526,6 +1759,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4emfp"]
 radius = 3.0
@@ -1534,6 +1770,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_i3o2j"]
 radius = 3.0
@@ -1542,6 +1781,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_2ya7h"]
 radius = 3.0
@@ -1550,6 +1792,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1foyw"]
 radius = 3.0
@@ -1558,6 +1803,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_txedm"]
 radius = 3.0
@@ -1566,6 +1814,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_c3vt0"]
 radius = 3.0
@@ -1574,6 +1825,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_s1qbs"]
 radius = 3.0
@@ -1582,6 +1836,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3n5mr"]
 radius = 3.0
@@ -1590,6 +1847,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ra72l"]
 radius = 3.0
@@ -1598,6 +1858,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_otv7x"]
 radius = 3.0
@@ -1606,6 +1869,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_tyejo"]
 radius = 3.0
@@ -1614,6 +1880,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_shkdn"]
 radius = 3.0
@@ -1622,6 +1891,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_emksp"]
 radius = 3.0
@@ -1630,6 +1902,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_gjs7o"]
 radius = 3.0
@@ -1638,6 +1913,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wc42w"]
 radius = 3.0
@@ -1646,6 +1924,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_oqrcc"]
 radius = 3.0
@@ -1654,6 +1935,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3yx6w"]
 radius = 3.0
@@ -1662,6 +1946,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_2dj86"]
 radius = 3.0
@@ -1670,14 +1957,18 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_s8bph"]
-radius = 3.0
+radius = 2.9
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kwrwk"]
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4yjm4"]
 radius = 3.0
@@ -1686,6 +1977,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yjfif"]
 radius = 3.0
@@ -1694,6 +1988,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_o4iup"]
 radius = 3.0
@@ -1702,6 +1999,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_e5pim"]
 radius = 3.0
@@ -1710,6 +2010,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4hblo"]
 radius = 3.0
@@ -1718,6 +2021,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6bokn"]
 radius = 3.0
@@ -1726,6 +2032,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_xevfp"]
 radius = 3.0
@@ -1734,6 +2043,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qy2dn"]
 radius = 3.0
@@ -1742,6 +2054,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qx16q"]
 radius = 3.0
@@ -1750,6 +2065,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_owbwl"]
 radius = 3.0
@@ -1758,6 +2076,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_pwwch"]
 radius = 3.0
@@ -1766,6 +2087,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_70um4"]
 radius = 3.0
@@ -1774,6 +2098,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7av3l"]
 radius = 3.0
@@ -1782,6 +2109,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0ohxm"]
 radius = 3.0
@@ -1790,6 +2120,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_80bv5"]
 radius = 3.0
@@ -1798,6 +2131,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_awfq3"]
 radius = 3.0
@@ -1806,6 +2142,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6jqmw"]
 radius = 3.0
@@ -1814,6 +2153,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_t1e77"]
 radius = 3.0
@@ -1822,6 +2164,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_gtuas"]
 radius = 3.0
@@ -1830,6 +2175,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ntdjv"]
 radius = 3.0
@@ -1838,6 +2186,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4ccer"]
 radius = 3.0
@@ -1846,6 +2197,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_iw32t"]
 radius = 3.0
@@ -1854,6 +2208,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_hs5fs"]
 radius = 3.0
@@ -1862,6 +2219,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_r50qg"]
 radius = 3.0
@@ -1870,6 +2230,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ryshd"]
 radius = 3.0
@@ -1878,6 +2241,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_bs2te"]
 radius = 3.0
@@ -1886,6 +2252,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nferl"]
 radius = 3.0
@@ -1894,6 +2263,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_18gnb"]
 radius = 3.0
@@ -1902,6 +2274,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dcq8u"]
 radius = 3.0
@@ -1910,6 +2285,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_uphxn"]
 radius = 3.0
@@ -1918,6 +2296,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5ys5l"]
 radius = 3.0
@@ -1926,6 +2307,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ydd4b"]
 radius = 3.0
@@ -1934,6 +2318,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_hyhis"]
 radius = 3.0
@@ -1942,6 +2329,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_t6lxo"]
 radius = 3.0
@@ -1950,6 +2340,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ivbw0"]
 radius = 3.0
@@ -1958,6 +2351,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_hd0gi"]
 radius = 3.0
@@ -1966,6 +2362,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_p2pbk"]
 radius = 3.0
@@ -1974,6 +2373,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_gkjak"]
 radius = 3.0
@@ -1982,6 +2384,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_haw8f"]
 radius = 3.0
@@ -1990,6 +2395,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_iugah"]
 radius = 3.0
@@ -1998,6 +2406,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_i0dkm"]
 radius = 3.0
@@ -2006,6 +2417,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6xa4h"]
 radius = 3.0
@@ -2014,6 +2428,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mw43s"]
 radius = 3.0
@@ -2022,6 +2439,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mkpal"]
 radius = 3.0
@@ -2030,6 +2450,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_tbqma"]
 radius = 3.0
@@ -2038,6 +2461,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_xrblj"]
 radius = 3.0
@@ -2046,6 +2472,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_q1pqp"]
 radius = 3.0
@@ -2054,6 +2483,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nb0dk"]
 radius = 3.0
@@ -2062,6 +2494,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_867oj"]
 radius = 3.0
@@ -2070,6 +2505,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nhm45"]
 radius = 3.0
@@ -2078,6 +2516,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fi223"]
 radius = 3.0
@@ -2086,6 +2527,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_uw85s"]
 radius = 3.0
@@ -2094,6 +2538,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4ytcp"]
 radius = 3.0
@@ -2102,6 +2549,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_pkpry"]
 radius = 3.0
@@ -2110,6 +2560,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_srte0"]
 radius = 3.0
@@ -2118,6 +2571,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_r8jpl"]
 radius = 3.0
@@ -2126,6 +2582,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mdr7x"]
 radius = 3.0
@@ -2134,6 +2593,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_opku1"]
 radius = 3.0
@@ -2142,6 +2604,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qak47"]
 radius = 3.0
@@ -2150,6 +2615,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_hvjm7"]
 radius = 3.0
@@ -2158,6 +2626,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_r1mw8"]
 radius = 3.0
@@ -2166,6 +2637,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_x43u7"]
 radius = 3.0
@@ -2174,6 +2648,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_gtar3"]
 radius = 3.0
@@ -2182,6 +2659,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_aw8rc"]
 radius = 3.0
@@ -2190,6 +2670,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_2acot"]
 radius = 3.0
@@ -2198,6 +2681,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0irwd"]
 radius = 3.0
@@ -2206,6 +2692,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0d5dn"]
 radius = 3.0
@@ -2214,6 +2703,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_kjalx"]
 radius = 3.0
@@ -2222,6 +2714,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_stfxh"]
 radius = 3.0
@@ -2230,6 +2725,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3iidu"]
 radius = 3.0
@@ -2238,6 +2736,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7dvc1"]
 radius = 3.0
@@ -2246,6 +2747,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_igbp4"]
 radius = 3.0
@@ -2254,6 +2758,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_jd532"]
 radius = 3.0
@@ -2262,6 +2769,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_kxplk"]
 radius = 3.0
@@ -2270,6 +2780,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_j8vqi"]
 radius = 3.0
@@ -2278,6 +2791,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_k33f8"]
 radius = 3.0
@@ -2286,6 +2802,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_bem3d"]
 radius = 3.0
@@ -2294,6 +2813,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dmib2"]
 radius = 3.0
@@ -2302,6 +2824,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_rl4kt"]
 radius = 3.0
@@ -2310,6 +2835,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_hdsib"]
 radius = 3.0
@@ -2318,6 +2846,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_bujtd"]
 radius = 3.0
@@ -2326,6 +2857,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_m1a44"]
 radius = 3.0
@@ -2334,6 +2868,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_68v8t"]
 radius = 3.0
@@ -2342,6 +2879,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yqdd8"]
 radius = 3.0
@@ -2350,6 +2890,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dnn8x"]
 radius = 3.0
@@ -2358,6 +2901,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fuh4v"]
 radius = 3.0
@@ -2366,6 +2912,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dic0b"]
 radius = 3.0
@@ -2374,6 +2923,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_28oxf"]
 radius = 3.0
@@ -2382,6 +2934,9 @@ radius = 3.0
 resource_name = "M_Village_Lamp_WarmSoft"
 albedo_color = Color(0.8156863, 0.627451, 0.3764706, 1)
 roughness = 0.82
+emission_enabled = true
+emission = Color(1, 0.76, 0.34, 1)
+emission_energy_multiplier = 3.2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pvg27"]
 resource_name = "M_Village_Tree_Trunk"
@@ -2692,7 +3247,7 @@ fov = 58.0
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=825650642]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0)
 light_color = Color(0.94509804, 0.8117647, 0.6392157, 1)
-light_energy = 0.92
+light_energy = 0.74
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=809749385]
@@ -2714,6 +3269,7 @@ autoplay = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -89.021904, 0, 17.047375)
 
 [node name="Network" type="Node3D" parent="Blockout" unique_id=40037698]
+process_mode = 4
 visible = false
 
 [node name="FenceNetwork16" parent="Blockout/Network" unique_id=2136250726 instance=ExtResource("10_4qp3q")]
@@ -16485,6 +17041,7 @@ material_override = SubResource("StandardMaterial3D_70drr")
 mesh = SubResource("BoxMesh_5o6vq")
 
 [node name="Houses" type="Node3D" parent="Village" unique_id=1174888390]
+process_mode = 4
 visible = false
 
 [node name="House_01" type="StaticBody3D" parent="Village/Houses" unique_id=1536848912]
@@ -16990,7 +17547,7 @@ mesh = SubResource("BoxMesh_4j1fs")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_01" unique_id=1855449039]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.007949829, 1.4637852, -0.0075531006)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -17018,7 +17575,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_02" unique_id=1234075604]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -17046,7 +17603,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_03" unique_id=1048111516]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -17074,7 +17631,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_04" unique_id=1158263726]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -17102,7 +17659,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_05" unique_id=1676386407]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -17130,7 +17687,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_06" unique_id=1264071941]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -17158,7 +17715,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_07" unique_id=1871245491]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -17186,7 +17743,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_08" unique_id=2040722402]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -17214,7 +17771,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_09" unique_id=583633511]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -17242,7 +17799,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_10" unique_id=148533521]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -17270,7 +17827,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_11" unique_id=2024790964]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -17298,7 +17855,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_12" unique_id=913939625]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -17326,7 +17883,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_26" unique_id=482474359]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -17354,7 +17911,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_15" unique_id=701631157]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -17382,7 +17939,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_16" unique_id=646628669]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -17410,7 +17967,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_18" unique_id=2080632453]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -17438,7 +17995,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_17" unique_id=1680190385]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14352417, 2.0259643, 0.1401062)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -17466,7 +18023,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_21" unique_id=2022038949]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13006592, 2.2106414, 0.11061096)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -17494,7 +18051,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_22" unique_id=1447723969]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -17522,7 +18079,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_23" unique_id=1369520744]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -17550,7 +18107,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_27" unique_id=127473039]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -17578,7 +18135,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_24" unique_id=97230804]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -17606,7 +18163,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_28" unique_id=1320624049]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -17634,7 +18191,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_25" unique_id=1325221653]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -17662,7 +18219,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_29" unique_id=875387302]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -17690,7 +18247,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_30" unique_id=2082727176]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -17718,7 +18275,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_32" unique_id=1846789735]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -17746,7 +18303,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_33" unique_id=1294989144]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -17774,7 +18331,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_34" unique_id=947089333]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -17802,7 +18359,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_48" unique_id=1316709080]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -17830,7 +18387,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_49" unique_id=1041227103]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -17858,7 +18415,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_50" unique_id=1150887170]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -17886,7 +18443,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_51" unique_id=1642108808]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -17914,7 +18471,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_52" unique_id=828881729]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -17942,7 +18499,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_53" unique_id=387545692]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -17970,7 +18527,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_54" unique_id=2006391948]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -17998,7 +18555,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_55" unique_id=905875057]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -18026,7 +18583,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_57" unique_id=1729548868]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -18054,7 +18611,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_56" unique_id=1891917902]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -18082,7 +18639,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_59" unique_id=1706220297]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -18110,7 +18667,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_60" unique_id=1425201436]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -18138,7 +18695,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_61" unique_id=612511669]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -18166,7 +18723,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_62" unique_id=1446504824]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -18194,7 +18751,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_63" unique_id=449982791]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -18222,7 +18779,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_64" unique_id=1877959239]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -18250,7 +18807,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_65" unique_id=383283965]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -18278,7 +18835,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_66" unique_id=774856865]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -18306,7 +18863,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_67" unique_id=1011232445]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -18334,7 +18891,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_68" unique_id=803859539]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -18362,7 +18919,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_69" unique_id=2042707313]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -18390,7 +18947,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_70" unique_id=67828872]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -18418,7 +18975,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_71" unique_id=97810771]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -18446,7 +19003,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_72" unique_id=675706335]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -18474,7 +19031,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_73" unique_id=2026784001]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -18502,7 +19059,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_74" unique_id=52317131]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -18530,7 +19087,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_58" unique_id=1899150401]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -18558,7 +19115,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_35" unique_id=221633621]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -18586,7 +19143,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_36" unique_id=1184177036]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -18614,7 +19171,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_47" unique_id=1685693134]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -18642,7 +19199,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_37" unique_id=24536830]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -18670,7 +19227,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_46" unique_id=613411379]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -18698,7 +19255,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_38" unique_id=78458966]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -18726,7 +19283,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_45" unique_id=224508180]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -18754,7 +19311,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_39" unique_id=905518691]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -18782,7 +19339,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_44" unique_id=49809475]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -18810,7 +19367,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_40" unique_id=878056559]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -18838,7 +19395,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_42" unique_id=458324108]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -18866,7 +19423,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_75" unique_id=1099643934]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -18894,7 +19451,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_77" unique_id=216456475]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -18922,7 +19479,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_78" unique_id=1687233958]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -18950,7 +19507,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_79" unique_id=607258277]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -18978,7 +19535,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_80" unique_id=1407255957]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -19006,7 +19563,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_81" unique_id=1788143285]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -19034,7 +19591,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_82" unique_id=1776497891]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -19062,7 +19619,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_83" unique_id=323076820]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -19090,7 +19647,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_84" unique_id=2102691053]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -19118,7 +19675,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_85" unique_id=1669394052]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -19146,7 +19703,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_86" unique_id=1064621588]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -19174,7 +19731,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_87" unique_id=939498545]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -19202,7 +19759,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_88" unique_id=1576300216]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -19230,7 +19787,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_89" unique_id=1215712841]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -19258,7 +19815,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_90" unique_id=38718919]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -19286,7 +19843,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_91" unique_id=2065592805]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -19314,7 +19871,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_92" unique_id=577014425]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -19342,7 +19899,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_96" unique_id=532849052]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -19370,7 +19927,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_97" unique_id=2126009299]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -19398,7 +19955,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_113" unique_id=812490808]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -19426,7 +19983,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_98" unique_id=565530296]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -19454,7 +20011,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_112" unique_id=586719726]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -19482,7 +20039,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_99" unique_id=577962752]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -19510,7 +20067,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_111" unique_id=105071126]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -19538,7 +20095,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_100" unique_id=1591928173]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -19566,7 +20123,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_110" unique_id=221075369]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -19594,7 +20151,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_101" unique_id=599287058]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -19629,7 +20186,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_102" unique_id=927300944]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -19657,13 +20214,14 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_109" unique_id=1006732002]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
 [node name="StreetLamp_103" type="Node3D" parent="Village/StreetLamps" unique_id=906449866]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.918848, 0, 5.897667)
 script = ExtResource("HealingLamp")
+light_enabled = false
 
 [node name="TriggerArea" type="Area3D" parent="Village/StreetLamps/StreetLamp_103" unique_id=1736904057]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -19684,14 +20242,17 @@ mesh = SubResource("BoxMesh_mkc8j")
 
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_103" unique_id=851277969]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
+visible = false
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
 [node name="StreetLamp_104" type="Node3D" parent="Village/StreetLamps" unique_id=763369811]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.616943, 0, 6.200123)
 script = ExtResource("HealingLamp")
+light_enabled = false
+trigger_radius = 2.9
 
 [node name="TriggerArea" type="Area3D" parent="Village/StreetLamps/StreetLamp_104" unique_id=668259005]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -19712,8 +20273,9 @@ mesh = SubResource("BoxMesh_mkc8j")
 
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_104" unique_id=114225876]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
+visible = false
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -19741,7 +20303,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_105" unique_id=1849433221]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -19769,7 +20331,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_106" unique_id=1692690674]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -19797,7 +20359,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_107" unique_id=123785614]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -19825,7 +20387,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_108" unique_id=1337856787]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -19853,7 +20415,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_93" unique_id=194094020]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -19881,7 +20443,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_114" unique_id=365805190]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -19909,7 +20471,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_119" unique_id=1934539810]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -19937,7 +20499,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_115" unique_id=1721437752]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -19965,7 +20527,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_116" unique_id=900865857]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -19993,7 +20555,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_118" unique_id=457338890]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -20021,7 +20583,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_117" unique_id=369243064]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -20049,7 +20611,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_136" unique_id=283223108]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -20077,7 +20639,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_138" unique_id=1455740541]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -20105,7 +20667,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_140" unique_id=530776297]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -20133,7 +20695,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_141" unique_id=764105128]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -20161,7 +20723,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_143" unique_id=818118303]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -20189,7 +20751,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_145" unique_id=335895995]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -20217,7 +20779,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_149" unique_id=2127043214]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -20245,7 +20807,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_150" unique_id=321086778]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -20273,7 +20835,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_151" unique_id=1945536044]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -20301,7 +20863,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_152" unique_id=1608813674]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -20329,7 +20891,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_153" unique_id=794059602]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -20357,7 +20919,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_154" unique_id=426168094]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -20385,7 +20947,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_155" unique_id=107856532]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -20413,7 +20975,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_156" unique_id=61149321]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -20441,7 +21003,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_157" unique_id=857821488]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -20469,7 +21031,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_158" unique_id=333539876]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -20497,7 +21059,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_159" unique_id=869282238]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -20525,7 +21087,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_160" unique_id=16171020]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -20553,7 +21115,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_120" unique_id=931190460]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -20581,7 +21143,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_121" unique_id=1942955192]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -20609,7 +21171,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_122" unique_id=238302488]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -20637,7 +21199,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_123" unique_id=384801988]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -20665,7 +21227,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_124" unique_id=1777615349]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -20693,7 +21255,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_125" unique_id=1908897720]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -20721,7 +21283,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_161" unique_id=505056165]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -20749,7 +21311,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_162" unique_id=2109054441]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -20777,7 +21339,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_163" unique_id=1081008882]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -20805,7 +21367,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_164" unique_id=723547645]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -20833,7 +21395,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_165" unique_id=1061375829]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -20861,7 +21423,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_166" unique_id=913095720]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -20889,7 +21451,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_167" unique_id=548426620]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -20917,7 +21479,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_168" unique_id=1454635933]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -20945,7 +21507,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_169" unique_id=2000807627]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -20973,7 +21535,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_170" unique_id=1182238170]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -21001,7 +21563,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_171" unique_id=1730996763]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -21029,7 +21591,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_172" unique_id=1704878892]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -21057,7 +21619,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_173" unique_id=1611746074]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -21085,7 +21647,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_174" unique_id=899551548]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -21113,7 +21675,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_175" unique_id=787711004]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -21141,7 +21703,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_176" unique_id=18532074]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -21169,7 +21731,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_177" unique_id=419621800]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -21197,7 +21759,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_178" unique_id=688542845]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -21225,7 +21787,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_179" unique_id=1913677696]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -21253,7 +21815,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_180" unique_id=1369868987]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -21281,7 +21843,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_181" unique_id=1926212465]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -21309,7 +21871,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_182" unique_id=60348431]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -21337,7 +21899,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_183" unique_id=1426714289]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -21365,7 +21927,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_184" unique_id=1006429734]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -21393,7 +21955,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_185" unique_id=1076175790]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -21421,7 +21983,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_186" unique_id=1066146025]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -21449,7 +22011,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_187" unique_id=921170887]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -21477,7 +22039,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_188" unique_id=847244526]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -21505,7 +22067,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_126" unique_id=2093297557]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -21533,7 +22095,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_127" unique_id=29651974]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -21561,7 +22123,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_128" unique_id=293475961]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -21589,7 +22151,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_129" unique_id=948138287]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -21617,7 +22179,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_131" unique_id=1188569222]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -21645,7 +22207,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_132" unique_id=609988911]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -21673,7 +22235,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_133" unique_id=1672363147]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -21701,7 +22263,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_134" unique_id=535115729]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -21729,7 +22291,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_135" unique_id=219585877]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -21757,7 +22319,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_137" unique_id=1873231519]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -21785,7 +22347,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_139" unique_id=904825280]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -21813,7 +22375,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_142" unique_id=1424015772]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -21841,7 +22403,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_144" unique_id=1511743945]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -21869,7 +22431,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_146" unique_id=2026481909]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -21897,7 +22459,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_147" unique_id=21888649]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -21925,7 +22487,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_148" unique_id=701662014]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -21953,7 +22515,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_130" unique_id=1493010930]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -21981,7 +22543,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_94" unique_id=1248138264]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -22009,7 +22571,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_95" unique_id=1398460096]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -22037,7 +22599,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_76" unique_id=617962038]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -22065,7 +22627,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_31" unique_id=1786485759]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -22093,7 +22655,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_19" unique_id=1577284062]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -22121,7 +22683,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_20" unique_id=1912742681]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -22149,7 +22711,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_13" unique_id=1631439003]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 
@@ -22177,7 +22739,7 @@ mesh = SubResource("BoxMesh_mkc8j")
 [node name="WarmGlow" type="OmniLight3D" parent="Village/StreetLamps/StreetLamp_14" unique_id=1525271978]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 light_color = Color(1, 0.72, 0.36, 1)
-light_energy = 2.6
+light_energy = 4.0
 shadow_enabled = true
 omni_range = 9.25
 

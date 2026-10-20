@@ -6,7 +6,7 @@ var light_material: StandardMaterial3D
 func build() -> void:
 	_clear_children()
 	pole_material = _material(Color(0.34, 0.24, 0.16, 1.0))
-	light_material = _emissive_material(Color(1.0, 0.76, 0.34, 1.0), 2.3)
+	light_material = _emissive_material(Color(1.0, 0.76, 0.34, 1.0), 3.2)
 
 	var lamp_positions: Array[Vector3] = [
 		Vector3(-26, 0, -12), Vector3(-17, 0, -1), Vector3(-8, 0, -14),
@@ -43,7 +43,7 @@ func _add_lamp(lamp_name: String, position: Vector3) -> void:
 	light.name = "WarmGlow"
 	light.position = Vector3(0, 2.1, 0)
 	light.light_color = Color(1.0, 0.72, 0.36, 1.0)
-	light.light_energy = 2.6
+	light.light_energy = 4.0
 	light.omni_range = 9.25
 	light.shadow_enabled = true
 	_add_scene_child(lamp, light)

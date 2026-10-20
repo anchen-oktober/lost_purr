@@ -21,7 +21,7 @@ enum CatState {
 @export var normal_ambient_color: Color = Color(0.98, 0.76, 0.48, 1.0)
 @export var vision_ambient_color: Color = Color(0.2, 0.36, 0.33, 1.0)
 @export var danger_ambient_color: Color = Color(0.58, 0.22, 0.18, 1.0)
-@export var normal_ambient_energy: float = 1.35
+@export var normal_ambient_energy: float = 1.05
 @export var vision_ambient_energy: float = 0.65
 @export var danger_ambient_energy: float = 0.72
 @export var normal_fog_density: float = 0.0
