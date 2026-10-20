@@ -220,18 +220,16 @@ func _move_and_diagnose() -> void:
 		var details: Dictionary = {
 			"reason": "slide_collision", "contact": contact.get_position(),
 			"normal": contact.get_normal(), "rid": contact.get_collider_rid(),
-			"shape_index": contact.get_collider_shape(),
+			"shape_index": contact.get_collider_shape_index(),
 		}
 		if collider is Node:
 			details["collider"] = str(collider.get_path())
 		if collider is Node3D:
 			details["collider_position"] = collider.global_position
 			details["collider_visible"] = collider.is_visible_in_tree()
-		if collider is CollisionObject3D:
-			var owner_id: int = collider.shape_find_owner(contact.get_collider_shape())
-			var shape_owner: Object = collider.shape_owner_get_owner(owner_id)
-			if shape_owner is Node:
-				details["shape"] = str(shape_owner.get_path())
+		var collider_shape: Object = contact.get_collider_shape()
+		if collider_shape is Node:
+			details["shape"] = str(collider_shape.get_path())
 		if collider != null and collider.is_class("Terrain3D"):
 			var spacing: float = float(collider.get("vertex_spacing"))
 			var point: Vector3 = contact.get_position()
