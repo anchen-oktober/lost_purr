@@ -4,6 +4,8 @@ const FearReturnPath = preload("res://Scripts/Player/fear_return_path.gd")
 
 const TraumaRadiusVisualScript: Script = preload("res://Scripts/Trauma/trauma_radius_visual.gd")
 
+@onready var cat_animation_player: AnimationPlayer = get_node_or_null("cat/AnimationPlayer")
+
 signal fear_changed(fear: float, calmness: float, state: String, is_critical: bool)
 signal trauma_avoidance_changed(is_active: bool, blocked_zone_name: String, radius_visible: bool)
 signal movement_blocked(details: Dictionary)
@@ -80,7 +82,15 @@ func _ready() -> void:
 	_update_fear_state()
 	var calm_manager: Node = get_node_or_null("/root/CatCalmManager")
 	if calm_manager != null and calm_manager.has_method("register_player"):
-		calm_manager.call("register_player", self)
+		calm_manager.call("register_player", self)	
+	if cat_animation_player != null:
+		var walk_animation = cat_animation_player.get_animation("cat_armature|walk")
+		if walk_animation != null:
+			walk_animation.loop_mode = Animation.LOOP_LINEAR
+		else:
+			print("Анимация cat_armature|walk не найдена!")
+	else:
+		print("AnimationPlayer не найден!")
 
 func _input(event: InputEvent) -> void:
 	if OS.has_feature("debug") and event is InputEventKey and event.pressed and not event.echo and event.physical_keycode == KEY_F8:
@@ -107,13 +117,16 @@ func _input(event: InputEvent) -> void:
 			hold_time = 0.0
 			update_target_from_mouse()
 			moving = true
+			cat_animation_player.play("cat_armature|walk")
+			cat_animation_player.speed_scale = 4
 		else:
 			mouse_down = false
 
 			if hold_time >= hold_threshold:
 				moving = false
+				cat_animation_player.stop()
 				_stop_horizontal_movement()
-
+				
 	if event is InputEventKey and event.pressed and not event.echo:
 		if event.physical_keycode == KEY_SPACE and is_on_floor():
 			velocity.y = jump_velocity
