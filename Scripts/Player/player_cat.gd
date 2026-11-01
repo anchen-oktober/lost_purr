@@ -5,6 +5,7 @@ const FearReturnPath = preload("res://Scripts/Player/fear_return_path.gd")
 const TraumaRadiusVisualScript: Script = preload("res://Scripts/Trauma/trauma_radius_visual.gd")
 
 @onready var cat_animation_player: AnimationPlayer = get_node_or_null("cat/AnimationPlayer")
+@onready var cat_model: Node3D = get_node_or_null("cat")
 
 signal fear_changed(fear: float, calmness: float, state: String, is_critical: bool)
 signal trauma_avoidance_changed(is_active: bool, blocked_zone_name: String, radius_visible: bool)
@@ -181,6 +182,14 @@ func _physics_process(delta: float) -> void:
 			if move_speed_multiplier <= 0.0:
 				_report_movement_blockage("logic", {"reason": "fear_speed_zero", "phase": fear_recovery_phase})
 			direction = direction.normalized()
+			
+			var target_angle = atan2(direction.x, direction.z)
+			cat_model.rotation.y = lerp_angle(
+				cat_model.rotation.y,
+				target_angle,
+				10.0 * delta
+			)
+			
 			velocity.x = direction.x * speed * move_speed_multiplier
 			velocity.z = direction.z * speed * move_speed_multiplier
 		else:
