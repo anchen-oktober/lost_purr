@@ -31,6 +31,7 @@
 [ext_resource type="Script" uid="uid://cd43hoxq3gwtq" path="res://Scripts/Chapter1/chapter1_moving_car.gd" id="28_1nsxm"]
 [ext_resource type="Script" uid="uid://bl2l8mwcrl7th" path="res://Scripts/World/healing_lamp.gd" id="HealingLamp"]
 [ext_resource type="PackedScene" path="res://Scenes/NPC/QuietEntity.tscn" id="QuietEntity"]
+[ext_resource type="Script" uid="uid://mofmms1d68ku" path="res://Scripts/Player/player_cat.gd" id="QuietPlayer"]
 [ext_resource type="Script" uid="uid://d0bllj7m7hfhw" path="res://Scripts/CatVision/cat_vision_manager.gd" id="VillageCatVision"]
 [ext_resource type="Script" uid="uid://4ow038eg65xo" path="res://Scripts/World/village_builder.gd" id="VillageStartup"]
 
@@ -16794,6 +16795,7 @@ mesh = SubResource("CapsuleMesh_8qg48")
 
 [node name="PlayerCat" type="CharacterBody3D" parent="Blockout/pers" unique_id=795165568]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.161339, 0.5, 141.02525)
+script = ExtResource("QuietPlayer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/pers/PlayerCat" unique_id=1671021864]
 shape = SubResource("SphereShape3D_1305s")
@@ -16823,7 +16825,7 @@ omni_range = 2.4
 [node name="cat" parent="Blockout/pers/PlayerCat" unique_id=1719393653 instance=ExtResource("18_xytt5")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -0.3903885, 0)
 
-[node name="Skeleton3D" parent="Blockout/pers/PlayerCat/cat/cat_armature" parent_id_path=PackedInt32Array(1719393653, 788296244) index="0" unique_id=1268506162]
+[node name="Skeleton3D" parent="Blockout/pers/PlayerCat/cat/cat_armature" parent_id_path=PackedInt32Array(1719393653, 220823884) index="0" unique_id=523519453]
 bones/1/position = Vector3(-1.00932527e-19, -0.0005943966, 0.0010547594)
 bones/1/rotation = Quaternion(9.4156974e-08, 0.7071068, 0.7071067, 9.415698e-08)
 bones/2/rotation = Quaternion(-5.5633245e-07, 0.67447054, 0.7383018, -5.7390963e-07)
@@ -23360,7 +23362,7 @@ omni_range = 3.0
 [node name="SpawnPoints" type="Node3D" parent="." unique_id=72103177]
 
 [node name="SpawnFromVillage" type="Marker3D" parent="SpawnPoints" unique_id=1597425566]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.911705, 0.5, 25.946592)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.18324, 0.5, 158.07263)
 
 [node name="SpawnFromPark" type="Marker3D" parent="SpawnPoints" unique_id=2088370708]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.911705, 0.5, 25.946592)
@@ -23372,6 +23374,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 142.60352, 0, -255.74097)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.438934, 0, 34)
 
 [node name="Chapter1" type="Node3D" parent="." unique_id=852496845]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -221.64798, 0, 123.60065)
 
 [node name="Core" type="Node3D" parent="Chapter1" unique_id=878151063]
 
@@ -23385,7 +23388,7 @@ script = ExtResource("24_0u6pj")
 script = ExtResource("25_3juea")
 
 [node name="01_StartRoom_Intro" type="Node3D" parent="Chapter1" unique_id=350101623]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -216.6018)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -27.253448)
 
 [node name="M_StartRoom" type="Marker3D" parent="Chapter1/01_StartRoom_Intro" unique_id=270871567]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -12)
@@ -23398,7 +23401,7 @@ trigger_id = "TR_IntroCutscene"
 shape = SubResource("BoxShape3D_trigger_small")
 
 [node name="02_CarTracks_Investigation" type="Node3D" parent="Chapter1" unique_id=1835157406]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -216.6018)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -67.63269)
 
 [node name="M_CarTracks" type="Marker3D" parent="Chapter1/02_CarTracks_Investigation" unique_id=378947940]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -9)
@@ -23439,10 +23442,10 @@ mesh = SubResource("SphereMesh_aura")
 surface_material_override/0 = SubResource("Material_strange_aura")
 
 [node name="03_RunTutorial" type="Node3D" parent="Chapter1" unique_id=1351857180]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -216.6018)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -114.96837)
 
 [node name="04_CatVisionTutorial" type="Node3D" parent="Chapter1" unique_id=1661967132]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -216.6018)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -142.61255)
 
 [node name="TR_CarTracksCatVision" type="Area3D" parent="Chapter1/04_CatVisionTutorial" unique_id=1361428354]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0.2, -9)
@@ -23464,7 +23467,7 @@ mesh = SubResource("SphereMesh_aura")
 surface_material_override/0 = SubResource("Material_owner_aura")
 
 [node name="05_OwnerAuraTrail_ToAnimalControl" type="Node3D" parent="Chapter1" unique_id=1996520608]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -216.6018)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -154.3396)
 
 [node name="M_AuraTrail_01" type="Marker3D" parent="Chapter1/05_OwnerAuraTrail_ToAnimalControl" unique_id=1143194256]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -6)
@@ -23522,7 +23525,7 @@ mesh = SubResource("SphereMesh_aura")
 surface_material_override/0 = SubResource("Material_owner_aura")
 
 [node name="06_AnimalControl_Chase" type="Node3D" parent="Chapter1" unique_id=1090256286]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -216.6018)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -192.9144)
 
 [node name="M_AnimalControlScene" type="Marker3D" parent="Chapter1/06_AnimalControl_Chase" unique_id=961807542]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 1)
@@ -23579,7 +23582,7 @@ mesh = SubResource("BoxMesh_car")
 surface_material_override/0 = SubResource("Material_tracks")
 
 [node name="08_KindNeighbor_Purr" type="Node3D" parent="Chapter1" unique_id=1620864324]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -216.6018)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -253.85889)
 
 [node name="M_Neighbor" type="Marker3D" parent="Chapter1/08_KindNeighbor_Purr" unique_id=217460824]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 8)
@@ -23605,7 +23608,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0.9, 8)
 shape = SubResource("BoxShape3D_lnk3k")
 
 [node name="09_OtherCat_Dialogue" type="Node3D" parent="Chapter1" unique_id=2079464672]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -216.6018)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -298.4508)
 
 [node name="M_OtherCat" type="Marker3D" parent="Chapter1/09_OtherCat_Dialogue" unique_id=15176995]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, 6)
@@ -23624,7 +23627,7 @@ shape = SubResource("SphereShape3D_trigger")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, 6)
 
 [node name="10_OwnerAuraTrail_ToRoad" type="Node3D" parent="Chapter1" unique_id=426070315]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -216.6018)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -336.21948)
 
 [node name="OBJ_OwnerAuraTrail_Road_01" type="Node3D" parent="Chapter1/10_OwnerAuraTrail_ToRoad" unique_id=740022011]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 0.18, 5)
@@ -23647,7 +23650,7 @@ mesh = SubResource("SphereMesh_aura")
 surface_material_override/0 = SubResource("Material_strange_aura")
 
 [node name="11_RoadCrossing" type="Node3D" parent="Chapter1" unique_id=645668784]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -216.6018)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -348.3673)
 
 [node name="M_RoadStart" type="Marker3D" parent="Chapter1/11_RoadCrossing" unique_id=1407950619]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 0, 4)

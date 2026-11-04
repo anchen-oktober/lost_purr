@@ -1,5 +1,8 @@
+@tool
 extends Area3D
 class_name Chapter1Trigger
+
+const GroundVisual = preload("res://Scripts/Chapter1/story_trigger_ground_visual.gd")
 
 signal chapter_triggered(trigger_id: String, reason: String, player: Node)
 signal player_entered_trigger(trigger_id: String, player: Node)
@@ -17,11 +20,20 @@ var activated: bool = false
 var _cat_vision_was_active: bool = false
 
 func _ready() -> void:
+	# This child only draws the zone; it never changes trigger collisions.
+	if get_node_or_null("StoryTriggerGroundVisual") == null:
+		var visual := GroundVisual.new()
+		visual.name = "StoryTriggerGroundVisual"
+		add_child(visual)
+	if Engine.is_editor_hint():
+		return
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
 	monitoring = enabled
 
 func _process(_delta: float) -> void:
+	if Engine.is_editor_hint():
+		return
 	if not enabled or not player_inside or activation_type != 3:
 		return
 
@@ -31,6 +43,8 @@ func _process(_delta: float) -> void:
 	_cat_vision_was_active = is_active
 
 func _input(event: InputEvent) -> void:
+	if Engine.is_editor_hint():
+		return
 	if not enabled or not player_inside:
 		return
 
