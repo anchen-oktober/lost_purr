@@ -119,7 +119,7 @@ func _input(event: InputEvent) -> void:
 			update_target_from_mouse()
 			moving = true
 			cat_animation_player.play("cat_armature|walk")
-			cat_animation_player.speed_scale = 4
+			cat_animation_player.speed_scale = 5
 		else:
 			mouse_down = false
 

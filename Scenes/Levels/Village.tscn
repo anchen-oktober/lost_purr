@@ -3241,8 +3241,10 @@ metadata/_edit_lock_ = true
 [node name="CameraRig" type="Node3D" parent="." unique_id=1378474959]
 
 [node name="Camera3D" type="Camera3D" parent="CameraRig" unique_id=609572443]
-transform = Transform3D(0.8642748, -0.4120498, 0.2885204, 0, 0.57357645, 0.81915206, -0.5030199, -0.70797247, 0.4957277, 13.40593, 21.964584, 18)
+transform = Transform3D(0.8660254, 0.08682409, 0.49240386, 0, 0.9848077, -0.17364818, -0.5, 0.15038373, 0.8528685, 13.406, 3, 15.35)
 fov = 58.0
+near = 0.03
+far = 1000.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=825650642]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0)
@@ -16791,7 +16793,7 @@ material_override = SubResource("StandardMaterial3D_g0f3s")
 mesh = SubResource("CapsuleMesh_8qg48")
 
 [node name="PlayerCat" type="CharacterBody3D" parent="Blockout/pers" unique_id=795165568]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.911705, 0.5, 25.946592)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.161339, 0.5, 141.02525)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Blockout/pers/PlayerCat" unique_id=1671021864]
 shape = SubResource("SphereShape3D_1305s")
