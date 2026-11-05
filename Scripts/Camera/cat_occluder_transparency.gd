@@ -1,10 +1,9 @@
 class_name CatOccluderTransparency
 extends Node3D
 
-## Opens a small, soft screen-space window in geometry that blocks the cat.
-## Add this below the PlayerCat scene.  The effect is intentionally driven by
-## physics colliders: only geometry that can actually sit between the active
-## camera and the player receives the temporary material.
+## Fades whole objects that stand between the active camera and the cat.
+## Materials are duplicated per MeshInstance3D and restored after the fade, so
+## shared source materials and collision geometry are never modified.
 
 const OCCLUDER_SHADER := preload("res://Shaders/cat_occluder_fade.gdshader")
 const VISUAL_ROOT_META := &"occlusion_visual_root_path"
@@ -12,12 +11,9 @@ const VISUAL_ROOT_META := &"occlusion_visual_root_path"
 @export_category("Occluder transparency")
 @export var target: Node3D
 @export_range(0.1, 4.0, 0.01, "suffix:m") var target_height: float = 0.75
-@export_range(0.0, 2.0, 0.01, "suffix:m") var detection_radius: float = 0.42
-@export_range(8.0, 600.0, 1.0, "suffix:px") var circle_radius_pixels: float = 115.0
-@export_range(1.0, 200.0, 1.0, "suffix:px") var circle_softness_pixels: float = 28.0
-@export_range(0.0, 1.0, 0.01) var circle_opacity: float = 0.0
-@export_range(1.0, 30.0, 0.1, "suffix:/s") var fade_in_speed: float = 2.9
-@export_range(1.0, 30.0, 0.1, "suffix:/s") var fade_out_speed: float = 2.3
+@export_range(0.0, 0.95, 0.01) var transparency_amount: float = 0.60
+@export_range(0.1, 2.0, 0.05, "suffix:s") var fade_in_duration: float = 0.40
+@export_range(0.1, 2.0, 0.05, "suffix:s") var fade_out_duration: float = 0.40
 @export_range(0.01, 0.5, 0.01, "suffix:s") var check_interval: float = 0.05
 @export_range(1, 16, 1) var max_occluders: int = 8
 @export_flags_3d_physics var occluder_collision_mask: int = 2147483647
@@ -40,7 +36,6 @@ func _physics_process(delta: float) -> void:
 
 
 func _process(delta: float) -> void:
-	var mask_data := _get_mask_data()
 	var ids: Array = _active_meshes.keys()
 	for id: Variant in ids:
 		var state: Dictionary = _active_meshes[id]
@@ -49,10 +44,10 @@ func _process(delta: float) -> void:
 			_active_meshes.erase(id)
 			continue
 
-		var desired: float = 1.0 if state.get("wanted", false) and not mask_data.is_empty() else 0.0
-		var speed := fade_in_speed if desired > float(state.get("amount", 0.0)) else fade_out_speed
-		state["amount"] = move_toward(float(state.get("amount", 0.0)), desired, speed * delta)
-		_update_mask_materials(state, mask_data)
+		var desired: float = 1.0 if state.get("wanted", false) else 0.0
+		var duration := fade_in_duration if desired > float(state.get("amount", 0.0)) else fade_out_duration
+		state["amount"] = move_toward(float(state.get("amount", 0.0)), desired, delta / maxf(duration, 0.001))
+		_update_transparency_materials(state)
 
 		if float(state["amount"]) <= 0.0 and desired <= 0.0:
 			_restore_mesh_materials(state)
@@ -83,41 +78,28 @@ func _refresh_occluders() -> void:
 	var space_state := get_world_3d().direct_space_state
 	var checked_colliders: Dictionary = {}
 
-	# The centre ray catches complete occlusion.  Four short surrounding rays
-	# catch a roof, wall edge or fence that covers only part of the cat while the
-	# camera is rotating.  The radius is intentionally inspector-configurable.
-	var sample_points: Array[Vector3] = [target_point]
-	if detection_radius > 0.0:
-		var right := camera.global_transform.basis.x.normalized() * detection_radius
-		var up := camera.global_transform.basis.y.normalized() * detection_radius
-		sample_points.append(target_point + right)
-		sample_points.append(target_point - right)
-		sample_points.append(target_point + up)
-		sample_points.append(target_point - up)
+	var excluded := _get_target_collision_rids()
+	for index: int in max_occluders:
+		var query := PhysicsRayQueryParameters3D.create(camera.global_position, target_point)
+		query.collision_mask = occluder_collision_mask
+		query.collide_with_areas = false
+		query.collide_with_bodies = true
+		query.exclude = excluded
+		var hit := space_state.intersect_ray(query)
+		if hit.is_empty():
+			break
 
-	for sample_point: Vector3 in sample_points:
-		var excluded := _get_target_collision_rids()
-		for index: int in max_occluders:
-			var query := PhysicsRayQueryParameters3D.create(camera.global_position, sample_point)
-			query.collision_mask = occluder_collision_mask
-			query.collide_with_areas = false
-			query.collide_with_bodies = true
-			query.exclude = excluded
-			var hit := space_state.intersect_ray(query)
-			if hit.is_empty():
-				break
+		var collider := hit.get("collider") as CollisionObject3D
+		if collider == null:
+			break
+		excluded.append(collider.get_rid())
+		var collider_id := collider.get_instance_id()
+		if checked_colliders.has(collider_id):
+			continue
+		checked_colliders[collider_id] = true
 
-			var collider := hit.get("collider") as CollisionObject3D
-			if collider == null:
-				break
-			excluded.append(collider.get_rid())
-			var collider_id := collider.get_instance_id()
-			if checked_colliders.has(collider_id):
-				continue
-			checked_colliders[collider_id] = true
-
-			for mesh: MeshInstance3D in _find_visual_meshes(collider):
-				_activate_mesh(mesh)
+		for mesh: MeshInstance3D in _find_visual_meshes(collider):
+			_activate_mesh(mesh)
 
 
 func _get_target_collision_rids() -> Array[RID]:
@@ -141,8 +123,7 @@ func _find_visual_meshes(collider: CollisionObject3D) -> Array[MeshInstance3D]:
 			return meshes
 
 	# Hand-authored colliders commonly own a complete visual hierarchy (walls,
-	# roof, doors, foliage etc.).  All of it needs the same mask, not merely the
-	# mesh that happened to receive the raycast.
+	# roof, doors, foliage etc.).  Every visual child fades together.
 	_collect_meshes_below(collider, meshes)
 	if not meshes.is_empty():
 		return meshes
@@ -232,37 +213,10 @@ func _make_fade_material(source: Material) -> ShaderMaterial:
 	return material
 
 
-func _get_mask_data() -> Dictionary:
-	if target == null:
-		return {}
-	var camera := get_viewport().get_camera_3d()
-	if camera == null:
-		return {}
-	var target_point := target.global_position + Vector3.UP * target_height
-	if camera.is_position_behind(target_point) or not camera.is_position_in_frustum(target_point):
-		return {}
-	var viewport_size := get_viewport().get_visible_rect().size
-	if viewport_size.x <= 0.0 or viewport_size.y <= 0.0:
-		return {}
-	var screen_position := camera.unproject_position(target_point)
-	return {
-		"center": Vector2(screen_position.x / viewport_size.x, screen_position.y / viewport_size.y),
-		"radius": circle_radius_pixels / minf(viewport_size.x, viewport_size.y),
-		"softness": circle_softness_pixels / minf(viewport_size.x, viewport_size.y),
-		"aspect": viewport_size.x / viewport_size.y,
-	}
-
-
-func _update_mask_materials(state: Dictionary, mask_data: Dictionary) -> void:
-	if mask_data.is_empty():
-		return
+func _update_transparency_materials(state: Dictionary) -> void:
 	for material: ShaderMaterial in state["fade_materials"]:
-		material.set_shader_parameter("hole_center", mask_data["center"])
-		material.set_shader_parameter("hole_radius", mask_data["radius"])
-		material.set_shader_parameter("hole_softness", mask_data["softness"])
-		material.set_shader_parameter("hole_amount", state["amount"])
-		material.set_shader_parameter("hole_opacity", circle_opacity)
-		material.set_shader_parameter("viewport_aspect", mask_data["aspect"])
+		material.set_shader_parameter("fade_amount", state["amount"])
+		material.set_shader_parameter("transparency_amount", transparency_amount)
 
 
 func _restore_mesh_materials(state: Dictionary) -> void:
