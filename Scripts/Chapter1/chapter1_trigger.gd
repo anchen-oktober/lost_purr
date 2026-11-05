@@ -64,6 +64,7 @@ func _input(event: InputEvent) -> void:
 func set_trigger_enabled(is_enabled: bool) -> void:
 	enabled = is_enabled
 	set_deferred("monitoring", is_enabled)
+	print("[Chapter1Trigger] trigger=%s monitoring=%s" % [_get_trigger_id(), is_enabled])
 	if not is_enabled:
 		player_inside = false
 		player_ref = null
@@ -72,6 +73,7 @@ func _on_body_entered(body: Node3D) -> void:
 	if not enabled or body == null or body.name != "PlayerCat":
 		return
 
+	print("[Chapter1Trigger] trigger=%s detected=PlayerCat activation=%s" % [_get_trigger_id(), _activation_name()])
 	player_inside = true
 	player_ref = body
 	_cat_vision_was_active = _is_cat_vision_active()
@@ -92,10 +94,15 @@ func _on_body_exited(body: Node3D) -> void:
 	player_ref = null
 
 func _try_activate(reason: String) -> bool:
-	if not enabled or (activated and one_shot):
+	if not enabled:
+		print("[Chapter1Trigger] trigger=%s result=ignored_disabled" % _get_trigger_id())
+		return false
+	if activated and one_shot:
+		print("[Chapter1Trigger] trigger=%s result=ignored_one_shot" % _get_trigger_id())
 		return false
 
 	activated = true
+	print("[Chapter1Trigger] trigger=%s event=chapter_triggered reason=%s result=emitted" % [_get_trigger_id(), reason])
 	chapter_triggered.emit(_get_trigger_id(), reason, player_ref)
 	return true
 
@@ -112,3 +119,17 @@ func _is_cat_vision_active() -> bool:
 
 func _get_trigger_id() -> String:
 	return trigger_id if trigger_id != "" else name
+
+func _activation_name() -> String:
+	match activation_type:
+		0:
+			return "enter"
+		1:
+			return "interact"
+		2:
+			return "purr"
+		3:
+			return "cat_vision"
+		4:
+			return "exit"
+	return "unknown"
