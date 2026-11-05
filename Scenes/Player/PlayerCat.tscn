@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=8 format=3]
 
 [ext_resource type="Script" uid="uid://mofmms1d68ku" path="res://Scripts/Player/player_cat.gd" id="1_player"]
 [ext_resource type="Texture2D" uid="uid://boakjd6thqbpl" path="res://Art/CatBilboard.png" id="2_cat"]
 [ext_resource type="Shader" uid="uid://imflfkmet43p" path="res://Shaders/cat_outline.gdshader" id="3_outline"]
 [ext_resource type="Script" uid="uid://cibuicvn804w1" path="res://Scripts/Cat/cat_outline_visibility.gd" id="4_outline_visibility"]
+[ext_resource type="Script" path="res://Scripts/Camera/cat_occluder_transparency.gd" id="5_occluder_transparency"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_player"]
 radius = 0.45
@@ -31,6 +32,9 @@ billboard = 1
 no_depth_test = true
 texture = ExtResource("2_cat")
 script = ExtResource("4_outline_visibility")
+
+[node name="OccluderTransparency" type="Node3D" parent="."]
+script = ExtResource("5_occluder_transparency")
 
 [node name="CatBillboard" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.74, 0)

@@ -3,6 +3,7 @@ extends Node
 signal cat_state_changed(state: int)
 
 const OTHER_WORLD_LOCATION_ID: String = "OtherWorld"
+const DISTANCE_HINT_TEXT: String = "A cat sees many things, but not that far."
 
 enum CatState {
 	NORMAL,
@@ -50,6 +51,8 @@ var is_cat_critical: bool = false
 var current_location_id: String = ""
 var current_state: CatState = CatState.NORMAL
 var _cat_vision_key_held: bool = false
+var _distance_hint_shown_for_hold: bool = false
+var _cat_vision_was_available: bool = true
 
 func _ready() -> void:
 	call_deferred("_initialize_scene")
@@ -93,6 +96,7 @@ func _input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 func _process(delta: float) -> void:
+	_update_camera_availability()
 	_refresh_state()
 
 	var vision_target: float = 1.0 if current_state == CatState.CAT_VISION else 0.0
@@ -123,8 +127,13 @@ func set_location(location_id: String) -> void:
 
 func set_cat_vision_held(is_held: bool) -> void:
 	_cat_vision_key_held = is_held
+	if not is_held:
+		_distance_hint_shown_for_hold = false
 	if is_cat_vision_forced:
 		is_cat_vision_enabled = true
+	elif is_held and not _is_camera_cat_vision_available():
+		is_cat_vision_enabled = false
+		_show_distance_hint_once()
 	else:
 		is_cat_vision_enabled = is_held
 	_refresh_state()
@@ -163,6 +172,52 @@ func _refresh_state() -> void:
 
 	current_state = next_state
 	cat_state_changed.emit(current_state)
+
+
+func _update_camera_availability() -> void:
+	var is_available := _is_camera_cat_vision_available()
+	if is_available == _cat_vision_was_available:
+		return
+	_cat_vision_was_available = is_available
+
+	if is_cat_vision_forced:
+		return
+	if is_available:
+		_hide_distance_hint()
+		# Q is a hold action, so zooming back in while it remains held restores
+		# Cat Vision without requiring a second key press.
+		is_cat_vision_enabled = _cat_vision_key_held
+	elif _cat_vision_key_held:
+		is_cat_vision_enabled = false
+		_show_distance_hint_once()
+
+
+func _is_camera_cat_vision_available() -> bool:
+	var scene_root := _find_scene_root()
+	if scene_root == null:
+		return true
+	var camera_rig := scene_root.find_child("CameraRig", true, false)
+	if camera_rig != null and camera_rig.has_method("is_cat_vision_available"):
+		return bool(camera_rig.call("is_cat_vision_available"))
+	return true
+
+
+func _show_distance_hint_once() -> void:
+	if _distance_hint_shown_for_hold:
+		return
+	_distance_hint_shown_for_hold = true
+	var hint_manager := _find_scene_root().find_child("TutorialHintManager", true, false)
+	if hint_manager != null and hint_manager.has_method("show_transient_hint"):
+		hint_manager.call("show_transient_hint", DISTANCE_HINT_TEXT, 3.0)
+
+
+func _hide_distance_hint() -> void:
+	var scene_root := _find_scene_root()
+	if scene_root == null:
+		return
+	var hint_manager := scene_root.find_child("TutorialHintManager", true, false)
+	if hint_manager != null and hint_manager.has_method("hide_transient_hint"):
+		hint_manager.call("hide_transient_hint")
 
 func _update_quiet_visibility() -> void:
 	for node in get_tree().get_nodes_in_group("silent"):

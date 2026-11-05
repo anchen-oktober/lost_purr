@@ -3,8 +3,10 @@ class_name TutorialHintManager
 
 var _hint_label: Label
 var _context_label: Label
+var _transient_label: Label
 var _hint_timer: Timer
 var _seen_hints: Dictionary = {}
+var _transient_tween: Tween
 
 func _ready() -> void:
 	layer = 35
@@ -36,6 +38,34 @@ func show_context_hint(text: String) -> void:
 func hide_context_hint() -> void:
 	_context_label.visible = false
 
+
+func show_transient_hint(text: String, duration: float = 3.0) -> void:
+	if text == "":
+		return
+
+	if _transient_tween != null:
+		_transient_tween.kill()
+	_transient_label.text = text
+	_transient_label.visible = true
+	_transient_label.modulate.a = 0.0
+	_transient_tween = create_tween()
+	_transient_tween.tween_property(_transient_label, "modulate:a", 1.0, 0.2)
+	_transient_tween.tween_interval(maxf(0.0, duration - 0.55))
+	_transient_tween.tween_property(_transient_label, "modulate:a", 0.0, 0.35)
+	_transient_tween.tween_callback(_hide_transient_hint)
+
+
+func hide_transient_hint() -> void:
+	if _transient_tween != null:
+		_transient_tween.kill()
+	_transient_tween = null
+	_hide_transient_hint()
+
+
+func _hide_transient_hint() -> void:
+	_transient_label.visible = false
+	_transient_label.modulate.a = 1.0
+
 func _build_ui() -> void:
 	_hint_label = _make_label("HintLabel")
 	_hint_label.offset_bottom = -58.0
@@ -44,6 +74,11 @@ func _build_ui() -> void:
 	_context_label = _make_label("ContextHintLabel")
 	_context_label.offset_bottom = -102.0
 	add_child(_context_label)
+
+	_transient_label = _make_label("TransientHintLabel")
+	_transient_label.offset_top = -138.0
+	_transient_label.offset_bottom = -96.0
+	add_child(_transient_label)
 
 	_hint_timer = Timer.new()
 	_hint_timer.name = "HintTimer"

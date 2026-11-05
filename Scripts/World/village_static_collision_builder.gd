@@ -109,6 +109,9 @@ func _add_mesh_collision(mesh: MeshInstance3D) -> void:
 	body.name = "StaticCollision_%s" % mesh.name
 	body.transform = mesh.transform
 	body.set_meta(GENERATED_COLLISION_META, true)
+	# Lets the camera occlusion system resolve the visual that belongs to this
+	# generated collider without touching sibling meshes on the same building.
+	body.set_meta("occlusion_visual_mesh_path", mesh.get_path())
 
 	var shape := BoxShape3D.new()
 	shape.size = bounds.size

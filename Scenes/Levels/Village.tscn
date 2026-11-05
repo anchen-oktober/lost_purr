@@ -38,6 +38,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Camera/camera_3d.gd" id="GameplayCamera"]
 [ext_resource type="Script" path="res://Scripts/Camera/camera_switcher.gd" id="CameraSwitcher"]
+[ext_resource type="Script" path="res://Scripts/Camera/cat_occluder_transparency.gd" id="OccluderTransparency"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7jkkr"]
 
@@ -3264,6 +3265,25 @@ transform = Transform3D(0.8642748, -0.4120498, 0.2885204, 0, 0.57357645, 0.81915
 fov = 58.0
 script = ExtResource("GameplayCamera")
 target = NodePath("../../Blockout/pers/PlayerCat")
+
+[node name="DynamicCamera" type="Camera3D" parent="CameraRig" node_paths=PackedStringArray("target")]
+fov = 62.0
+near = 0.03
+far = 1000.0
+script = ExtResource("GameplayCamera")
+target = NodePath("../../Blockout/pers/PlayerCat")
+dynamic_mode = true
+min_distance = 2.6
+max_distance = 32.0
+zoom_speed = 1.5
+follow_smoothness = 9.0
+mouse_sensitivity = 0.0035
+min_vertical_angle = -35.0
+max_vertical_angle = 55.0
+pivot_height = 1.05
+shoulder_offset = 0.42
+collision_radius = 0.18
+collision_margin = 0.12
 
 [node name="CameraModeHUD" type="CanvasLayer" parent="CameraRig"]
 layer = 8
@@ -16842,6 +16862,9 @@ billboard = 1
 no_depth_test = true
 texture = ExtResource("14_px6ec")
 script = ExtResource("15_n4w5i")
+
+[node name="OccluderTransparency" type="Node3D" parent="Blockout/pers/PlayerCat"]
+script = ExtResource("OccluderTransparency")
 
 [node name="CatBillboard" type="Sprite3D" parent="Blockout/pers/PlayerCat" unique_id=951761677]
 transform = Transform3D(0.5807134, 0, 0, 0, 0.6465319, 0, 0, 0, 0.7943832, 0, 0.74, 0)
