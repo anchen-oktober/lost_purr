@@ -17599,6 +17599,7 @@ material_override = SubResource("StandardMaterial3D_uewvg")
 mesh = SubResource("BoxMesh_sn4nu")
 
 [node name="StreetLamps" type="Node3D" parent="Village" unique_id=949193091]
+metadata/_edit_lock_ = true
 
 [node name="StreetLamp_01" type="Node3D" parent="Village/StreetLamps" unique_id=123332482]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.591507, 13.98403, 133.93945)
