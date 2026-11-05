@@ -12,6 +12,7 @@ signal trauma_avoidance_changed(is_active: bool, blocked_zone_name: String, radi
 signal movement_blocked(details: Dictionary)
 
 @export var speed: float = 5.0
+@export_range(1.0, 5.0, 0.1) var run_speed_multiplier: float = 1.7
 @export var hold_threshold: float = 0.2
 @export var jump_velocity: float = 4.5
 @export var gravity: float = 18.0
@@ -39,8 +40,10 @@ var _movement_debug_last_time: int = 0
 
 var target_position: Vector3
 var moving: bool = false
+var is_running: bool = false
 var mouse_down: bool = false
 var hold_time: float = 0.0
+var _keep_mouse_target_until_motion: bool = false
 var purr_tween: Tween
 var fear: float = 0.0
 var is_critical_fear: bool = false
@@ -70,6 +73,7 @@ var fallback_trigger: Area3D = null
 
 func _ready() -> void:
 	add_to_group("player")
+	is_running = Input.is_key_pressed(KEY_SHIFT)
 	if OS.has_feature("debug") and "--movement-debug" in OS.get_cmdline_user_args():
 		movement_debug_enabled = true
 	if movement_debug_enabled:
@@ -94,6 +98,8 @@ func _ready() -> void:
 		print("AnimationPlayer не найден!")
 
 func _input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion and not event.relative.is_zero_approx():
+		_keep_mouse_target_until_motion = false
 	if OS.has_feature("debug") and event is InputEventKey and event.pressed and not event.echo and event.physical_keycode == KEY_F8:
 		movement_debug_enabled = not movement_debug_enabled
 		get_tree().debug_collisions_hint = movement_debug_enabled
@@ -114,6 +120,7 @@ func _input(event: InputEvent) -> void:
 			return
 
 		if event.pressed:
+			_keep_mouse_target_until_motion = false
 			mouse_down = true
 			hold_time = 0.0
 			update_target_from_mouse()
@@ -128,19 +135,30 @@ func _input(event: InputEvent) -> void:
 				cat_animation_player.stop()
 				_stop_horizontal_movement()
 				
-	if event is InputEventKey and event.pressed and not event.echo:
-		if event.physical_keycode == KEY_SPACE and is_on_floor():
+	if event is InputEventKey:
+		var key_event := event as InputEventKey
+		if key_event.physical_keycode == KEY_SHIFT or key_event.keycode == KEY_SHIFT:
+			# Running is intentionally independent from Cat Vision, which uses Q.
+			is_running = key_event.pressed
+
+		if not key_event.pressed or key_event.echo:
+			return
+
+		if key_event.physical_keycode == KEY_SPACE and is_on_floor():
 			velocity.y = jump_velocity
-		elif event.physical_keycode == KEY_F6:
+		elif key_event.physical_keycode == KEY_F6:
 			# Debug/test scare input.
 			apply_fear_damage(fear_per_scare)
 			get_viewport().set_input_as_handled()
-		elif event.physical_keycode == KEY_F7:
+		elif key_event.physical_keycode == KEY_F7:
 			# Debug/test recovery cheat.
 			restore_fear_quarter()
 			get_viewport().set_input_as_handled()
 
 func _physics_process(delta: float) -> void:
+	# A missed key-up event (for example after an alt-tab) must never leave the
+	# cat running. Input state also keeps a held Shift working across level loads.
+	is_running = Input.is_key_pressed(KEY_SHIFT)
 	if positive_restore_block_time > 0.0:
 		positive_restore_block_time = maxf(positive_restore_block_time - delta, 0.0)
 	if purr_restore_cooldown_left > 0.0:
@@ -190,8 +208,12 @@ func _physics_process(delta: float) -> void:
 				10.0 * delta
 			)
 			
-			velocity.x = direction.x * speed * move_speed_multiplier
-			velocity.z = direction.z * speed * move_speed_multiplier
+			var movement_speed_multiplier: float = move_speed_multiplier
+			if is_running:
+				movement_speed_multiplier *= run_speed_multiplier
+			velocity.x = direction.x * speed * movement_speed_multiplier
+			velocity.z = direction.z * speed * movement_speed_multiplier
+			_update_movement_animation_speed()
 		else:
 			_stop_horizontal_movement()
 			moving = false
@@ -329,7 +351,14 @@ func _cache_interaction_candidates() -> void:
 		if node is Area3D and node.is_in_group("LPTrigger"):
 			interaction_trigger_candidates.append(node as Area3D)
 
+func preserve_camera_movement_target() -> void:
+	# A stationary held cursor must not redirect the cat when its camera changes.
+	# A deliberate mouse movement or a new click resumes normal targeting.
+	_keep_mouse_target_until_motion = mouse_down
+
 func update_target_from_mouse() -> void:
+	if _keep_mouse_target_until_motion:
+		return
 	var camera: Camera3D = get_viewport().get_camera_3d()
 	if camera == null:
 		return
@@ -353,6 +382,10 @@ func update_target_from_mouse() -> void:
 func _stop_horizontal_movement() -> void:
 	velocity.x = 0.0
 	velocity.z = 0.0
+
+func _update_movement_animation_speed() -> void:
+	if cat_animation_player != null and cat_animation_player.is_playing():
+		cat_animation_player.speed_scale = 5.0 * (run_speed_multiplier if is_running else 1.0)
 
 func apply_fear_damage(amount: float, source_node: Node = null) -> void:
 	if is_critical_fear or amount <= 0.0:

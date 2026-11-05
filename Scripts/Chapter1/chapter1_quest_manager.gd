@@ -33,7 +33,7 @@ func start_quest(quest_id: String) -> void:
 		"Quest_01_GoToCarTracks":
 			show_hint("Найди следы машины.")
 		"Quest_02_CatVision", "Tutorial_02_CatVision", "Quest_02_InspectTracksWithCatVision":
-			show_hint("Left Shift - кошачье зрение.")
+			show_hint("Q (удерживать) — кошачье зрение.")
 		"Quest_03_FollowOwnerAura":
 			show_hint("След виден только кошачьим зрением.")
 		"Quest_04_AnimalControl", "Quest_04_EscapeAnimalControl":

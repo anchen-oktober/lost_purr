@@ -262,6 +262,10 @@ func _add_span_collision(
 	var shape: BoxShape3D = BoxShape3D.new()
 	shape.size = Vector3(collision_depth, fence_height, length)
 	shape_node.shape = shape
+	# A hidden network is authoring scaffolding, not a gameplay barrier.  Keep
+	# its generated collision in sync with the visual state to avoid invisible
+	# walls in levels that keep an alternate fence layout hidden.
+	shape_node.disabled = not parent.is_visible_in_tree()
 	body.add_child(shape_node)
 	parent.add_child(body)
 

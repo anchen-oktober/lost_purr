@@ -194,7 +194,7 @@ func _input(event: InputEvent) -> void:
 	if is_player_control_locked():
 		return
 	if event is InputEventKey and not event.echo:
-		if event.physical_keycode == KEY_SHIFT and not event.pressed:
+		if event.physical_keycode == KEY_Q and not event.pressed:
 			_close_cat_vision_prompt()
 			get_viewport().set_input_as_handled()
 			return

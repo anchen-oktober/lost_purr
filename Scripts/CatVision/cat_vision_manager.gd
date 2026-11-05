@@ -49,12 +49,13 @@ var is_cat_vision_forced: bool = false
 var is_cat_critical: bool = false
 var current_location_id: String = ""
 var current_state: CatState = CatState.NORMAL
-var _cat_vision_enabled_before_forced: bool = false
+var _cat_vision_key_held: bool = false
 
 func _ready() -> void:
 	call_deferred("_initialize_scene")
 
 func _initialize_scene() -> void:
+	_cat_vision_key_held = Input.is_key_pressed(KEY_Q)
 	var current_scene: Node = get_tree().current_scene
 	if current_scene != null:
 		if world_environment == null:
@@ -75,15 +76,19 @@ func _input(event: InputEvent) -> void:
 	var key_event: InputEventKey = event as InputEventKey
 	if key_event == null:
 		return
-	if not key_event.pressed or key_event.echo:
-		return
-	if JournalManager.is_scene_input_blocked():
+	var is_cat_vision_key: bool = key_event.physical_keycode == KEY_Q or key_event.keycode == KEY_Q
+	if is_cat_vision_key:
+		# Cat Vision is a hold action. A release must be honored even if a UI
+		# opened while Q was down, otherwise its effects could become stuck on.
+		if not key_event.pressed or not JournalManager.is_scene_input_blocked():
+			set_cat_vision_held(key_event.pressed)
+			get_viewport().set_input_as_handled()
 		return
 
-	if key_event.physical_keycode == KEY_SHIFT or key_event.keycode == KEY_SHIFT:
-		toggle_cat_vision()
-		get_viewport().set_input_as_handled()
-	elif key_event.physical_keycode == KEY_F1 or key_event.keycode == KEY_F1:
+	if not key_event.pressed or key_event.echo or JournalManager.is_scene_input_blocked():
+		return
+
+	if key_event.physical_keycode == KEY_F1 or key_event.keycode == KEY_F1:
 		set_cat_critical(not is_cat_critical)
 		get_viewport().set_input_as_handled()
 
@@ -106,25 +111,22 @@ func set_location(location_id: String) -> void:
 	current_location_id = next_location_id
 
 	if current_location_id == OTHER_WORLD_LOCATION_ID:
-		if not was_forced:
-			_cat_vision_enabled_before_forced = is_cat_vision_enabled
 		is_cat_vision_forced = true
 		is_cat_vision_enabled = true
 	elif was_forced:
 		is_cat_vision_forced = false
-		is_cat_vision_enabled = _cat_vision_enabled_before_forced
+		is_cat_vision_enabled = _cat_vision_key_held
 	else:
 		is_cat_vision_forced = false
 
 	_refresh_state()
 
-func toggle_cat_vision() -> void:
+func set_cat_vision_held(is_held: bool) -> void:
+	_cat_vision_key_held = is_held
 	if is_cat_vision_forced:
 		is_cat_vision_enabled = true
-		_refresh_state()
-		return
-
-	is_cat_vision_enabled = not is_cat_vision_enabled
+	else:
+		is_cat_vision_enabled = is_held
 	_refresh_state()
 
 func set_cat_vision_enabled(is_enabled: bool) -> void:

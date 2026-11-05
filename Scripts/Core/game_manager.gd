@@ -280,6 +280,8 @@ func _validate_gameplay_startup(level_id: String) -> void:
 			push_error("[STARTUP ERROR] PlayerCat controls are locked after loading %s." % level_id)
 
 	var active_camera: Camera3D = get_viewport().get_camera_3d()
+	if active_camera != null and active_camera.get_parent().has_method("refresh_gameplay_camera"):
+		active_camera = active_camera.get_parent().call("refresh_gameplay_camera") as Camera3D
 	if active_camera == null:
 		push_error("[STARTUP ERROR] No active gameplay Camera3D after loading %s." % level_id)
 	else:
