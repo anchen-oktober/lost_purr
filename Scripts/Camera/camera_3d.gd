@@ -19,6 +19,7 @@ extends Node3D
 @export var dynamic_mode: bool = false
 @export_range(1.5, 40.0, 0.1, "suffix:m") var min_distance: float = 2.6
 @export_range(1.5, 40.0, 0.1, "suffix:m") var max_distance: float = 32.0
+@export_range(1.5, 40.0, 0.1, "suffix:m") var cat_vision_max_distance: float = 29.0
 @export_range(0.1, 10.0, 0.1, "suffix:m per scroll") var zoom_speed: float = 1.5
 @export_range(0.1, 30.0, 0.1) var follow_smoothness: float = 9.0
 @export_range(0.0001, 0.03, 0.0001) var mouse_sensitivity: float = 0.0035
@@ -161,7 +162,7 @@ func is_cat_vision_available() -> bool:
 	# The wide end of this camera intentionally trades Cat Vision for a full
 	# overview. Checking the target distance makes the restriction responsive
 	# as soon as the player starts zooming back in.
-	return not dynamic_mode or target_distance < max_distance - 0.01
+	return not dynamic_mode or target_distance < minf(cat_vision_max_distance, max_distance)
 
 
 func _input_dynamic_camera(event: InputEvent) -> void:

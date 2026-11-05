@@ -7,16 +7,17 @@ extends Node3D
 ## camera and the player receives the temporary material.
 
 const OCCLUDER_SHADER := preload("res://Shaders/cat_occluder_fade.gdshader")
-const VISUAL_MESH_META := &"occlusion_visual_mesh_path"
+const VISUAL_ROOT_META := &"occlusion_visual_root_path"
 
 @export_category("Occluder transparency")
 @export var target: Node3D
 @export_range(0.1, 4.0, 0.01, "suffix:m") var target_height: float = 0.75
+@export_range(0.0, 2.0, 0.01, "suffix:m") var detection_radius: float = 0.42
 @export_range(8.0, 600.0, 1.0, "suffix:px") var circle_radius_pixels: float = 115.0
 @export_range(1.0, 200.0, 1.0, "suffix:px") var circle_softness_pixels: float = 28.0
 @export_range(0.0, 1.0, 0.01) var circle_opacity: float = 0.0
-@export_range(1.0, 30.0, 0.1, "suffix:/s") var fade_in_speed: float = 12.0
-@export_range(1.0, 30.0, 0.1, "suffix:/s") var fade_out_speed: float = 8.0
+@export_range(1.0, 30.0, 0.1, "suffix:/s") var fade_in_speed: float = 2.9
+@export_range(1.0, 30.0, 0.1, "suffix:/s") var fade_out_speed: float = 2.3
 @export_range(0.01, 0.5, 0.01, "suffix:s") var check_interval: float = 0.05
 @export_range(1, 16, 1) var max_occluders: int = 8
 @export_flags_3d_physics var occluder_collision_mask: int = 2147483647
@@ -80,30 +81,43 @@ func _refresh_occluders() -> void:
 
 	var target_point := target.global_position + Vector3.UP * target_height
 	var space_state := get_world_3d().direct_space_state
-	var excluded := _get_target_collision_rids()
 	var checked_colliders: Dictionary = {}
 
-	for index: int in max_occluders:
-		var query := PhysicsRayQueryParameters3D.create(camera.global_position, target_point)
-		query.collision_mask = occluder_collision_mask
-		query.collide_with_areas = false
-		query.collide_with_bodies = true
-		query.exclude = excluded
-		var hit := space_state.intersect_ray(query)
-		if hit.is_empty():
-			break
+	# The centre ray catches complete occlusion.  Four short surrounding rays
+	# catch a roof, wall edge or fence that covers only part of the cat while the
+	# camera is rotating.  The radius is intentionally inspector-configurable.
+	var sample_points: Array[Vector3] = [target_point]
+	if detection_radius > 0.0:
+		var right := camera.global_transform.basis.x.normalized() * detection_radius
+		var up := camera.global_transform.basis.y.normalized() * detection_radius
+		sample_points.append(target_point + right)
+		sample_points.append(target_point - right)
+		sample_points.append(target_point + up)
+		sample_points.append(target_point - up)
 
-		var collider := hit.get("collider") as CollisionObject3D
-		if collider == null:
-			break
-		var collider_id := collider.get_instance_id()
-		if checked_colliders.has(collider_id):
-			break
-		checked_colliders[collider_id] = true
-		excluded.append(collider.get_rid())
+	for sample_point: Vector3 in sample_points:
+		var excluded := _get_target_collision_rids()
+		for index: int in max_occluders:
+			var query := PhysicsRayQueryParameters3D.create(camera.global_position, sample_point)
+			query.collision_mask = occluder_collision_mask
+			query.collide_with_areas = false
+			query.collide_with_bodies = true
+			query.exclude = excluded
+			var hit := space_state.intersect_ray(query)
+			if hit.is_empty():
+				break
 
-		for mesh: MeshInstance3D in _find_visual_meshes(collider):
-			_activate_mesh(mesh)
+			var collider := hit.get("collider") as CollisionObject3D
+			if collider == null:
+				break
+			excluded.append(collider.get_rid())
+			var collider_id := collider.get_instance_id()
+			if checked_colliders.has(collider_id):
+				continue
+			checked_colliders[collider_id] = true
+
+			for mesh: MeshInstance3D in _find_visual_meshes(collider):
+				_activate_mesh(mesh)
 
 
 func _get_target_collision_rids() -> Array[RID]:
@@ -119,16 +133,17 @@ func _get_target_collision_rids() -> Array[RID]:
 
 func _find_visual_meshes(collider: CollisionObject3D) -> Array[MeshInstance3D]:
 	var meshes: Array[MeshInstance3D] = []
-	if collider.has_meta(VISUAL_MESH_META):
-		var mesh_path := collider.get_meta(VISUAL_MESH_META) as NodePath
-		var mesh := get_node_or_null(mesh_path) as MeshInstance3D
-		if mesh != null:
-			meshes.append(mesh)
+	if collider.has_meta(VISUAL_ROOT_META):
+		var visual_root_path := collider.get_meta(VISUAL_ROOT_META) as NodePath
+		var visual_root := get_node_or_null(visual_root_path)
+		if visual_root != null:
+			_collect_meshes_below(visual_root, meshes)
 			return meshes
 
-	# Hand-authored colliders often own the visual directly.
-	for node: Node in collider.find_children("*", "MeshInstance3D", true, false):
-		_add_mesh_once(meshes, node as MeshInstance3D)
+	# Hand-authored colliders commonly own a complete visual hierarchy (walls,
+	# roof, doors, foliage etc.).  All of it needs the same mask, not merely the
+	# mesh that happened to receive the raycast.
+	_collect_meshes_below(collider, meshes)
 	if not meshes.is_empty():
 		return meshes
 
@@ -140,6 +155,13 @@ func _find_visual_meshes(collider: CollisionObject3D) -> Array[MeshInstance3D]:
 			if child is MeshInstance3D:
 				_add_mesh_once(meshes, child as MeshInstance3D)
 	return meshes
+
+
+func _collect_meshes_below(root: Node, meshes: Array[MeshInstance3D]) -> void:
+	if root is MeshInstance3D:
+		_add_mesh_once(meshes, root as MeshInstance3D)
+	for node: Node in root.find_children("*", "MeshInstance3D", true, false):
+		_add_mesh_once(meshes, node as MeshInstance3D)
 
 
 func _add_mesh_once(meshes: Array[MeshInstance3D], mesh: MeshInstance3D) -> void:

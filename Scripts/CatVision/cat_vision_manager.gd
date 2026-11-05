@@ -159,6 +159,10 @@ func _refresh_state() -> void:
 	var next_state: CatState = CatState.NORMAL
 	if is_cat_vision_forced:
 		is_cat_vision_enabled = true
+	elif not _is_camera_cat_vision_available():
+		# The wide end of DynamicCamera never enables Cat Vision, including
+		# programmatic requests that do not originate from the Q input handler.
+		is_cat_vision_enabled = false
 
 	if is_cat_critical:
 		next_state = CatState.DANGER
