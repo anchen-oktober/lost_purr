@@ -26,6 +26,7 @@ class_name VisibleQuestTrigger
 var _activated: bool = false
 var _collision_shape: CollisionShape3D
 var _debug_mesh: MeshInstance3D
+var _player_inside: Node3D
 
 func _ready() -> void:
 	_ensure_visual_children()
@@ -36,17 +37,37 @@ func _ready() -> void:
 		if _debug_mesh != null and hide_debug_in_game:
 			_debug_mesh.visible = false
 
+func _process(_delta: float) -> void:
+	if Engine.is_editor_hint() or _activated or _player_inside == null:
+		return
+	if require_cat_vision and _is_cat_vision_active():
+		_run_trigger()
+
 func set_trigger_enabled(is_enabled: bool) -> void:
 	monitoring = is_enabled
 	monitorable = is_enabled
 	if _collision_shape != null:
 		_collision_shape.disabled = not is_enabled
+	if is_enabled:
+		call_deferred("_restore_player_overlap")
+
+func _restore_player_overlap() -> void:
+	# Collision/monitoring changes take effect on the physics tick.  Waiting one
+	# tick prevents a just-enabled zone from missing the player already inside it.
+	await get_tree().physics_frame
+	if not monitoring or _activated:
+		return
+	for body in get_overlapping_bodies():
+		if body is Node3D and (not only_player or _is_player(body)):
+			_on_body_entered(body as Node3D)
+			return
 
 func _on_body_entered(body: Node3D) -> void:
 	if _activated and trigger_once:
 		return
 	if only_player and not _is_player(body):
 		return
+	_player_inside = body
 	if require_cat_vision and not _is_cat_vision_active():
 		return
 
@@ -55,6 +76,8 @@ func _on_body_entered(body: Node3D) -> void:
 func _on_body_exited(body: Node3D) -> void:
 	if only_player and not _is_player(body):
 		return
+	if body == _player_inside:
+		_player_inside = null
 
 	var manager := _find_quest_manager()
 	if manager != null and manager.has_method("hide_context_hint"):

@@ -306,6 +306,8 @@ func _update_interaction_fallback() -> void:
 	for candidate in interaction_candidates:
 		if not is_instance_valid(candidate):
 			continue
+		if candidate.has_method("is_interaction_available") and not bool(candidate.call("is_interaction_available")):
+			continue
 		var distance := global_position.distance_to(candidate.global_position)
 		if distance <= closest_distance:
 			closest_interactable = candidate
@@ -345,8 +347,6 @@ func _cache_interaction_candidates() -> void:
 		return
 	for node in current_scene.find_children("*", "Node3D", true, false):
 		if node.has_method("interact") and node is Node3D:
-			if node.has_method("is_interaction_available") and not bool(node.call("is_interaction_available")):
-				continue
 			interaction_candidates.append(node as Node3D)
 		if node is Area3D and node.is_in_group("LPTrigger"):
 			interaction_trigger_candidates.append(node as Area3D)

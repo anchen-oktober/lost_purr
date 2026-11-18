@@ -14,6 +14,7 @@ var icon_preview: TextureRect
 var detail_text: RichTextLabel
 var current_category: int = JournalManager.MemoryType.SMELL
 var showing_characters: bool = false
+var showing_story: bool = false
 var purr_label: Label
 var quit_button: Button
 var world_text_label: Label
@@ -169,6 +170,9 @@ func refresh_entries() -> void:
 	entries_list.clear()
 	if showing_characters:
 		_refresh_character_entries()
+		return
+	if showing_story:
+		_refresh_story_entries()
 		return
 
 	var entries: Array[Dictionary] = JournalManager.get_entries_for_category(current_category)
@@ -333,13 +337,27 @@ func _build_tabs() -> void:
 	characters_button.pressed.connect(_select_characters)
 	tabs_box.add_child(characters_button)
 
+	var story_button: Button = Button.new()
+	story_button.text = "Chapter 1"
+	story_button.alignment = HORIZONTAL_ALIGNMENT_LEFT
+	_apply_journal_button_style(story_button)
+	story_button.pressed.connect(_select_story)
+	tabs_box.add_child(story_button)
+
 func _select_category(category: int) -> void:
 	showing_characters = false
+	showing_story = false
 	current_category = category
 	refresh_entries()
 
 func _select_characters() -> void:
 	showing_characters = true
+	showing_story = false
+	refresh_entries()
+
+func _select_story() -> void:
+	showing_characters = false
+	showing_story = true
 	refresh_entries()
 
 func _on_entry_selected(index: int) -> void:
@@ -347,6 +365,11 @@ func _on_entry_selected(index: int) -> void:
 		var characters: Array[Dictionary] = CharacterJournalManager.get_known_characters()
 		if index >= 0 and index < characters.size():
 			_show_character(characters[index])
+		return
+	if showing_story:
+		var story_entries: Array[Dictionary] = JournalManager.get_chapter1_story()
+		if index >= 0 and index < story_entries.size():
+			_show_story_entry(story_entries[index])
 		return
 
 	var entries: Array[Dictionary] = JournalManager.get_entries_for_category(current_category)
@@ -377,6 +400,28 @@ func _refresh_character_entries() -> void:
 	else:
 		entries_list.select(0)
 		_show_character(characters[0])
+
+func _refresh_story_entries() -> void:
+	var story_entries: Array[Dictionary] = JournalManager.get_chapter1_story()
+	for story_entry in story_entries:
+		var state := "Активно" if str(story_entry.get("state", "")) == "active" else "Выполнено"
+		entries_list.add_item("%s — %s" % [str(story_entry.get("title", "Задание")), state])
+
+	if story_entries.is_empty():
+		detail_title.text = "Chapter 1"
+		detail_category.text = "Задания"
+		icon_preview.texture = null
+		detail_text.text = "Сюжет ещё не начался."
+	else:
+		entries_list.select(0)
+		_show_story_entry(story_entries[0])
+
+func _show_story_entry(story_entry: Dictionary) -> void:
+	var state := "Активно" if str(story_entry.get("state", "")) == "active" else "Выполнено"
+	detail_title.text = str(story_entry.get("title", "Задание"))
+	detail_category.text = "Глава 1 · " + state
+	detail_text.text = str(story_entry.get("objective", ""))
+	icon_preview.texture = null
 
 func _show_character(character_data: Dictionary) -> void:
 	var character_type: int = int(character_data.get("character_type", CharacterJournalManager.CharacterType.HUMAN))

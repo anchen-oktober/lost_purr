@@ -23446,7 +23446,7 @@ trigger_id = "TR_IntroCutscene"
 shape = SubResource("BoxShape3D_trigger_small")
 
 [node name="02_CarTracks_Investigation" type="Node3D" parent="Chapter1" unique_id=1835157406]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.047424, -21.225294, 9.364304)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.047424, 0, 9.364304)
 
 [node name="M_CarTracks" type="Marker3D" parent="Chapter1/02_CarTracks_Investigation" unique_id=378947940]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -9)
@@ -23455,18 +23455,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -9)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0.2, -9)
 script = ExtResource("26_o8xwm")
 trigger_id = "TR_CarTracks"
-activation_type = 1
-context_hint = "E - осмотреть"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Chapter1/02_CarTracks_Investigation/TR_CarTracks" unique_id=1368998006]
 shape = SubResource("SphereShape3D_trigger")
 
 [node name="OBJ_CarTracks" type="Node3D" parent="Chapter1/02_CarTracks_Investigation" unique_id=1876030070]
-transform = Transform3D(0.966, 0, -0.259, 0, 1, 0, 0.259, 0, 0.966, -11, 3.041892, -34.815163)
+transform = Transform3D(0.966, 0, -0.259, 0, 1, 0, 0.259, 0, 0.966, -11, 0.12, -8.904907)
 script = ExtResource("27_sddaf")
 visible_only_in_cat_vision = false
 normal_visibility = true
 highlight_color = Color(1, 0.68, 0.28, 0.8)
+interaction_id = "chapter1_car_tracks"
+required_quest_id = "Quest_02_InspectTracksWithCatVision"
+interaction_radius = 3.5
+requires_cat_vision_for_interaction = true
+one_shot_interaction = true
+interaction_hint = "E — Исследовать следы"
+cat_vision_required_hint = "Удерживай Q, чтобы использовать кошачье зрение"
 
 [node name="Visual" type="MeshInstance3D" parent="Chapter1/02_CarTracks_Investigation/OBJ_CarTracks" unique_id=259854964]
 mesh = SubResource("BoxMesh_tracks")
@@ -23476,27 +23481,39 @@ surface_material_override/0 = SubResource("Material_tracks")
 transform = Transform3D(0.9998816, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, 0.9998816, 0, -1.7637208, 0)
 omni_range = 3.5
 
-[node name="OBJ_StrangeAura_01" type="Node3D" parent="Chapter1/02_CarTracks_Investigation" unique_id=718394720]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.25, -8)
+[node name="OBJ_OwnerAura_CarTracks" type="Node3D" parent="Chapter1/02_CarTracks_Investigation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.25, 0.42, -8.45)
 script = ExtResource("27_sddaf")
-highlight_color = Color(0.22, 0.62, 1, 0.72)
+highlight_color = Color(0.14, 0.48, 1, 0.78)
+reveal_type = 0
+
+[node name="Visual" type="MeshInstance3D" parent="Chapter1/02_CarTracks_Investigation/OBJ_OwnerAura_CarTracks"]
+mesh = SubResource("SphereMesh_aura")
+surface_material_override/0 = SubResource("Material_owner_aura")
+
+[node name="OBJ_StrangeAura_CarTracks" type="Node3D" parent="Chapter1/02_CarTracks_Investigation" unique_id=718394720]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7, 0.42, -8.4)
+script = ExtResource("27_sddaf")
+highlight_color = Color(0.035, 0.025, 0.075, 0.88)
 reveal_type = 1
 
-[node name="Visual" type="MeshInstance3D" parent="Chapter1/02_CarTracks_Investigation/OBJ_StrangeAura_01" unique_id=1692468503]
+[node name="Visual" type="MeshInstance3D" parent="Chapter1/02_CarTracks_Investigation/OBJ_StrangeAura_CarTracks" unique_id=1692468503]
 mesh = SubResource("SphereMesh_aura")
 surface_material_override/0 = SubResource("Material_strange_aura")
 
 [node name="03_RunTutorial" type="Node3D" parent="Chapter1" unique_id=1351857180]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.948868, 0, -0.48098755)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.839615, 0, -0.48098755)
 
 [node name="04_CatVisionTutorial" type="Node3D" parent="Chapter1" unique_id=1661967132]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.4059, 0, 0.41770935)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.539536, 0, 0.41770935)
 
 [node name="TR_CarTracksCatVision" type="Area3D" parent="Chapter1/04_CatVisionTutorial" unique_id=1361428354]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0.2, -9)
 script = ExtResource("26_o8xwm")
 trigger_id = "TR_CarTracksCatVision"
-activation_type = 3
+activation_type = 1
+context_hint = "Q + E — изучить следы"
+requires_cat_vision = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Chapter1/04_CatVisionTutorial/TR_CarTracksCatVision" unique_id=1065110752]
 shape = SubResource("SphereShape3D_trigger")
@@ -23627,7 +23644,7 @@ mesh = SubResource("BoxMesh_car")
 surface_material_override/0 = SubResource("Material_tracks")
 
 [node name="08_KindNeighbor_Purr" type="Node3D" parent="Chapter1" unique_id=1620864324]
-transform = Transform3D(0.10183543, 0, 0, 0, 1, 0, 0, 0, 0.6349993, -31.76912, 0, -70.211525)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.76912, 0, -70.211525)
 
 [node name="M_Neighbor" type="Marker3D" parent="Chapter1/08_KindNeighbor_Purr" unique_id=217460824]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 8)
@@ -23653,7 +23670,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0.9, 8)
 shape = SubResource("BoxShape3D_lnk3k")
 
 [node name="09_OtherCat_Dialogue" type="Node3D" parent="Chapter1" unique_id=2079464672]
-transform = Transform3D(0.09702039, 0, 0, 0, 1, 0, 0, 0, 1, -14.900101, 0, -65.493675)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.900101, 0, -65.493675)
 
 [node name="M_OtherCat" type="Marker3D" parent="Chapter1/09_OtherCat_Dialogue" unique_id=15176995]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, 6)
@@ -23695,7 +23712,7 @@ mesh = SubResource("SphereMesh_aura")
 surface_material_override/0 = SubResource("Material_strange_aura")
 
 [node name="11_RoadCrossing" type="Node3D" parent="Chapter1" unique_id=645668784]
-transform = Transform3D(0.20457149, 0, 0, 0, 1, 0, 0, 0, 1, 20.059105, 0, -64.34975)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.059105, 0, -64.34975)
 
 [node name="M_RoadStart" type="Marker3D" parent="Chapter1/11_RoadCrossing" unique_id=1407950619]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 0, 4)

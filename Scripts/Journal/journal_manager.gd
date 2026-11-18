@@ -22,7 +22,50 @@ const CATEGORY_NAMES: Dictionary = {
 	MemoryType.ANOMALY: "Anomalies",
 }
 
+const CHAPTER1_QUEST_DEFINITIONS: Dictionary = {
+	"Cutscene_Intro": {"title": "Пробуждение", "objective": "Вспомнить, что случилось с хозяином."},
+	"Quest_01_GoToCarTracks": {"title": "Найти следы шин", "objective": "Добраться до следов машины."},
+	"Tutorial_01_Run": {"title": "Бег", "objective": "Удерживать Shift, чтобы бежать."},
+	"Quest_02_InspectTracksWithCatVision": {"title": "Изучить следы", "objective": "Удерживая Q, нажать E у следов шин."},
+	"Tutorial_02_CatVision": {"title": "Кошачье зрение", "objective": "Удерживать Q, чтобы увидеть скрытые ауры."},
+	"Quest_03_FollowOwnerAura": {"title": "След хозяина", "objective": "Идти по знакомой ауре."},
+	"Quest_04_EscapeAnimalControl": {"title": "Побег", "objective": "Убежать от службы отлова."},
+	"Tutorial_03_Jump": {"title": "Прыжок", "objective": "Нажать Space, чтобы прыгнуть."},
+	"Quest_045_PurrWithNeighbor": {"title": "Добрая соседка", "objective": "Мурчанием заслужить доверие соседки."},
+	"Quest_05_TalkToOtherCat": {"title": "Другой кот", "objective": "Поговорить с дворовым котом."},
+	"Dialogue_01_OtherCat": {"title": "Тихие", "objective": "Выслушать предупреждение другого кота."},
+	"Quest_06_FollowTrailToRoad": {"title": "К дороге", "objective": "Продолжить идти по следу хозяина."},
+	"Quest_07_CrossRoadToPark": {"title": "Перейти дорогу", "objective": "Безопасно перейти дорогу."},
+	"Chapter_01_End": {"title": "Выход к парку", "objective": "Добраться до парка."},
+}
+
 const MEMORY_DEFINITIONS: Dictionary = {
+	"chapter1_car_tracks": {
+		"title": "Следы шин",
+		"short_description": "Следы машины рядом со знакомым запахом.",
+		"full_description": "На следах шин остался запах хозяина. Он был здесь, но рядом с его следом притаилось что-то чужое.",
+		"category": MemoryType.TRACE,
+	},
+	"chapter1_owner_aura": {
+		"title": "Аура хозяина",
+		"short_description": "Тонкий знакомый след ведёт дальше.",
+		"full_description": "Кошачье зрение различает знакомую ауру хозяина. След уходит от шин через деревню.",
+		"category": MemoryType.TRACE,
+		"requires_cat_vision": true,
+	},
+	"chapter1_strange_aura": {
+		"title": "Неизвестная аура",
+		"short_description": "Холодный след соприкасается со следом хозяина.",
+		"full_description": "Рядом с аурой хозяина остаётся чужая холодная аура. Кот ещё не знает, кому она принадлежит.",
+		"category": MemoryType.ANOMALY,
+		"requires_cat_vision": true,
+	},
+	"chapter1_the_quiet": {
+		"title": "Тихие",
+		"short_description": "Дворовый кот предупреждает о тех, кого люди не замечают.",
+		"full_description": "Тихие приходят, когда люди начинают пахнуть пустотой. Они остаются рядом, пока их не замечают.",
+		"category": MemoryType.ANOMALY,
+	},
 	"old_tobacco_smell": {
 		"title": "Old Tobacco Scent",
 		"short_description": "A dry evening smell by an empty porch.",
@@ -186,6 +229,7 @@ var park_state: Dictionary = {"owner_trail_discovered": false, "playground_memor
 var nearby_object: Node = null
 var journal_ui: Node = null
 var current_popup_requires_cat_vision: bool = false
+var chapter1_story: Dictionary = {}
 
 func _ready() -> void:
 	load_progress()
@@ -219,10 +263,13 @@ func set_journal_ui(ui: Node) -> void:
 func set_nearby_object(object: Node) -> void:
 	nearby_object = object
 	if journal_ui != null and object != null:
+		var prompt_text := "[E] Inspect"
+		if object.has_method("get_interaction_prompt"):
+			prompt_text = str(object.call("get_interaction_prompt"))
 		if object is Node3D and journal_ui.has_method("show_prompt_for_node"):
-			journal_ui.show_prompt_for_node("[E] Inspect", object)
+			journal_ui.show_prompt_for_node(prompt_text, object)
 		else:
-			journal_ui.show_prompt("[E] Inspect")
+			journal_ui.show_prompt(prompt_text)
 
 func clear_nearby_object(object: Node) -> void:
 	if nearby_object != object:
@@ -233,22 +280,52 @@ func clear_nearby_object(object: Node) -> void:
 		journal_ui.hide_prompt()
 
 func collect_entry(entry: Dictionary) -> void:
-	var entry_id: String = str(entry.get("id", ""))
-	if entry_id.is_empty():
-		return
+	_collect_entries([entry], true)
 
-	var normalized_entry: Dictionary = _normalize_entry(entry)
-	var was_new: bool = not collected_entries.has(entry_id)
-	normalized_entry["is_collected"] = true
-	collected_entries[entry_id] = normalized_entry
+func collect_entries(entries: Array[Dictionary]) -> void:
+	_collect_entries(entries, true)
 
-	if was_new:
+func _collect_entries(entries: Array[Dictionary], show_popup: bool) -> void:
+	var last_new_entry: Dictionary = {}
+	var changed := false
+	for entry in entries:
+		var entry_id: String = str(entry.get("id", ""))
+		if entry_id.is_empty():
+			continue
+		var normalized_entry: Dictionary = _normalize_entry(entry)
+		var was_new: bool = not collected_entries.has(entry_id)
+		normalized_entry["is_collected"] = true
+		collected_entries[entry_id] = normalized_entry
+		if was_new:
+			changed = true
+			last_new_entry = normalized_entry
+
+	if changed:
 		save_progress()
 		entries_changed.emit()
+	if show_popup and not last_new_entry.is_empty() and journal_ui != null:
+		current_popup_requires_cat_vision = bool(last_new_entry.get("requires_cat_vision", false))
+		journal_ui.show_memory_popup(last_new_entry)
 
-	if journal_ui != null:
-		current_popup_requires_cat_vision = bool(normalized_entry.get("requires_cat_vision", false))
-		journal_ui.show_memory_popup(normalized_entry)
+func reset_chapter1_story() -> void:
+	chapter1_story.clear()
+	entries_changed.emit()
+
+func record_chapter1_quest(quest_id: String, state: String) -> void:
+	chapter1_story[quest_id] = state
+	entries_changed.emit()
+
+func get_chapter1_story() -> Array[Dictionary]:
+	var result: Array[Dictionary] = []
+	for quest_id in chapter1_story:
+		var definition: Dictionary = CHAPTER1_QUEST_DEFINITIONS.get(quest_id, {}) as Dictionary
+		result.append({
+			"id": quest_id,
+			"title": str(definition.get("title", quest_id)),
+			"objective": str(definition.get("objective", "")),
+			"state": str(chapter1_story[quest_id]),
+		})
+	return result
 
 func get_entries_for_category(category: int) -> Array[Dictionary]:
 	var result: Array[Dictionary] = []
